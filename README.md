@@ -11,14 +11,16 @@ Módulos proyectados:
     <li>Farmacia</li>
 </ul>
 Módulos en progreso:
-Citas
+<ul>
+    <li>Citas</li>
+</ul>
 
 # Ejecución del proyecto
 Para poder ejecutar este proyecto se requiere de Wamp server o algun servidor APACHE - PHP 7.1 con servidor MySQL 5.3 o más.
 Para compilar el proyecto se requiere de los siguiente softwares:
 <ul>
     <li>Composer</li>
- <li>NodeJS</li>
- <li>Git</li>
-    </ul>
+    <li>NodeJS</li>
+    <li>Git</li>
+</ul>
 
