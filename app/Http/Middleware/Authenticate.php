@@ -18,4 +18,6 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+
+    //este es un comentario php 
 }
