@@ -5,8 +5,10 @@
 // Variables
 @import 'variables';
 
+@import '@material/textfield/mdc-text-field.scss';
+
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
 .navbar-laravel {
   background-color: #0169d0a1;
