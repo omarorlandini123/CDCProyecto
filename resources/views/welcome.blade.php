@@ -76,7 +76,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a class="resaltado" href="{{ url('/home') }}">Menu Principal</a>
                     @else
                         <a class="resaltado" href="{{ route('login') }}">Ingresar</a>
                         {{--  @if (Route::has('register'))

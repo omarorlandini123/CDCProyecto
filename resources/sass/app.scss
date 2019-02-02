@@ -3,13 +3,99 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+// @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+@import "~@material/textfield/mdc-text-field";
+@import "~@material/button/mdc-button";
+@import "~@material/top-app-bar/mdc-top-app-bar";
+@import "~@material/drawer/mdc-drawer";
+@import "~@material/list/mdc-list";
+@import "~@material/menu-surface/mdc-menu-surface";
+@import "~@material/menu/mdc-menu";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/textfield/helper-text/mdc-text-field-helper-text";
+@import "~@material/image-list/mdc-image-list";
+@import "~@material/card/mdc-card";
+@import "~@material/icon-button/mdc-icon-button";
 
-.navbar-laravel {
-  background-color: #0169d0a1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  color: white;
+:root{
+    --mdc-layout-grid-margin-desktop: 56px;    
+    --mdc-layout-grid-gutter-desktop:56px;    
+    --mdc-layout-grid-column-width-desktop: 36px;
+
+    --mdc-layout-grid-margin-tablet: 16px;
+    --mdc-layout-grid-gutter-tablet: 16px;
+    --mdc-layout-grid-column-width-tablet: 72px;
+
+    --mdc-layout-grid-margin-phone: 16px;
+    --mdc-layout-grid-gutter-phone: 16px;
+    --mdc-layout-grid-column-width-phone: 72px;
+
+    //Color principal
+     --mdc-theme-primary:#064683;
+    --color-primary:#064683;
+}
+.my-card-content {
+  padding: 16px;
+}
+
+.demo-card-shaped {
+  border-radius: 24px 8px;
+  
+}
+.cardpad{
+  padding: 25px;
+}
+
+.demo-cell{
+  height: 100px;
+  background-color: gray; 
+ 
+}
+
+.panel-login{
+  left: 50%;
+  top: 50%;
+  padding:25px;
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  position: fixed;
+  
+}
+.mdc-top-app-bar{
+  background-color:var(--color-primary) !important;
+}
+
+
+
+.mdc-text-field{
+  min-width: 300px;
+}
+
+.container-completo{
+  height:100vh;
+}
+
+body{
+  font-family: 'Nunito', sans-serif !important; 
+}
+
+.login-titulo{
+  text-align: center;   
+  font-size: 1.5em;
+  
+}
+
+.link-normal{
+  color:gray;
+}
+
+.panel-contenido{
+  
+  padding-top: 56px;
+  //position: fixed;
+  
 }
