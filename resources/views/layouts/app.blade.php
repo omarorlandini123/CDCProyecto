@@ -23,7 +23,7 @@
  </head>
 
 <body class="mdc-typography" style="margin:0px;">
-    <header class="mdc-top-app-bar mdc-top-app-bar--short">
+    <header class="mdc-top-app-bar" style="height:56px;">
         <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
                 @auth
@@ -35,8 +35,8 @@
             </section>
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
                 @auth
-                <a href="#" class="material-icons mdc-top-app-bar__action-item app-bar-more-items" aria-label="Bookmark this page"
-                    alt="Bookmark this page">more_vert</a>
+                {{-- <a href="#" class="material-icons mdc-top-app-bar__action-item app-bar-more-items" aria-label="Bookmark this page"
+                    alt="Bookmark this page">more_vert</a> --}}
                 @endauth
                 <div id="toolbar" class="toolbar mdc-menu-surface--anchor">
                     <div class="mdc-menu mdc-menu-surface" tabindex="-1">
@@ -85,11 +85,11 @@
         <div class="mdc-drawer__content">
             <nav class="mdc-list">
                 @auth
-                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-selected="true">
+                <a class="mdc-list-item mdc-list-item--activated" href="/citas" aria-selected="true">
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">schedule</i>
                     <span class="mdc-list-item__text">Citas</span>
                 </a>
-                <a class="mdc-list-item " href="#" >
+                <a class="mdc-list-item " href="/historias" >
                     <i class="material-icons mdc-list-item__graphic" aria-hidden="true">assignment_ind</i>
                     <span class="mdc-list-item__text">Historias Clínicas</span>
                 </a>
