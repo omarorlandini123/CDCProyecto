@@ -40,7 +40,9 @@ import { MDCMenu } from '@material/menu';
 import { MDCList } from '@material/list';
 import { MDCTextFieldHelperText } from '@material/textfield/helper-text';
 import { MDCSelect } from '@material/select';
-
+import { MDCFormField } from '@material/form-field';
+import { MDCRadio } from '@material/radio';
+import { MDCChipSet } from '@material/chips';
 
 
 const select = document.querySelectorAll('.mdc-select');
@@ -173,6 +175,26 @@ panelDetalleCita.forEach(element => {
     element.setAttribute('style', atrr);
 
 });
+const panelSeleccionaPaciente = document.querySelectorAll('.panel-selecciona-paciente');
+panelSeleccionaPaciente.forEach(element => {
+    var atrr = element.getAttribute('style');
+    if (atrr == null) {
+        atrr = "";
+    }
+    atrr += "height:" + (window.innerHeight - 56) + "px;";
+    element.setAttribute('style', atrr);
+
+});
+
+const panelMaxHeight = document.querySelectorAll('.panel-max-height');
+panelMaxHeight.forEach(element => {
+    var atrr = element.getAttribute('style');
+    if (atrr == null) {
+        atrr = "";
+    }
+    atrr += "height:" + (window.innerHeight - 112) + "px;";
+    element.setAttribute('style', atrr);
+});
 
 const list = new MDCList(document.querySelector('.mdc-list'));
 if (list != null) {
@@ -205,7 +227,7 @@ if (botonCitas != null) {
         document.querySelector('.header-citas-contenido').classList.add('header-citas-ocultar');
         //Muestra Pacientes
         document.querySelector('.panel-pacientes-contenido').classList.remove('panel-pacientes-ocultar');
-        document.querySelector('.panel-pacientes-contenido').classList.add('panel-pacientes-mostrar');                
+        document.querySelector('.panel-pacientes-contenido').classList.add('panel-pacientes-mostrar');
         document.querySelector('.boton-pacientes').classList.remove('boton-pacientes-ocultar');
         document.querySelector('.boton-pacientes').classList.add('boton-pacientes-mostrar');
         document.querySelector('.header-pacientes-contenido').classList.remove('header-pacientes-ocultar');
@@ -218,13 +240,13 @@ if (botonCitas != null) {
 const botonBack = document.querySelector('.top-bar-pacientes-back');
 if (botonBack != null) {
     botonBack.addEventListener('click', (event) => {
-          //Oculta Pacientes
-          document.querySelector('.panel-pacientes-contenido').classList.remove('panel-pacientes-mostrar');
-          document.querySelector('.panel-pacientes-contenido').classList.add('panel-pacientes-ocultar');                
-          document.querySelector('.boton-pacientes').classList.remove('boton-pacientes-mostrar');
-          document.querySelector('.boton-pacientes').classList.add('boton-pacientes-ocultar');
-          document.querySelector('.header-pacientes-contenido').classList.remove('header-pacientes-mostrar');
-          document.querySelector('.header-pacientes-contenido').classList.add('header-pacientes-ocultar');
+        //Oculta Pacientes
+        document.querySelector('.panel-pacientes-contenido').classList.remove('panel-pacientes-mostrar');
+        document.querySelector('.panel-pacientes-contenido').classList.add('panel-pacientes-ocultar');
+        document.querySelector('.boton-pacientes').classList.remove('boton-pacientes-mostrar');
+        document.querySelector('.boton-pacientes').classList.add('boton-pacientes-ocultar');
+        document.querySelector('.header-pacientes-contenido').classList.remove('header-pacientes-mostrar');
+        document.querySelector('.header-pacientes-contenido').classList.add('header-pacientes-ocultar');
 
         //Muestra Citas
         document.querySelector('.panel-citas-contenido').classList.remove('panel-citas-ocultar');
@@ -235,7 +257,7 @@ if (botonBack != null) {
 
         document.querySelector('.header-citas-contenido').classList.remove('header-citas-ocultar');
         document.querySelector('.header-citas-contenido').classList.add('header-citas-mostrar');
-      
+
 
     });
 }
@@ -258,7 +280,7 @@ if (botonBuscarHeaderCitas != null) {
         if (!textBuscarCitas.classList.contains('text-buscador-citas-mostrar')) {
             textBuscarCitas.classList.add('text-buscador-citas-mostrar');
         }
-        
+
 
     });
 }
@@ -279,7 +301,7 @@ if (botonBuscarHeaderPacientes != null) {
         if (!textBuscarPacientes.classList.contains('text-buscador-pacientes-mostrar')) {
             textBuscarPacientes.classList.add('text-buscador-pacientes-mostrar');
         }
-        
+
 
     });
 }
@@ -290,7 +312,7 @@ if (botonCerrarBuscarCita != null) {
 
         var topBarCitas = document.querySelector('.top-bar-citas');
 
-        topBarCitas.classList.remove('top-bar-citas-ocultar');        
+        topBarCitas.classList.remove('top-bar-citas-ocultar');
         if (!topBarCitas.classList.contains('top-bar-citas-mostrar')) {
             topBarCitas.classList.add('top-bar-citas-mostrar');
         }
@@ -300,7 +322,7 @@ if (botonCerrarBuscarCita != null) {
         if (!textBuscarCitas.classList.contains('text-buscador-citas-ocultar')) {
             textBuscarCitas.classList.add('text-buscador-citas-ocultar');
         }
-        
+
 
     });
 }
@@ -311,7 +333,7 @@ if (botonCerrarBuscarPacientes != null) {
 
         var topBarPacientes = document.querySelector('.top-bar-pacientes');
 
-        topBarPacientes.classList.remove('top-bar-pacientes-ocultar');        
+        topBarPacientes.classList.remove('top-bar-pacientes-ocultar');
         if (!topBarPacientes.classList.contains('top-bar-pacientes-mostrar')) {
             topBarPacientes.classList.add('top-bar-pacientes-mostrar');
         }
@@ -321,13 +343,59 @@ if (botonCerrarBuscarPacientes != null) {
         if (!textBuscarPacientes.classList.contains('text-buscador-pacientes-ocultar')) {
             textBuscarPacientes.classList.add('text-buscador-pacientes-ocultar');
         }
-        
+
 
     });
 }
 
+const citaListItem = document.querySelectorAll('.cita-list-item');
+
+if (citaListItem != null) {
+    citaListItem.forEach(element => {
+        element.addEventListener('click', (event) => {
+            var idCitaSelected = element.getAttribute('idcita');
+            console.log("se ha seleccionado la cita " + idCitaSelected);
+        });
+    });
+
+}
+
+const botonPacientes = document.querySelector('.boton-pacientes');
+if (botonPacientes != null) {
+    botonPacientes.addEventListener('click', (event) => {
 
 
+    });
+}
+
+const radios = document.querySelectorAll('.mdc-radio');
+radios.forEach(element => {
+    var radio = new MDCRadio(element);
+
+});
+
+
+const chipSetEl = document.querySelector('.mdc-chip-set');
+const chipSet = new MDCChipSet(chipSetEl);
+const inputChip = document.querySelector('.input-chip-set');
+inputChip.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.keyCode === 13) {
+        var textoCaja= inputChip.value.trim();
+        if(textoCaja!=null && textoCaja!="" && textoCaja.includes("@") && textoCaja.includes(".") &&  textoCaja.length>6 ){
+            var chipEl = document.createElement('div');
+            chipEl.innerHTML = '' +
+                '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>' +
+                '<div class="mdc-chip__text">'+inputChip.value+'</div>' +
+                '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' +
+                '';
+                chipEl.classList.add('mdc-chip');
+            chipSetEl.appendChild(chipEl);
+            chipSet.addChip(chipEl);
+            inputChip.value="";
+        }
+        
+    }
+});
 
 
 

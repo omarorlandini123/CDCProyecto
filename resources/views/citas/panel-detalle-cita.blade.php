@@ -1,3 +1,5 @@
+@include('citas.header-citas-detalle')
+
 <div class="panel-detalle-cita" style="position:relative;">
 
     <h3 style="margin-left:25px;margin-right:25px;margin-bottom: 0px;">Datos de la cita</h3>
@@ -173,9 +175,8 @@
         </div>
 
     </div>
-
+    <button class="mdc-fab  mdc-ripple-upgraded boton-detalle-cita" aria-label="Guardar">
+            <span class="mdc-fab__icon material-icons">save</span>
+        </button>
 
 </div>
-<button class="mdc-fab  mdc-ripple-upgraded boton-detalle-cita" aria-label="Guardar">
-        <span class="mdc-fab__icon material-icons">save</span>
-    </button>

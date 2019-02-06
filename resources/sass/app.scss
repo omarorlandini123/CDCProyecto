@@ -22,6 +22,9 @@
 @import "~@material/icon-button/mdc-icon-button";
 @import "~@material/fab/mdc-fab";
 @import "~@material/select/mdc-select";
+@import "~@material/form-field/mdc-form-field";
+@import "~@material/radio/mdc-radio";
+@import "~@material/chips/mdc-chips";
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -139,6 +142,7 @@ body{
   --mdc-ripple-fg-scale:1.7064; 
   --mdc-ripple-fg-translate-start:-134.5px, -144.188px; 
   --mdc-ripple-fg-translate-end:120px, -144px;
+  cursor: pointer;
 }
 
 .cita-grupo{
@@ -224,7 +228,7 @@ body{
   display: none;
 }
 .header-citas-mostrar{
-  animation-name:  width-0-100;
+  animation-name:  opacity-0-100;
   animation-duration: 250ms;
   animation-timing-function: ease-in;
   width: 100%;
@@ -233,7 +237,7 @@ body{
 
 .header-citas-ocultar{
   
-  animation-name:  width-100-0;
+  animation-name:  opacity-100-0;
   animation-duration: 250ms;
   animation-timing-function: ease-out;
   width: 0%;
@@ -424,13 +428,24 @@ display: none;
 }
 
 
-@keyframes width-0-100 {
+@keyframes opacity-0-100 {
   from   { opacity: 0;}
   to { opacity: 1;}
 }
-@keyframes width-100-0 {
+@keyframes opacity-100-0 {
   from   { opacity: 1;}
   to { opacity: 0;}
+}
+
+
+
+@keyframes width-0-100 {
+  from   { width: 0%;}
+  to { width: 100%;}
+}
+@keyframes width-100-0 {
+  from   { width: 100%;}
+  to { width: 0%;}
 }
 
 @media only screen and (max-width: 480px) {

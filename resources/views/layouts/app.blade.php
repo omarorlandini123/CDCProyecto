@@ -63,7 +63,7 @@
 
 
 
-    <aside class="mdc-drawer mdc-drawer--modal">
+    <aside class="mdc-drawer mdc-drawer--modal" style="z-index: 110;">
         <div class="mdc-drawer__header">
             @guest
             <li class="nav-item">
@@ -109,7 +109,7 @@
             </nav>
         </div>
     </aside>
-    <div class="mdc-drawer-scrim"></div>
+    <div class="mdc-drawer-scrim" style="z-index: 105;"></div>
     <div style="height: 0px;">Main Content</div>
     <div class="mdc-drawer-app-content "></div>
     <main class="main-content" id="main-content" style="margin: 0px; " >
