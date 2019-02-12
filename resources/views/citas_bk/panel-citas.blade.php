@@ -4,7 +4,7 @@
         <div class="mdc-list-group" style="">
             <h3 class="mdc-list-group__subheader cita-grupo"><strong> Reserva</strong></h3>
             <ul class="mdc-list demo-list mdc-list--two-line mdc-list--avatar-list">
-                @for ($i = 0; $i < 20; $i++)
+                @for ($i = 0; $i < 5; $i++)
                     @include('citas.cita-item')
                 @endfor
                 

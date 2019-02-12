@@ -1,0 +1,28 @@
+.menu-cita-list {
+    color: white;
+}
+
+.menu-cita-list:hover {
+    color: gray;
+    cursor: pointer;
+
+}
+
+.cita-list-item {
+    --mdc-ripple-fg-size: 152px;
+    --mdc-ripple-fg-scale: 1.77858;
+    --mdc-ripple-fg-translate-start: 74.6667px, -29.3333px;
+    --mdc-ripple-fg-translate-end: 51.125px, -48px;
+
+}
+.cita-list-item:hover{
+    cursor: pointer;
+}
+
+.miniatura-null{
+    font-size: 50px !important;
+}
+.confirmado-item{
+    color:green;
+    font-weight: bolder;
+}

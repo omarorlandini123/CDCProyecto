@@ -1,0 +1,19 @@
+.panel-login {
+    left: 50%;
+    top: 50%;
+    padding: 25px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    position: fixed;
+
+}
+
+.login-titulo{
+  text-align: center;   
+  font-size: 1.5em;
+  
+}
+
+.caja-texto-login{
+  min-width: 300px;
+}

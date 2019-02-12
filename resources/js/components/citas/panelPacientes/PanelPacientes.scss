@@ -1,0 +1,83 @@
+@import "~@material/textfield/mdc-text-field";
+@import "~@material/top-app-bar/mdc-top-app-bar";
+@import "~@material/fab/mdc-fab";
+@import "~@material/ripple/mdc-ripple";
+
+.seccion-inicio {
+  @extend .mdc-top-app-bar__section;
+  @extend .mdc-top-app-bar__section--align-start;
+}
+.seccion-fin {
+  @extend .mdc-top-app-bar__section;
+  @extend .mdc-top-app-bar__section--align-end;
+}
+.text-buscador-movil {
+  max-height: 55px;
+}
+.top-bar-movil {
+  position: relative;
+  max-height: 56px;
+  z-index: 10;
+  border-right-color: white;
+  border-right-style: solid;
+  border-right-width: 1px;
+
+  border-top-color: white;
+  border-top-style: solid;
+  border-top-width: 1px;
+  background-color: rgb(167, 165, 165) !important ;
+}
+.top-bar-movil-mostrar {
+  animation-name: width-0-100;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in;
+  width: 100%;
+  display: flex;
+}
+
+.top-bar-movil-ocultar {
+  animation-name: width-100-0;
+  animation-duration: 250ms;
+  animation-timing-function: ease-out;
+  width: 0%;
+  display: none;
+}
+
+.text-buscador {
+  @extend .mdc-text-field;
+  @extend .mdc-text-field--with-trailing-icon;
+  @extend .mdc-ripple-upgraded;
+
+  --mdc-ripple-fg-size: 152px;
+  --mdc-ripple-fg-scale: 1.77858;
+  --mdc-ripple-fg-translate-start: 74.6667px, -29.3333px;
+  --mdc-ripple-fg-translate-end: 51.125px, -48px;
+  width: 100%;
+  min-width: 0px;
+}
+
+.text-buscador-input {
+  @extend .mdc-text-field__input;
+  padding-top: 6px;
+  margin-right: 48px;
+  padding-right: 0px;
+  border-bottom-style: none;
+  caret-color: rgba(0, 0, 0, 0.6);
+}
+.panel-movil-contenido {
+  position: relative;
+}
+.panel-movil {
+  overflow-y: scroll;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.boton-accion {
+  background-color: var(--color-primary);
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  color: white;
+  transition-property: width, height;
+  transition-duration: 250ms;
+}

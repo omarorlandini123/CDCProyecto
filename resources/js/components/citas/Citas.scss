@@ -1,0 +1,13 @@
+@import "~@material/layout-grid/mdc-layout-grid";
+
+.panel-movil {
+  @extend .mdc-layout-grid__cell;
+  @extend .mdc-layout-grid__cell--span-3-desktop;
+  @extend .mdc-layout-grid__cell--span-4-tablet;
+  @extend .mdc-layout-grid__cell--span-4-phone;
+}
+.panel-desktop {
+  @extend .mdc-layout-grid__cell;
+  @extend .mdc-layout-grid__cell--span-9-desktop;
+  @extend .mdc-layout-grid__cell--span-4-tablet;
+}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\modelos\CitasModel;
+use App\modelos\Cita;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\View;
@@ -12,7 +13,9 @@ use App\Mail\reportes\CitasRegistradas;
 use App\Mail\reportes\CitasRegistradasHTML;
 use App\modelos\DestinoReportes;
 use PDF;
-class Citas extends Controller
+use Auth;
+
+class CitasController extends Controller
 {
 
     public function __construct()
@@ -82,7 +85,27 @@ class Citas extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::check()){
+            $cita=  new Cita;        
+            $cita->motivo_id=$request->input('motivo_id');
+            $cita->nro_orden=$request->input('nro_orden');
+            $cita->aseguradora_id=$request->input('aseguradora_id');
+            $cita->historia_id=$request->input('historia_id');
+            $cita->usuario_creacion=Auth::user()->id;
+            $cita->fecha_creacion=Carbon::now();
+            $cita->medico_especialidad_id=$request->input('medico_especialidad_id');
+            $cita->nota_adicional=$request->input('nota_adicional');
+            $cita->fecha_cita=$request->input('fecha_cita');
+            $cita->save();
+            
+            $rpta= new Cita;
+            $rpta->guardado=true;
+            return $rpta;
+        }else{
+            $rpta= new Cita;
+            $rpta->guardado=false;
+            return $rpta;
+        }
     }
 
     /**
@@ -116,7 +139,28 @@ class Citas extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(Auth::check()){
+            $cita=  Cita::where('id',$id)->first();        
+            $cita->motivo_id=$request->input('motivo_id');
+            $cita->nro_orden=$request->input('nro_orden');
+            $cita->aseguradora_id=$request->input('aseguradora_id');
+            $cita->historia_id=$request->input('historia_id');
+            $cita->usuario_creacion=Auth::user()->id;
+            $cita->fecha_creacion=Carbon::now();
+            $cita->medico_especialidad_id=$request->input('medico_especialidad_id');
+            $cita->nota_adicional=$request->input('nota_adicional');
+            $cita->fecha_cita=$request->input('fecha_cita');
+            $cita->confirmado=$request->input('confirmado')?1:0;
+            $cita->save();
+            
+            $rpta= new Cita;
+            $rpta->guardado=true;
+            return $rpta;
+        }else{
+            $rpta= new Cita;
+            $rpta->guardado=false;
+            return $rpta;
+        }
     }
 
     /**
@@ -131,9 +175,28 @@ class Citas extends Controller
         if($citaSel!=null){
             $citaSel->delete();
             return redirect('/citas');
-        }
+        }        
+        
+    }
+    public function listar(Request $request,$cond){
+        if(Auth::check()){
+            $citas= Cita::with('historia')
+            ->with('historia.persona_historia')
+            ->with('motivo')
+            ->with('aseguradora')
+            ->with('medico_especialidad')
+            ->with('medico_especialidad.medico')
+            ->with('medico_especialidad.medico.persona')
+            ->with('medico_especialidad.especialidad')
+            ->with('medico_especialidad.medico.medico_especialidad')
+            ->with('medico_especialidad.medico.medico_especialidad.especialidad') ->orderBy('fecha_cita','desc')
+            ->orderBy('nro_orden','desc')
+            ->get();
+            Cita::setTurnos($citas);
+            return $citas;
 
-        
-        
+        }else{
+            'no-auth';
+        }
     }
 }

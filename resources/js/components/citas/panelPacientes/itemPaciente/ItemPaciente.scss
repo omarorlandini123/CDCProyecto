@@ -1,0 +1,43 @@
+@import "~@material/list/mdc-list";
+@import "~@material/menu-surface/mdc-menu-surface";
+@import "~@material/menu/mdc-menu";
+
+
+
+.menu-cita-list:hover {
+    color: gray;
+    cursor: pointer;
+
+}
+
+.cita-list-item {
+    --mdc-ripple-fg-size: 152px;
+    --mdc-ripple-fg-scale: 1.77858;
+    --mdc-ripple-fg-translate-start: 74.6667px, -29.3333px;
+    --mdc-ripple-fg-translate-end: 51.125px, -48px;
+   
+}
+.cita-list-item:hover{
+    cursor: pointer;
+    color:gray;
+}
+
+.cita-list-item:hover .edit-paciente{
+    cursor: pointer;
+    color:gray;
+}
+.edit-paciente{
+    color:gray;
+}
+
+
+.miniatura-null{
+    font-size: 50px !important;
+}
+
+@media only screen and (min-with:0px) and (max-with:479px){
+    .edit-paciente{
+        color:gray;
+    }
+   
+}
