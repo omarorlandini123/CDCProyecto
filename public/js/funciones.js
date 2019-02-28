@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,14 +104,14 @@ function enviarReporte() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 5:
 /*!*****************************************!*\
   !*** multi ./resources/js/funciones.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\omar\Proyectos\CDC\CDCProyecto\resources\js\funciones.js */"./resources/js/funciones.js");
+module.exports = __webpack_require__(/*! D:\desarrollo\intranet_new\resources\js\funciones.js */"./resources/js/funciones.js");
 
 
 /***/ })
