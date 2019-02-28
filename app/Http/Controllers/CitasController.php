@@ -151,6 +151,7 @@ class CitasController extends Controller
             $cita->nota_adicional=$request->input('nota_adicional');
             $cita->fecha_cita=$request->input('fecha_cita');
             $cita->confirmado=$request->input('confirmado')?1:0;
+            $cita->confirmado_medico=$request->input('confirmado_medico')?1:0;
             $cita->save();
             
             $rpta= new Cita;
@@ -178,6 +179,7 @@ class CitasController extends Controller
         }        
         
     }
+    
     public function listar(Request $request,$cond){
         if(Auth::check()){
             $citas= Cita::with('historia')
@@ -189,7 +191,8 @@ class CitasController extends Controller
             ->with('medico_especialidad.medico.persona')
             ->with('medico_especialidad.especialidad')
             ->with('medico_especialidad.medico.medico_especialidad')
-            ->with('medico_especialidad.medico.medico_especialidad.especialidad') ->orderBy('fecha_cita','desc')
+            ->with('medico_especialidad.medico.medico_especialidad.especialidad') 
+            ->orderBy('fecha_cita','desc')
             ->orderBy('nro_orden','desc')
             ->get();
             Cita::setTurnos($citas);

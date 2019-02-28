@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-completo">
     <div class="panel-login mdc-elevation--z3">
         <ul class="mdc-image-list my-image-list" style="display:table;">

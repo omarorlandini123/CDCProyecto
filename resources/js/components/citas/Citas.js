@@ -102,6 +102,7 @@ export default {
             this.cerrarPaneles();
             if ($event == 0) {
                 this.isnuevopaciente = true;
+                this.pacienteSelect= ({id:0});
             } else {
                 this.isnuevopaciente = false;
                 this.pacienteSelect = $event;
