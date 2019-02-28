@@ -24,10 +24,10 @@
               width="40"
             >
             <span v-if="!nuevo" class="mdc-top-app-bar__title" style="font-size: 1em;">
-              {{pacientesel.persona_historia.nombres}}
+              {{pacientesel.persona_historia!=null?pacientesel.persona_historia.nombres:''}}
               <p
                 style="margin: 0px;font-size: 0.7em;margin-top: -13px;"
-              >DNI: {{pacientesel.persona_historia.dni}} - Historia: {{pacientesel.id}}</p>
+              >DNI: {{pacientesel.persona_historia!=null?pacientesel.persona_historia.dni:''}} - Historia: {{pacientesel.id}}</p>
             </span>
             
             <span v-if="nuevo" class="mdc-top-app-bar__title" style="font-size: 1em;">Nuevo Paciente</span>
