@@ -35,8 +35,10 @@
       </div>
     </div>
     <div class="panel-movil">
-      <ul v-for="cit in citas" v-bind:key="cit.id" class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
-          <item-cita v-bind:cita="cit" v-on:abrirCita="$emit('abrirCita',$event)"></item-cita>
+      <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+          <item-cita  v-for="cit in citas" v-bind:key="cit.id" v-bind:cita="cit" v-on:abrirCita="$emit('abrirCita',$event)"></item-cita>
+          <li class="mdc-list-item mdc-ripple-upgraded cita-list-item"
+    tabindex="0"></li>
       </ul>
     </div>
     <button class="mdc-fab boton-accion" v-on:click="$emit('abrirPacientes',true)"> 

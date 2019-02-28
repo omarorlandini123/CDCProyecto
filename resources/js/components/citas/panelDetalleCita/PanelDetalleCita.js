@@ -66,6 +66,7 @@ export default {
             notasel: null,
             finalizaCarga: false,
             confirmado: false,
+            confirmadomedico:false,
         };
     },
     mounted() {
@@ -95,6 +96,7 @@ export default {
                 this.fechasel = this.citasel.fecha_cita;
                 this.notasel = this.citasel.nota_adicional;
                 this.confirmado = this.citasel.confirmado;
+                this.confirmadomedico=this.citasel.confirmado_medico
             } else {
                 this.medicosel = {
                     id: 0
@@ -268,6 +270,9 @@ export default {
         setConfirmado() {
             this.confirmado = document.getElementById('checkbox-1').checked;
         },
+        setConfirmadoMedico(){
+            this.confirmadomedico = document.getElementById('checkbox-2').checked;
+        },
         llamarTurnos() {
             this.horariosel = null;
             fetch('/medico/' + this.medicosel.id + '/turnos', {
@@ -387,6 +392,7 @@ export default {
                             nota_adicional: this.notasel,
                             fecha_cita: this.fechasel,
                             confirmado: this.confirmado,
+                            confirmado_medico:this.confirmadomedico,
                         })
                     })
                     .then(response => response.json())

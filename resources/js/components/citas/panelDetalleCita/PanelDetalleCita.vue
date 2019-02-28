@@ -349,9 +349,26 @@
                     <div class="mdc-checkbox__mixedmark"></div>
                   </div>
                 </div>
-                <label for="checkbox-1">Confirmado</label>
+                <label for="checkbox-1">Confirmado Paciente</label>
+              </div>
+              <div class="mdc-form-field select-100" v-on:click="setConfirmadoMedico">
+                <div class="mdc-checkbox">
+                  <input type="checkbox" :checked="confirmadomedico==1" class="mdc-checkbox__native-control" id="checkbox-2">
+                  <div class="mdc-checkbox__background">
+                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                      <path
+                        class="mdc-checkbox__checkmark-path"
+                        fill="none"
+                        d="M1.73,12.91 8.1,19.28 22.79,4.59"
+                      ></path>
+                    </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
+                  </div>
+                </div>
+                <label for="checkbox-1">Confirmado Médico</label>
               </div>
             </div>
+         
           </div>
         </div>
       </div>

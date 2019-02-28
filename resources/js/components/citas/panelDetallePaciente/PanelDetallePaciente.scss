@@ -5,6 +5,7 @@
 @import "~@material/menu-surface/mdc-menu-surface";
 @import "~@material/menu/mdc-menu";
 @import "~@material/floating-label/mdc-floating-label";
+@import "~@material/chips/mdc-chips";
 
 .seccion-inicio {
   @extend .mdc-top-app-bar__section;
@@ -31,7 +32,6 @@
   border-top-color: white;
   border-top-style: solid;
   border-top-width: 1px;
-  background-color: rgb(167, 165, 165) !important ;
 }
 .top-bar-movil-mostrar {
   animation-name: width-0-100;
@@ -51,6 +51,7 @@
 .miniatura-null{
   font-size: 50px !important;
   margin-top: -26px;
+  color:white !important;
 }
 
 .text-buscador {
@@ -111,3 +112,15 @@
     width:100% !important;
   }
 } 
+
+.preview-paciente{
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+.icono-usuario{
+  font-size: 200px;
+}
+.icono-adjuntar{
+  cursor: pointer;
+}

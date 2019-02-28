@@ -276,11 +276,7 @@
                             id="pw-validation-msg"></p>
                     </div>
                     
-                            <!-- <div class="mdc-chip" tabindex="0">
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>
-                                <div class="mdc-chip__text">Chip content</div>
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>
-                            </div> -->
+                            
                             
                 </div>
                 
