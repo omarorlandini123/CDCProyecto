@@ -74,7 +74,7 @@ export default {
 
             //valores
             const selectorDNI = document.querySelector('.txt_dni');
-            if (selectorDNI != null) {
+            if (selectorDNI != null && this.pacientesel.persona_historia!=null) {
                 selectorDNI.value = this.pacientesel.persona_historia.dni;
             }
 

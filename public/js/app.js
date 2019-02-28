@@ -40558,7 +40558,7 @@ __webpack_require__.r(__webpack_exports__);
       //valores
       var selectorDNI = document.querySelector('.txt_dni');
 
-      if (selectorDNI != null) {
+      if (selectorDNI != null && this.pacientesel.persona_historia != null) {
         selectorDNI.value = this.pacientesel.persona_historia.dni;
       }
 
@@ -65637,7 +65637,11 @@ var render = function() {
                   [
                     _vm._v(
                       "\n            " +
-                        _vm._s(_vm.pacientesel.persona_historia.nombres) +
+                        _vm._s(
+                          _vm.pacientesel.persona_historia != null
+                            ? _vm.pacientesel.persona_historia.nombres
+                            : ""
+                        ) +
                         "\n            "
                     ),
                     _c(
@@ -65652,7 +65656,11 @@ var render = function() {
                       [
                         _vm._v(
                           "DNI: " +
-                            _vm._s(_vm.pacientesel.persona_historia.dni) +
+                            _vm._s(
+                              _vm.pacientesel.persona_historia != null
+                                ? _vm.pacientesel.persona_historia.dni
+                                : ""
+                            ) +
                             " - Historia: " +
                             _vm._s(_vm.pacientesel.id)
                         )
