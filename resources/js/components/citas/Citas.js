@@ -97,12 +97,43 @@ export default {
                 this.mostrarDesktopSeleccionaPaciente = true;
             }
         },
+        getFechaHoy(){
+            var  fechaHoy=new Date();
+            return fechaHoy.getFullYear()+"-"+
+            this.pad((fechaHoy.getMonth()+1),2)+"-"+
+            this.pad(fechaHoy.getDate(),2)
+        },
+        pad(num, size) {
+            var s = "000000000" + num;
+            return s.substr(s.length-size);
+        },
         abrirPaciente: function ($event) {
             this.determinarModo();
-            this.cerrarPaneles();
+            this.cerrarPaneles();           
+
             if ($event == 0) {
                 this.isnuevopaciente = true;
-                this.pacienteSelect= ({id:0});
+                this.pacienteSelect= ({
+                    id:0,
+                    persona_historia:{
+                        id:0,
+                        dni:null,
+                        pasaporte:null,
+                        carne_extra:null,
+                        ruc:null,
+                        nombres:null,
+                        apellido_paterno:null,
+                        apellido_materno:null,
+                        sexo:2,
+                        fecha_nacimiento:this.getFechaHoy(),
+                        edad:null,
+                        ubicacion_nacimiento:null,
+                        ubicacion_domicilio:null,
+                        direccion:null,
+                        correo:[],
+                        telefono:[],
+                    }
+                });
             } else {
                 this.isnuevopaciente = false;
                 this.pacienteSelect = $event;

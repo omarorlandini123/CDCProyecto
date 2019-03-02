@@ -32,7 +32,7 @@
             
             <span v-if="nuevo" class="mdc-top-app-bar__title" style="font-size: 1em;">Nuevo Paciente</span>
           </section>
-          <section class="seccion-fin" role="toolbar">
+          <section v-if="!nuevo" class="seccion-fin" role="toolbar">
             <a
               href="#"
               class="material-icons mdc-top-app-bar__action-item boton-opciones-detalle-paciente"
@@ -79,6 +79,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_dni"
+                    v-model="pacientesel.persona_historia.dni"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">D.N.I.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -97,6 +98,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_pasaporte"
+                    v-model="pacientesel.persona_historia.pasaporte"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Pasaporte</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -115,6 +117,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_carne"
+                    v-model="pacientesel.persona_historia.carne_extra"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Carné Ext.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -133,6 +136,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_ruc"
+                    v-model="pacientesel.persona_historia.ruc"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">R.U.C.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -151,6 +155,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_nombres"
+                    v-model="pacientesel.persona_historia.nombres"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Nombres</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -169,6 +174,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_apellido_paterno"
+                    v-model="pacientesel.persona_historia.apellido_paterno"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Apellido Paterno</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -187,6 +193,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_apellido_materno"
+                    v-model="pacientesel.persona_historia.apellido_materno"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Apellido Materno</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -203,9 +210,10 @@
                     class="mdc-radio__native-control rd_masculino"
                     type="radio"
                     id="radio-1"
-                    value="1"
+                    value=1
                     name="radios"
-                    checked
+                    v-model="pacientesel.persona_historia.sexo"
+                    
                   >
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
@@ -221,8 +229,8 @@
                     type="radio"
                     id="radio-1"
                     name="radios"
-                    value="2"
-                    checked
+                    value=2
+                    v-model="pacientesel.persona_historia.sexo"
                   >
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
@@ -245,6 +253,9 @@
                     type="date"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_fec_nac"
+                    v-on:change="calculateAge"
+                    
+                    v-model="pacientesel.persona_historia.fecha_nacimiento"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Fecha Nacimiento</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -264,8 +275,9 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_edad"
+                    v-model="pacientesel.persona_historia.edad"
                   >
-                  <label class="mdc-floating-label" for="text-field-filled-leading">Edad</label>
+                  <label class="mdc-floating-label mdc-floating-label--float-above" for="text-field-filled-leading">Edad</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
                 </div>
               </div>
@@ -274,26 +286,29 @@
             <div
               class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
             >
-              <div class="mdc-select select-100">
+              <div class="mdc-select sel-ubicaciones select-100">
                 <input type="hidden" name="enhanced-select">
                 <i class="mdc-select__dropdown-icon"></i>
                 <div class="mdc-select__selected-text"></div>
-                <div class="mdc-select__menu mdc-menu mdc-menu-surface select-25">
+                <div class="mdc-select__menu mdc-menu mdc-menu-surface select-25" style="z-index:100;">
                   <ul class="mdc-list">
                     <li
-                      class="mdc-list-item mdc-list-item--selected"
-                      data-value
-                      aria-selected="true"
-                    ></li>
-                    <li class="mdc-list-item" data-value="grains">Bread, Cereal, Rice, and Pasta</li>
-                    <li class="mdc-list-item" data-value="vegetables">Vegetables</li>
-                    <li class="mdc-list-item" data-value="fruit">Fruit</li>
+                      v-for="ubicacion in ubicaciones"
+                      v-bind:key="ubicacion.id"
+                      v-bind:class="{
+                      'mdc-list-item':true,
+                      'mdc-list-item--selected':(nuevo || ubicacionsel==null?false:ubicacionsel.id==ubicacion.id),
+                    }"
+                      :aria-selected="(nuevo || ubicacionsel==null?false:ubicacionsel.id==ubicacion.id)"
+                      :data-value="ubicacion.id"
+                    >{{ubicacion.tag}}</li>
                   </ul>
                 </div>
                 <span class="mdc-floating-label">Lugar de Nacimiento</span>
                 <div class="mdc-line-ripple"></div>
               </div>
             </div>
+            
             <div
               class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
             >
@@ -306,6 +321,7 @@
                     type="text"
                     id="text-field-filled-leading txt_direccion"
                     class="mdc-text-field__input"
+                    v-model="pacientesel.persona_historia.direccion"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Dirección</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -337,12 +353,10 @@
                   ></div>
                 </div>
               </div>
-              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-correo"></div>
-              <!-- <div class="mdc-chip" tabindex="0">
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>
-                                <div class="mdc-chip__text">Chip content</div>
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>
-              </div>-->
+              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-correo">  
+                
+              </div>
+              
             </div>
             <div
               class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
@@ -369,19 +383,17 @@
                   ></div>
                 </div>
               </div>
-              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-telf"></div>
-              <!-- <div class="mdc-chip" tabindex="0">
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>
-                                <div class="mdc-chip__text">Chip content</div>
-                                <i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>
-              </div>-->
+              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-telf">
+                
+              </div>
+              
             </div>
             
           </div>
         </div>
       </div>
     </div>
-    <button class="mdc-fab boton-accion" v-on:click="guardarCita">
+    <button class="mdc-fab boton-accion" v-on:click="guardarPaciente">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>
   </div>

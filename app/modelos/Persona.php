@@ -30,5 +30,13 @@ class Persona extends Model
         return $this->belongsTo('App\modelos\Ubicacion','ubicacion_domicilio','id');
     }
 
+    public function telefono(){
+        return $this->hasMany('App\modelos\Telefono','persona_id','id');
+    }
+
+    public function correo(){
+        return $this->hasMany('App\modelos\Correo','persona_id','id');
+    }
+
     
 }

@@ -39852,6 +39852,14 @@ __webpack_require__.r(__webpack_exports__);
         this.mostrarDesktopSeleccionaPaciente = true;
       }
     },
+    getFechaHoy: function getFechaHoy() {
+      var fechaHoy = new Date();
+      return fechaHoy.getFullYear() + "-" + this.pad(fechaHoy.getMonth() + 1, 2) + "-" + this.pad(fechaHoy.getDate(), 2);
+    },
+    pad: function pad(num, size) {
+      var s = "000000000" + num;
+      return s.substr(s.length - size);
+    },
     abrirPaciente: function abrirPaciente($event) {
       this.determinarModo();
       this.cerrarPaneles();
@@ -39859,7 +39867,25 @@ __webpack_require__.r(__webpack_exports__);
       if ($event == 0) {
         this.isnuevopaciente = true;
         this.pacienteSelect = {
-          id: 0
+          id: 0,
+          persona_historia: {
+            id: 0,
+            dni: null,
+            pasaporte: null,
+            carne_extra: null,
+            ruc: null,
+            nombres: null,
+            apellido_paterno: null,
+            apellido_materno: null,
+            sexo: 2,
+            fecha_nacimiento: this.getFechaHoy(),
+            edad: null,
+            ubicacion_nacimiento: null,
+            ubicacion_domicilio: null,
+            direccion: null,
+            correo: [],
+            telefono: []
+          }
         };
       } else {
         this.isnuevopaciente = false;
@@ -40502,6 +40528,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_select__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_select__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _material_floating_label__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material/floating-label */ "./node_modules/@material/floating-label/dist/mdc.floatingLabel.js");
 /* harmony import */ var _material_floating_label__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_floating_label__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! os */ "./node_modules/os-browserify/browser.js");
+/* harmony import */ var os__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(os__WEBPACK_IMPORTED_MODULE_9__);
+
 
 
 
@@ -40542,30 +40571,43 @@ __webpack_require__.r(__webpack_exports__);
   },
   updated: function updated() {},
   created: function created() {
-    this.iniciarVariables(); //this.llamarUbicaciones();
+    this.iniciarVariables();
+    this.llamarUbicaciones();
   },
   methods: {
     iniciarVariables: function iniciarVariables() {
       if (!this.nuevo) {
-        this.ubicacionsel = this.pacientesel.ubicacion_domicilio;
+        this.ubicacionsel = this.pacientesel.ubicacion_nacimiento;
       } else {
         this.ubicacionsel = null;
       }
+
+      this.calculateAge();
     },
-    iniciarComponentes: function iniciarComponentes() {
-      var _this = this;
-
-      //valores
-      var selectorDNI = document.querySelector('.txt_dni');
-
-      if (selectorDNI != null && this.pacientesel.persona_historia != null) {
-        selectorDNI.value = this.pacientesel.persona_historia.dni;
-      }
-
+    llenarCorreo: function llenarCorreo() {
+      var principal = this;
       var chipSetEl = document.querySelector(".mdc-chip-set-correo");
 
       if (chipSetEl != null) {
         var chipSet = new _material_chips__WEBPACK_IMPORTED_MODULE_5__["MDCChipSet"](chipSetEl);
+        chipSet.listen("MDCChip:removal", function (event) {
+          var correoAEliminar = event.detail.root.children[1].textContent;
+          var contieneCorreo = false;
+          var posicion = 0;
+          var posicionEliminar = 0;
+          principal.pacientesel.persona_historia.correo.forEach(function (element) {
+            if (element.correo.trim() == correoAEliminar.trim()) {
+              contieneCorreo = true;
+              posicionEliminar = posicion;
+            }
+
+            posicion++;
+          });
+
+          if (contieneCorreo) {
+            principal.pacientesel.persona_historia.correo.splice(posicionEliminar, 1);
+          }
+        });
       }
 
       var inputChip = document.querySelector(".input-chip-set-correo");
@@ -40576,42 +40618,151 @@ __webpack_require__.r(__webpack_exports__);
             var textoCaja = inputChip.value.trim();
 
             if (textoCaja != null && textoCaja != "" && textoCaja.includes("@") && textoCaja.includes(".") && textoCaja.length > 6) {
-              var chipEl = document.createElement("div");
-              chipEl.innerHTML = "" + '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>' + '<div class="mdc-chip__text">' + inputChip.value + "</div>" + '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' + "";
-              chipEl.classList.add("mdc-chip");
-              chipSetEl.appendChild(chipEl);
-              chipSet.addChip(chipEl);
+              var contieneCorreo = false;
+              principal.pacientesel.persona_historia.correo.forEach(function (element) {
+                if (element.correo.trim() == textoCaja.trim()) {
+                  contieneCorreo = true;
+                }
+              });
+
+              if (!contieneCorreo) {
+                var chipEl = principal.armarChipCorreo(textoCaja.trim());
+                chipSetEl.appendChild(chipEl);
+                chipSet.addChip(chipEl);
+                principal.pacientesel.persona_historia.correo.push({
+                  id: 0,
+                  correo: textoCaja,
+                  persona_id: principal.pacientesel.persona_historia.id
+                });
+              }
+
               inputChip.value = "";
             }
           }
         });
       }
 
-      var chipSetEl2 = document.querySelector(".mdc-chip-set-telf");
+      principal.pacientesel.persona_historia.correo.forEach(function (element) {
+        var chipEl = principal.armarChipCorreo(element.correo.trim());
+        chipSetEl.appendChild(chipEl);
+        chipSet.addChip(chipEl);
+      });
+    },
+    armarChipCorreo: function armarChipCorreo(correo) {
+      var chipEl = document.createElement("div");
+      chipEl.classList.add("mdc-chip");
+      var icono = document.createElement("li");
+      icono.classList.add("material-icons");
+      icono.classList.add("mdc-chip__icon");
+      icono.classList.add("mdc-chip__icon--leading");
+      icono.textContent = "mail";
+      var contenido = document.createElement("div");
+      contenido.classList.add("mdc-chip__text");
+      contenido.classList.add("correo_paciente");
+      contenido.innerText = correo;
+      var iconoCerrar = document.createElement("li");
+      iconoCerrar.classList.add("material-icons");
+      iconoCerrar.classList.add("mdc-chip__icon");
+      iconoCerrar.classList.add("mdc-chip__icon--trailing");
+      iconoCerrar.setAttribute("role", "button");
+      iconoCerrar.textContent = "cancel";
+      chipEl.appendChild(icono);
+      chipEl.appendChild(contenido);
+      chipEl.appendChild(iconoCerrar);
+      return chipEl;
+    },
+    llenarTelefono: function llenarTelefono() {
+      var principal = this;
+      var chipSetEl = document.querySelector(".mdc-chip-set-telf");
 
-      if (chipSetEl2 != null) {
-        var chipSet2 = new _material_chips__WEBPACK_IMPORTED_MODULE_5__["MDCChipSet"](chipSetEl2);
+      if (chipSetEl != null) {
+        var chipSet = new _material_chips__WEBPACK_IMPORTED_MODULE_5__["MDCChipSet"](chipSetEl);
+        chipSet.listen("MDCChip:removal", function (event) {
+          var telefonoAEliminar = event.detail.root.children[1].textContent;
+          var contieneTelefono = false;
+          var posicion = 0;
+          var posicionEliminar = 0;
+          principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+            if (element.telefono.trim() == telefonoAEliminar.trim()) {
+              contieneTelefono = true;
+              posicionEliminar = posicion;
+            }
+
+            posicion++;
+          });
+
+          if (contieneTelefono) {
+            principal.pacientesel.persona_historia.telefono.splice(posicionEliminar, 1);
+          }
+        });
       }
 
-      var inputChip2 = document.querySelector(".input-chip-set-telf");
+      var inputChip = document.querySelector(".input-chip-set-telf");
 
-      if (inputChip2 != null) {
-        inputChip2.addEventListener("keydown", function (event) {
+      if (inputChip != null) {
+        inputChip.addEventListener("keydown", function (event) {
           if (event.key === "Enter" || event.keyCode === 13) {
-            var textoCaja = inputChip2.value.trim();
+            var textoCaja = inputChip.value.trim();
 
             if (textoCaja != null && textoCaja != "" && (textoCaja.includes("1") || textoCaja.includes("2") || textoCaja.includes("3") || textoCaja.includes("4") || textoCaja.includes("5") || textoCaja.includes("6") || textoCaja.includes("7") || textoCaja.includes("8") || textoCaja.includes("9") || textoCaja.includes("0")) && textoCaja.length >= 9) {
-              var chipEl = document.createElement("div");
-              chipEl.innerHTML = "" + '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">phone</i>' + '<div class="mdc-chip__text">' + inputChip2.value + "</div>" + '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' + "";
-              chipEl.classList.add("mdc-chip");
-              chipSetEl2.appendChild(chipEl);
-              chipSet2.addChip(chipEl);
-              inputChip2.value = "";
+              var contieneTelefono = false;
+              principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+                if (element.telefono.trim() == textoCaja.trim()) {
+                  contieneTelefono = true;
+                }
+              });
+
+              if (!contieneTelefono) {
+                var chipEl = principal.armarChipTelefono(textoCaja.trim());
+                chipSetEl.appendChild(chipEl);
+                chipSet.addChip(chipEl);
+                principal.pacientesel.persona_historia.telefono.push({
+                  id: 0,
+                  telefono: textoCaja,
+                  persona_id: principal.pacientesel.persona_historia.id
+                });
+              }
+
+              inputChip.value = "";
             }
           }
         });
-      } //TopBAR
+      }
 
+      principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+        var chipEl = principal.armarChipTelefono(element.telefono.trim());
+        chipSetEl.appendChild(chipEl);
+        chipSet.addChip(chipEl);
+      });
+    },
+    armarChipTelefono: function armarChipTelefono(telefono) {
+      var chipEl = document.createElement("div");
+      chipEl.classList.add("mdc-chip");
+      var icono = document.createElement("li");
+      icono.classList.add("material-icons");
+      icono.classList.add("mdc-chip__icon");
+      icono.classList.add("mdc-chip__icon--leading");
+      icono.textContent = "phone";
+      var contenido = document.createElement("div");
+      contenido.classList.add("mdc-chip__text");
+      contenido.classList.add("telefono_paciente");
+      contenido.innerText = telefono;
+      var iconoCerrar = document.createElement("li");
+      iconoCerrar.classList.add("material-icons");
+      iconoCerrar.classList.add("mdc-chip__icon");
+      iconoCerrar.classList.add("mdc-chip__icon--trailing");
+      iconoCerrar.setAttribute("role", "button");
+      iconoCerrar.textContent = "cancel";
+      chipEl.appendChild(icono);
+      chipEl.appendChild(contenido);
+      chipEl.appendChild(iconoCerrar);
+      return chipEl;
+    },
+    iniciarComponentes: function iniciarComponentes() {
+      var _this = this;
+
+      this.llenarCorreo();
+      this.llenarTelefono(); //TopBAR
 
       var topAppBarElement = document.querySelector(".mdc-top-app-bar");
 
@@ -40625,48 +40776,31 @@ __webpack_require__.r(__webpack_exports__);
         var fabRipple = new _material_ripple__WEBPACK_IMPORTED_MODULE_2__["MDCRipple"](fabButton);
       }
 
-      var textfieldselector = document.querySelectorAll('.mdc-text-field');
+      var textfieldselector = document.querySelectorAll(".mdc-text-field");
       textfieldselector.forEach(function (element) {
         var cajaTexto = new _material_textfield_index__WEBPACK_IMPORTED_MODULE_1__["MDCTextField"](element);
       });
-      var listselector = document.querySelectorAll('.mdc-list');
+      var listselector = document.querySelectorAll(".mdc-list");
       listselector.forEach(function (element) {
         var floating = new _material_list__WEBPACK_IMPORTED_MODULE_3__["MDCList"](element);
       });
-      var selMedicosSelector = document.querySelector(".sel-medicos");
+      var selUbicaciones = document.querySelector(".sel-ubicaciones");
 
-      if (selMedicosSelector != null) {
-        var selectMedicos = new _material_select__WEBPACK_IMPORTED_MODULE_7__["MDCSelect"](selMedicosSelector);
-        selectMedicos.listen("MDCSelect:change", function () {
-          _this.medicosel = null;
-          _this.especialidades = null;
+      if (selUbicaciones != null) {
+        var selectUbicaciones = new _material_select__WEBPACK_IMPORTED_MODULE_7__["MDCSelect"](selUbicaciones);
+        selectUbicaciones.listen("MDCSelect:change", function () {
+          _this.ubicacionsel = null;
 
-          _this.medicos.forEach(function (element) {
-            if (element.id == selectMedicos.value) {
-              _this.medicosel = element;
-            }
-          });
-
-          _this.especialidades = _this.medicosel.medico_especialidad;
-        });
-      }
-
-      var selEspecialidadesSelector = document.querySelector(".sel-especialidad");
-
-      if (selEspecialidadesSelector != null) {
-        var selEspecialidades = new _material_select__WEBPACK_IMPORTED_MODULE_7__["MDCSelect"](selEspecialidadesSelector);
-        selEspecialidades.listen("MDCSelect:change", function () {
-          _this.especialidadsel = null;
-
-          _this.especialidades.forEach(function (element) {
-            if (element.id == selEspecialidades.value) {
-              _this.especialidadsel = element;
+          _this.ubicaciones.forEach(function (element) {
+            if (element.id == selectUbicaciones.value) {
+              _this.ubicacionsel = element;
+              _this.pacientesel.persona_historia.ubicacion_nacimiento = element;
             }
           });
         });
       }
 
-      var rippleSelector = document.querySelectorAll('.mdc-ripple-surface');
+      var rippleSelector = document.querySelectorAll(".mdc-ripple-surface");
       rippleSelector.forEach(function (element) {
         _material_ripple__WEBPACK_IMPORTED_MODULE_2__["MDCRipple"].attachTo(element);
       });
@@ -40711,109 +40845,86 @@ __webpack_require__.r(__webpack_exports__);
         ele.ajustarPantalla();
       });
     },
-    llamarMedicos: function llamarMedicos(cond) {
+    llamarUbicaciones: function llamarUbicaciones() {
       var _this2 = this;
 
-      if (cond == "") {
-        cond = "_";
-      }
-
-      fetch('/medicoslist/' + cond).then(function (rpta) {
+      fetch("/ubicaciones/_").then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
-        _this2.medicos = rpta;
-      });
-    },
-    llamarTurnos: function llamarTurnos() {
-      var _this3 = this;
+        _this2.ubicaciones = rpta;
 
-      this.horariosel = null;
-      fetch('/medico/' + this.medicosel.id + '/turnos', {
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-Token": window.Laravel.csrf_token
-        },
-        method: 'post',
-        credentials: "same-origin",
-        body: JSON.stringify({
-          fecha: this.fechasel
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        _this3.horarios = data;
-        _this3.horariosel = null;
-
-        _this3.horarios.forEach(function (element) {
-          if (element.nro_orden == _this3.citasel.nro_orden) {
-            _this3.horariosel = element;
-          }
-        });
-      });
-    },
-    llamarMotivos: function llamarMotivos() {
-      var _this4 = this;
-
-      fetch('/motivoslist').then(function (rpta) {
-        return rpta.json();
-      }).then(function (rpta) {
-        _this4.motivos = rpta;
-        _this4.motivosel = null;
-
-        _this4.motivos.forEach(function (element) {
-          if (element.id == _this4.citasel.motivo.id) {
-            _this4.motivosel = element;
-          }
-        });
-      });
-    },
-    llamarAseguradoras: function llamarAseguradoras() {
-      var _this5 = this;
-
-      fetch('/aseguradoraslist').then(function (rpta) {
-        return rpta.json();
-      }).then(function (rpta) {
-        _this5.aseguradoras = rpta;
-        _this5.aseguradorasel = null;
-
-        _this5.aseguradoras.forEach(function (element) {
-          if (element.id == _this5.citasel.aseguradora.id) {
-            _this5.aseguradorasel = element;
-          }
-        });
-      });
-    },
-    guardarCita: function guardarCita() {
-      var _this6 = this;
-
-      fetch('/citas/' + this.citasel.id, {
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "X-CSRF-Token": window.Laravel.csrf_token
-        },
-        method: 'post',
-        credentials: "same-origin",
-        body: JSON.stringify({
-          _method: 'PUT',
-          motivo_id: this.motivosel.id,
-          nro_orden: this.horariosel.nro_orden,
-          aseguradora_id: this.aseguradorasel.id,
-          historia_id: this.citasel.historia.id,
-          medico_especialidad_id: this.especialidadsel.id,
-          nota_adicional: this.notasel,
-          fecha_cita: this.fechasel
-        })
-      }).then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        if (data.guardado) {
-          _this6.$emit('refrescarCitas', true);
+        if (_this2.ubicacionsel != null) {
+          _this2.ubicaciones.forEach(function (element) {
+            if (element.id == _this2.ubicacionsel.id) {
+              _this2.ubicacionsel = element;
+            }
+          });
         }
       });
+    },
+    calculateAge: function calculateAge() {
+      var birthday = this.pacientesel.persona_historia.fecha_nacimiento;
+      var birthday_date = null;
+
+      if (birthday == null) {
+        birthday_date = new Date();
+      } else {
+        var birthday_arr = birthday.split("-");
+        birthday_date = new Date(birthday_arr[0], birthday_arr[1] - 1, birthday_arr[2]);
+      }
+
+      var ageDifMs = Date.now() - birthday_date.getTime();
+      var ageDate = new Date(ageDifMs);
+      var edad = Math.abs(ageDate.getUTCFullYear() - 1970);
+      this.pacientesel.persona_historia.edad = edad;
+    },
+    guardarPaciente: function guardarPaciente() {
+      var _this3 = this;
+
+      if (this.nuevo) {
+        fetch('/pacientes', {
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-Token": window.Laravel.csrf_token
+          },
+          method: 'post',
+          credentials: "same-origin",
+          body: JSON.stringify({
+            historia_sel: JSON.stringify(this.pacientesel)
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          console.log(data.id);
+
+          if (data.guardado) {
+            _this3.$emit('refrescarPacientes', true);
+          }
+        });
+      } else {
+        fetch('/pacientes/' + this.pacientesel.id, {
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+            "X-CSRF-Token": window.Laravel.csrf_token
+          },
+          method: 'post',
+          credentials: "same-origin",
+          body: JSON.stringify({
+            _method: 'PUT',
+            historia_sel: JSON.stringify(this.pacientesel)
+          })
+        }).then(function (response) {
+          return response.json();
+        }).then(function (data) {
+          if (data.guardado) {
+            _this3.$emit('refrescarPacientes', true);
+          }
+        });
+      }
     }
   }
 });
@@ -57010,6 +57121,66 @@ utils.encode = function encode(arr, enc) {
 
 /***/ }),
 
+/***/ "./node_modules/os-browserify/browser.js":
+/*!***********************************************!*\
+  !*** ./node_modules/os-browserify/browser.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+exports.endianness = function () { return 'LE' };
+
+exports.hostname = function () {
+    if (typeof location !== 'undefined') {
+        return location.hostname
+    }
+    else return '';
+};
+
+exports.loadavg = function () { return [] };
+
+exports.uptime = function () { return 0 };
+
+exports.freemem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.totalmem = function () {
+    return Number.MAX_VALUE;
+};
+
+exports.cpus = function () { return [] };
+
+exports.type = function () { return 'Browser' };
+
+exports.release = function () {
+    if (typeof navigator !== 'undefined') {
+        return navigator.appVersion;
+    }
+    return '';
+};
+
+exports.networkInterfaces
+= exports.getNetworkInterfaces
+= function () { return {} };
+
+exports.arch = function () { return 'javascript' };
+
+exports.platform = function () { return 'browser' };
+
+exports.tmpdir = exports.tmpDir = function () {
+    return '/tmp';
+};
+
+exports.EOL = '\n';
+
+exports.homedir = function () {
+	return '/'
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/parse-asn1/aesid.json":
 /*!********************************************!*\
   !*** ./node_modules/parse-asn1/aesid.json ***!
@@ -65682,104 +65853,34 @@ var render = function() {
               : _vm._e()
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          !_vm.nuevo
+            ? _c(
+                "section",
+                { staticClass: "seccion-fin", attrs: { role: "toolbar" } },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "material-icons mdc-top-app-bar__action-item boton-opciones-detalle-paciente",
+                      attrs: {
+                        href: "#",
+                        "aria-label": "Download",
+                        alt: "Download"
+                      }
+                    },
+                    [_vm._v("more_vert")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ]
+              )
+            : _vm._e()
         ])
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "mdc-fab boton-accion", on: { click: _vm.guardarCita } },
-      [
-        _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
-          _vm._v("save")
-        ])
-      ]
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "section",
-      { staticClass: "seccion-fin", attrs: { role: "toolbar" } },
-      [
-        _c(
-          "a",
-          {
-            staticClass:
-              "material-icons mdc-top-app-bar__action-item boton-opciones-detalle-paciente",
-            attrs: { href: "#", "aria-label": "Download", alt: "Download" }
-          },
-          [_vm._v("more_vert")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "toolbar mdc-menu-surface--anchor",
-            attrs: { id: "toolbar" }
-          },
-          [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "mdc-menu menu-opciones-detalle-paciente mdc-menu-surface",
-                attrs: { tabindex: "-1" }
-              },
-              [
-                _c(
-                  "ul",
-                  {
-                    staticClass: "mdc-list",
-                    attrs: {
-                      role: "menu",
-                      "aria-hidden": "true",
-                      "aria-orientation": "vertical"
-                    }
-                  },
-                  [
-                    _c(
-                      "li",
-                      {
-                        staticClass: "mdc-list-item",
-                        attrs: {
-                          role: "menuitem",
-                          onclick:
-                            "event.preventDefault();\n                      document.getElementById('logout-form').submit();"
-                        }
-                      },
-                      [
-                        _c("span", { staticClass: "mdc-list-item__text" }, [
-                          _vm._v("Eliminar Paciente")
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("form", {
-                      staticStyle: { display: "none" },
-                      attrs: { id: "logout-form", action: "#", method: "POST" }
-                    })
-                  ]
-                )
-              ]
-            )
-          ]
-        )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "panel-movil" }, [
+    _c("div", { staticClass: "panel-movil" }, [
       _c(
         "div",
         {
@@ -65787,25 +65888,7 @@ var staticRenderFns = [
           staticStyle: { position: "relative" }
         },
         [
-          _c("div", { staticClass: "preview-paciente" }, [
-            _c(
-              "span",
-              {
-                staticClass: "material-icons icono-usuario",
-                attrs: { "aria-hidden": "true" }
-              },
-              [_vm._v("account_circle")]
-            ),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass: "material-icons icono-adjuntar",
-                attrs: { "aria-hidden": "true" }
-              },
-              [_vm._v("attach_file")]
-            )
-          ]),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
@@ -65838,10 +65921,33 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.pacientesel.persona_historia.dni,
+                                expression: "pacientesel.persona_historia.dni"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_dni",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.dni
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "dni",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -65889,10 +65995,35 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia.pasaporte,
+                                expression:
+                                  "pacientesel.persona_historia.pasaporte"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_pasaporte",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.pasaporte
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "pasaporte",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -65940,10 +66071,36 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia.carne_extra,
+                                expression:
+                                  "pacientesel.persona_historia.carne_extra"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_carne",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value:
+                                _vm.pacientesel.persona_historia.carne_extra
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "carne_extra",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -65991,10 +66148,33 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.pacientesel.persona_historia.ruc,
+                                expression: "pacientesel.persona_historia.ruc"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_ruc",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.ruc
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "ruc",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66042,10 +66222,34 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.pacientesel.persona_historia.nombres,
+                                expression:
+                                  "pacientesel.persona_historia.nombres"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_nombres",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.nombres
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "nombres",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66093,11 +66297,39 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia
+                                    .apellido_paterno,
+                                expression:
+                                  "pacientesel.persona_historia.apellido_paterno"
+                              }
+                            ],
                             staticClass:
                               "mdc-text-field__input txt_apellido_paterno",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value:
+                                _vm.pacientesel.persona_historia
+                                  .apellido_paterno
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "apellido_paterno",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66145,11 +66377,39 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia
+                                    .apellido_materno,
+                                expression:
+                                  "pacientesel.persona_historia.apellido_materno"
+                              }
+                            ],
                             staticClass:
                               "mdc-text-field__input txt_apellido_materno",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value:
+                                _vm.pacientesel.persona_historia
+                                  .apellido_materno
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "apellido_materno",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66185,21 +66445,39 @@ var staticRenderFns = [
                     _c("div", { staticClass: "mdc-form-field" }, [
                       _c("div", { staticClass: "mdc-radio" }, [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.pacientesel.persona_historia.sexo,
+                              expression: "pacientesel.persona_historia.sexo"
+                            }
+                          ],
                           staticClass: "mdc-radio__native-control rd_masculino",
                           attrs: {
                             type: "radio",
                             id: "radio-1",
                             value: "1",
-                            name: "radios",
-                            checked: ""
+                            name: "radios"
+                          },
+                          domProps: {
+                            checked: _vm._q(
+                              _vm.pacientesel.persona_historia.sexo,
+                              "1"
+                            )
+                          },
+                          on: {
+                            change: function($event) {
+                              _vm.$set(
+                                _vm.pacientesel.persona_historia,
+                                "sexo",
+                                "1"
+                              )
+                            }
                           }
                         }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "mdc-radio__background" }, [
-                          _c("div", { staticClass: "mdc-radio__outer-circle" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "mdc-radio__inner-circle" })
-                        ])
+                        _vm._m(2)
                       ]),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "radio-1" } }, [
@@ -66210,21 +66488,39 @@ var staticRenderFns = [
                     _c("div", { staticClass: "mdc-form-field" }, [
                       _c("div", { staticClass: "mdc-radio" }, [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.pacientesel.persona_historia.sexo,
+                              expression: "pacientesel.persona_historia.sexo"
+                            }
+                          ],
                           staticClass: "mdc-radio__native-control rd_femenino",
                           attrs: {
                             type: "radio",
                             id: "radio-1",
                             name: "radios",
-                            value: "2",
-                            checked: ""
+                            value: "2"
+                          },
+                          domProps: {
+                            checked: _vm._q(
+                              _vm.pacientesel.persona_historia.sexo,
+                              "2"
+                            )
+                          },
+                          on: {
+                            change: function($event) {
+                              _vm.$set(
+                                _vm.pacientesel.persona_historia,
+                                "sexo",
+                                "2"
+                              )
+                            }
                           }
                         }),
                         _vm._v(" "),
-                        _c("div", { staticClass: "mdc-radio__background" }, [
-                          _c("div", { staticClass: "mdc-radio__outer-circle" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "mdc-radio__inner-circle" })
-                        ])
+                        _vm._m(3)
                       ]),
                       _vm._v(" "),
                       _c("label", { attrs: { for: "radio-1" } }, [
@@ -66257,10 +66553,39 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia
+                                    .fecha_nacimiento,
+                                expression:
+                                  "pacientesel.persona_historia.fecha_nacimiento"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_fec_nac",
                             attrs: {
                               type: "date",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value:
+                                _vm.pacientesel.persona_historia
+                                  .fecha_nacimiento
+                            },
+                            on: {
+                              change: _vm.calculateAge,
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "fecha_nacimiento",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66308,18 +66633,42 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.pacientesel.persona_historia.edad,
+                                expression: "pacientesel.persona_historia.edad"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input txt_edad",
                             attrs: {
                               disabled: "",
                               type: "text",
                               id: "text-field-filled-leading"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.edad
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "edad",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
                           _c(
                             "label",
                             {
-                              staticClass: "mdc-floating-label",
+                              staticClass:
+                                "mdc-floating-label mdc-floating-label--float-above",
                               attrs: { for: "text-field-filled-leading" }
                             },
                             [_vm._v("Edad")]
@@ -66344,68 +66693,64 @@ var staticRenderFns = [
                       "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
                   },
                   [
-                    _c("div", { staticClass: "mdc-select select-100" }, [
-                      _c("input", {
-                        attrs: { type: "hidden", name: "enhanced-select" }
-                      }),
-                      _vm._v(" "),
-                      _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mdc-select__selected-text" }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                        },
-                        [
-                          _c("ul", { staticClass: "mdc-list" }, [
-                            _c("li", {
-                              staticClass:
-                                "mdc-list-item mdc-list-item--selected",
-                              attrs: {
-                                "data-value": "",
-                                "aria-selected": "true"
-                              }
-                            }),
-                            _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "mdc-select sel-ubicaciones select-100" },
+                      [
+                        _c("input", {
+                          attrs: { type: "hidden", name: "enhanced-select" }
+                        }),
+                        _vm._v(" "),
+                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mdc-select__selected-text" }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mdc-select__menu mdc-menu mdc-menu-surface select-25",
+                            staticStyle: { "z-index": "100" }
+                          },
+                          [
                             _c(
-                              "li",
-                              {
-                                staticClass: "mdc-list-item",
-                                attrs: { "data-value": "grains" }
-                              },
-                              [_vm._v("Bread, Cereal, Rice, and Pasta")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              {
-                                staticClass: "mdc-list-item",
-                                attrs: { "data-value": "vegetables" }
-                              },
-                              [_vm._v("Vegetables")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              {
-                                staticClass: "mdc-list-item",
-                                attrs: { "data-value": "fruit" }
-                              },
-                              [_vm._v("Fruit")]
+                              "ul",
+                              { staticClass: "mdc-list" },
+                              _vm._l(_vm.ubicaciones, function(ubicacion) {
+                                return _c(
+                                  "li",
+                                  {
+                                    key: ubicacion.id,
+                                    class: {
+                                      "mdc-list-item": true,
+                                      "mdc-list-item--selected":
+                                        _vm.nuevo || _vm.ubicacionsel == null
+                                          ? false
+                                          : _vm.ubicacionsel.id == ubicacion.id
+                                    },
+                                    attrs: {
+                                      "aria-selected":
+                                        _vm.nuevo || _vm.ubicacionsel == null
+                                          ? false
+                                          : _vm.ubicacionsel.id == ubicacion.id,
+                                      "data-value": ubicacion.id
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(ubicacion.tag))]
+                                )
+                              }),
+                              0
                             )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "mdc-floating-label" }, [
-                        _vm._v("Lugar de Nacimiento")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mdc-line-ripple" })
-                    ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "mdc-floating-label" }, [
+                          _vm._v("Lugar de Nacimiento")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mdc-line-ripple" })
+                      ]
+                    )
                   ]
                 ),
                 _vm._v(" "),
@@ -66432,10 +66777,35 @@ var staticRenderFns = [
                         },
                         [
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value:
+                                  _vm.pacientesel.persona_historia.direccion,
+                                expression:
+                                  "pacientesel.persona_historia.direccion"
+                              }
+                            ],
                             staticClass: "mdc-text-field__input",
                             attrs: {
                               type: "text",
                               id: "text-field-filled-leading txt_direccion"
+                            },
+                            domProps: {
+                              value: _vm.pacientesel.persona_historia.direccion
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.pacientesel.persona_historia,
+                                  "direccion",
+                                  $event.target.value
+                                )
+                              }
                             }
                           }),
                           _vm._v(" "),
@@ -66460,129 +66830,244 @@ var staticRenderFns = [
                   ]
                 ),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c("div", { staticClass: "text-field-container" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mdc-text-field text-field mdc-ripple-upgraded caja-detalle-cita",
-                          staticStyle: {
-                            "--mdc-ripple-fg-size": "282px",
-                            "--mdc-ripple-fg-scale": "1.71975",
-                            "--mdc-ripple-fg-translate-start":
-                              "283.516px, -119px",
-                            "--mdc-ripple-fg-translate-end": "94.8281px, -113px"
-                          }
-                        },
-                        [
-                          _c("input", {
-                            staticClass:
-                              "mdc-text-field__input input-chip-set input-chip-set-correo",
-                            attrs: {
-                              type: "text",
-                              id: "text-field-filled-leading"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "mdc-floating-label mdc-floating-label--float-above",
-                              attrs: { for: "text-field-filled-leading" }
-                            },
-                            [_vm._v("e-mails")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", {
-                            staticClass:
-                              "mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating",
-                            staticStyle: {
-                              "transform-origin": "424.516px center 0px"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass:
-                        "mdc-chip-set mdc-chip-set--input mdc-chip-set-correo"
-                    })
-                  ]
-                ),
+                _vm._m(4),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c("div", { staticClass: "text-field-container" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mdc-text-field text-field mdc-ripple-upgraded caja-detalle-cita",
-                          staticStyle: {
-                            "--mdc-ripple-fg-size": "282px",
-                            "--mdc-ripple-fg-scale": "1.71975",
-                            "--mdc-ripple-fg-translate-start":
-                              "283.516px, -119px",
-                            "--mdc-ripple-fg-translate-end": "94.8281px, -113px"
-                          }
-                        },
-                        [
-                          _c("input", {
-                            staticClass:
-                              "mdc-text-field__input input-chip-set input-chip-set-telf",
-                            attrs: {
-                              type: "text",
-                              id: "text-field-filled-leading"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass:
-                                "mdc-floating-label mdc-floating-label--float-above",
-                              attrs: { for: "text-field-filled-leading" }
-                            },
-                            [_vm._v("Teléfonos")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", {
-                            staticClass:
-                              "mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating",
-                            staticStyle: {
-                              "transform-origin": "424.516px center 0px"
-                            }
-                          })
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", {
-                      staticClass:
-                        "mdc-chip-set mdc-chip-set--input mdc-chip-set-telf"
-                    })
-                  ]
-                )
+                _vm._m(5)
               ])
             ]
           )
         ]
       )
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "mdc-fab boton-accion",
+        on: { click: _vm.guardarPaciente }
+      },
+      [
+        _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
+          _vm._v("save")
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "toolbar mdc-menu-surface--anchor",
+        attrs: { id: "toolbar" }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass:
+              "mdc-menu menu-opciones-detalle-paciente mdc-menu-surface",
+            attrs: { tabindex: "-1" }
+          },
+          [
+            _c(
+              "ul",
+              {
+                staticClass: "mdc-list",
+                attrs: {
+                  role: "menu",
+                  "aria-hidden": "true",
+                  "aria-orientation": "vertical"
+                }
+              },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass: "mdc-list-item",
+                    attrs: {
+                      role: "menuitem",
+                      onclick:
+                        "event.preventDefault();\n                      document.getElementById('logout-form').submit();"
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "mdc-list-item__text" }, [
+                      _vm._v("Eliminar Paciente")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("form", {
+                  staticStyle: { display: "none" },
+                  attrs: { id: "logout-form", action: "#", method: "POST" }
+                })
+              ]
+            )
+          ]
+        )
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "preview-paciente" }, [
+      _c(
+        "span",
+        {
+          staticClass: "material-icons icono-usuario",
+          attrs: { "aria-hidden": "true" }
+        },
+        [_vm._v("account_circle")]
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass: "material-icons icono-adjuntar",
+          attrs: { "aria-hidden": "true" }
+        },
+        [_vm._v("attach_file")]
+      )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mdc-radio__background" }, [
+      _c("div", { staticClass: "mdc-radio__outer-circle" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "mdc-radio__inner-circle" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mdc-radio__background" }, [
+      _c("div", { staticClass: "mdc-radio__outer-circle" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "mdc-radio__inner-circle" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+      },
+      [
+        _c("div", { staticClass: "text-field-container" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "mdc-text-field text-field mdc-ripple-upgraded caja-detalle-cita",
+              staticStyle: {
+                "--mdc-ripple-fg-size": "282px",
+                "--mdc-ripple-fg-scale": "1.71975",
+                "--mdc-ripple-fg-translate-start": "283.516px, -119px",
+                "--mdc-ripple-fg-translate-end": "94.8281px, -113px"
+              }
+            },
+            [
+              _c("input", {
+                staticClass:
+                  "mdc-text-field__input input-chip-set input-chip-set-correo",
+                attrs: { type: "text", id: "text-field-filled-leading" }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "mdc-floating-label mdc-floating-label--float-above",
+                  attrs: { for: "text-field-filled-leading" }
+                },
+                [_vm._v("e-mails")]
+              ),
+              _vm._v(" "),
+              _c("div", {
+                staticClass:
+                  "mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating",
+                staticStyle: { "transform-origin": "424.516px center 0px" }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "mdc-chip-set mdc-chip-set--input mdc-chip-set-correo"
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass:
+          "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+      },
+      [
+        _c("div", { staticClass: "text-field-container" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "mdc-text-field text-field mdc-ripple-upgraded caja-detalle-cita",
+              staticStyle: {
+                "--mdc-ripple-fg-size": "282px",
+                "--mdc-ripple-fg-scale": "1.71975",
+                "--mdc-ripple-fg-translate-start": "283.516px, -119px",
+                "--mdc-ripple-fg-translate-end": "94.8281px, -113px"
+              }
+            },
+            [
+              _c("input", {
+                staticClass:
+                  "mdc-text-field__input input-chip-set input-chip-set-telf",
+                attrs: { type: "text", id: "text-field-filled-leading" }
+              }),
+              _vm._v(" "),
+              _c(
+                "label",
+                {
+                  staticClass:
+                    "mdc-floating-label mdc-floating-label--float-above",
+                  attrs: { for: "text-field-filled-leading" }
+                },
+                [_vm._v("Teléfonos")]
+              ),
+              _vm._v(" "),
+              _c("div", {
+                staticClass:
+                  "mdc-line-ripple mdc-line-ripple--active mdc-line-ripple--deactivating",
+                staticStyle: { "transform-origin": "424.516px center 0px" }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", {
+          staticClass: "mdc-chip-set mdc-chip-set--input mdc-chip-set-telf"
+        })
+      ]
+    )
   }
 ]
 render._withStripped = true
