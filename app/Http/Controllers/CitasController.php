@@ -98,7 +98,7 @@ class CitasController extends Controller
             $cita->fecha_cita=$request->input('fecha_cita');
             $cita->save();
             
-            $rpta= new Cita;
+            $rpta= new Cita; 
             $rpta->guardado=true;
             return $rpta;
         }else{

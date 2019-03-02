@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/citas/reporte','CitasController@reporte');
 Route::get('/citas/EnviarReporte','CitasController@enviarReporte');
 Route::resource('/citas','CitasController');
+Route::resource('/pacientes','PacienteController');
 
 Route::get('/usuario','UsuarioController@getUserData')->name('usuario-data');
 Route::get('/citaslist/{cond}','CitasController@listar')->name('citas.listar');
@@ -34,3 +35,5 @@ Route::get('/aseguradoraslist','AseguradoraController@listar')->name('asegurador
 Route::post('/medico/{idmedico}/turnos','MedicosController@turnos')->name('medicos.turnos');
 
 Route::get('/historias/{cond}','HistoriaController@listar')->name('historias.listar');
+
+Route::get('/ubicaciones/{cond}','UbicacionesController@listar')->name('ubicaciones.listar');

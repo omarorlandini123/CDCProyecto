@@ -22,6 +22,10 @@ class HistoriaController extends Controller
                 ->with('persona_historia')
                 ->with('persona_historia.ubicacion_nacimiento')
                 ->with('persona_historia.ubicacion_domicilio')
+                ->with('persona_historia.correo')
+                ->with('persona_historia.telefono')
+                ->with('persona_historia.users')
+                ->with('persona_historia.users')
                 ->get();
             return $historias;
         }else{
@@ -102,3 +106,4 @@ class HistoriaController extends Controller
         }
     }
 }
+

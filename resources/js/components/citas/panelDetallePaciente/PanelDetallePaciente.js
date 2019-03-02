@@ -1,92 +1,89 @@
-import {
-    MDCTopAppBar
-} from "@material/top-app-bar/index";
-import {
-    MDCTextField
-} from "@material/textfield/index";
-import {
-    MDCRipple
-} from "@material/ripple";
-import {
-    MDCList
-} from '@material/list';
-import {
-    MDCMenu
-} from "@material/menu";
-import {
-    MDCChipSet
-} from '@material/chips';
-import {
-    MDCTextFieldHelperText
-} from "@material/textfield/helper-text";
-import {
-    MDCSelect
-} from "@material/select";
-import {
-    MDCFloatingLabel
-} from '@material/floating-label';
+import { MDCTopAppBar } from "@material/top-app-bar/index";
+import { MDCTextField } from "@material/textfield/index";
+import { MDCRipple } from "@material/ripple";
+import { MDCList } from "@material/list";
+import { MDCMenu } from "@material/menu";
+import { MDCChipSet } from "@material/chips";
+import { MDCTextFieldHelperText } from "@material/textfield/helper-text";
+import { MDCSelect } from "@material/select";
+import { MDCFloatingLabel } from "@material/floating-label";
+import { userInfo } from "os";
 
 export default {
     components: {},
     props: {
         pacientesel: {
             type: Object,
-            default: () => ({}),
+            default: () => ({})
         },
         frommovil: {
-            type: Boolean,
+            type: Boolean
         },
         nuevo: {
-            type: Boolean,
+            type: Boolean
         }
     },
     data() {
         return {
             ubicaciones: null,
             ubicacionsel: null,
-            finalizaCarga: false,
+            finalizaCarga: false
         };
     },
     mounted() {
-
         this.ajustarPantalla();
         this.onresizeev();
         this.iniciarComponentes();
         this.finalizaCarga = true;
     },
-    updated() {
-
-    },
+    updated() {},
     created() {
         this.iniciarVariables();
-        //this.llamarUbicaciones();
-
+        this.llamarUbicaciones();
     },
     methods: {
         iniciarVariables() {
             if (!this.nuevo) {
-                this.ubicacionsel = this.pacientesel.ubicacion_domicilio;
+                this.ubicacionsel = this.pacientesel.ubicacion_nacimiento;
             } else {
                 this.ubicacionsel = null;
             }
+            this.calculateAge();
         },
-        iniciarComponentes() {
-
-            //valores
-            const selectorDNI = document.querySelector('.txt_dni');
-            if (selectorDNI != null && this.pacientesel.persona_historia!=null) {
-                selectorDNI.value = this.pacientesel.persona_historia.dni;
-            }
-
-
+        llenarCorreo() {
+            var principal = this;
             const chipSetEl = document.querySelector(".mdc-chip-set-correo");
             if (chipSetEl != null) {
                 var chipSet = new MDCChipSet(chipSetEl);
-            }
 
+                chipSet.listen("MDCChip:removal", function(event) {
+                    var correoAEliminar =
+                        event.detail.root.children[1].textContent;
+                    var contieneCorreo = false;
+                    var posicion = 0;
+                    var posicionEliminar = 0;
+                    principal.pacientesel.persona_historia.correo.forEach(
+                        element => {
+                            if (
+                                element.correo.trim() == correoAEliminar.trim()
+                            ) {
+                                contieneCorreo = true;
+                                posicionEliminar = posicion;
+                            }
+                            posicion++;
+                        }
+                    );
+                    if (contieneCorreo) {
+                        principal.pacientesel.persona_historia.correo.splice(
+                            posicionEliminar,
+                            1
+                        );
+                    }
+                });
+            }
             const inputChip = document.querySelector(".input-chip-set-correo");
             if (inputChip != null) {
-                inputChip.addEventListener("keydown", function (event) {
+                inputChip.addEventListener("keydown", function(event) {
                     if (event.key === "Enter" || event.keyCode === 13) {
                         var textoCaja = inputChip.value.trim();
                         if (
@@ -96,69 +93,190 @@ export default {
                             textoCaja.includes(".") &&
                             textoCaja.length > 6
                         ) {
-                            var chipEl = document.createElement("div");
-                            chipEl.innerHTML =
-                                "" +
-                                '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>' +
-                                '<div class="mdc-chip__text">' +
-                                inputChip.value +
-                                "</div>" +
-                                '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' +
-                                "";
-                            chipEl.classList.add("mdc-chip");
-                            chipSetEl.appendChild(chipEl);
-                            chipSet.addChip(chipEl);
+                            var contieneCorreo = false;
+                            principal.pacientesel.persona_historia.correo.forEach(
+                                element => {
+                                    if (
+                                        element.correo.trim() ==
+                                        textoCaja.trim()
+                                    ) {
+                                        contieneCorreo = true;
+                                    }
+                                }
+                            );
+                            if (!contieneCorreo) {
+                                let chipEl = principal.armarChipCorreo(
+                                    textoCaja.trim()
+                                );
+                                chipSetEl.appendChild(chipEl);
+                                chipSet.addChip(chipEl);
+
+                                principal.pacientesel.persona_historia.correo.push(
+                                    {
+                                        id: 0,
+                                        correo: textoCaja,
+                                        persona_id:
+                                            principal.pacientesel
+                                                .persona_historia.id
+                                    }
+                                );
+                            }
                             inputChip.value = "";
                         }
                     }
                 });
             }
+            principal.pacientesel.persona_historia.correo.forEach(element => {
+                let chipEl = principal.armarChipCorreo(element.correo.trim());
+                chipSetEl.appendChild(chipEl);
+                chipSet.addChip(chipEl);
+            });
+        },
+        armarChipCorreo(correo) {
+            let chipEl = document.createElement("div");
+            chipEl.classList.add("mdc-chip");
 
-            const chipSetEl2 = document.querySelector(".mdc-chip-set-telf");
-            if (chipSetEl2 != null) {
-                var chipSet2 = new MDCChipSet(chipSetEl2);
+            let icono = document.createElement("li");
+            icono.classList.add("material-icons");
+            icono.classList.add("mdc-chip__icon");
+            icono.classList.add("mdc-chip__icon--leading");
+            icono.textContent = "mail";
+
+            let contenido = document.createElement("div");
+            contenido.classList.add("mdc-chip__text");
+            contenido.classList.add("correo_paciente");
+            contenido.innerText = correo;
+
+            let iconoCerrar = document.createElement("li");
+            iconoCerrar.classList.add("material-icons");
+            iconoCerrar.classList.add("mdc-chip__icon");
+            iconoCerrar.classList.add("mdc-chip__icon--trailing");
+            iconoCerrar.setAttribute("role", "button");
+            iconoCerrar.textContent = "cancel";
+            chipEl.appendChild(icono);
+            chipEl.appendChild(contenido);
+            chipEl.appendChild(iconoCerrar);
+            return chipEl;
+        },
+        llenarTelefono() {
+            var principal = this;
+            var chipSetEl = document.querySelector(".mdc-chip-set-telf");
+            if (chipSetEl != null) {
+                var chipSet = new MDCChipSet(chipSetEl);
+
+                chipSet.listen("MDCChip:removal", function(event) {
+                    var telefonoAEliminar =
+                        event.detail.root.children[1].textContent;
+                    var contieneTelefono = false;
+                    var posicion = 0;
+                    var posicionEliminar = 0;
+                    principal.pacientesel.persona_historia.telefono.forEach(
+                        element => {
+                            if (
+                                element.telefono.trim() == telefonoAEliminar.trim()
+                            ) {
+                                contieneTelefono = true;
+                                posicionEliminar = posicion;
+                            }
+                            posicion++;
+                        }
+                    );
+                    if (contieneTelefono) {
+                        principal.pacientesel.persona_historia.telefono.splice(
+                            posicionEliminar,
+                            1
+                        );
+                    }
+                });
             }
-
-            const inputChip2 = document.querySelector(".input-chip-set-telf");
-            if (inputChip2 != null) {
-                inputChip2.addEventListener("keydown", function (event) {
+            var inputChip = document.querySelector(".input-chip-set-telf");
+            if (inputChip != null) {
+                inputChip.addEventListener("keydown", function(event) {
                     if (event.key === "Enter" || event.keyCode === 13) {
-                        var textoCaja = inputChip2.value.trim();
+                        var textoCaja = inputChip.value.trim();
                         if (
                             textoCaja != null &&
                             textoCaja != "" &&
-                            (
-                            textoCaja.includes("1")||
-                            textoCaja.includes("2")||
-                            textoCaja.includes("3")||
-                            textoCaja.includes("4")||
-                            textoCaja.includes("5")||
-                            textoCaja.includes("6")||
-                            textoCaja.includes("7")||
-                            textoCaja.includes("8")||
-                            textoCaja.includes("9")||
-                            textoCaja.includes("0")
-                            ) &&
+                            (textoCaja.includes("1") ||
+                                textoCaja.includes("2") ||
+                                textoCaja.includes("3") ||
+                                textoCaja.includes("4") ||
+                                textoCaja.includes("5") ||
+                                textoCaja.includes("6") ||
+                                textoCaja.includes("7") ||
+                                textoCaja.includes("8") ||
+                                textoCaja.includes("9") ||
+                                textoCaja.includes("0")) &&
                             textoCaja.length >= 9
                         ) {
-                            var chipEl = document.createElement("div");
-                            chipEl.innerHTML =
-                                "" +
-                                '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">phone</i>' +
-                                '<div class="mdc-chip__text">' +
-                                inputChip2.value +
-                                "</div>" +
-                                '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' +
-                                "";
-                            chipEl.classList.add("mdc-chip");
-                            chipSetEl2.appendChild(chipEl);
-                            chipSet2.addChip(chipEl);
-                            inputChip2.value = "";
+                            var contieneTelefono = false;
+                            principal.pacientesel.persona_historia.telefono.forEach(
+                                element => {
+                                    if (
+                                        element.telefono.trim() ==
+                                        textoCaja.trim()
+                                    ) {
+                                        contieneTelefono = true;
+                                    }
+                                }
+                            );
+                            if (!contieneTelefono) {
+                                let chipEl = principal.armarChipTelefono(
+                                    textoCaja.trim()
+                                );
+                                chipSetEl.appendChild(chipEl);
+                                chipSet.addChip(chipEl);
+
+                                principal.pacientesel.persona_historia.telefono.push(
+                                    {
+                                        id: 0,
+                                        telefono: textoCaja,
+                                        persona_id:
+                                            principal.pacientesel
+                                                .persona_historia.id
+                                    }
+                                );
+                            }
+                            inputChip.value = "";
                         }
                     }
                 });
             }
+            principal.pacientesel.persona_historia.telefono.forEach(element => {
+                let chipEl = principal.armarChipTelefono(element.telefono.trim());
+                chipSetEl.appendChild(chipEl);
+                chipSet.addChip(chipEl);
+            });
+        },
+        armarChipTelefono(telefono) {
+            let chipEl = document.createElement("div");
+            chipEl.classList.add("mdc-chip");
 
+            let icono = document.createElement("li");
+            icono.classList.add("material-icons");
+            icono.classList.add("mdc-chip__icon");
+            icono.classList.add("mdc-chip__icon--leading");
+            icono.textContent = "phone";
+
+            let contenido = document.createElement("div");
+            contenido.classList.add("mdc-chip__text");
+            contenido.classList.add("telefono_paciente");
+            contenido.innerText = telefono;
+
+            let iconoCerrar = document.createElement("li");
+            iconoCerrar.classList.add("material-icons");
+            iconoCerrar.classList.add("mdc-chip__icon");
+            iconoCerrar.classList.add("mdc-chip__icon--trailing");
+            iconoCerrar.setAttribute("role", "button");
+            iconoCerrar.textContent = "cancel";
+            chipEl.appendChild(icono);
+            chipEl.appendChild(contenido);
+            chipEl.appendChild(iconoCerrar);
+            return chipEl;
+        },
+        iniciarComponentes() {
+            this.llenarCorreo();
+            this.llenarTelefono();
 
             //TopBAR
             const topAppBarElement = document.querySelector(".mdc-top-app-bar");
@@ -171,52 +289,35 @@ export default {
                 const fabRipple = new MDCRipple(fabButton);
             }
 
-            const textfieldselector = document.querySelectorAll('.mdc-text-field');
+            const textfieldselector = document.querySelectorAll(
+                ".mdc-text-field"
+            );
             textfieldselector.forEach(element => {
                 var cajaTexto = new MDCTextField(element);
             });
 
-
-            const listselector = document.querySelectorAll('.mdc-list');
+            const listselector = document.querySelectorAll(".mdc-list");
             listselector.forEach(element => {
                 var floating = new MDCList(element);
             });
 
-
-
-            var selMedicosSelector = document.querySelector(".sel-medicos");
-            if (selMedicosSelector != null) {
-                var selectMedicos = new MDCSelect(selMedicosSelector);
-                selectMedicos.listen("MDCSelect:change", () => {
-                    this.medicosel = null;
-                    this.especialidades = null;
-                    this.medicos.forEach(element => {
-                        if (element.id == selectMedicos.value) {
-                            this.medicosel = element;
-                        }
-                    });
-                    this.especialidades = this.medicosel.medico_especialidad;
-
-                });
-            }
-
-            var selEspecialidadesSelector = document.querySelector(".sel-especialidad");
-            if (selEspecialidadesSelector != null) {
-                var selEspecialidades = new MDCSelect(selEspecialidadesSelector);
-                selEspecialidades.listen("MDCSelect:change", () => {
-                    this.especialidadsel = null;
-                    this.especialidades.forEach(element => {
-                        if (element.id == selEspecialidades.value) {
-                            this.especialidadsel = element;
+            var selUbicaciones = document.querySelector(".sel-ubicaciones");
+            if (selUbicaciones != null) {
+                var selectUbicaciones = new MDCSelect(selUbicaciones);
+                selectUbicaciones.listen("MDCSelect:change", () => {
+                    this.ubicacionsel = null;
+                    this.ubicaciones.forEach(element => {
+                        if (element.id == selectUbicaciones.value) {
+                            this.ubicacionsel = element;
+                            this.pacientesel.persona_historia.ubicacion_nacimiento = element;
                         }
                     });
                 });
             }
 
-
-
-
-            const rippleSelector = document.querySelectorAll('.mdc-ripple-surface');
+            const rippleSelector = document.querySelectorAll(
+                ".mdc-ripple-surface"
+            );
             rippleSelector.forEach(element => {
                 MDCRipple.attachTo(element);
             });
@@ -225,17 +326,21 @@ export default {
                 ".menu-opciones-detalle-paciente"
             );
             if (menuOpcionesDetalleCita != null) {
-                const menuOpcionesDetalleCitaMDC = new MDCMenu(menuOpcionesDetalleCita);
+                const menuOpcionesDetalleCitaMDC = new MDCMenu(
+                    menuOpcionesDetalleCita
+                );
                 const botonOpcionesDetalleCita = document.querySelector(
                     ".boton-opciones-detalle-paciente"
                 );
                 if (botonOpcionesDetalleCita != null) {
-                    botonOpcionesDetalleCita.addEventListener("click", event => {
-                        menuOpcionesDetalleCitaMDC.open = !menuOpcionesDetalleCitaMDC.open;
-                    });
+                    botonOpcionesDetalleCita.addEventListener(
+                        "click",
+                        event => {
+                            menuOpcionesDetalleCitaMDC.open = !menuOpcionesDetalleCitaMDC.open;
+                        }
+                    );
                 }
             }
-
         },
         ajustarPantalla() {
             //Contenido en toda la pantalla
@@ -249,113 +354,101 @@ export default {
                 element.setAttribute("style", atrr);
             });
         },
-        abrirBuscador: function (event) {
+        abrirBuscador: function(event) {
             this.buscadorshow = true;
             this.topbarshow = false;
         },
-        cerrarBuscador: function (event) {
+        cerrarBuscador: function(event) {
             this.buscadorshow = false;
             this.topbarshow = true;
         },
         onresizeev() {
             var ele = this;
-            window.addEventListener("resize", function () {
+            window.addEventListener("resize", function() {
                 ele.ajustarPantalla();
             });
         },
-        llamarMedicos(cond) {
-            if (cond == "") {
-                cond = "_";
-            }
-            fetch('/medicoslist/' + cond)
+        llamarUbicaciones() {
+            fetch("/ubicaciones/_")
                 .then(rpta => rpta.json())
                 .then(rpta => {
-                    this.medicos = rpta;
-                });
-
-        },
-        llamarTurnos() {
-            this.horariosel = null;
-            fetch('/medico/' + this.medicosel.id + '/turnos', {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                        "X-Requested-With": "XMLHttpRequest",
-                        "X-CSRF-Token": window.Laravel.csrf_token
-                    },
-                    method: 'post',
-                    credentials: "same-origin",
-                    body: JSON.stringify({
-                        fecha: this.fechasel
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    this.horarios = data;
-                    this.horariosel = null;
-                    this.horarios.forEach(element => {
-                        if (element.nro_orden == this.citasel.nro_orden) {
-                            this.horariosel = element;
-                        }
-                    });
-
-                });
-        },
-        llamarMotivos() {
-            fetch('/motivoslist')
-                .then(rpta => rpta.json())
-                .then(rpta => {
-                    this.motivos = rpta;
-                    this.motivosel = null;
-                    this.motivos.forEach(element => {
-                        if (element.id == this.citasel.motivo.id) {
-                            this.motivosel = element;
-                        }
-                    });
-                });
-        },
-        llamarAseguradoras() {
-            fetch('/aseguradoraslist')
-                .then(rpta => rpta.json())
-                .then(rpta => {
-                    this.aseguradoras = rpta;
-                    this.aseguradorasel = null;
-                    this.aseguradoras.forEach(element => {
-                        if (element.id == this.citasel.aseguradora.id) {
-                            this.aseguradorasel = element;
-                        }
-                    });
-                });
-        },
-        guardarCita() {
-            fetch('/citas/' + this.citasel.id, {
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Accept": "application/json",
-                        "X-Requested-With": "XMLHttpRequest",
-                        "X-CSRF-Token": window.Laravel.csrf_token
-                    },
-                    method: 'post',
-                    credentials: "same-origin",
-                    body: JSON.stringify({
-                        _method: 'PUT',
-                        motivo_id: this.motivosel.id,
-                        nro_orden: this.horariosel.nro_orden,
-                        aseguradora_id: this.aseguradorasel.id,
-                        historia_id: this.citasel.historia.id,
-                        medico_especialidad_id: this.especialidadsel.id,
-                        nota_adicional: this.notasel,
-                        fecha_cita: this.fechasel,
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.guardado) {
-                        this.$emit('refrescarCitas', true);
+                    this.ubicaciones = rpta;
+                    if (this.ubicacionsel != null) {
+                        this.ubicaciones.forEach(element => {
+                            if (element.id == this.ubicacionsel.id) {
+                                this.ubicacionsel = element;
+                            }
+                        });
                     }
-
                 });
-        }
+        },
+        calculateAge() {
+            var birthday = this.pacientesel.persona_historia.fecha_nacimiento;
+            var birthday_date = null;
+            if (birthday == null) {
+                birthday_date = new Date();
+            } else {
+                var birthday_arr = birthday.split("-");
+                birthday_date = new Date(
+                    birthday_arr[0],
+                    birthday_arr[1] - 1,
+                    birthday_arr[2]
+                );
+            }
 
+            var ageDifMs = Date.now() - birthday_date.getTime();
+            var ageDate = new Date(ageDifMs);
+            var edad = Math.abs(ageDate.getUTCFullYear() - 1970);
+            this.pacientesel.persona_historia.edad = edad;
+        },
+        guardarPaciente() {
+            
+
+            if (this.nuevo) {
+                fetch('/pacientes', {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-Token": window.Laravel.csrf_token
+                        },
+                        method: 'post',
+                        credentials: "same-origin",
+                        body: JSON.stringify({
+                            historia_sel:JSON.stringify(this.pacientesel)
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.id);
+                        if (data.guardado) {
+                            this.$emit('refrescarPacientes', true);
+                        }
+
+                    });
+            } else {
+                fetch('/pacientes/' + this.pacientesel.id, {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-Token": window.Laravel.csrf_token
+                        },
+                        method: 'post',
+                        credentials: "same-origin",
+                        body: JSON.stringify({
+                            _method: 'PUT',
+                            historia_sel:JSON.stringify(this.pacientesel)
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.guardado) {
+                            this.$emit('refrescarPacientes', true);
+                        }
+
+                    });
+            }
+        }
     }
 };
