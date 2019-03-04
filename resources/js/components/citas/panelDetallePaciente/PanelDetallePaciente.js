@@ -1,16 +1,40 @@
-import { MDCTopAppBar } from "@material/top-app-bar/index";
-import { MDCTextField } from "@material/textfield/index";
-import { MDCRipple } from "@material/ripple";
-import { MDCList } from "@material/list";
-import { MDCMenu } from "@material/menu";
-import { MDCChipSet } from "@material/chips";
-import { MDCTextFieldHelperText } from "@material/textfield/helper-text";
-import { MDCSelect } from "@material/select";
-import { MDCFloatingLabel } from "@material/floating-label";
-import { userInfo } from "os";
+import {
+    MDCTopAppBar
+} from "@material/top-app-bar/index";
+import {
+    MDCTextField
+} from "@material/textfield/index";
+import {
+    MDCRipple
+} from "@material/ripple";
+import {
+    MDCList
+} from "@material/list";
+import {
+    MDCMenu
+} from "@material/menu";
+import {
+    MDCChipSet
+} from "@material/chips";
+import {
+    MDCTextFieldHelperText
+} from "@material/textfield/helper-text";
+import {
+    MDCSelect
+} from "@material/select";
+import {
+    MDCFloatingLabel
+} from "@material/floating-label";
+import {
+    userInfo
+} from "os";
+
+import PanelModal from './../../PanelModal.vue'
 
 export default {
-    components: {},
+    components: {
+        "panel-modal": PanelModal,
+    },
     props: {
         pacientesel: {
             type: Object,
@@ -27,7 +51,15 @@ export default {
         return {
             ubicaciones: null,
             ubicacionsel: null,
-            finalizaCarga: false
+            finalizaCarga: false,
+            confGuardar:false,
+            accionesGuardar:[
+                {
+                    id:0,
+                    nombre:"guardarPaciente",
+                    texto:"Crear"
+                }
+            ]
         };
     },
     mounted() {
@@ -43,10 +75,10 @@ export default {
     },
     methods: {
         iniciarVariables() {
-            if (!this.nuevo) {
-                this.ubicacionsel = this.pacientesel.ubicacion_nacimiento;
-            } else {
+            if (this.nuevo) {
                 this.ubicacionsel = null;
+            } else {
+                this.ubicacionsel = this.pacientesel.persona_historia.ubicacion_nacimiento;
             }
             this.calculateAge();
         },
@@ -56,7 +88,7 @@ export default {
             if (chipSetEl != null) {
                 var chipSet = new MDCChipSet(chipSetEl);
 
-                chipSet.listen("MDCChip:removal", function(event) {
+                chipSet.listen("MDCChip:removal", function (event) {
                     var correoAEliminar =
                         event.detail.root.children[1].textContent;
                     var contieneCorreo = false;
@@ -83,7 +115,7 @@ export default {
             }
             const inputChip = document.querySelector(".input-chip-set-correo");
             if (inputChip != null) {
-                inputChip.addEventListener("keydown", function(event) {
+                inputChip.addEventListener("keydown", function (event) {
                     if (event.key === "Enter" || event.keyCode === 13) {
                         var textoCaja = inputChip.value.trim();
                         if (
@@ -111,15 +143,12 @@ export default {
                                 chipSetEl.appendChild(chipEl);
                                 chipSet.addChip(chipEl);
 
-                                principal.pacientesel.persona_historia.correo.push(
-                                    {
-                                        id: 0,
-                                        correo: textoCaja,
-                                        persona_id:
-                                            principal.pacientesel
-                                                .persona_historia.id
-                                    }
-                                );
+                                principal.pacientesel.persona_historia.correo.push({
+                                    id: 0,
+                                    correo: textoCaja,
+                                    persona_id: principal.pacientesel
+                                        .persona_historia.id
+                                });
                             }
                             inputChip.value = "";
                         }
@@ -164,7 +193,7 @@ export default {
             if (chipSetEl != null) {
                 var chipSet = new MDCChipSet(chipSetEl);
 
-                chipSet.listen("MDCChip:removal", function(event) {
+                chipSet.listen("MDCChip:removal", function (event) {
                     var telefonoAEliminar =
                         event.detail.root.children[1].textContent;
                     var contieneTelefono = false;
@@ -191,7 +220,7 @@ export default {
             }
             var inputChip = document.querySelector(".input-chip-set-telf");
             if (inputChip != null) {
-                inputChip.addEventListener("keydown", function(event) {
+                inputChip.addEventListener("keydown", function (event) {
                     if (event.key === "Enter" || event.keyCode === 13) {
                         var textoCaja = inputChip.value.trim();
                         if (
@@ -227,15 +256,12 @@ export default {
                                 chipSetEl.appendChild(chipEl);
                                 chipSet.addChip(chipEl);
 
-                                principal.pacientesel.persona_historia.telefono.push(
-                                    {
-                                        id: 0,
-                                        telefono: textoCaja,
-                                        persona_id:
-                                            principal.pacientesel
-                                                .persona_historia.id
-                                    }
-                                );
+                                principal.pacientesel.persona_historia.telefono.push({
+                                    id: 0,
+                                    telefono: textoCaja,
+                                    persona_id: principal.pacientesel
+                                        .persona_historia.id
+                                });
                             }
                             inputChip.value = "";
                         }
@@ -278,6 +304,7 @@ export default {
             this.llenarCorreo();
             this.llenarTelefono();
 
+
             //TopBAR
             const topAppBarElement = document.querySelector(".mdc-top-app-bar");
             if (topAppBarElement != null) {
@@ -303,9 +330,10 @@ export default {
 
             var selUbicaciones = document.querySelector(".sel-ubicaciones");
             if (selUbicaciones != null) {
+
                 var selectUbicaciones = new MDCSelect(selUbicaciones);
                 selectUbicaciones.listen("MDCSelect:change", () => {
-                    this.ubicacionsel = null;
+                    // this.ubicacionsel = null;
                     this.ubicaciones.forEach(element => {
                         if (element.id == selectUbicaciones.value) {
                             this.ubicacionsel = element;
@@ -313,6 +341,13 @@ export default {
                         }
                     });
                 });
+                var selubicacion = document.querySelector(".seleccion-ubicacion");
+                if (selubicacion != null && this.ubicacionsel != null) {
+                    var ubicacionfloat = document.querySelector(".floating-label-ubicacion");
+                    ubicacionfloat.classList.add('mdc-floating-label--float-above');
+                    selubicacion.innerHTML = this.ubicacionsel.tag;
+                }
+
             }
 
             const rippleSelector = document.querySelectorAll(
@@ -354,17 +389,17 @@ export default {
                 element.setAttribute("style", atrr);
             });
         },
-        abrirBuscador: function(event) {
+        abrirBuscador: function (event) {
             this.buscadorshow = true;
             this.topbarshow = false;
         },
-        cerrarBuscador: function(event) {
+        cerrarBuscador: function (event) {
             this.buscadorshow = false;
             this.topbarshow = true;
         },
         onresizeev() {
             var ele = this;
-            window.addEventListener("resize", function() {
+            window.addEventListener("resize", function () {
                 ele.ajustarPantalla();
             });
         },
@@ -401,8 +436,15 @@ export default {
             var edad = Math.abs(ageDate.getUTCFullYear() - 1970);
             this.pacientesel.persona_historia.edad = edad;
         },
+        confirmarNuevoPaciente(){
+            if(this.nuevo){
+                this.confGuardar=true;
+            }else{
+
+            }
+        },
         guardarPaciente() {
-            
+
 
             if (this.nuevo) {
                 fetch('/pacientes', {
@@ -415,7 +457,7 @@ export default {
                         method: 'post',
                         credentials: "same-origin",
                         body: JSON.stringify({
-                            historia_sel:JSON.stringify(this.pacientesel)
+                            historia_sel: JSON.stringify(this.pacientesel)
                         })
                     })
                     .then(response => response.json())
@@ -438,7 +480,7 @@ export default {
                         credentials: "same-origin",
                         body: JSON.stringify({
                             _method: 'PUT',
-                            historia_sel:JSON.stringify(this.pacientesel)
+                            historia_sel: JSON.stringify(this.pacientesel)
                         })
                     })
                     .then(response => response.json())
