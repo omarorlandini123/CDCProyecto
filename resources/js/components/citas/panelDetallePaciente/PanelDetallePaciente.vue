@@ -210,10 +210,9 @@
                     class="mdc-radio__native-control rd_masculino"
                     type="radio"
                     id="radio-1"
-                    value=1
+                    value="1"
                     name="radios"
                     v-model="pacientesel.persona_historia.sexo"
-                    
                   >
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
@@ -229,7 +228,7 @@
                     type="radio"
                     id="radio-1"
                     name="radios"
-                    value=2
+                    value="2"
                     v-model="pacientesel.persona_historia.sexo"
                   >
                   <div class="mdc-radio__background">
@@ -254,7 +253,6 @@
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_fec_nac"
                     v-on:change="calculateAge"
-                    
                     v-model="pacientesel.persona_historia.fecha_nacimiento"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Fecha Nacimiento</label>
@@ -277,7 +275,10 @@
                     class="mdc-text-field__input txt_edad"
                     v-model="pacientesel.persona_historia.edad"
                   >
-                  <label class="mdc-floating-label mdc-floating-label--float-above" for="text-field-filled-leading">Edad</label>
+                  <label
+                    class="mdc-floating-label mdc-floating-label--float-above"
+                    for="text-field-filled-leading"
+                  >Edad</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
                 </div>
               </div>
@@ -289,8 +290,11 @@
               <div class="mdc-select sel-ubicaciones select-100">
                 <input type="hidden" name="enhanced-select">
                 <i class="mdc-select__dropdown-icon"></i>
-                <div class="mdc-select__selected-text"></div>
-                <div class="mdc-select__menu mdc-menu mdc-menu-surface select-25" style="z-index:100;">
+                <div class="mdc-select__selected-text seleccion-ubicacion"></div>
+                <div
+                  class="mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                  style="z-index:100;"
+                >
                   <ul class="mdc-list">
                     <li
                       v-for="ubicacion in ubicaciones"
@@ -304,11 +308,11 @@
                     >{{ubicacion.tag}}</li>
                   </ul>
                 </div>
-                <span class="mdc-floating-label">Lugar de Nacimiento</span>
+                <span class="mdc-floating-label floating-label-ubicacion">Lugar de Nacimiento</span>
                 <div class="mdc-line-ripple"></div>
               </div>
             </div>
-            
+
             <div
               class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
             >
@@ -353,10 +357,7 @@
                   ></div>
                 </div>
               </div>
-              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-correo">  
-                
-              </div>
-              
+              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-correo"></div>
             </div>
             <div
               class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
@@ -383,17 +384,14 @@
                   ></div>
                 </div>
               </div>
-              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-telf">
-                
-              </div>
-              
+              <div class="mdc-chip-set mdc-chip-set--input mdc-chip-set-telf"></div>
             </div>
-            
           </div>
         </div>
       </div>
     </div>
-    <button class="mdc-fab boton-accion" v-on:click="guardarPaciente">
+    <panel-modal v-if="confGuardar" titulo="Guardar" contenido="Vas a crear un nuevo paciente ¿Estás de acuerdo?" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="accionesGuardar"  ></panel-modal>
+    <button class="mdc-fab boton-accion" v-on:click="confirmarNuevoPaciente">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>
   </div>
