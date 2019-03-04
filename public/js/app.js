@@ -43369,6 +43369,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isnuevacita = true;
       this.historianuevacita = event;
       this.showpaneldetallecita();
+      this.refrescarCitas();
     },
     showpaneldetallecita: function showpaneldetallecita() {
       if (this.modoMovil) {

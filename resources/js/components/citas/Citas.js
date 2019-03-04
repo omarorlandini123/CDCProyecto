@@ -76,6 +76,7 @@ export default {
             this.isnuevacita = true;
             this.historianuevacita = event;
             this.showpaneldetallecita();
+            this.refrescarCitas();
         },
         showpaneldetallecita() {
             if (this.modoMovil) {
