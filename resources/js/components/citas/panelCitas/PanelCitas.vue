@@ -24,7 +24,7 @@
 
       <div v-show="buscadorshow" class="text-field-container text-buscador-movil">
         <div class="text-buscador">
-          <input type="text" placeholder="Busca una cita" class="text-buscador-input">
+          <input type="text" placeholder="Busca una cita" v-on:keyup="llamarCitas" class="text-buscador-input">
           <i
             v-on:click="cerrarBuscador"
             class="material-icons mdc-text-field__icon cerrar-buscar-cita"

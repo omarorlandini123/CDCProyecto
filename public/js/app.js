@@ -43577,6 +43577,7 @@ __webpack_require__.r(__webpack_exports__);
     cerrarBuscador: function cerrarBuscador(event) {
       this.buscadorshow = false;
       this.topbarshow = true;
+      this.llamarCitas("---");
     },
     onresizeev: function onresizeev() {
       var ele = this;
@@ -43588,6 +43589,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var cond = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "_";
+
+      if (cond != "---") {
+        var condSelect = document.querySelector('.text-buscador-input');
+
+        if (condSelect != null) {
+          cond = condSelect.value;
+        }
+
+        if (cond == "") {
+          cond = "_";
+        }
+      } else {
+        cond = "_";
+      }
+
       fetch('/citaslist/' + cond).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
@@ -44584,6 +44600,7 @@ __webpack_require__.r(__webpack_exports__);
     cerrarBuscador: function cerrarBuscador(event) {
       this.buscadorshow = false;
       this.topbarshow = true;
+      this.llamarPacientes("---");
     },
     onresizeev: function onresizeev() {
       var ele = this;
@@ -44595,6 +44612,21 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var cond = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "_";
+
+      if (cond != "---") {
+        var condSelect = document.querySelector('.text-buscador-input');
+
+        if (condSelect != null) {
+          cond = condSelect.value;
+        }
+
+        if (cond == "") {
+          cond = "_";
+        }
+      } else {
+        cond = "_";
+      }
+
       fetch('/historias/' + cond).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
@@ -68195,7 +68227,8 @@ var render = function() {
           _c("div", { staticClass: "text-buscador" }, [
             _c("input", {
               staticClass: "text-buscador-input",
-              attrs: { type: "text", placeholder: "Busca una cita" }
+              attrs: { type: "text", placeholder: "Busca una cita" },
+              on: { keyup: _vm.llamarCitas }
             }),
             _vm._v(" "),
             _c(
@@ -70924,7 +70957,8 @@ var render = function() {
           _c("div", { staticClass: "text-buscador" }, [
             _c("input", {
               staticClass: "text-buscador-input",
-              attrs: { type: "text", placeholder: "Busca un Paciente" }
+              attrs: { type: "text", placeholder: "Busca un Paciente" },
+              on: { keyup: _vm.llamarPacientes }
             }),
             _vm._v(" "),
             _c(

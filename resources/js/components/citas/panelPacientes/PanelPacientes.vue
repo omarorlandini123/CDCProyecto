@@ -26,7 +26,8 @@
 
       <div v-show="buscadorshow" class="text-field-container text-buscador-movil">
         <div class="text-buscador">
-          <input type="text" placeholder="Busca un Paciente" class="text-buscador-input">
+          <input type="text" placeholder="Busca un Paciente" 
+          v-on:keyup="llamarPacientes" class="text-buscador-input">
           <i
             v-on:click="cerrarBuscador"
             class="material-icons mdc-text-field__icon"

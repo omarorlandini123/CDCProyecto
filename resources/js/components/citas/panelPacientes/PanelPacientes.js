@@ -82,6 +82,7 @@ export default {
         cerrarBuscador: function (event) {
             this.buscadorshow = false;
             this.topbarshow = true;
+            this.llamarPacientes("---");
         },
         onresizeev() {
             var ele = this;
@@ -90,6 +91,17 @@ export default {
             });
         },
         llamarPacientes(cond = "_") {
+            if(cond!="---"){
+            var condSelect=document.querySelector('.text-buscador-input');
+            if(condSelect!=null){
+                cond=condSelect.value;
+            }
+            if(cond==""){
+                cond="_";
+            }
+        }else{
+            cond="_";
+        }
             fetch('/historias/' + cond)
                 .then(rpta => rpta.json())
                 .then(rpta => {
