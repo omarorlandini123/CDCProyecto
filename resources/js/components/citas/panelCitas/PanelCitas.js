@@ -62,6 +62,7 @@ export default {
         cerrarBuscador: function (event) {
             this.buscadorshow = false;
             this.topbarshow = true;
+            this.llamarCitas("---");
         },
         onresizeev() {
             var ele = this;
@@ -70,6 +71,17 @@ export default {
             });
         },
         llamarCitas(cond="_"){
+            if(cond!="---"){
+            var condSelect=document.querySelector('.text-buscador-input');
+            if(condSelect!=null){
+                cond=condSelect.value;
+            }
+            if(cond==""){
+                cond="_";
+            }
+        }else{
+            cond="_"; 
+        }
             fetch('/citaslist/'+cond)
             .then(rpta=>rpta.json())
             .then(rpta=>{
