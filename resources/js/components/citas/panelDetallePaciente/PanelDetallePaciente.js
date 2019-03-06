@@ -506,7 +506,30 @@ export default {
                 this.modalValidar.contenido= "El paciente debe tener al menos dos teléfonos.";
                 this.modalValidar.acciones=[];
                 
+            }else if(
+                    this.pacientesel.persona_historia.nombres==null ||
+                    this.pacientesel.persona_historia.nombres=="" ||
+                    this.pacientesel.persona_historia.apellido_paterno==null ||
+                    this.pacientesel.persona_historia.apellido_paterno=="" ||
+                    this.pacientesel.persona_historia.apellido_materno==null ||
+                    this.pacientesel.persona_historia.apellido_materno=="" 
+                ){
+                this.modalValidar.keyModal+=1;
+                this.modalValidar.conf=true;               
+                this.modalValidar.contenido= "El paciente debe tener los nombres y apellidos completos.";
+                this.modalValidar.acciones=[];
+                
             }
+            else if(
+                this.pacientesel.persona_historia.fecha_nacimiento==null ||
+                this.pacientesel.persona_historia.fecha_nacimiento=="" 
+            ){
+            this.modalValidar.keyModal+=1;
+            this.modalValidar.conf=true;               
+            this.modalValidar.contenido= "El paciente debe tener una fecha de nacimiento.";
+            this.modalValidar.acciones=[];
+            
+        }
             else{
                 if (this.nuevo) {
                 
