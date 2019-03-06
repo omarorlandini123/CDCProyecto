@@ -59,8 +59,7 @@
                   <li
                     class="mdc-list-item"
                     role="menuitem"
-                    onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
+                    v-on:click="$emit('abrirPaciente',isnuevacita?historianuevacita:citasel.historia)" 
                   >
                     <span class="mdc-list-item__text">Datos Paciente</span>
                   </li>
@@ -86,7 +85,7 @@
       <div class="panel-detalle-cita" style="position:relative;">
         <h3
           style="margin-left:25px;margin-right:25px;margin-bottom: 0px;"
-        >Datos de la cita - {{isnuevacita?'nueva':'C-'+String(citasel.id).padStart(8,0)}}</h3>
+        >Datos de la cita  {{isnuevacita?'nueva':'C-'+String(citasel.id).padStart(8,0)}}</h3>
 
         <div class="mdc-layout-grid" style="padding: 25px;position:relative;">
           <div class="mdc-layout-grid__inner">
@@ -368,7 +367,26 @@
                 <label for="checkbox-1">Confirmado Médico</label>
               </div>
             </div>
-         
+            <div
+              class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+            >
+              <h3 class="tituloUltimasCitas"></h3>              
+              <ul class="mdc-list mdc-list--two-line ">
+                <li 
+                  class="mdc-list-item mdc-list-item__citas" 
+                  tabindex="0"
+                  v-for="cita in ultimasCitas"
+                  :key="cita.id"                
+                  >
+                  <span  aria-hidden="true" class="mdc-list-item__graphic material-icons miniatura-citas">alarm</span>
+                  <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">{{cita.medico_especialidad.especialidad.nombre}} - Dr. {{cita.medico_especialidad.medico.persona.apellido_paterno}} {{cita.medico_especialidad.medico.persona.apellido_materno}}, {{cita.medico_especialidad.medico.persona.nombres}} </span>
+                    <span class="mdc-list-item__secondary-text">{{cita.fecha_cita}} {{cita.turno.desde}} - {{cita.turno.hasta}}</span>
+                  </span>
+                </li>               
+              </ul>
+
+            </div>
           </div>
         </div>
       </div>

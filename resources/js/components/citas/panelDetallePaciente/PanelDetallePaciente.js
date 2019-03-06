@@ -52,14 +52,9 @@ export default {
             ubicaciones: null,
             ubicacionsel: null,
             finalizaCarga: false,
-            confGuardar:false,
-            accionesGuardar:[
-                {
-                    id:0,
-                    nombre:"guardarPaciente",
-                    texto:"Crear"
-                }
-            ]
+            modalGuardar:null,
+            modalValidar:null,
+            
         };
     },
     mounted() {
@@ -80,6 +75,20 @@ export default {
             } else {
                 this.ubicacionsel = this.pacientesel.persona_historia.ubicacion_nacimiento;
             }
+            this.modalGuardar={
+                confGuardar:false,
+                contenidoguardar:"",            
+                accionesGuardar:null,
+                keyModalGuardar:0,
+            };
+            this.modalValidar={
+                conf:false,
+                contenido:"",            
+                acciones:null,
+                keyModal:0,
+            }
+
+
             this.calculateAge();
         },
         llenarCorreo() {
@@ -326,7 +335,9 @@ export default {
             const listselector = document.querySelectorAll(".mdc-list");
             listselector.forEach(element => {
                 var floating = new MDCList(element);
+                var listItemRipples = floating.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             });
+
 
             var selUbicaciones = document.querySelector(".sel-ubicaciones");
             if (selUbicaciones != null) {
@@ -376,6 +387,7 @@ export default {
                     );
                 }
             }
+           
         },
         ajustarPantalla() {
             //Contenido en toda la pantalla
@@ -437,60 +449,116 @@ export default {
             this.pacientesel.persona_historia.edad = edad;
         },
         confirmarNuevoPaciente(){
+            this.modalGuardar.confGuardar=true;
+            this.modalGuardar.keyModalGuardar+=1;
             if(this.nuevo){
-                this.confGuardar=true;
+               this.modalGuardar.contenidoguardar= "Vas a crear un nuevo paciente ¿Estás de acuerdo?";
+                this.modalGuardar.accionesGuardar=[
+                    {
+                        id:0,
+                        nombre:"guardarPaciente",
+                        texto:"Crear"
+                    }
+                ]
             }else{
-
+                this.modalGuardar.contenidoguardar= "Vas a sobreescribir la información del paciente ¿Estás de acuerdo?";
+                this.modalGuardar.accionesGuardar=[
+                    {
+                        id:0,
+                        nombre:"guardarPaciente",
+                        texto:"Sobreesribir"
+                    }
+                ]
             }
-        },
+        },                  
         guardarPaciente() {
 
+            this.modalGuardar.confGuardar=false;
+            this.modalGuardar.keyModalGuardar+=1
 
-            if (this.nuevo) {
-                fetch('/pacientes', {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json",
-                            "X-Requested-With": "XMLHttpRequest",
-                            "X-CSRF-Token": window.Laravel.csrf_token
-                        },
-                        method: 'post',
-                        credentials: "same-origin",
-                        body: JSON.stringify({
-                            historia_sel: JSON.stringify(this.pacientesel)
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data.id);
-                        if (data.guardado) {
-                            this.$emit('refrescarPacientes', true);
-                        }
-
-                    });
-            } else {
-                fetch('/pacientes/' + this.pacientesel.id, {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json",
-                            "X-Requested-With": "XMLHttpRequest",
-                            "X-CSRF-Token": window.Laravel.csrf_token
-                        },
-                        method: 'post',
-                        credentials: "same-origin",
-                        body: JSON.stringify({
-                            _method: 'PUT',
-                            historia_sel: JSON.stringify(this.pacientesel)
-                        })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.guardado) {
-                            this.$emit('refrescarPacientes', true);
-                        }
-
-                    });
+            if(
+                (
+                    this.pacientesel.persona_historia.dni==null ||
+                    this.pacientesel.persona_historia.dni=="" 
+                )&& 
+                (
+                    this.pacientesel.persona_historia.pasaporte==null ||
+                    this.pacientesel.persona_historia.pasaporte=="" 
+                )&&
+                (
+                    this.pacientesel.persona_historia.carne_extra==null ||
+                    this.pacientesel.persona_historia.carne_extra=="" 
+                )&&
+                (
+                    this.pacientesel.persona_historia.ruc==null ||
+                    this.pacientesel.persona_historia.ruc=="" 
+                )                    
+            ){
+                this.modalValidar.keyModal+=1;
+                this.modalValidar.conf=true;                
+                this.modalValidar.contenido= "El paciente debe tener al menos un documento.";
+                this.modalValidar.acciones=[];
+                
+                
+            }else if(this.pacientesel.persona_historia.telefono.length<2){
+                this.modalValidar.keyModal+=1;
+                this.modalValidar.conf=true;               
+                this.modalValidar.contenido= "El paciente debe tener al menos dos teléfonos.";
+                this.modalValidar.acciones=[];
+                
             }
+            else{
+                if (this.nuevo) {
+                
+                    fetch('/pacientes', {
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRF-Token": window.Laravel.csrf_token
+                            },
+                            method: 'post',
+                            credentials: "same-origin",
+                            body: JSON.stringify({
+                                historia_sel: JSON.stringify(this.pacientesel)
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log(data.id);
+                            if (data.guardado) {
+                                this.$emit('refrescarPacientes', true);
+                            }
+    
+                        });
+                    
+                } else {
+                   
+                    fetch('/pacientes/' + this.pacientesel.id, {
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Accept": "application/json",
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRF-Token": window.Laravel.csrf_token
+                            },
+                            method: 'post',
+                            credentials: "same-origin",
+                            body: JSON.stringify({
+                                _method: 'PUT',
+                                historia_sel: JSON.stringify(this.pacientesel)
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.guardado) {
+                                this.$emit('refrescarPacientes', true);
+                            }
+    
+                        });
+                    
+                }
+            }
+           
         }
     }
 };

@@ -182,8 +182,24 @@ class CitasController extends Controller
     
     public function listar(Request $request,$cond){
         if(Auth::check()){
-            $citas= Cita::with('historia')
+            $citas= Cita::whereHas('historia',function($z) use($cond){
+                $z->whereHas('persona_historia', function ($a) use($cond) {
+                    if($cond!="_"){
+                    $a->where('nombres', 'like', '%' . $cond . '%')
+                        ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
+                        ->orWhere('apellido_materno', 'like', '%' . $cond . '%')
+                        ->orWhere('dni', 'like', '%' . $cond . '%');
+                    }
+                });
+            })            
+            ->with('historia')
             ->with('historia.persona_historia')
+            ->with('historia.persona_historia.ubicacion_nacimiento')
+            ->with('historia.persona_historia.ubicacion_domicilio')
+            ->with('historia.persona_historia.correo')
+            ->with('historia.persona_historia.telefono')
+            ->with('historia.persona_historia.users')
+            ->with('historia.persona_historia.users')
             ->with('motivo')
             ->with('aseguradora')
             ->with('medico_especialidad')
@@ -199,7 +215,31 @@ class CitasController extends Controller
             return $citas;
 
         }else{
-            'no-auth';
+            return 'no-auth';
+        }
+    }
+
+    public function ultimas(Request $request, $idHistoria){
+        if(Auth::check()){
+            $citas= Cita::where('historia_id',$idHistoria)
+            ->with('historia')
+            ->with('historia.persona_historia')
+            ->with('motivo')
+            ->with('aseguradora')
+            ->with('medico_especialidad')
+            ->with('medico_especialidad.medico')
+            ->with('medico_especialidad.medico.persona')
+            ->with('medico_especialidad.especialidad')
+            ->with('medico_especialidad.medico.medico_especialidad')
+            ->with('medico_especialidad.medico.medico_especialidad.especialidad') 
+            ->orderBy('fecha_cita','desc')
+            ->orderBy('nro_orden','desc')
+            ->take(3)
+            ->get();
+            Cita::setTurnos($citas);
+            return $citas;
+        }else{
+            return 'no-auth';
         }
     }
 }

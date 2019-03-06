@@ -40,6 +40,7 @@ export default {
             //Para DetallePaciente 
             pacienteSelect: null,
             isnuevopaciente: false,
+            keyDetallePacientes:0,
 
         };
     },
@@ -55,10 +56,12 @@ export default {
             this.mostrarPhoneCitas = false;
             this.mostrarPhoneDetalleCita = false;
             this.mostrarPhonePacientes = false;
+            this.mostrarPhoneDetallePaciente = false;
             //Para Desktop
             this.mostrarDesktopSeleccionaCita = false;
             this.mostrarDesktopDetalleCita = false;
             this.mostrarDesktopSeleccionaPaciente = false;
+            this.mostrarDesktopDetallePaciente = false;
         },
         abrirpaneldetallecita: function ($event) {
             this.determinarModo();
@@ -147,12 +150,16 @@ export default {
                 this.mostrarPhonePacientes = true;
                 this.mostrarDesktopDetallePaciente = true;
             }
+            this.refrescarDetallePacientes();
         },
         refrescarCitas: function ($event) {
             this.keyLista += 1;
         },
         refrescarPacientes: function ($event) {
             this.keyPanelPacientes += 1;
+        },
+        refrescarDetallePacientes: function($event){
+            this.keyDetallePacientes+=1;
         },
         cerrarPanelDetalleMovil: function ($event) {
             this.determinarModo();

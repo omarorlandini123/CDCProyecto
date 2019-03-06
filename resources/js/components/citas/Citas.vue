@@ -19,6 +19,7 @@
             <div v-if="mostrarPhoneDetalleCita" class="panel-detalle-cita">
               <panel-detalle-cita
                 v-on:refrescarCitas="refrescarCitas"
+                v-on:abrirPaciente="abrirPaciente"
                 v-on:cerrarPanelDetalleMovil="cerrarPanelDetalleMovil"
                 v-bind:citasel="citaselect"
                 v-bind:frommovil="true"
@@ -28,18 +29,7 @@
               ></panel-detalle-cita>
             </div>
 
-            <!-- Panel detalle paciente para movil -->
-            <div v-if="mostrarPhoneDetallePaciente" class="panel-detalle-paciente">
-              <panel-detalle-paciente
-                v-on:refrescarPacientes="refrescarPacientes"
-                v-bind:nuevo="isnuevopaciente"
-                v-bind:frommovil="true"
-                v-bind:pacientesel="pacienteSelect"
-                :key="pacienteSelect.id"
-              ></panel-detalle-paciente>
-            </div>
-
-            <!-- Panel pacientes para movil y desktop -->
+             <!-- Panel pacientes para movil y desktop -->
             <div v-if="mostrarPhonePacientes" class="panel-pacientes">
               <panel-pacientes
                 v-on:refrescarPacientes="refrescarPacientes"
@@ -49,6 +39,19 @@
                 :key="keyPanelPacientes"
               ></panel-pacientes>
             </div>
+
+            <!-- Panel detalle paciente para movil -->
+            <div v-if="mostrarPhoneDetallePaciente" class="panel-detalle-paciente">
+              <panel-detalle-paciente
+                v-on:refrescarPacientes="refrescarPacientes"
+                v-bind:nuevo="isnuevopaciente"
+                v-bind:frommovil="true"
+                v-bind:pacientesel="pacienteSelect"
+                :key="keyDetallePacientes"
+              ></panel-detalle-paciente>
+            </div>
+
+           
           </div>
         </div>
         <div class="panel-desktop" style="position: relative;">
@@ -61,10 +64,12 @@
             <div v-if="mostrarDesktopSeleccionaPaciente" class="panel-selecciona-paciente">
               <panel-selecciona-paciente></panel-selecciona-paciente>
             </div>
+
             <!-- Panel desktop para detalle de citas -->
             <div v-if="mostrarDesktopDetalleCita" class="panel-detalle-cita">
               <panel-detalle-cita
                 v-on:refrescarCitas="refrescarCitas"
+                v-on:abrirPaciente="abrirPaciente"
                 v-bind:citasel="citaselect"
                 v-bind:frommovil="false"
                 v-bind:isnuevacita="isnuevacita"
@@ -72,6 +77,7 @@
                 :key="citaselect.id"
               ></panel-detalle-cita>
             </div>
+            
             <!-- Panel desktop para detalle de paciente -->
             <div v-if="mostrarDesktopDetallePaciente" class="panel-dellate-paciente">
               <panel-detalle-paciente
@@ -79,7 +85,7 @@
                 v-bind:nuevo="isnuevopaciente"
                 v-bind:frommovil="false"
                 v-bind:pacientesel="pacienteSelect"
-                :key="pacienteSelect.id"
+                :key="keyDetallePacientes"
               ></panel-detalle-paciente>
             </div>
           </div>

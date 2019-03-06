@@ -16,7 +16,8 @@ class HistoriaController extends Controller
                 if($cond!="_"){
                 $a->where('nombres', 'like', '%' . $cond . '%')
                     ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
-                    ->orWhere('apellido_materno', 'like', '%' . $cond . '%');
+                    ->orWhere('apellido_materno', 'like', '%' . $cond . '%')
+                    ->orWhere('dni', 'like', '%' . $cond . '%');
                 }
             })
                 ->with('persona_historia')

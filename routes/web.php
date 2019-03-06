@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/citas/reporte','CitasController@reporte');
 Route::get('/citas/EnviarReporte','CitasController@enviarReporte');
+Route::get('/citas/ultimas/{idHistoria}','CitasController@ultimas');
 Route::resource('/citas','CitasController');
 Route::resource('/pacientes','PacienteController');
 
