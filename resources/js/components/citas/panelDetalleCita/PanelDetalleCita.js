@@ -9,7 +9,7 @@ import {
     MDCRipple
 } from "@material/ripple";
 import {
-    MDCList
+    MDCList 
 } from '@material/list';
 import {
     MDCMenu
@@ -68,6 +68,8 @@ export default {
             finalizaCarga: false,
             confirmado: false,
             confirmadomedico:false,
+            ultimasCitas:null,
+            tituloUltimasCitas:"",
         };
     },
     mounted() {
@@ -75,6 +77,7 @@ export default {
         this.ajustarPantalla();
         this.onresizeev();
         this.iniciarComponentes();
+        this.llamarUltimasCitas();
         this.finalizaCarga = true;
     },
     updated() {
@@ -325,6 +328,29 @@ export default {
                         });
                     }
                 });
+        },
+        llamarUltimasCitas(){
+            var idHistoria=0;
+            if(this.isnuevacita){
+                idHistoria = this.historianuevacita.id;
+            }else{
+                idHistoria = this.citasel.historia_id;
+            }          
+
+            fetch('/citas/ultimas/' + idHistoria)
+                .then(rpta => rpta.json())
+                .then(rpta => {
+                    this.ultimasCitas=rpta;
+                    var tituloUltimasCitas=document.querySelector('.tituloUltimasCitas');
+                    if(this.ultimasCitas==null || this.ultimasCitas.length==0){
+
+                        tituloUltimasCitas.innerText="El paciente no registra citas";
+
+                    }else{
+                         tituloUltimasCitas.innerText="Últimas Citas Del Paciente";
+                    }
+                });
+
         },
         llamarAseguradoras() {
             fetch('/aseguradoraslist')

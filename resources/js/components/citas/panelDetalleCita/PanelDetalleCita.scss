@@ -7,6 +7,7 @@
 @import "~@material/floating-label/mdc-floating-label";
 @import "~@material/form-field/mdc-form-field";
 @import "~@material/checkbox/mdc-checkbox";
+@import "~@material/card/mdc-card";
 
 .seccion-inicio {
   @extend .mdc-top-app-bar__section;
@@ -54,7 +55,11 @@
   margin-top: -26px;
   color:white;
 }
-
+.miniatura-citas{
+  font-size: 50px !important;
+  padding-left: 10px;
+  margin-right: 25px;
+}
 .text-buscador {
   @extend .mdc-text-field;
   @extend .mdc-text-field--with-trailing-icon;
@@ -105,6 +110,16 @@
 .caja-detalle-cita{
   min-width: 100px;
   width:100%;
+}
+.mdc-list-item__citas{
+  cursor: pointer;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: white;
+  border-style: solid;
+}
+.mdc-list-item__citas:hover{
+  background-color: #c7c7c7;
 }
 
 @media only screen and (max-with:479px){

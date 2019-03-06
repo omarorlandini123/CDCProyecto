@@ -390,7 +390,12 @@
         </div>
       </div>
     </div>
-    <panel-modal v-if="confGuardar" titulo="Guardar" contenido="Vas a crear un nuevo paciente ¿Estás de acuerdo?" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="accionesGuardar"  ></panel-modal>
+    <panel-modal v-if="modalGuardar.confGuardar" titulo="Guardar" 
+    :key="modalGuardar.keyModalGuardar"
+    v-bind:contenido="modalGuardar.contenidoguardar" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="modalGuardar.accionesGuardar"  ></panel-modal>
+    <panel-modal v-if="modalValidar.conf" titulo="Verificar" 
+    :key="modalValidar.keyModal"
+    v-bind:contenido="modalValidar.contenido" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="modalValidar.acciones"  ></panel-modal>
     <button class="mdc-fab boton-accion" v-on:click="confirmarNuevoPaciente">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>
