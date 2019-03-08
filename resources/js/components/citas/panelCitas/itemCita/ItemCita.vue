@@ -19,9 +19,9 @@
     <span class="mdc-list-item__text">
       <span class="mdc-list-item__primary-text">
         {{
-        cita.historia.persona_historia.apellido_paterno + " " +
-        cita.historia.persona_historia.apellido_materno + ", "+
-        cita.historia.persona_historia.nombres + " "}}
+        cita.historia.persona.apellido_paterno + " " +
+        cita.historia.persona.apellido_materno + ", "+
+        cita.historia.persona.nombres + " "}}
       </span>
       <span class="mdc-list-item__secondary-text">{{cita.fecha_cita + ' - '+cita.turno.desde}}</span>
     </span>

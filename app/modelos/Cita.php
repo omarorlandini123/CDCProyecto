@@ -25,8 +25,7 @@ class Cita extends Model
         return $this->belongsTo('App\modelos\MedicoEspecialidad','medico_especialidad_id','id');
     }
 
-    public function setTurno(){
-        
+    public function setTurno(){        
         if($this->medico_especialidad->medico!=null){
             $turnos= $this->medico_especialidad->medico->turnos($this->fecha_cita);
             foreach ($turnos as $turno) {
@@ -41,6 +40,5 @@ class Cita extends Model
         foreach ($citas as $cita) {
             $cita->setTurno();
         }
-
     }
 }

@@ -54,6 +54,7 @@ export default {
             finalizaCarga: false,
             modalGuardar:null,
             modalValidar:null,
+            snackmsj:null,
             
         };
     },
@@ -73,7 +74,7 @@ export default {
             if (this.nuevo) {
                 this.ubicacionsel = null;
             } else {
-                this.ubicacionsel = this.pacientesel.persona_historia.ubicacion_nacimiento;
+                this.ubicacionsel = this.pacientesel.persona.ubicacion_nacimiento;
             }
             this.modalGuardar={
                 confGuardar:false,
@@ -87,8 +88,14 @@ export default {
                 acciones:null,
                 keyModal:0,
             }
+            this.snackmsj={
+                key:0,
+                view:false,
+                contenido:"",
+                acciones:[]
+            }
 
-
+            
             this.calculateAge();
         },
         llenarCorreo() {
@@ -103,7 +110,7 @@ export default {
                     var contieneCorreo = false;
                     var posicion = 0;
                     var posicionEliminar = 0;
-                    principal.pacientesel.persona_historia.correo.forEach(
+                    principal.pacientesel.persona.correo.forEach(
                         element => {
                             if (
                                 element.correo.trim() == correoAEliminar.trim()
@@ -115,7 +122,7 @@ export default {
                         }
                     );
                     if (contieneCorreo) {
-                        principal.pacientesel.persona_historia.correo.splice(
+                        principal.pacientesel.persona.correo.splice(
                             posicionEliminar,
                             1
                         );
@@ -135,7 +142,7 @@ export default {
                             textoCaja.length > 6
                         ) {
                             var contieneCorreo = false;
-                            principal.pacientesel.persona_historia.correo.forEach(
+                            principal.pacientesel.persona.correo.forEach(
                                 element => {
                                     if (
                                         element.correo.trim() ==
@@ -152,11 +159,11 @@ export default {
                                 chipSetEl.appendChild(chipEl);
                                 chipSet.addChip(chipEl);
 
-                                principal.pacientesel.persona_historia.correo.push({
+                                principal.pacientesel.persona.correo.push({
                                     id: 0,
                                     correo: textoCaja,
                                     persona_id: principal.pacientesel
-                                        .persona_historia.id
+                                        .persona.id
                                 });
                             }
                             inputChip.value = "";
@@ -164,7 +171,7 @@ export default {
                     }
                 });
             }
-            principal.pacientesel.persona_historia.correo.forEach(element => {
+            principal.pacientesel.persona.correo.forEach(element => {
                 let chipEl = principal.armarChipCorreo(element.correo.trim());
                 chipSetEl.appendChild(chipEl);
                 chipSet.addChip(chipEl);
@@ -208,7 +215,7 @@ export default {
                     var contieneTelefono = false;
                     var posicion = 0;
                     var posicionEliminar = 0;
-                    principal.pacientesel.persona_historia.telefono.forEach(
+                    principal.pacientesel.persona.telefono.forEach(
                         element => {
                             if (
                                 element.telefono.trim() == telefonoAEliminar.trim()
@@ -220,7 +227,7 @@ export default {
                         }
                     );
                     if (contieneTelefono) {
-                        principal.pacientesel.persona_historia.telefono.splice(
+                        principal.pacientesel.persona.telefono.splice(
                             posicionEliminar,
                             1
                         );
@@ -248,7 +255,7 @@ export default {
                             textoCaja.length >= 9
                         ) {
                             var contieneTelefono = false;
-                            principal.pacientesel.persona_historia.telefono.forEach(
+                            principal.pacientesel.persona.telefono.forEach(
                                 element => {
                                     if (
                                         element.telefono.trim() ==
@@ -265,11 +272,11 @@ export default {
                                 chipSetEl.appendChild(chipEl);
                                 chipSet.addChip(chipEl);
 
-                                principal.pacientesel.persona_historia.telefono.push({
+                                principal.pacientesel.persona.telefono.push({
                                     id: 0,
                                     telefono: textoCaja,
                                     persona_id: principal.pacientesel
-                                        .persona_historia.id
+                                        .persona.id
                                 });
                             }
                             inputChip.value = "";
@@ -277,7 +284,7 @@ export default {
                     }
                 });
             }
-            principal.pacientesel.persona_historia.telefono.forEach(element => {
+            principal.pacientesel.persona.telefono.forEach(element => {
                 let chipEl = principal.armarChipTelefono(element.telefono.trim());
                 chipSetEl.appendChild(chipEl);
                 chipSet.addChip(chipEl);
@@ -348,7 +355,7 @@ export default {
                     this.ubicaciones.forEach(element => {
                         if (element.id == selectUbicaciones.value) {
                             this.ubicacionsel = element;
-                            this.pacientesel.persona_historia.ubicacion_nacimiento = element;
+                            this.pacientesel.persona.ubicacion_nacimiento = element;
                         }
                     });
                 });
@@ -430,7 +437,7 @@ export default {
                 });
         },
         calculateAge() {
-            var birthday = this.pacientesel.persona_historia.fecha_nacimiento;
+            var birthday = this.pacientesel.persona.fecha_nacimiento;
             var birthday_date = null;
             if (birthday == null) {
                 birthday_date = new Date();
@@ -446,7 +453,7 @@ export default {
             var ageDifMs = Date.now() - birthday_date.getTime();
             var ageDate = new Date(ageDifMs);
             var edad = Math.abs(ageDate.getUTCFullYear() - 1970);
-            this.pacientesel.persona_historia.edad = edad;
+            this.pacientesel.persona.edad = edad;
         },
         confirmarNuevoPaciente(){
             this.modalGuardar.confGuardar=true;
@@ -470,7 +477,36 @@ export default {
                     }
                 ]
             }
-        },                  
+        },          
+        solicitarEliminarPaciente(){
+            this.modalValidar.keyModal+=1;
+            this.modalValidar.conf=true;
+            this.modalValidar.keyModal+=1;
+                this.modalValidar.conf=true;                
+                this.modalValidar.titulo= "Elimninar Paciente";
+                this.modalValidar.contenido= "Vas a eliminar este paciente ¿Estás seguro?";
+                this.modalValidar.acciones=[
+                    {
+                        id:0,
+                        nombre:"eliminarPaciente",
+                        texto:"Eliminar",
+                        valorAccion:this.pacientesel,
+                    }
+                ];
+        },   
+        eliminarPaciente(pacientesel=0){
+            fetch('/pacientes/eliminar/' + pacientesel.id)
+            .then(response => response.json())
+            .then(data => {
+               
+                if (data.eliminado) {
+                    this.$emit('abrirPacientes', 0);
+                }
+
+            });
+
+            
+        },     
         guardarPaciente() {
 
             this.modalGuardar.confGuardar=false;
@@ -478,20 +514,20 @@ export default {
 
             if(
                 (
-                    this.pacientesel.persona_historia.dni==null ||
-                    this.pacientesel.persona_historia.dni=="" 
+                    this.pacientesel.persona.dni==null ||
+                    this.pacientesel.persona.dni=="" 
                 )&& 
                 (
-                    this.pacientesel.persona_historia.pasaporte==null ||
-                    this.pacientesel.persona_historia.pasaporte=="" 
+                    this.pacientesel.persona.pasaporte==null ||
+                    this.pacientesel.persona.pasaporte=="" 
                 )&&
                 (
-                    this.pacientesel.persona_historia.carne_extra==null ||
-                    this.pacientesel.persona_historia.carne_extra=="" 
+                    this.pacientesel.persona.carne_extra==null ||
+                    this.pacientesel.persona.carne_extra=="" 
                 )&&
                 (
-                    this.pacientesel.persona_historia.ruc==null ||
-                    this.pacientesel.persona_historia.ruc=="" 
+                    this.pacientesel.persona.ruc==null ||
+                    this.pacientesel.persona.ruc=="" 
                 )                    
             ){
                 this.modalValidar.keyModal+=1;
@@ -500,19 +536,19 @@ export default {
                 this.modalValidar.acciones=[];
                 
                 
-            }else if(this.pacientesel.persona_historia.telefono.length<2){
+            }else if(this.pacientesel.persona.telefono.length<2){
                 this.modalValidar.keyModal+=1;
                 this.modalValidar.conf=true;               
                 this.modalValidar.contenido= "El paciente debe tener al menos dos teléfonos.";
                 this.modalValidar.acciones=[];
                 
             }else if(
-                    this.pacientesel.persona_historia.nombres==null ||
-                    this.pacientesel.persona_historia.nombres=="" ||
-                    this.pacientesel.persona_historia.apellido_paterno==null ||
-                    this.pacientesel.persona_historia.apellido_paterno=="" ||
-                    this.pacientesel.persona_historia.apellido_materno==null ||
-                    this.pacientesel.persona_historia.apellido_materno=="" 
+                    this.pacientesel.persona.nombres==null ||
+                    this.pacientesel.persona.nombres=="" ||
+                    this.pacientesel.persona.apellido_paterno==null ||
+                    this.pacientesel.persona.apellido_paterno=="" ||
+                    this.pacientesel.persona.apellido_materno==null ||
+                    this.pacientesel.persona.apellido_materno=="" 
                 ){
                 this.modalValidar.keyModal+=1;
                 this.modalValidar.conf=true;               
@@ -521,8 +557,8 @@ export default {
                 
             }
             else if(
-                this.pacientesel.persona_historia.fecha_nacimiento==null ||
-                this.pacientesel.persona_historia.fecha_nacimiento=="" 
+                this.pacientesel.persona.fecha_nacimiento==null ||
+                this.pacientesel.persona.fecha_nacimiento=="" 
             ){
             this.modalValidar.keyModal+=1;
             this.modalValidar.conf=true;               
@@ -550,7 +586,25 @@ export default {
                         .then(data => {
                             console.log(data.id);
                             if (data.guardado) {
+                               
                                 this.$emit('refrescarPacientes', true);
+                                this.snackmsj.view=true;
+                                this.snackmsj.key+=1;
+                                this.snackmsj.contenido="Paciente creado";
+                                this.snackmsj.acciones=[
+                                    {
+                                        id:0,
+                                        action:"yes",
+                                        nombre:"OK",
+                                        nombreAccion:"",
+                                        valorAccion:0,
+                                    }
+                                ]
+                            }else{
+                                this.modalValidar.keyModal+=1;
+                                this.modalValidar.conf=true;               
+                                this.modalValidar.contenido= data.mensaje;
+                                this.modalValidar.acciones=[];
                             }
     
                         });
@@ -575,6 +629,23 @@ export default {
                         .then(data => {
                             if (data.guardado) {
                                 this.$emit('refrescarPacientes', true);
+                                this.snackmsj.view=true;
+                                this.snackmsj.key+=1;
+                                this.snackmsj.contenido="Paciente actualizado";
+                                this.snackmsj.acciones=[
+                                    {
+                                        id:0,
+                                        action:"yes",
+                                        nombre:"OK",
+                                        nombreAccion:"",
+                                        valorAccion:0,
+                                    }
+                                ]
+                            }else{
+                                this.modalValidar.keyModal+=1;
+                                this.modalValidar.conf=true;               
+                                this.modalValidar.contenido= data.mensaje;
+                                this.modalValidar.acciones=[];
                             }
     
                         });

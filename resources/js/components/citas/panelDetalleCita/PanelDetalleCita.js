@@ -32,10 +32,12 @@ import {
 import {
     MDCCheckbox
 } from '@material/checkbox';
-
+import PanelModal from './../../PanelModal.vue'
 
 export default {
-    components: {},
+    components: {
+        "panel-modal": PanelModal,
+    },
     props: {
         citasel: {
             type: Object,
@@ -70,6 +72,7 @@ export default {
             confirmadomedico:false,
             ultimasCitas:null,
             tituloUltimasCitas:"",
+            modalValidar:null,
         };
     },
     mounted() {
@@ -110,6 +113,13 @@ export default {
                 };
                 this.fechasel = null;
                 this.notasel = "";
+            }
+            this.modalValidar={
+                conf:false,
+                contenido:"",            
+                acciones:null,
+                keyModal:0,
+                titulo:"",
             }
         },
         iniciarComponentes() {
@@ -328,6 +338,34 @@ export default {
                         });
                     }
                 });
+        },
+        solicitarEliminarCita(){
+            this.modalValidar.keyModal+=1;
+            this.modalValidar.conf=true;
+            this.modalValidar.keyModal+=1;
+                this.modalValidar.conf=true;                
+                this.modalValidar.titulo= "Elimninar Cita";
+                this.modalValidar.contenido= "Vas a eliminar esta cita ¿Estás seguro?";
+                this.modalValidar.acciones=[
+                    {
+                        id:0,
+                        nombre:"eliminarCita",
+                        texto:"eliminar",
+                        valorAccion:this.citasel
+                    }
+                ];
+        },
+        eliminarCita(citasel=0){
+            fetch('/citas/eliminar/' + citasel.id)
+            .then(response => response.json())
+            .then(data => {
+                if (data.eliminado) {
+                    this.$emit('cerrarPanelPacientes', true);
+                }
+
+            });
+
+            
         },
         llamarUltimasCitas(){
             var idHistoria=0;

@@ -23198,2385 +23198,6 @@ class MDCNotchedOutline extends _material_base_component__WEBPACK_IMPORTED_MODUL
 
 /***/ }),
 
-/***/ "./node_modules/@material/radio/dist/mdc.radio.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@material/radio/dist/mdc.radio.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/*!
- Material Components for the Web
- Copyright (c) 2019 Google Inc.
- License: MIT
-*/
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(true)
-		module.exports = factory();
-	else {}
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 127);
-/******/ })
-/************************************************************************/
-/******/ ({
-
-/***/ 0:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/**
- * @template A
- */
-var MDCFoundation = function () {
-  _createClass(MDCFoundation, null, [{
-    key: "cssClasses",
-
-    /** @return enum{cssClasses} */
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports every
-      // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
-      return {};
-    }
-
-    /** @return enum{strings} */
-
-  }, {
-    key: "strings",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
-      return {};
-    }
-
-    /** @return enum{numbers} */
-
-  }, {
-    key: "numbers",
-    get: function get() {
-      // Classes extending MDCFoundation should implement this method to return an object which exports all
-      // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
-      return {};
-    }
-
-    /** @return {!Object} */
-
-  }, {
-    key: "defaultAdapter",
-    get: function get() {
-      // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
-      // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
-      // validation.
-      return {};
-    }
-
-    /**
-     * @param {A=} adapter
-     */
-
-  }]);
-
-  function MDCFoundation() {
-    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-    _classCallCheck(this, MDCFoundation);
-
-    /** @protected {!A} */
-    this.adapter_ = adapter;
-  }
-
-  _createClass(MDCFoundation, [{
-    key: "init",
-    value: function init() {
-      // Subclasses should override this method to perform initialization routines (registering events, etc.)
-    }
-  }, {
-    key: "destroy",
-    value: function destroy() {
-      // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
-    }
-  }]);
-
-  return MDCFoundation;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
-
-/***/ }),
-
-/***/ 1:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-/**
- * @template F
- */
-
-var MDCComponent = function () {
-  _createClass(MDCComponent, null, [{
-    key: 'attachTo',
-
-    /**
-     * @param {!Element} root
-     * @return {!MDCComponent}
-     */
-    value: function attachTo(root) {
-      // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
-      // returns an instantiated component with its root set to that element. Also note that in the cases of
-      // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
-      // from getDefaultFoundation().
-      return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
-    }
-
-    /**
-     * @param {!Element} root
-     * @param {F=} foundation
-     * @param {...?} args
-     */
-
-  }]);
-
-  function MDCComponent(root) {
-    var foundation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
-
-    _classCallCheck(this, MDCComponent);
-
-    /** @protected {!Element} */
-    this.root_ = root;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    this.initialize.apply(this, args);
-    // Note that we initialize foundation here and not within the constructor's default param so that
-    // this.root_ is defined and can be used within the foundation class.
-    /** @protected {!F} */
-    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
-    this.foundation_.init();
-    this.initialSyncWithDOM();
-  }
-
-  _createClass(MDCComponent, [{
-    key: 'initialize',
-    value: function initialize() /* ...args */{}
-    // Subclasses can override this to do any additional setup work that would be considered part of a
-    // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
-    // initialized. Any additional arguments besides root and foundation will be passed in here.
-
-
-    /**
-     * @return {!F} foundation
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      // Subclasses must override this method to return a properly configured foundation class for the
-      // component.
-      throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
-    }
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      // Subclasses should override this method if they need to perform work to synchronize with a host DOM
-      // object. An example of this would be a form control wrapper that needs to synchronize its internal state
-      // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
-      // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
-    }
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      // Subclasses may implement this method to release any resources / deregister any listeners they have
-      // attached. An example of this might be deregistering a resize event from the window object.
-      this.foundation_.destroy();
-    }
-
-    /**
-     * Wrapper method to add an event listener to the component's root element. This is most useful when
-     * listening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'listen',
-    value: function listen(evtType, handler) {
-      this.root_.addEventListener(evtType, handler);
-    }
-
-    /**
-     * Wrapper method to remove an event listener to the component's root element. This is most useful when
-     * unlistening for custom events.
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: 'unlisten',
-    value: function unlisten(evtType, handler) {
-      this.root_.removeEventListener(evtType, handler);
-    }
-
-    /**
-     * Fires a cross-browser-compatible custom event from the component root of the given type,
-     * with the given data.
-     * @param {string} evtType
-     * @param {!Object} evtData
-     * @param {boolean=} shouldBubble
-     */
-
-  }, {
-    key: 'emit',
-    value: function emit(evtType, evtData) {
-      var shouldBubble = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-
-      var evt = void 0;
-      if (typeof CustomEvent === 'function') {
-        evt = new CustomEvent(evtType, {
-          detail: evtData,
-          bubbles: shouldBubble
-        });
-      } else {
-        evt = document.createEvent('CustomEvent');
-        evt.initCustomEvent(evtType, shouldBubble, false, evtData);
-      }
-
-      this.root_.dispatchEvent(evt);
-    }
-  }]);
-
-  return MDCComponent;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
-
-/***/ }),
-
-/***/ 127:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRadio", function() { return MDCRadio; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(128);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__ = __webpack_require__(4);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRadioFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-
-
-/**
- * @extends MDCComponent<!MDCRadioFoundation>
- * @implements {MDCSelectionControl}
- */
-
-var MDCRadio = function (_MDCComponent) {
-  _inherits(MDCRadio, _MDCComponent);
-
-  _createClass(MDCRadio, [{
-    key: 'checked',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.nativeControl_.checked;
-    }
-
-    /** @param {boolean} checked */
-    ,
-    set: function set(checked) {
-      this.nativeControl_.checked = checked;
-    }
-
-    /** @return {boolean} */
-
-  }, {
-    key: 'disabled',
-    get: function get() {
-      return this.nativeControl_.disabled;
-    }
-
-    /** @param {boolean} disabled */
-    ,
-    set: function set(disabled) {
-      this.foundation_.setDisabled(disabled);
-    }
-
-    /** @return {?string} */
-
-  }, {
-    key: 'value',
-    get: function get() {
-      return this.nativeControl_.value;
-    }
-
-    /** @param {?string} value */
-    ,
-    set: function set(value) {
-      this.nativeControl_.value = value;
-    }
-
-    /** @return {!MDCRipple} */
-
-  }, {
-    key: 'ripple',
-    get: function get() {
-      return this.ripple_;
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      return new MDCRadio(root);
-    }
-  }]);
-
-  function MDCRadio() {
-    var _ref;
-
-    _classCallCheck(this, MDCRadio);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @private {!MDCRipple} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCRadio.__proto__ || Object.getPrototypeOf(MDCRadio)).call.apply(_ref, [this].concat(args)));
-
-    _this.ripple_ = _this.initRipple_();
-    return _this;
-  }
-
-  /**
-   * @return {!MDCRipple}
-   * @private
-   */
-
-
-  _createClass(MDCRadio, [{
-    key: 'initRipple_',
-    value: function initRipple_() {
-      var _this2 = this;
-
-      var adapter = _extends(__WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["MDCRipple"].createAdapter(this), {
-        isUnbounded: function isUnbounded() {
-          return true;
-        },
-        // Radio buttons technically go "active" whenever there is *any* keyboard interaction. This is not the
-        // UI we desire.
-        isSurfaceActive: function isSurfaceActive() {
-          return false;
-        },
-        registerInteractionHandler: function registerInteractionHandler(type, handler) {
-          return _this2.nativeControl_.addEventListener(type, handler);
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(type, handler) {
-          return _this2.nativeControl_.removeEventListener(type, handler);
-        }
-      });
-      var foundation = new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["MDCRippleFoundation"](adapter);
-      return new __WEBPACK_IMPORTED_MODULE_3__material_ripple_index__["MDCRipple"](this.root_, foundation);
-    }
-
-    /**
-     * Returns the state of the native control element, or null if the native control element is not present.
-     * @return {?MDCSelectionControlState}
-     * @private
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.ripple_.destroy();
-      _get(MDCRadio.prototype.__proto__ || Object.getPrototypeOf(MDCRadio.prototype), 'destroy', this).call(this);
-    }
-
-    /** @return {!MDCRadioFoundation} */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      var _this3 = this;
-
-      return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */]({
-        addClass: function addClass(className) {
-          return _this3.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return _this3.root_.classList.remove(className);
-        },
-        setNativeControlDisabled: function setNativeControlDisabled(disabled) {
-          return _this3.nativeControl_.disabled = disabled;
-        }
-      });
-    }
-  }, {
-    key: 'nativeControl_',
-    get: function get() {
-      var NATIVE_CONTROL_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */].strings.NATIVE_CONTROL_SELECTOR;
-
-      var el = /** @type {?MDCSelectionControlState} */this.root_.querySelector(NATIVE_CONTROL_SELECTOR);
-      return el;
-    }
-  }]);
-
-  return MDCRadio;
-}(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
-
-
-
-/***/ }),
-
-/***/ 128:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_selection_control_index__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__adapter__ = __webpack_require__(129);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__constants__ = __webpack_require__(130);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint-enable no-unused-vars */
-
-
-/**
- * @extends {MDCFoundation<!MDCRadioAdapter>}
- */
-
-var MDCRadioFoundation = function (_MDCFoundation) {
-  _inherits(MDCRadioFoundation, _MDCFoundation);
-
-  function MDCRadioFoundation() {
-    _classCallCheck(this, MDCRadioFoundation);
-
-    return _possibleConstructorReturn(this, (MDCRadioFoundation.__proto__ || Object.getPrototypeOf(MDCRadioFoundation)).apply(this, arguments));
-  }
-
-  _createClass(MDCRadioFoundation, [{
-    key: 'setDisabled',
-
-
-    /** @param {boolean} disabled */
-    value: function setDisabled(disabled) {
-      var DISABLED = MDCRadioFoundation.cssClasses.DISABLED;
-
-      this.adapter_.setNativeControlDisabled(disabled);
-      if (disabled) {
-        this.adapter_.addClass(DISABLED);
-      } else {
-        this.adapter_.removeClass(DISABLED);
-      }
-    }
-  }], [{
-    key: 'cssClasses',
-
-    /** @return enum {cssClasses} */
-    get: function get() {
-      return __WEBPACK_IMPORTED_MODULE_3__constants__["a" /* cssClasses */];
-    }
-
-    /** @return enum {strings} */
-
-  }, {
-    key: 'strings',
-    get: function get() {
-      return __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* strings */];
-    }
-
-    /** @return {!MDCRadioAdapter} */
-
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return (/** @type {!MDCRadioAdapter} */{
-          addClass: function addClass() /* className: string */{},
-          removeClass: function removeClass() /* className: string */{},
-          setNativeControlDisabled: function setNativeControlDisabled() /* disabled: boolean */{}
-        }
-      );
-    }
-  }]);
-
-  return MDCRadioFoundation;
-}(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCRadioFoundation);
-
-/***/ }),
-
-/***/ 129:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_selection_control_index__ = __webpack_require__(7);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/* eslint-disable no-unused-vars */
-
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Radio. Provides an interface for managing
- * - classes
- * - dom
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-
-var MDCRadioAdapter = function () {
-  function MDCRadioAdapter() {
-    _classCallCheck(this, MDCRadioAdapter);
-  }
-
-  _createClass(MDCRadioAdapter, [{
-    key: 'addClass',
-
-    /** @param {string} className */
-    value: function addClass(className) {}
-
-    /** @param {string} className */
-
-  }, {
-    key: 'removeClass',
-    value: function removeClass(className) {}
-
-    /** @param {boolean} disabled */
-
-  }, {
-    key: 'setNativeControlDisabled',
-    value: function setNativeControlDisabled(disabled) {}
-  }]);
-
-  return MDCRadioAdapter;
-}();
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCRadioAdapter);
-
-/***/ }),
-
-/***/ 130:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/** @enum {string} */
-var strings = {
-  NATIVE_CONTROL_SELECTOR: '.mdc-radio__native-control'
-};
-
-/** @enum {string} */
-var cssClasses = {
-  ROOT: 'mdc-radio',
-  DISABLED: 'mdc-radio--disabled'
-};
-
-
-
-/***/ }),
-
-/***/ 2:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "supportsCssVariables", function() { return supportsCssVariables; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "applyPassive", function() { return applyPassive; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMatchesProperty", function() { return getMatchesProperty; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNormalizedEventCoords", function() { return getNormalizedEventCoords; });
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/**
- * Stores result from supportsCssVariables to avoid redundant processing to detect CSS custom variable support.
- * @private {boolean|undefined}
- */
-var supportsCssVariables_ = void 0;
-
-/**
- * Stores result from applyPassive to avoid redundant processing to detect passive event listener support.
- * @private {boolean|undefined}
- */
-var supportsPassive_ = void 0;
-
-/**
- * @param {!Window} windowObj
- * @return {boolean}
- */
-function detectEdgePseudoVarBug(windowObj) {
-  // Detect versions of Edge with buggy var() support
-  // See: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/11495448/
-  var document = windowObj.document;
-  var node = document.createElement('div');
-  node.className = 'mdc-ripple-surface--test-edge-var-bug';
-  document.body.appendChild(node);
-
-  // The bug exists if ::before style ends up propagating to the parent element.
-  // Additionally, getComputedStyle returns null in iframes with display: "none" in Firefox,
-  // but Firefox is known to support CSS custom properties correctly.
-  // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-  var computedStyle = windowObj.getComputedStyle(node);
-  var hasPseudoVarBug = computedStyle !== null && computedStyle.borderTopStyle === 'solid';
-  node.remove();
-  return hasPseudoVarBug;
-}
-
-/**
- * @param {!Window} windowObj
- * @param {boolean=} forceRefresh
- * @return {boolean|undefined}
- */
-
-function supportsCssVariables(windowObj) {
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  var supportsCssVariables = supportsCssVariables_;
-  if (typeof supportsCssVariables_ === 'boolean' && !forceRefresh) {
-    return supportsCssVariables;
-  }
-
-  var supportsFunctionPresent = windowObj.CSS && typeof windowObj.CSS.supports === 'function';
-  if (!supportsFunctionPresent) {
-    return;
-  }
-
-  var explicitlySupportsCssVars = windowObj.CSS.supports('--css-vars', 'yes');
-  // See: https://bugs.webkit.org/show_bug.cgi?id=154669
-  // See: README section on Safari
-  var weAreFeatureDetectingSafari10plus = windowObj.CSS.supports('(--css-vars: yes)') && windowObj.CSS.supports('color', '#00000000');
-
-  if (explicitlySupportsCssVars || weAreFeatureDetectingSafari10plus) {
-    supportsCssVariables = !detectEdgePseudoVarBug(windowObj);
-  } else {
-    supportsCssVariables = false;
-  }
-
-  if (!forceRefresh) {
-    supportsCssVariables_ = supportsCssVariables;
-  }
-  return supportsCssVariables;
-}
-
-//
-/**
- * Determine whether the current browser supports passive event listeners, and if so, use them.
- * @param {!Window=} globalObj
- * @param {boolean=} forceRefresh
- * @return {boolean|!EventListenerOptions}
- */
-function applyPassive() {
-  var globalObj = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : window;
-  var forceRefresh = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (supportsPassive_ === undefined || forceRefresh) {
-    var isSupported = false;
-    try {
-      globalObj.document.addEventListener('test', null, { get passive() {
-          isSupported = true;
-          return isSupported;
-        } });
-    } catch (e) {}
-
-    supportsPassive_ = isSupported;
-  }
-
-  return supportsPassive_ ? /** @type {!EventListenerOptions} */{ passive: true } : false;
-}
-
-/**
- * @param {!Object} HTMLElementPrototype
- * @return {string}
- */
-function getMatchesProperty(HTMLElementPrototype) {
-  /**
-   * Order is important because we return the first existing method we find.
-   * Do not change the order of the items in the below array.
-   */
-  var matchesMethods = ['matches', 'webkitMatchesSelector', 'msMatchesSelector'];
-  var method = 'matches';
-  for (var i = 0; i < matchesMethods.length; i++) {
-    var matchesMethod = matchesMethods[i];
-    if (matchesMethod in HTMLElementPrototype) {
-      method = matchesMethod;
-      break;
-    }
-  }
-
-  return method;
-}
-
-/**
- * @param {!Event} ev
- * @param {{x: number, y: number}} pageOffset
- * @param {!ClientRect} clientRect
- * @return {{x: number, y: number}}
- */
-function getNormalizedEventCoords(ev, pageOffset, clientRect) {
-  var x = pageOffset.x,
-      y = pageOffset.y;
-
-  var documentX = x + clientRect.left;
-  var documentY = y + clientRect.top;
-
-  var normalizedX = void 0;
-  var normalizedY = void 0;
-  // Determine touch point relative to the ripple container.
-  if (ev.type === 'touchstart') {
-    ev = /** @type {!TouchEvent} */ev;
-    normalizedX = ev.changedTouches[0].pageX - documentX;
-    normalizedY = ev.changedTouches[0].pageY - documentY;
-  } else {
-    ev = /** @type {!MouseEvent} */ev;
-    normalizedX = ev.pageX - documentX;
-    normalizedY = ev.pageY - documentY;
-  }
-
-  return { x: normalizedX, y: normalizedY };
-}
-
-
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/* eslint no-unused-vars: [2, {"args": "none"}] */
-
-/**
- * Adapter for MDC Ripple. Provides an interface for managing
- * - classes
- * - dom
- * - CSS variables
- * - position
- * - dimensions
- * - scroll position
- * - event handlers
- * - unbounded, active and disabled states
- *
- * Additionally, provides type information for the adapter to the Closure
- * compiler.
- *
- * Implement this adapter for your framework of choice to delegate updates to
- * the component in your framework of choice. See architecture documentation
- * for more details.
- * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
- *
- * @record
- */
-var MDCRippleAdapter = function () {
-  function MDCRippleAdapter() {
-    _classCallCheck(this, MDCRippleAdapter);
-  }
-
-  _createClass(MDCRippleAdapter, [{
-    key: "browserSupportsCssVars",
-
-    /** @return {boolean} */
-    value: function browserSupportsCssVars() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isUnbounded",
-    value: function isUnbounded() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isSurfaceActive",
-    value: function isSurfaceActive() {}
-
-    /** @return {boolean} */
-
-  }, {
-    key: "isSurfaceDisabled",
-    value: function isSurfaceDisabled() {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "addClass",
-    value: function addClass(className) {}
-
-    /** @param {string} className */
-
-  }, {
-    key: "removeClass",
-    value: function removeClass(className) {}
-
-    /** @param {!EventTarget} target */
-
-  }, {
-    key: "containsEventTarget",
-    value: function containsEventTarget(target) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerInteractionHandler",
-    value: function registerInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterInteractionHandler",
-    value: function deregisterInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerDocumentInteractionHandler",
-    value: function registerDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {string} evtType
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterDocumentInteractionHandler",
-    value: function deregisterDocumentInteractionHandler(evtType, handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "registerResizeHandler",
-    value: function registerResizeHandler(handler) {}
-
-    /**
-     * @param {!Function} handler
-     */
-
-  }, {
-    key: "deregisterResizeHandler",
-    value: function deregisterResizeHandler(handler) {}
-
-    /**
-     * @param {string} varName
-     * @param {?number|string} value
-     */
-
-  }, {
-    key: "updateCssVariable",
-    value: function updateCssVariable(varName, value) {}
-
-    /** @return {!ClientRect} */
-
-  }, {
-    key: "computeBoundingRect",
-    value: function computeBoundingRect() {}
-
-    /** @return {{x: number, y: number}} */
-
-  }, {
-    key: "getWindowPageOffset",
-    value: function getWindowPageOffset() {}
-  }]);
-
-  return MDCRippleAdapter;
-}();
-
-/* unused harmony default export */ var _unused_webpack_default_export = (MDCRippleAdapter);
-
-/***/ }),
-
-/***/ 4:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRipple", function() { return MDCRipple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleCapableSurface", function() { return RippleCapableSurface; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foundation__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(2);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCRippleFoundation", function() { return __WEBPACK_IMPORTED_MODULE_2__foundation__["a"]; });
-/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return __WEBPACK_IMPORTED_MODULE_3__util__; });
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-
-
-
-/**
- * @extends MDCComponent<!MDCRippleFoundation>
- */
-
-var MDCRipple = function (_MDCComponent) {
-  _inherits(MDCRipple, _MDCComponent);
-
-  /** @param {...?} args */
-  function MDCRipple() {
-    var _ref;
-
-    _classCallCheck(this, MDCRipple);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    /** @type {boolean} */
-    var _this = _possibleConstructorReturn(this, (_ref = MDCRipple.__proto__ || Object.getPrototypeOf(MDCRipple)).call.apply(_ref, [this].concat(args)));
-
-    _this.disabled = false;
-
-    /** @private {boolean} */
-    _this.unbounded_;
-    return _this;
-  }
-
-  /**
-   * @param {!Element} root
-   * @param {{isUnbounded: (boolean|undefined)}=} options
-   * @return {!MDCRipple}
-   */
-
-
-  _createClass(MDCRipple, [{
-    key: 'setUnbounded_',
-
-
-    /**
-     * Closure Compiler throws an access control error when directly accessing a
-     * protected or private property inside a getter/setter, like unbounded above.
-     * By accessing the protected property inside a method, we solve that problem.
-     * That's why this function exists.
-     * @private
-     */
-    value: function setUnbounded_() {
-      this.foundation_.setUnbounded(this.unbounded_);
-    }
-  }, {
-    key: 'activate',
-    value: function activate() {
-      this.foundation_.activate();
-    }
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.foundation_.deactivate();
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      this.foundation_.layout();
-    }
-
-    /**
-     * @return {!MDCRippleFoundation}
-     * @override
-     */
-
-  }, {
-    key: 'getDefaultFoundation',
-    value: function getDefaultFoundation() {
-      return new __WEBPACK_IMPORTED_MODULE_2__foundation__["a" /* default */](MDCRipple.createAdapter(this));
-    }
-
-    /** @override */
-
-  }, {
-    key: 'initialSyncWithDOM',
-    value: function initialSyncWithDOM() {
-      this.unbounded = 'mdcRippleIsUnbounded' in this.root_.dataset;
-    }
-  }, {
-    key: 'unbounded',
-
-
-    /** @return {boolean} */
-    get: function get() {
-      return this.unbounded_;
-    }
-
-    /** @param {boolean} unbounded */
-    ,
-    set: function set(unbounded) {
-      this.unbounded_ = Boolean(unbounded);
-      this.setUnbounded_();
-    }
-  }], [{
-    key: 'attachTo',
-    value: function attachTo(root) {
-      var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-          _ref2$isUnbounded = _ref2.isUnbounded,
-          isUnbounded = _ref2$isUnbounded === undefined ? undefined : _ref2$isUnbounded;
-
-      var ripple = new MDCRipple(root);
-      // Only override unbounded behavior if option is explicitly specified
-      if (isUnbounded !== undefined) {
-        ripple.unbounded = /** @type {boolean} */isUnbounded;
-      }
-      return ripple;
-    }
-
-    /**
-     * @param {!RippleCapableSurface} instance
-     * @return {!MDCRippleAdapter}
-     */
-
-  }, {
-    key: 'createAdapter',
-    value: function createAdapter(instance) {
-      var MATCHES = __WEBPACK_IMPORTED_MODULE_3__util__["getMatchesProperty"](HTMLElement.prototype);
-
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() {
-          return __WEBPACK_IMPORTED_MODULE_3__util__["supportsCssVariables"](window);
-        },
-        isUnbounded: function isUnbounded() {
-          return instance.unbounded;
-        },
-        isSurfaceActive: function isSurfaceActive() {
-          return instance.root_[MATCHES](':active');
-        },
-        isSurfaceDisabled: function isSurfaceDisabled() {
-          return instance.disabled;
-        },
-        addClass: function addClass(className) {
-          return instance.root_.classList.add(className);
-        },
-        removeClass: function removeClass(className) {
-          return instance.root_.classList.remove(className);
-        },
-        containsEventTarget: function containsEventTarget(target) {
-          return instance.root_.contains(target);
-        },
-        registerInteractionHandler: function registerInteractionHandler(evtType, handler) {
-          return instance.root_.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["applyPassive"]());
-        },
-        deregisterInteractionHandler: function deregisterInteractionHandler(evtType, handler) {
-          return instance.root_.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["applyPassive"]());
-        },
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.addEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["applyPassive"]());
-        },
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler(evtType, handler) {
-          return document.documentElement.removeEventListener(evtType, handler, __WEBPACK_IMPORTED_MODULE_3__util__["applyPassive"]());
-        },
-        registerResizeHandler: function registerResizeHandler(handler) {
-          return window.addEventListener('resize', handler);
-        },
-        deregisterResizeHandler: function deregisterResizeHandler(handler) {
-          return window.removeEventListener('resize', handler);
-        },
-        updateCssVariable: function updateCssVariable(varName, value) {
-          return instance.root_.style.setProperty(varName, value);
-        },
-        computeBoundingRect: function computeBoundingRect() {
-          return instance.root_.getBoundingClientRect();
-        },
-        getWindowPageOffset: function getWindowPageOffset() {
-          return { x: window.pageXOffset, y: window.pageYOffset };
-        }
-      };
-    }
-  }]);
-
-  return MDCRipple;
-}(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
-
-/**
- * See Material Design spec for more details on when to use ripples.
- * https://material.io/guidelines/motion/choreography.html#choreography-creation
- * @record
- */
-
-
-var RippleCapableSurface = function RippleCapableSurface() {
-  _classCallCheck(this, RippleCapableSurface);
-};
-
-/** @protected {!Element} */
-
-
-RippleCapableSurface.prototype.root_;
-
-/**
- * Whether or not the ripple bleeds out of the bounds of the element.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.unbounded;
-
-/**
- * Whether or not the ripple is attached to a disabled component.
- * @type {boolean|undefined}
- */
-RippleCapableSurface.prototype.disabled;
-
-
-
-/***/ }),
-
-/***/ 5:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(2);
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-
-
-
-
-
-/**
- * @typedef {{
- *   isActivated: (boolean|undefined),
- *   hasDeactivationUXRun: (boolean|undefined),
- *   wasActivatedByPointer: (boolean|undefined),
- *   wasElementMadeActive: (boolean|undefined),
- *   activationEvent: (!Event|undefined),
- *   isProgrammatic: (boolean|undefined)
- * }}
- */
-var ActivationStateType = void 0;
-
-/**
- * @typedef {{
- *   activate: (string|undefined),
- *   deactivate: (string|undefined),
- *   focus: (string|undefined),
- *   blur: (string|undefined)
- * }}
- */
-var ListenerInfoType = void 0;
-
-/**
- * @typedef {{
- *   activate: function(!Event),
- *   deactivate: function(!Event=),
- *   focus: function(),
- *   blur: function()
- * }}
- */
-var ListenersType = void 0;
-
-/**
- * @typedef {{
- *   x: number,
- *   y: number
- * }}
- */
-var PointType = void 0;
-
-// Activation events registered on the root element of each instance for activation
-var ACTIVATION_EVENT_TYPES = ['touchstart', 'pointerdown', 'mousedown', 'keydown'];
-
-// Deactivation events registered on documentElement when a pointer-related down event occurs
-var POINTER_DEACTIVATION_EVENT_TYPES = ['touchend', 'pointerup', 'mouseup', 'contextmenu'];
-
-// Tracks activations that have occurred on the current frame, to avoid simultaneous nested activations
-/** @type {!Array<!EventTarget>} */
-var activatedTargets = [];
-
-/**
- * @extends {MDCFoundation<!MDCRippleAdapter>}
- */
-
-var MDCRippleFoundation = function (_MDCFoundation) {
-  _inherits(MDCRippleFoundation, _MDCFoundation);
-
-  _createClass(MDCRippleFoundation, null, [{
-    key: 'cssClasses',
-    get: function get() {
-      return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
-    }
-  }, {
-    key: 'strings',
-    get: function get() {
-      return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
-    }
-  }, {
-    key: 'numbers',
-    get: function get() {
-      return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
-    }
-  }, {
-    key: 'defaultAdapter',
-    get: function get() {
-      return {
-        browserSupportsCssVars: function browserSupportsCssVars() /* boolean - cached */{},
-        isUnbounded: function isUnbounded() /* boolean */{},
-        isSurfaceActive: function isSurfaceActive() /* boolean */{},
-        isSurfaceDisabled: function isSurfaceDisabled() /* boolean */{},
-        addClass: function addClass() /* className: string */{},
-        removeClass: function removeClass() /* className: string */{},
-        containsEventTarget: function containsEventTarget() /* target: !EventTarget */{},
-        registerInteractionHandler: function registerInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterInteractionHandler: function deregisterInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerDocumentInteractionHandler: function registerDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        deregisterDocumentInteractionHandler: function deregisterDocumentInteractionHandler() /* evtType: string, handler: EventListener */{},
-        registerResizeHandler: function registerResizeHandler() /* handler: EventListener */{},
-        deregisterResizeHandler: function deregisterResizeHandler() /* handler: EventListener */{},
-        updateCssVariable: function updateCssVariable() /* varName: string, value: string */{},
-        computeBoundingRect: function computeBoundingRect() /* ClientRect */{},
-        getWindowPageOffset: function getWindowPageOffset() /* {x: number, y: number} */{}
-      };
-    }
-  }]);
-
-  function MDCRippleFoundation(adapter) {
-    _classCallCheck(this, MDCRippleFoundation);
-
-    /** @private {number} */
-    var _this = _possibleConstructorReturn(this, (MDCRippleFoundation.__proto__ || Object.getPrototypeOf(MDCRippleFoundation)).call(this, _extends(MDCRippleFoundation.defaultAdapter, adapter)));
-
-    _this.layoutFrame_ = 0;
-
-    /** @private {!ClientRect} */
-    _this.frame_ = /** @type {!ClientRect} */{ width: 0, height: 0 };
-
-    /** @private {!ActivationStateType} */
-    _this.activationState_ = _this.defaultActivationState_();
-
-    /** @private {number} */
-    _this.initialSize_ = 0;
-
-    /** @private {number} */
-    _this.maxRadius_ = 0;
-
-    /** @private {function(!Event)} */
-    _this.activateHandler_ = function (e) {
-      return _this.activate_(e);
-    };
-
-    /** @private {function(!Event=)} */
-    _this.deactivateHandler_ = function () {
-      return _this.deactivate_();
-    };
-
-    /** @private {function(!Event=)} */
-    _this.focusHandler_ = function () {
-      return _this.handleFocus();
-    };
-
-    /** @private {function(!Event=)} */
-    _this.blurHandler_ = function () {
-      return _this.handleBlur();
-    };
-
-    /** @private {!Function} */
-    _this.resizeHandler_ = function () {
-      return _this.layout();
-    };
-
-    /** @private {{left: number, top:number}} */
-    _this.unboundedCoords_ = {
-      left: 0,
-      top: 0
-    };
-
-    /** @private {number} */
-    _this.fgScale_ = 0;
-
-    /** @private {number} */
-    _this.activationTimer_ = 0;
-
-    /** @private {number} */
-    _this.fgDeactivationRemovalTimer_ = 0;
-
-    /** @private {boolean} */
-    _this.activationAnimationHasEnded_ = false;
-
-    /** @private {!Function} */
-    _this.activationTimerCallback_ = function () {
-      _this.activationAnimationHasEnded_ = true;
-      _this.runDeactivationUXLogicIfReady_();
-    };
-
-    /** @private {!Event|undefined} */
-    _this.previousActivationEvent_;
-    return _this;
-  }
-
-  /**
-   * We compute this property so that we are not querying information about the client
-   * until the point in time where the foundation requests it. This prevents scenarios where
-   * client-side feature-detection may happen too early, such as when components are rendered on the server
-   * and then initialized at mount time on the client.
-   * @return {boolean}
-   * @private
-   */
-
-
-  _createClass(MDCRippleFoundation, [{
-    key: 'supportsPressRipple_',
-    value: function supportsPressRipple_() {
-      return this.adapter_.browserSupportsCssVars();
-    }
-
-    /**
-     * @return {!ActivationStateType}
-     */
-
-  }, {
-    key: 'defaultActivationState_',
-    value: function defaultActivationState_() {
-      return {
-        isActivated: false,
-        hasDeactivationUXRun: false,
-        wasActivatedByPointer: false,
-        wasElementMadeActive: false,
-        activationEvent: undefined,
-        isProgrammatic: false
-      };
-    }
-
-    /** @override */
-
-  }, {
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      var supportsPressRipple = this.supportsPressRipple_();
-
-      this.registerRootHandlers_(supportsPressRipple);
-
-      if (supportsPressRipple) {
-        var _MDCRippleFoundation$ = MDCRippleFoundation.cssClasses,
-            ROOT = _MDCRippleFoundation$.ROOT,
-            UNBOUNDED = _MDCRippleFoundation$.UNBOUNDED;
-
-        requestAnimationFrame(function () {
-          _this2.adapter_.addClass(ROOT);
-          if (_this2.adapter_.isUnbounded()) {
-            _this2.adapter_.addClass(UNBOUNDED);
-            // Unbounded ripples need layout logic applied immediately to set coordinates for both shade and ripple
-            _this2.layoutInternal_();
-          }
-        });
-      }
-    }
-
-    /** @override */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      var _this3 = this;
-
-      if (this.supportsPressRipple_()) {
-        if (this.activationTimer_) {
-          clearTimeout(this.activationTimer_);
-          this.activationTimer_ = 0;
-          this.adapter_.removeClass(MDCRippleFoundation.cssClasses.FG_ACTIVATION);
-        }
-
-        if (this.fgDeactivationRemovalTimer_) {
-          clearTimeout(this.fgDeactivationRemovalTimer_);
-          this.fgDeactivationRemovalTimer_ = 0;
-          this.adapter_.removeClass(MDCRippleFoundation.cssClasses.FG_DEACTIVATION);
-        }
-
-        var _MDCRippleFoundation$2 = MDCRippleFoundation.cssClasses,
-            ROOT = _MDCRippleFoundation$2.ROOT,
-            UNBOUNDED = _MDCRippleFoundation$2.UNBOUNDED;
-
-        requestAnimationFrame(function () {
-          _this3.adapter_.removeClass(ROOT);
-          _this3.adapter_.removeClass(UNBOUNDED);
-          _this3.removeCssVars_();
-        });
-      }
-
-      this.deregisterRootHandlers_();
-      this.deregisterDeactivationHandlers_();
-    }
-
-    /**
-     * @param {boolean} supportsPressRipple Passed from init to save a redundant function call
-     * @private
-     */
-
-  }, {
-    key: 'registerRootHandlers_',
-    value: function registerRootHandlers_(supportsPressRipple) {
-      var _this4 = this;
-
-      if (supportsPressRipple) {
-        ACTIVATION_EVENT_TYPES.forEach(function (type) {
-          _this4.adapter_.registerInteractionHandler(type, _this4.activateHandler_);
-        });
-        if (this.adapter_.isUnbounded()) {
-          this.adapter_.registerResizeHandler(this.resizeHandler_);
-        }
-      }
-
-      this.adapter_.registerInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.registerInteractionHandler('blur', this.blurHandler_);
-    }
-
-    /**
-     * @param {!Event} e
-     * @private
-     */
-
-  }, {
-    key: 'registerDeactivationHandlers_',
-    value: function registerDeactivationHandlers_(e) {
-      var _this5 = this;
-
-      if (e.type === 'keydown') {
-        this.adapter_.registerInteractionHandler('keyup', this.deactivateHandler_);
-      } else {
-        POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-          _this5.adapter_.registerDocumentInteractionHandler(type, _this5.deactivateHandler_);
-        });
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterRootHandlers_',
-    value: function deregisterRootHandlers_() {
-      var _this6 = this;
-
-      ACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this6.adapter_.deregisterInteractionHandler(type, _this6.activateHandler_);
-      });
-      this.adapter_.deregisterInteractionHandler('focus', this.focusHandler_);
-      this.adapter_.deregisterInteractionHandler('blur', this.blurHandler_);
-
-      if (this.adapter_.isUnbounded()) {
-        this.adapter_.deregisterResizeHandler(this.resizeHandler_);
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'deregisterDeactivationHandlers_',
-    value: function deregisterDeactivationHandlers_() {
-      var _this7 = this;
-
-      this.adapter_.deregisterInteractionHandler('keyup', this.deactivateHandler_);
-      POINTER_DEACTIVATION_EVENT_TYPES.forEach(function (type) {
-        _this7.adapter_.deregisterDocumentInteractionHandler(type, _this7.deactivateHandler_);
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'removeCssVars_',
-    value: function removeCssVars_() {
-      var _this8 = this;
-
-      var strings = MDCRippleFoundation.strings;
-
-      Object.keys(strings).forEach(function (k) {
-        if (k.indexOf('VAR_') === 0) {
-          _this8.adapter_.updateCssVariable(strings[k], null);
-        }
-      });
-    }
-
-    /**
-     * @param {!Event=} e
-     * @private
-     */
-
-  }, {
-    key: 'activate_',
-    value: function activate_(e) {
-      var _this9 = this;
-
-      if (this.adapter_.isSurfaceDisabled()) {
-        return;
-      }
-
-      var activationState = this.activationState_;
-      if (activationState.isActivated) {
-        return;
-      }
-
-      // Avoid reacting to follow-on events fired by touch device after an already-processed user interaction
-      var previousActivationEvent = this.previousActivationEvent_;
-      var isSameInteraction = previousActivationEvent && e !== undefined && previousActivationEvent.type !== e.type;
-      if (isSameInteraction) {
-        return;
-      }
-
-      activationState.isActivated = true;
-      activationState.isProgrammatic = e === undefined;
-      activationState.activationEvent = e;
-      activationState.wasActivatedByPointer = activationState.isProgrammatic ? false : e !== undefined && (e.type === 'mousedown' || e.type === 'touchstart' || e.type === 'pointerdown');
-
-      var hasActivatedChild = e !== undefined && activatedTargets.length > 0 && activatedTargets.some(function (target) {
-        return _this9.adapter_.containsEventTarget(target);
-      });
-      if (hasActivatedChild) {
-        // Immediately reset activation state, while preserving logic that prevents touch follow-on events
-        this.resetActivationState_();
-        return;
-      }
-
-      if (e !== undefined) {
-        activatedTargets.push( /** @type {!EventTarget} */e.target);
-        this.registerDeactivationHandlers_(e);
-      }
-
-      activationState.wasElementMadeActive = this.checkElementMadeActive_(e);
-      if (activationState.wasElementMadeActive) {
-        this.animateActivation_();
-      }
-
-      requestAnimationFrame(function () {
-        // Reset array on next frame after the current event has had a chance to bubble to prevent ancestor ripples
-        activatedTargets = [];
-
-        if (!activationState.wasElementMadeActive && e !== undefined && (e.key === ' ' || e.keyCode === 32)) {
-          // If space was pressed, try again within an rAF call to detect :active, because different UAs report
-          // active states inconsistently when they're called within event handling code:
-          // - https://bugs.chromium.org/p/chromium/issues/detail?id=635971
-          // - https://bugzilla.mozilla.org/show_bug.cgi?id=1293741
-          // We try first outside rAF to support Edge, which does not exhibit this problem, but will crash if a CSS
-          // variable is set within a rAF callback for a submit button interaction (#2241).
-          activationState.wasElementMadeActive = _this9.checkElementMadeActive_(e);
-          if (activationState.wasElementMadeActive) {
-            _this9.animateActivation_();
-          }
-        }
-
-        if (!activationState.wasElementMadeActive) {
-          // Reset activation state immediately if element was not made active.
-          _this9.activationState_ = _this9.defaultActivationState_();
-        }
-      });
-    }
-
-    /**
-     * @param {!Event=} e
-     * @private
-     */
-
-  }, {
-    key: 'checkElementMadeActive_',
-    value: function checkElementMadeActive_(e) {
-      return e !== undefined && e.type === 'keydown' ? this.adapter_.isSurfaceActive() : true;
-    }
-
-    /**
-     * @param {!Event=} event Optional event containing position information.
-     */
-
-  }, {
-    key: 'activate',
-    value: function activate(event) {
-      this.activate_(event);
-    }
-
-    /** @private */
-
-  }, {
-    key: 'animateActivation_',
-    value: function animateActivation_() {
-      var _this10 = this;
-
-      var _MDCRippleFoundation$3 = MDCRippleFoundation.strings,
-          VAR_FG_TRANSLATE_START = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_START,
-          VAR_FG_TRANSLATE_END = _MDCRippleFoundation$3.VAR_FG_TRANSLATE_END;
-      var _MDCRippleFoundation$4 = MDCRippleFoundation.cssClasses,
-          FG_DEACTIVATION = _MDCRippleFoundation$4.FG_DEACTIVATION,
-          FG_ACTIVATION = _MDCRippleFoundation$4.FG_ACTIVATION;
-      var DEACTIVATION_TIMEOUT_MS = MDCRippleFoundation.numbers.DEACTIVATION_TIMEOUT_MS;
-
-
-      this.layoutInternal_();
-
-      var translateStart = '';
-      var translateEnd = '';
-
-      if (!this.adapter_.isUnbounded()) {
-        var _getFgTranslationCoor = this.getFgTranslationCoordinates_(),
-            startPoint = _getFgTranslationCoor.startPoint,
-            endPoint = _getFgTranslationCoor.endPoint;
-
-        translateStart = startPoint.x + 'px, ' + startPoint.y + 'px';
-        translateEnd = endPoint.x + 'px, ' + endPoint.y + 'px';
-      }
-
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_START, translateStart);
-      this.adapter_.updateCssVariable(VAR_FG_TRANSLATE_END, translateEnd);
-      // Cancel any ongoing activation/deactivation animations
-      clearTimeout(this.activationTimer_);
-      clearTimeout(this.fgDeactivationRemovalTimer_);
-      this.rmBoundedActivationClasses_();
-      this.adapter_.removeClass(FG_DEACTIVATION);
-
-      // Force layout in order to re-trigger the animation.
-      this.adapter_.computeBoundingRect();
-      this.adapter_.addClass(FG_ACTIVATION);
-      this.activationTimer_ = setTimeout(function () {
-        return _this10.activationTimerCallback_();
-      }, DEACTIVATION_TIMEOUT_MS);
-    }
-
-    /**
-     * @private
-     * @return {{startPoint: PointType, endPoint: PointType}}
-     */
-
-  }, {
-    key: 'getFgTranslationCoordinates_',
-    value: function getFgTranslationCoordinates_() {
-      var _activationState_ = this.activationState_,
-          activationEvent = _activationState_.activationEvent,
-          wasActivatedByPointer = _activationState_.wasActivatedByPointer;
-
-
-      var startPoint = void 0;
-      if (wasActivatedByPointer) {
-        startPoint = Object(__WEBPACK_IMPORTED_MODULE_3__util__["getNormalizedEventCoords"])(
-        /** @type {!Event} */activationEvent, this.adapter_.getWindowPageOffset(), this.adapter_.computeBoundingRect());
-      } else {
-        startPoint = {
-          x: this.frame_.width / 2,
-          y: this.frame_.height / 2
-        };
-      }
-      // Center the element around the start point.
-      startPoint = {
-        x: startPoint.x - this.initialSize_ / 2,
-        y: startPoint.y - this.initialSize_ / 2
-      };
-
-      var endPoint = {
-        x: this.frame_.width / 2 - this.initialSize_ / 2,
-        y: this.frame_.height / 2 - this.initialSize_ / 2
-      };
-
-      return { startPoint: startPoint, endPoint: endPoint };
-    }
-
-    /** @private */
-
-  }, {
-    key: 'runDeactivationUXLogicIfReady_',
-    value: function runDeactivationUXLogicIfReady_() {
-      var _this11 = this;
-
-      // This method is called both when a pointing device is released, and when the activation animation ends.
-      // The deactivation animation should only run after both of those occur.
-      var FG_DEACTIVATION = MDCRippleFoundation.cssClasses.FG_DEACTIVATION;
-      var _activationState_2 = this.activationState_,
-          hasDeactivationUXRun = _activationState_2.hasDeactivationUXRun,
-          isActivated = _activationState_2.isActivated;
-
-      var activationHasEnded = hasDeactivationUXRun || !isActivated;
-
-      if (activationHasEnded && this.activationAnimationHasEnded_) {
-        this.rmBoundedActivationClasses_();
-        this.adapter_.addClass(FG_DEACTIVATION);
-        this.fgDeactivationRemovalTimer_ = setTimeout(function () {
-          _this11.adapter_.removeClass(FG_DEACTIVATION);
-        }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].FG_DEACTIVATION_MS);
-      }
-    }
-
-    /** @private */
-
-  }, {
-    key: 'rmBoundedActivationClasses_',
-    value: function rmBoundedActivationClasses_() {
-      var FG_ACTIVATION = MDCRippleFoundation.cssClasses.FG_ACTIVATION;
-
-      this.adapter_.removeClass(FG_ACTIVATION);
-      this.activationAnimationHasEnded_ = false;
-      this.adapter_.computeBoundingRect();
-    }
-  }, {
-    key: 'resetActivationState_',
-    value: function resetActivationState_() {
-      var _this12 = this;
-
-      this.previousActivationEvent_ = this.activationState_.activationEvent;
-      this.activationState_ = this.defaultActivationState_();
-      // Touch devices may fire additional events for the same interaction within a short time.
-      // Store the previous event until it's safe to assume that subsequent events are for new interactions.
-      setTimeout(function () {
-        return _this12.previousActivationEvent_ = undefined;
-      }, MDCRippleFoundation.numbers.TAP_DELAY_MS);
-    }
-
-    /**
-     * @private
-     */
-
-  }, {
-    key: 'deactivate_',
-    value: function deactivate_() {
-      var _this13 = this;
-
-      var activationState = this.activationState_;
-      // This can happen in scenarios such as when you have a keyup event that blurs the element.
-      if (!activationState.isActivated) {
-        return;
-      }
-
-      var state = /** @type {!ActivationStateType} */_extends({}, activationState);
-
-      if (activationState.isProgrammatic) {
-        requestAnimationFrame(function () {
-          return _this13.animateDeactivation_(state);
-        });
-        this.resetActivationState_();
-      } else {
-        this.deregisterDeactivationHandlers_();
-        requestAnimationFrame(function () {
-          _this13.activationState_.hasDeactivationUXRun = true;
-          _this13.animateDeactivation_(state);
-          _this13.resetActivationState_();
-        });
-      }
-    }
-  }, {
-    key: 'deactivate',
-    value: function deactivate() {
-      this.deactivate_();
-    }
-
-    /**
-     * @param {!ActivationStateType} options
-     * @private
-     */
-
-  }, {
-    key: 'animateDeactivation_',
-    value: function animateDeactivation_(_ref) {
-      var wasActivatedByPointer = _ref.wasActivatedByPointer,
-          wasElementMadeActive = _ref.wasElementMadeActive;
-
-      if (wasActivatedByPointer || wasElementMadeActive) {
-        this.runDeactivationUXLogicIfReady_();
-      }
-    }
-  }, {
-    key: 'layout',
-    value: function layout() {
-      var _this14 = this;
-
-      if (this.layoutFrame_) {
-        cancelAnimationFrame(this.layoutFrame_);
-      }
-      this.layoutFrame_ = requestAnimationFrame(function () {
-        _this14.layoutInternal_();
-        _this14.layoutFrame_ = 0;
-      });
-    }
-
-    /** @private */
-
-  }, {
-    key: 'layoutInternal_',
-    value: function layoutInternal_() {
-      var _this15 = this;
-
-      this.frame_ = this.adapter_.computeBoundingRect();
-      var maxDim = Math.max(this.frame_.height, this.frame_.width);
-
-      // Surface diameter is treated differently for unbounded vs. bounded ripples.
-      // Unbounded ripple diameter is calculated smaller since the surface is expected to already be padded appropriately
-      // to extend the hitbox, and the ripple is expected to meet the edges of the padded hitbox (which is typically
-      // square). Bounded ripples, on the other hand, are fully expected to expand beyond the surface's longest diameter
-      // (calculated based on the diagonal plus a constant padding), and are clipped at the surface's border via
-      // `overflow: hidden`.
-      var getBoundedRadius = function getBoundedRadius() {
-        var hypotenuse = Math.sqrt(Math.pow(_this15.frame_.width, 2) + Math.pow(_this15.frame_.height, 2));
-        return hypotenuse + MDCRippleFoundation.numbers.PADDING;
-      };
-
-      this.maxRadius_ = this.adapter_.isUnbounded() ? maxDim : getBoundedRadius();
-
-      // Ripple is sized as a fraction of the largest dimension of the surface, then scales up using a CSS scale transform
-      this.initialSize_ = Math.floor(maxDim * MDCRippleFoundation.numbers.INITIAL_ORIGIN_SCALE);
-      this.fgScale_ = this.maxRadius_ / this.initialSize_;
-
-      this.updateLayoutCssVars_();
-    }
-
-    /** @private */
-
-  }, {
-    key: 'updateLayoutCssVars_',
-    value: function updateLayoutCssVars_() {
-      var _MDCRippleFoundation$5 = MDCRippleFoundation.strings,
-          VAR_FG_SIZE = _MDCRippleFoundation$5.VAR_FG_SIZE,
-          VAR_LEFT = _MDCRippleFoundation$5.VAR_LEFT,
-          VAR_TOP = _MDCRippleFoundation$5.VAR_TOP,
-          VAR_FG_SCALE = _MDCRippleFoundation$5.VAR_FG_SCALE;
-
-
-      this.adapter_.updateCssVariable(VAR_FG_SIZE, this.initialSize_ + 'px');
-      this.adapter_.updateCssVariable(VAR_FG_SCALE, this.fgScale_);
-
-      if (this.adapter_.isUnbounded()) {
-        this.unboundedCoords_ = {
-          left: Math.round(this.frame_.width / 2 - this.initialSize_ / 2),
-          top: Math.round(this.frame_.height / 2 - this.initialSize_ / 2)
-        };
-
-        this.adapter_.updateCssVariable(VAR_LEFT, this.unboundedCoords_.left + 'px');
-        this.adapter_.updateCssVariable(VAR_TOP, this.unboundedCoords_.top + 'px');
-      }
-    }
-
-    /** @param {boolean} unbounded */
-
-  }, {
-    key: 'setUnbounded',
-    value: function setUnbounded(unbounded) {
-      var UNBOUNDED = MDCRippleFoundation.cssClasses.UNBOUNDED;
-
-      if (unbounded) {
-        this.adapter_.addClass(UNBOUNDED);
-      } else {
-        this.adapter_.removeClass(UNBOUNDED);
-      }
-    }
-  }, {
-    key: 'handleFocus',
-    value: function handleFocus() {
-      var _this16 = this;
-
-      requestAnimationFrame(function () {
-        return _this16.adapter_.addClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    }
-  }, {
-    key: 'handleBlur',
-    value: function handleBlur() {
-      var _this17 = this;
-
-      requestAnimationFrame(function () {
-        return _this17.adapter_.removeClass(MDCRippleFoundation.cssClasses.BG_FOCUSED);
-      });
-    }
-  }]);
-
-  return MDCRippleFoundation;
-}(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
-
-/* harmony default export */ __webpack_exports__["a"] = (MDCRippleFoundation);
-
-/***/ }),
-
-/***/ 6:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
-/**
- * @license
- * Copyright 2016 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-var cssClasses = {
-  // Ripple is a special case where the "root" component is really a "mixin" of sorts,
-  // given that it's an 'upgrade' to an existing component. That being said it is the root
-  // CSS class that all other CSS classes derive from.
-  ROOT: 'mdc-ripple-upgraded',
-  UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
-  BG_FOCUSED: 'mdc-ripple-upgraded--background-focused',
-  FG_ACTIVATION: 'mdc-ripple-upgraded--foreground-activation',
-  FG_DEACTIVATION: 'mdc-ripple-upgraded--foreground-deactivation'
-};
-
-var strings = {
-  VAR_LEFT: '--mdc-ripple-left',
-  VAR_TOP: '--mdc-ripple-top',
-  VAR_FG_SIZE: '--mdc-ripple-fg-size',
-  VAR_FG_SCALE: '--mdc-ripple-fg-scale',
-  VAR_FG_TRANSLATE_START: '--mdc-ripple-fg-translate-start',
-  VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end'
-};
-
-var numbers = {
-  PADDING: 10,
-  INITIAL_ORIGIN_SCALE: 0.6,
-  DEACTIVATION_TIMEOUT_MS: 225, // Corresponds to $mdc-ripple-translate-duration (i.e. activation animation duration)
-  FG_DEACTIVATION_MS: 150, // Corresponds to $mdc-ripple-fade-out-duration (i.e. deactivation animation duration)
-  TAP_DELAY_MS: 300 };
-
-
-
-/***/ }),
-
-/***/ 7:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCSelectionControlState", function() { return MDCSelectionControlState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCSelectionControl", function() { return MDCSelectionControl; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_ripple_index__ = __webpack_require__(4);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * @license
- * Copyright 2017 Google Inc.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
-
-/* eslint-disable no-unused-vars */
-
-/* eslint-enable no-unused-vars */
-
-/**
- * @typedef {{
- *   checked: boolean,
- *   indeterminate: boolean,
- *   disabled: boolean,
- *   value: ?string
- * }}
- */
-var MDCSelectionControlState = void 0;
-
-/**
- * @record
- */
-
-var MDCSelectionControl = function () {
-  function MDCSelectionControl() {
-    _classCallCheck(this, MDCSelectionControl);
-  }
-
-  _createClass(MDCSelectionControl, [{
-    key: 'ripple',
-
-    /** @return {?MDCRipple} */
-    get: function get() {}
-  }]);
-
-  return MDCSelectionControl;
-}();
-
-
-
-/***/ })
-
-/******/ });
-});
-//# sourceMappingURL=mdc.radio.js.map
-
-/***/ }),
-
 /***/ "./node_modules/@material/ripple/adapter.js":
 /*!**************************************************!*\
   !*** ./node_modules/@material/ripple/adapter.js ***!
@@ -38079,6 +35700,1419 @@ var cssClasses = {
 
 /***/ }),
 
+/***/ "./node_modules/@material/snackbar/dist/mdc.snackbar.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/@material/snackbar/dist/mdc.snackbar.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ Material Components for the Web
+ Copyright (c) 2019 Google Inc.
+ License: MIT
+*/
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(true)
+		module.exports = factory();
+	else {}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 139);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ * @template A
+ */
+var MDCFoundation = function () {
+  _createClass(MDCFoundation, null, [{
+    key: "cssClasses",
+
+    /** @return enum{cssClasses} */
+    get: function get() {
+      // Classes extending MDCFoundation should implement this method to return an object which exports every
+      // CSS class the foundation class needs as a property. e.g. {ACTIVE: 'mdc-component--active'}
+      return {};
+    }
+
+    /** @return enum{strings} */
+
+  }, {
+    key: "strings",
+    get: function get() {
+      // Classes extending MDCFoundation should implement this method to return an object which exports all
+      // semantic strings as constants. e.g. {ARIA_ROLE: 'tablist'}
+      return {};
+    }
+
+    /** @return enum{numbers} */
+
+  }, {
+    key: "numbers",
+    get: function get() {
+      // Classes extending MDCFoundation should implement this method to return an object which exports all
+      // of its semantic numbers as constants. e.g. {ANIMATION_DELAY_MS: 350}
+      return {};
+    }
+
+    /** @return {!Object} */
+
+  }, {
+    key: "defaultAdapter",
+    get: function get() {
+      // Classes extending MDCFoundation may choose to implement this getter in order to provide a convenient
+      // way of viewing the necessary methods of an adapter. In the future, this could also be used for adapter
+      // validation.
+      return {};
+    }
+
+    /**
+     * @param {A=} adapter
+     */
+
+  }]);
+
+  function MDCFoundation() {
+    var adapter = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    _classCallCheck(this, MDCFoundation);
+
+    /** @protected {!A} */
+    this.adapter_ = adapter;
+  }
+
+  _createClass(MDCFoundation, [{
+    key: "init",
+    value: function init() {
+      // Subclasses should override this method to perform initialization routines (registering events, etc.)
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      // Subclasses should override this method to perform de-initialization routines (de-registering events, etc.)
+    }
+  }]);
+
+  return MDCFoundation;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCFoundation);
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__foundation__ = __webpack_require__(0);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * @license
+ * Copyright 2016 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+/**
+ * @template F
+ */
+
+var MDCComponent = function () {
+  _createClass(MDCComponent, null, [{
+    key: 'attachTo',
+
+    /**
+     * @param {!Element} root
+     * @return {!MDCComponent}
+     */
+    value: function attachTo(root) {
+      // Subclasses which extend MDCBase should provide an attachTo() method that takes a root element and
+      // returns an instantiated component with its root set to that element. Also note that in the cases of
+      // subclasses, an explicit foundation class will not have to be passed in; it will simply be initialized
+      // from getDefaultFoundation().
+      return new MDCComponent(root, new __WEBPACK_IMPORTED_MODULE_0__foundation__["a" /* default */]());
+    }
+
+    /**
+     * @param {!Element} root
+     * @param {F=} foundation
+     * @param {...?} args
+     */
+
+  }]);
+
+  function MDCComponent(root) {
+    var foundation = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+
+    _classCallCheck(this, MDCComponent);
+
+    /** @protected {!Element} */
+    this.root_ = root;
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    this.initialize.apply(this, args);
+    // Note that we initialize foundation here and not within the constructor's default param so that
+    // this.root_ is defined and can be used within the foundation class.
+    /** @protected {!F} */
+    this.foundation_ = foundation === undefined ? this.getDefaultFoundation() : foundation;
+    this.foundation_.init();
+    this.initialSyncWithDOM();
+  }
+
+  _createClass(MDCComponent, [{
+    key: 'initialize',
+    value: function initialize() /* ...args */{}
+    // Subclasses can override this to do any additional setup work that would be considered part of a
+    // "constructor". Essentially, it is a hook into the parent constructor before the foundation is
+    // initialized. Any additional arguments besides root and foundation will be passed in here.
+
+
+    /**
+     * @return {!F} foundation
+     */
+
+  }, {
+    key: 'getDefaultFoundation',
+    value: function getDefaultFoundation() {
+      // Subclasses must override this method to return a properly configured foundation class for the
+      // component.
+      throw new Error('Subclasses must override getDefaultFoundation to return a properly configured ' + 'foundation class');
+    }
+  }, {
+    key: 'initialSyncWithDOM',
+    value: function initialSyncWithDOM() {
+      // Subclasses should override this method if they need to perform work to synchronize with a host DOM
+      // object. An example of this would be a form control wrapper that needs to synchronize its internal state
+      // to some property or attribute of the host DOM. Please note: this is *not* the place to perform DOM
+      // reads/writes that would cause layout / paint, as this is called synchronously from within the constructor.
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      // Subclasses may implement this method to release any resources / deregister any listeners they have
+      // attached. An example of this might be deregistering a resize event from the window object.
+      this.foundation_.destroy();
+    }
+
+    /**
+     * Wrapper method to add an event listener to the component's root element. This is most useful when
+     * listening for custom events.
+     * @param {string} evtType
+     * @param {!Function} handler
+     */
+
+  }, {
+    key: 'listen',
+    value: function listen(evtType, handler) {
+      this.root_.addEventListener(evtType, handler);
+    }
+
+    /**
+     * Wrapper method to remove an event listener to the component's root element. This is most useful when
+     * unlistening for custom events.
+     * @param {string} evtType
+     * @param {!Function} handler
+     */
+
+  }, {
+    key: 'unlisten',
+    value: function unlisten(evtType, handler) {
+      this.root_.removeEventListener(evtType, handler);
+    }
+
+    /**
+     * Fires a cross-browser-compatible custom event from the component root of the given type,
+     * with the given data.
+     * @param {string} evtType
+     * @param {!Object} evtData
+     * @param {boolean=} shouldBubble
+     */
+
+  }, {
+    key: 'emit',
+    value: function emit(evtType, evtData) {
+      var shouldBubble = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+
+      var evt = void 0;
+      if (typeof CustomEvent === 'function') {
+        evt = new CustomEvent(evtType, {
+          detail: evtData,
+          bubbles: shouldBubble
+        });
+      } else {
+        evt = document.createEvent('CustomEvent');
+        evt.initCustomEvent(evtType, shouldBubble, false, evtData);
+      }
+
+      this.root_.dispatchEvent(evt);
+    }
+  }]);
+
+  return MDCComponent;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCComponent);
+
+/***/ }),
+
+/***/ 139:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MDCSnackbar", function() { return MDCSnackbar; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_component__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__foundation__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__ = __webpack_require__(8);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "MDCSnackbarFoundation", function() { return __WEBPACK_IMPORTED_MODULE_1__foundation__["a"]; });
+/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "util", function() { return __WEBPACK_IMPORTED_MODULE_3__util__; });
+var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+
+
+
+
+var SURFACE_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].SURFACE_SELECTOR,
+    LABEL_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].LABEL_SELECTOR,
+    ACTION_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].ACTION_SELECTOR,
+    DISMISS_SELECTOR = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].DISMISS_SELECTOR,
+    OPENING_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].OPENING_EVENT,
+    OPENED_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].OPENED_EVENT,
+    CLOSING_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].CLOSING_EVENT,
+    CLOSED_EVENT = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].CLOSED_EVENT;
+
+var MDCSnackbar = function (_MDCComponent) {
+  _inherits(MDCSnackbar, _MDCComponent);
+
+  _createClass(MDCSnackbar, null, [{
+    key: 'attachTo',
+    value: function attachTo(root) {
+      return new MDCSnackbar(root);
+    }
+  }]);
+
+  function MDCSnackbar() {
+    var _ref;
+
+    _classCallCheck(this, MDCSnackbar);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    /** @type {!HTMLElement} */
+    var _this = _possibleConstructorReturn(this, (_ref = MDCSnackbar.__proto__ || Object.getPrototypeOf(MDCSnackbar)).call.apply(_ref, [this].concat(args)));
+
+    _this.surfaceEl_;
+
+    /** @type {!HTMLElement} */
+    _this.labelEl_;
+
+    /** @type {!HTMLElement} */
+    _this.actionEl_;
+
+    /** @type {function(!HTMLElement, !HTMLElement=): void} */
+    _this.announce_;
+
+    /** @private {!Function} */
+    _this.handleKeyDown_;
+
+    /** @private {!Function} */
+    _this.handleSurfaceClick_;
+    return _this;
+  }
+
+  /**
+   * @param {function(): function(!HTMLElement, !HTMLElement=):void} announceFactory
+   */
+
+
+  _createClass(MDCSnackbar, [{
+    key: 'initialize',
+    value: function initialize() {
+      var announceFactory = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {
+        return __WEBPACK_IMPORTED_MODULE_3__util__["announce"];
+      };
+
+      this.announce_ = announceFactory();
+    }
+  }, {
+    key: 'initialSyncWithDOM',
+    value: function initialSyncWithDOM() {
+      var _this2 = this;
+
+      this.surfaceEl_ = /** @type {!HTMLElement} */this.root_.querySelector(SURFACE_SELECTOR);
+      this.labelEl_ = /** @type {!HTMLElement} */this.root_.querySelector(LABEL_SELECTOR);
+      this.actionEl_ = /** @type {!HTMLElement} */this.root_.querySelector(ACTION_SELECTOR);
+
+      this.handleKeyDown_ = function (evt) {
+        return _this2.foundation_.handleKeyDown(evt);
+      };
+      this.handleSurfaceClick_ = function (evt) {
+        if (_this2.isActionButton_(evt.target)) {
+          _this2.foundation_.handleActionButtonClick(evt);
+        } else if (_this2.isActionIcon_(evt.target)) {
+          _this2.foundation_.handleActionIconClick(evt);
+        }
+      };
+
+      this.registerKeyDownHandler_(this.handleKeyDown_);
+      this.registerSurfaceClickHandler_(this.handleSurfaceClick_);
+    }
+  }, {
+    key: 'destroy',
+    value: function destroy() {
+      _get(MDCSnackbar.prototype.__proto__ || Object.getPrototypeOf(MDCSnackbar.prototype), 'destroy', this).call(this);
+      this.deregisterKeyDownHandler_(this.handleKeyDown_);
+      this.deregisterSurfaceClickHandler_(this.handleSurfaceClick_);
+    }
+  }, {
+    key: 'open',
+    value: function open() {
+      this.foundation_.open();
+    }
+
+    /**
+     * @param {string=} reason Why the snackbar was closed. Value will be passed to CLOSING_EVENT and CLOSED_EVENT via the
+     *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
+     *     client-specific values may also be used if desired.
+     */
+
+  }, {
+    key: 'close',
+    value: function close() {
+      var reason = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      this.foundation_.close(reason);
+    }
+
+    /**
+     * @return {!MDCSnackbarFoundation}
+     */
+
+  }, {
+    key: 'getDefaultFoundation',
+    value: function getDefaultFoundation() {
+      var _this3 = this;
+
+      /* eslint brace-style: "off" */
+      return new __WEBPACK_IMPORTED_MODULE_1__foundation__["a" /* default */]({
+        addClass: function addClass(className) {
+          return _this3.root_.classList.add(className);
+        },
+        removeClass: function removeClass(className) {
+          return _this3.root_.classList.remove(className);
+        },
+        announce: function announce() {
+          return _this3.announce_(_this3.labelEl_);
+        },
+        notifyOpening: function notifyOpening() {
+          return _this3.emit(OPENING_EVENT, {});
+        },
+        notifyOpened: function notifyOpened() {
+          return _this3.emit(OPENED_EVENT, {});
+        },
+        notifyClosing: function notifyClosing(reason) {
+          return _this3.emit(CLOSING_EVENT, reason ? { reason: reason } : {});
+        },
+        notifyClosed: function notifyClosed(reason) {
+          return _this3.emit(CLOSED_EVENT, reason ? { reason: reason } : {});
+        }
+      });
+    }
+
+    /**
+     * @return {number}
+     */
+
+  }, {
+    key: 'registerKeyDownHandler_',
+
+
+    /**
+     * @param {!Function} handler
+     * @private
+     */
+    value: function registerKeyDownHandler_(handler) {
+      this.listen('keydown', handler);
+    }
+
+    /**
+     * @param {!Function} handler
+     * @private
+     */
+
+  }, {
+    key: 'deregisterKeyDownHandler_',
+    value: function deregisterKeyDownHandler_(handler) {
+      this.unlisten('keydown', handler);
+    }
+
+    /**
+     * @param {!Function} handler
+     * @private
+     */
+
+  }, {
+    key: 'registerSurfaceClickHandler_',
+    value: function registerSurfaceClickHandler_(handler) {
+      this.surfaceEl_.addEventListener('click', handler);
+    }
+
+    /**
+     * @param {!Function} handler
+     * @private
+     */
+
+  }, {
+    key: 'deregisterSurfaceClickHandler_',
+    value: function deregisterSurfaceClickHandler_(handler) {
+      this.surfaceEl_.removeEventListener('click', handler);
+    }
+
+    /**
+     * @param {!Element} target
+     * @return {boolean}
+     * @private
+     */
+
+  }, {
+    key: 'isActionButton_',
+    value: function isActionButton_(target) {
+      return Boolean(__WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__["closest"](target, ACTION_SELECTOR));
+    }
+
+    /**
+     * @param {!Element} target
+     * @return {boolean}
+     * @private
+     */
+
+  }, {
+    key: 'isActionIcon_',
+    value: function isActionIcon_(target) {
+      return Boolean(__WEBPACK_IMPORTED_MODULE_4__material_dom_ponyfill__["closest"](target, DISMISS_SELECTOR));
+    }
+  }, {
+    key: 'timeoutMs',
+    get: function get() {
+      return this.foundation_.getTimeoutMs();
+    }
+
+    /**
+     * @param {number} timeoutMs
+     */
+    ,
+    set: function set(timeoutMs) {
+      this.foundation_.setTimeoutMs(timeoutMs);
+    }
+
+    /**
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'closeOnEscape',
+    get: function get() {
+      return this.foundation_.getCloseOnEscape();
+    }
+
+    /**
+     * @param {boolean} closeOnEscape
+     */
+    ,
+    set: function set(closeOnEscape) {
+      this.foundation_.setCloseOnEscape(closeOnEscape);
+    }
+
+    /**
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'isOpen',
+    get: function get() {
+      return this.foundation_.isOpen();
+    }
+
+    /**
+     * @return {string}
+     */
+
+  }, {
+    key: 'labelText',
+    get: function get() {
+      return this.labelEl_.textContent;
+    }
+
+    /**
+     * @param {string} labelText
+     */
+    ,
+    set: function set(labelText) {
+      this.labelEl_.textContent = labelText;
+    }
+
+    /**
+     * @return {string}
+     */
+
+  }, {
+    key: 'actionButtonText',
+    get: function get() {
+      return this.actionEl_.textContent;
+    }
+
+    /**
+     * @param {string} actionButtonText
+     */
+    ,
+    set: function set(actionButtonText) {
+      this.actionEl_.textContent = actionButtonText;
+    }
+  }]);
+
+  return MDCSnackbar;
+}(__WEBPACK_IMPORTED_MODULE_0__material_base_component__["a" /* default */]);
+
+
+
+/***/ }),
+
+/***/ 140:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__material_base_foundation__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__adapter__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(51);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: ["error", {"argsIgnorePattern": "evt", "varsIgnorePattern": "Adapter$"}] */
+
+
+
+
+
+var OPENING = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING,
+    OPEN = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN,
+    CLOSING = __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING;
+var REASON_ACTION = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].REASON_ACTION,
+    REASON_DISMISS = __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */].REASON_DISMISS;
+
+var MDCSnackbarFoundation = function (_MDCFoundation) {
+  _inherits(MDCSnackbarFoundation, _MDCFoundation);
+
+  _createClass(MDCSnackbarFoundation, null, [{
+    key: 'cssClasses',
+    get: function get() {
+      return __WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */];
+    }
+  }, {
+    key: 'strings',
+    get: function get() {
+      return __WEBPACK_IMPORTED_MODULE_2__constants__["c" /* strings */];
+    }
+  }, {
+    key: 'numbers',
+    get: function get() {
+      return __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */];
+    }
+
+    /**
+     * @return {!MDCSnackbarAdapter}
+     */
+
+  }, {
+    key: 'defaultAdapter',
+    get: function get() {
+      return (/** @type {!MDCSnackbarAdapter} */{
+          addClass: function addClass() /* className: string */{},
+          removeClass: function removeClass() /* className: string */{},
+          announce: function announce() {},
+          notifyOpening: function notifyOpening() {},
+          notifyOpened: function notifyOpened() {},
+          notifyClosing: function notifyClosing() /* reason: string */{},
+          notifyClosed: function notifyClosed() /* reason: string */{}
+        }
+      );
+    }
+
+    /**
+     * @param {!MDCSnackbarAdapter=} adapter
+     */
+
+  }]);
+
+  function MDCSnackbarFoundation(adapter) {
+    _classCallCheck(this, MDCSnackbarFoundation);
+
+    /** @private {boolean} */
+    var _this = _possibleConstructorReturn(this, (MDCSnackbarFoundation.__proto__ || Object.getPrototypeOf(MDCSnackbarFoundation)).call(this, _extends(MDCSnackbarFoundation.defaultAdapter, adapter)));
+
+    _this.isOpen_ = false;
+
+    /** @private {number} */
+    _this.animationFrame_ = 0;
+
+    /** @private {number} */
+    _this.animationTimer_ = 0;
+
+    /** @private {number} */
+    _this.autoDismissTimer_ = 0;
+
+    /** @private {number} */
+    _this.autoDismissTimeoutMs_ = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].DEFAULT_AUTO_DISMISS_TIMEOUT_MS;
+
+    /** @private {boolean} */
+    _this.closeOnEscape_ = true;
+    return _this;
+  }
+
+  _createClass(MDCSnackbarFoundation, [{
+    key: 'destroy',
+    value: function destroy() {
+      this.clearAutoDismissTimer_();
+      cancelAnimationFrame(this.animationFrame_);
+      this.animationFrame_ = 0;
+      clearTimeout(this.animationTimer_);
+      this.animationTimer_ = 0;
+      this.adapter_.removeClass(OPENING);
+      this.adapter_.removeClass(OPEN);
+      this.adapter_.removeClass(CLOSING);
+    }
+  }, {
+    key: 'open',
+    value: function open() {
+      var _this2 = this;
+
+      this.clearAutoDismissTimer_();
+      this.isOpen_ = true;
+      this.adapter_.notifyOpening();
+      this.adapter_.removeClass(CLOSING);
+      this.adapter_.addClass(OPENING);
+      this.adapter_.announce();
+
+      // Wait a frame once display is no longer "none", to establish basis for animation
+      this.runNextAnimationFrame_(function () {
+        _this2.adapter_.addClass(OPEN);
+
+        _this2.animationTimer_ = setTimeout(function () {
+          _this2.handleAnimationTimerEnd_();
+          _this2.adapter_.notifyOpened();
+          _this2.autoDismissTimer_ = setTimeout(function () {
+            _this2.close(REASON_DISMISS);
+          }, _this2.getTimeoutMs());
+        }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].SNACKBAR_ANIMATION_OPEN_TIME_MS);
+      });
+    }
+
+    /**
+     * @param {string=} reason Why the snackbar was closed. Value will be passed to CLOSING_EVENT and CLOSED_EVENT via the
+     *     `event.detail.reason` property. Standard values are REASON_ACTION and REASON_DISMISS, but custom
+     *     client-specific values may also be used if desired.
+     */
+
+  }, {
+    key: 'close',
+    value: function close() {
+      var _this3 = this;
+
+      var reason = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      if (!this.isOpen_) {
+        // Avoid redundant close calls (and events), e.g. repeated interactions as the snackbar is animating closed
+        return;
+      }
+
+      cancelAnimationFrame(this.animationFrame_);
+      this.animationFrame_ = 0;
+      this.clearAutoDismissTimer_();
+
+      this.isOpen_ = false;
+      this.adapter_.notifyClosing(reason);
+      this.adapter_.addClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPEN);
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
+
+      clearTimeout(this.animationTimer_);
+      this.animationTimer_ = setTimeout(function () {
+        _this3.handleAnimationTimerEnd_();
+        _this3.adapter_.notifyClosed(reason);
+      }, __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].SNACKBAR_ANIMATION_CLOSE_TIME_MS);
+    }
+
+    /**
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'isOpen',
+    value: function isOpen() {
+      return this.isOpen_;
+    }
+
+    /**
+     * @return {number}
+     */
+
+  }, {
+    key: 'getTimeoutMs',
+    value: function getTimeoutMs() {
+      return this.autoDismissTimeoutMs_;
+    }
+
+    /**
+     * @param {number} timeoutMs
+     */
+
+  }, {
+    key: 'setTimeoutMs',
+    value: function setTimeoutMs(timeoutMs) {
+      // Use shorter variable names to make the code more readable
+      var minValue = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MIN_AUTO_DISMISS_TIMEOUT_MS;
+      var maxValue = __WEBPACK_IMPORTED_MODULE_2__constants__["b" /* numbers */].MAX_AUTO_DISMISS_TIMEOUT_MS;
+
+      if (timeoutMs <= maxValue && timeoutMs >= minValue) {
+        this.autoDismissTimeoutMs_ = timeoutMs;
+      } else {
+        throw new Error('timeoutMs must be an integer in the range ' + minValue + '\u2013' + maxValue + ', but got \'' + timeoutMs + '\'');
+      }
+    }
+
+    /**
+     * @return {boolean}
+     */
+
+  }, {
+    key: 'getCloseOnEscape',
+    value: function getCloseOnEscape() {
+      return this.closeOnEscape_;
+    }
+
+    /**
+     * @param {boolean} closeOnEscape
+     */
+
+  }, {
+    key: 'setCloseOnEscape',
+    value: function setCloseOnEscape(closeOnEscape) {
+      this.closeOnEscape_ = closeOnEscape;
+    }
+
+    /**
+     * @param {!KeyboardEvent} evt
+     */
+
+  }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(evt) {
+      if (this.getCloseOnEscape() && (evt.key === 'Escape' || evt.keyCode === 27)) {
+        this.close(REASON_DISMISS);
+      }
+    }
+
+    /**
+     * @param {!MouseEvent} evt
+     */
+
+  }, {
+    key: 'handleActionButtonClick',
+    value: function handleActionButtonClick(evt) {
+      this.close(REASON_ACTION);
+    }
+
+    /**
+     * @param {!MouseEvent} evt
+     */
+
+  }, {
+    key: 'handleActionIconClick',
+    value: function handleActionIconClick(evt) {
+      this.close(REASON_DISMISS);
+    }
+
+    /** @private */
+
+  }, {
+    key: 'clearAutoDismissTimer_',
+    value: function clearAutoDismissTimer_() {
+      clearTimeout(this.autoDismissTimer_);
+      this.autoDismissTimer_ = 0;
+    }
+
+    /** @private */
+
+  }, {
+    key: 'handleAnimationTimerEnd_',
+    value: function handleAnimationTimerEnd_() {
+      this.animationTimer_ = 0;
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].OPENING);
+      this.adapter_.removeClass(__WEBPACK_IMPORTED_MODULE_2__constants__["a" /* cssClasses */].CLOSING);
+    }
+
+    /**
+     * Runs the given logic on the next animation frame, using setTimeout to factor in Firefox reflow behavior.
+     * @param {Function} callback
+     * @private
+     */
+
+  }, {
+    key: 'runNextAnimationFrame_',
+    value: function runNextAnimationFrame_(callback) {
+      var _this4 = this;
+
+      cancelAnimationFrame(this.animationFrame_);
+      this.animationFrame_ = requestAnimationFrame(function () {
+        _this4.animationFrame_ = 0;
+        clearTimeout(_this4.animationTimer_);
+        _this4.animationTimer_ = setTimeout(callback, 0);
+      });
+    }
+  }]);
+
+  return MDCSnackbarFoundation;
+}(__WEBPACK_IMPORTED_MODULE_0__material_base_foundation__["a" /* default */]);
+
+/* harmony default export */ __webpack_exports__["a"] = (MDCSnackbarFoundation);
+
+/***/ }),
+
+/***/ 141:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/* eslint no-unused-vars: [2, {"args": "none"}] */
+
+/**
+ * Adapter for MDC Snackbar. Provides an interface for managing:
+ * - CSS classes
+ * - Event handlers
+ *
+ * Additionally, provides type information for the adapter to the Closure
+ * compiler.
+ *
+ * Implement this adapter for your framework of choice to delegate updates to
+ * the component in your framework of choice. See architecture documentation
+ * for more details.
+ * https://github.com/material-components/material-components-web/blob/master/docs/code/architecture.md
+ *
+ * @record
+ */
+var MDCSnackbarAdapter = function () {
+  function MDCSnackbarAdapter() {
+    _classCallCheck(this, MDCSnackbarAdapter);
+  }
+
+  _createClass(MDCSnackbarAdapter, [{
+    key: "addClass",
+
+    /** @param {string} className */
+    value: function addClass(className) {}
+
+    /** @param {string} className */
+
+  }, {
+    key: "removeClass",
+    value: function removeClass(className) {}
+  }, {
+    key: "announce",
+    value: function announce() {}
+  }, {
+    key: "notifyOpening",
+    value: function notifyOpening() {}
+  }, {
+    key: "notifyOpened",
+    value: function notifyOpened() {}
+
+    /**
+     * @param {string} reason
+     */
+
+  }, {
+    key: "notifyClosing",
+    value: function notifyClosing(reason) {}
+
+    /**
+     * @param {string} reason
+     */
+
+  }, {
+    key: "notifyClosed",
+    value: function notifyClosed(reason) {}
+  }]);
+
+  return MDCSnackbarAdapter;
+}();
+
+/* unused harmony default export */ var _unused_webpack_default_export = (MDCSnackbarAdapter);
+
+/***/ }),
+
+/***/ 142:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "announce", function() { return announce; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__constants__ = __webpack_require__(51);
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+
+
+var ARIA_LIVE_DELAY_MS = __WEBPACK_IMPORTED_MODULE_0__constants__["b" /* numbers */].ARIA_LIVE_DELAY_MS;
+var ARIA_LIVE_LABEL_TEXT_ATTR = __WEBPACK_IMPORTED_MODULE_0__constants__["c" /* strings */].ARIA_LIVE_LABEL_TEXT_ATTR;
+
+/**
+ * @param {!HTMLElement} ariaEl
+ * @param {!HTMLElement=} labelEl
+ */
+
+function announce(ariaEl) {
+  var labelEl = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : ariaEl;
+
+  var priority = ariaEl.getAttribute('aria-live');
+  var labelText = labelEl.textContent.trim(); // Ignore `&nbsp;` (see below)
+  if (!labelText) {
+    return;
+  }
+
+  // Temporarily disable `aria-live` to prevent JAWS+Firefox from announcing the message twice.
+  ariaEl.setAttribute('aria-live', 'off');
+
+  // Temporarily clear `textContent` to force a DOM mutation event that will be detected by screen readers.
+  // `aria-live` elements are only announced when the element's `textContent` *changes*, so snackbars
+  // sent to the browser in the initial HTML response won't be read unless we clear the element's `textContent` first.
+  // Similarly, displaying the same snackbar message twice in a row doesn't trigger a DOM mutation event,
+  // so screen readers won't announce the second message unless we first clear `textContent`.
+  //
+  // We have to clear the label text two different ways to make it work in all browsers and screen readers:
+  //
+  //   1. `textContent = ''` is required for IE11 + JAWS
+  //   2. `innerHTML = '&nbsp;'` is required for Chrome + JAWS and NVDA
+  //
+  // All other browser/screen reader combinations support both methods.
+  //
+  // The wrapper `<span>` visually hides the space character so that it doesn't cause jank when added/removed.
+  // N.B.: Setting `position: absolute`, `opacity: 0`, or `height: 0` prevents Chrome from detecting the DOM change.
+  //
+  // This technique has been tested in:
+  //
+  //   * JAWS 2019:
+  //       - Chrome 70
+  //       - Firefox 60 (ESR)
+  //       - IE 11
+  //   * NVDA 2018:
+  //       - Chrome 70
+  //       - Firefox 60 (ESR)
+  //       - IE 11
+  //   * ChromeVox 53
+  labelEl.textContent = '';
+  labelEl.innerHTML = '<span style="display: inline-block; width: 0; height: 1px;">&nbsp;</span>';
+
+  // Prevent visual jank by temporarily displaying the label text in the ::before pseudo-element.
+  // CSS generated content is normally announced by screen readers
+  // (except in IE 11; see https://tink.uk/accessibility-support-for-css-generated-content/);
+  // however, `aria-live` is turned off, so this DOM update will be ignored by screen readers.
+  labelEl.setAttribute(ARIA_LIVE_LABEL_TEXT_ATTR, labelText);
+
+  setTimeout(function () {
+    // Allow screen readers to announce changes to the DOM again.
+    ariaEl.setAttribute('aria-live', priority);
+
+    // Remove the message from the ::before pseudo-element.
+    labelEl.removeAttribute(ARIA_LIVE_LABEL_TEXT_ATTR);
+
+    // Restore the original label text, which will be announced by screen readers.
+    labelEl.textContent = labelText;
+  }, ARIA_LIVE_DELAY_MS);
+}
+
+
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cssClasses; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return strings; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return numbers; });
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+var cssClasses = {
+  OPENING: 'mdc-snackbar--opening',
+  OPEN: 'mdc-snackbar--open',
+  CLOSING: 'mdc-snackbar--closing'
+};
+
+var strings = {
+  SURFACE_SELECTOR: '.mdc-snackbar__surface',
+  LABEL_SELECTOR: '.mdc-snackbar__label',
+  ACTION_SELECTOR: '.mdc-snackbar__action',
+  DISMISS_SELECTOR: '.mdc-snackbar__dismiss',
+
+  OPENING_EVENT: 'MDCSnackbar:opening',
+  OPENED_EVENT: 'MDCSnackbar:opened',
+  CLOSING_EVENT: 'MDCSnackbar:closing',
+  CLOSED_EVENT: 'MDCSnackbar:closed',
+
+  REASON_ACTION: 'action',
+  REASON_DISMISS: 'dismiss',
+
+  ARIA_LIVE_LABEL_TEXT_ATTR: 'data-mdc-snackbar-label-text'
+};
+
+var numbers = {
+  MIN_AUTO_DISMISS_TIMEOUT_MS: 4000,
+  MAX_AUTO_DISMISS_TIMEOUT_MS: 10000,
+  DEFAULT_AUTO_DISMISS_TIMEOUT_MS: 5000,
+
+  // These variables need to be kept in sync with the values in _variables.scss.
+  SNACKBAR_ANIMATION_OPEN_TIME_MS: 150,
+  SNACKBAR_ANIMATION_CLOSE_TIME_MS: 75,
+
+  /**
+   * Number of milliseconds to wait between temporarily clearing the label text
+   * in the DOM and subsequently restoring it. This is necessary to force IE 11
+   * to pick up the `aria-live` content change and announce it to the user.
+   */
+  ARIA_LIVE_DELAY_MS: 1000
+};
+
+
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closest", function() { return closest; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "matches", function() { return matches; });
+/**
+ * @license
+ * Copyright 2018 Google Inc.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+/**
+ * @fileoverview A "ponyfill" is a polyfill that doesn't modify the global prototype chain.
+ * This makes ponyfills safer than traditional polyfills, especially for libraries like MDC.
+ */
+
+/**
+ * @param {!Element} element
+ * @param {string} selector
+ * @return {?Element}
+ */
+function closest(element, selector) {
+  if (element.closest) {
+    return element.closest(selector);
+  }
+
+  var el = element;
+  while (el) {
+    if (matches(el, selector)) {
+      return el;
+    }
+    el = el.parentElement;
+  }
+  return null;
+}
+
+/**
+ * @param {!Element} element
+ * @param {string} selector
+ * @return {boolean}
+ */
+function matches(element, selector) {
+  var nativeMatches = element.matches || element.webkitMatchesSelector || element.msMatchesSelector;
+  return nativeMatches.call(element, selector);
+}
+
+
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=mdc.snackbar.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@material/textfield/adapter.js":
 /*!*****************************************************!*\
   !*** ./node_modules/@material/textfield/adapter.js ***!
@@ -43176,6 +42210,61 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _material_snackbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material/snackbar */ "./node_modules/@material/snackbar/dist/mdc.snackbar.js");
+/* harmony import */ var _material_snackbar__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_material_snackbar__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    snack: {
+      type: Object
+    }
+  },
+  data: function data() {
+    return {};
+  },
+  mounted: function mounted() {
+    this.iniciarComponentes();
+  },
+  methods: {
+    iniciarComponentes: function iniciarComponentes() {
+      var snackbar = new _material_snackbar__WEBPACK_IMPORTED_MODULE_0__["MDCSnackbar"](document.querySelector('.mdc-snackbar'));
+      snackbar.open();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/home/Home.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/home/Home.vue?vue&type=script&lang=js& ***!
@@ -43330,6 +42419,8 @@ __webpack_require__.r(__webpack_exports__);
       historianuevacita: null,
       //Para ListarCitas
       keyLista: 0,
+      //Para Detalle de Citas
+      keyDetalleCita: 0,
       //Para Panel Pacientes
       keyPanelPacientes: 0,
       //Para DetallePaciente 
@@ -43362,6 +42453,7 @@ __webpack_require__.r(__webpack_exports__);
       this.isnuevacita = false;
       this.historianuevacita = null;
       this.showpaneldetallecita();
+      this.refrescarDetalleCitas();
     },
     nuevaCita: function nuevaCita(event) {
       this.determinarModo();
@@ -43372,7 +42464,6 @@ __webpack_require__.r(__webpack_exports__);
       this.isnuevacita = true;
       this.historianuevacita = event;
       this.showpaneldetallecita();
-      this.refrescarCitas();
     },
     showpaneldetallecita: function showpaneldetallecita() {
       if (this.modoMovil) {
@@ -43396,6 +42487,8 @@ __webpack_require__.r(__webpack_exports__);
         this.mostrarPhonePacientes = true;
         this.mostrarDesktopSeleccionaPaciente = true;
       }
+
+      this.refrescarPacientes();
     },
     getFechaHoy: function getFechaHoy() {
       var fechaHoy = new Date();
@@ -43413,7 +42506,7 @@ __webpack_require__.r(__webpack_exports__);
         this.isnuevopaciente = true;
         this.pacienteSelect = {
           id: 0,
-          persona_historia: {
+          persona: {
             id: 0,
             dni: null,
             pasaporte: null,
@@ -43450,6 +42543,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     refrescarCitas: function refrescarCitas($event) {
       this.keyLista += 1;
+    },
+    refrescarDetalleCitas: function refrescarDetalleCitas($event) {
+      this.keyDetalleCita += 1;
     },
     refrescarPacientes: function refrescarPacientes($event) {
       this.keyPanelPacientes += 1;
@@ -43678,6 +42774,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_form_field__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_material_form_field__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _material_checkbox__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @material/checkbox */ "./node_modules/@material/checkbox/dist/mdc.checkbox.js");
 /* harmony import */ var _material_checkbox__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_material_checkbox__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _PanelModal_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./../../PanelModal.vue */ "./resources/js/components/PanelModal.vue");
+
 
 
 
@@ -43690,7 +42788,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
+  components: {
+    "panel-modal": _PanelModal_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
+  },
   props: {
     citasel: {
       type: Object,
@@ -43726,7 +42826,8 @@ __webpack_require__.r(__webpack_exports__);
       confirmado: false,
       confirmadomedico: false,
       ultimasCitas: null,
-      tituloUltimasCitas: ""
+      tituloUltimasCitas: "",
+      modalValidar: null
     };
   },
   mounted: function mounted() {
@@ -43764,6 +42865,14 @@ __webpack_require__.r(__webpack_exports__);
         this.fechasel = null;
         this.notasel = "";
       }
+
+      this.modalValidar = {
+        conf: false,
+        contenido: "",
+        acciones: null,
+        keyModal: 0,
+        titulo: ""
+      };
     },
     iniciarComponentes: function iniciarComponentes() {
       var _this = this;
@@ -43986,8 +43095,34 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    llamarUltimasCitas: function llamarUltimasCitas() {
+    solicitarEliminarCita: function solicitarEliminarCita() {
+      this.modalValidar.keyModal += 1;
+      this.modalValidar.conf = true;
+      this.modalValidar.keyModal += 1;
+      this.modalValidar.conf = true;
+      this.modalValidar.titulo = "Elimninar Cita";
+      this.modalValidar.contenido = "Vas a eliminar esta cita ¿Estás seguro?";
+      this.modalValidar.acciones = [{
+        id: 0,
+        nombre: "eliminarCita",
+        texto: "eliminar",
+        valorAccion: this.citasel
+      }];
+    },
+    eliminarCita: function eliminarCita() {
       var _this5 = this;
+
+      var citasel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      fetch('/citas/eliminar/' + citasel.id).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.eliminado) {
+          _this5.$emit('cerrarPanelPacientes', true);
+        }
+      });
+    },
+    llamarUltimasCitas: function llamarUltimasCitas() {
+      var _this6 = this;
 
       var idHistoria = 0;
 
@@ -44000,10 +43135,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/citas/ultimas/' + idHistoria).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
-        _this5.ultimasCitas = rpta;
+        _this6.ultimasCitas = rpta;
         var tituloUltimasCitas = document.querySelector('.tituloUltimasCitas');
 
-        if (_this5.ultimasCitas == null || _this5.ultimasCitas.length == 0) {
+        if (_this6.ultimasCitas == null || _this6.ultimasCitas.length == 0) {
           tituloUltimasCitas.innerText = "El paciente no registra citas";
         } else {
           tituloUltimasCitas.innerText = "Últimas Citas Del Paciente";
@@ -44011,29 +43146,29 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     llamarAseguradoras: function llamarAseguradoras() {
-      var _this6 = this;
+      var _this7 = this;
 
       fetch('/aseguradoraslist').then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
-        _this6.aseguradoras = rpta;
-        _this6.aseguradorasel = null;
+        _this7.aseguradoras = rpta;
+        _this7.aseguradorasel = null;
 
-        if (_this6.isnuevacita) {
-          if (_this6.aseguradoras.length > 0) {
-            _this6.aseguradorasel = _this6.aseguradoras[0];
+        if (_this7.isnuevacita) {
+          if (_this7.aseguradoras.length > 0) {
+            _this7.aseguradorasel = _this7.aseguradoras[0];
           }
         } else {
-          _this6.aseguradoras.forEach(function (element) {
-            if (element.id == _this6.citasel.aseguradora.id) {
-              _this6.aseguradorasel = element;
+          _this7.aseguradoras.forEach(function (element) {
+            if (element.id == _this7.citasel.aseguradora.id) {
+              _this7.aseguradorasel = element;
             }
           });
         }
       });
     },
     guardarCita: function guardarCita() {
-      var _this7 = this;
+      var _this8 = this;
 
       if (this.isnuevacita) {
         fetch('/citas', {
@@ -44058,7 +43193,7 @@ __webpack_require__.r(__webpack_exports__);
           return response.json();
         }).then(function (data) {
           if (data.guardado) {
-            _this7.$emit('refrescarCitas', true);
+            _this8.$emit('refrescarCitas', true);
           }
         });
       } else {
@@ -44087,7 +43222,7 @@ __webpack_require__.r(__webpack_exports__);
           return response.json();
         }).then(function (data) {
           if (data.guardado) {
-            _this7.$emit('refrescarCitas', true);
+            _this8.$emit('refrescarCitas', true);
           }
         });
       }
@@ -44159,7 +43294,8 @@ __webpack_require__.r(__webpack_exports__);
       ubicacionsel: null,
       finalizaCarga: false,
       modalGuardar: null,
-      modalValidar: null
+      modalValidar: null,
+      snackmsj: null
     };
   },
   mounted: function mounted() {
@@ -44178,7 +43314,7 @@ __webpack_require__.r(__webpack_exports__);
       if (this.nuevo) {
         this.ubicacionsel = null;
       } else {
-        this.ubicacionsel = this.pacientesel.persona_historia.ubicacion_nacimiento;
+        this.ubicacionsel = this.pacientesel.persona.ubicacion_nacimiento;
       }
 
       this.modalGuardar = {
@@ -44193,6 +43329,12 @@ __webpack_require__.r(__webpack_exports__);
         acciones: null,
         keyModal: 0
       };
+      this.snackmsj = {
+        key: 0,
+        view: false,
+        contenido: "",
+        acciones: []
+      };
       this.calculateAge();
     },
     llenarCorreo: function llenarCorreo() {
@@ -44206,7 +43348,7 @@ __webpack_require__.r(__webpack_exports__);
           var contieneCorreo = false;
           var posicion = 0;
           var posicionEliminar = 0;
-          principal.pacientesel.persona_historia.correo.forEach(function (element) {
+          principal.pacientesel.persona.correo.forEach(function (element) {
             if (element.correo.trim() == correoAEliminar.trim()) {
               contieneCorreo = true;
               posicionEliminar = posicion;
@@ -44216,7 +43358,7 @@ __webpack_require__.r(__webpack_exports__);
           });
 
           if (contieneCorreo) {
-            principal.pacientesel.persona_historia.correo.splice(posicionEliminar, 1);
+            principal.pacientesel.persona.correo.splice(posicionEliminar, 1);
           }
         });
       }
@@ -44230,7 +43372,7 @@ __webpack_require__.r(__webpack_exports__);
 
             if (textoCaja != null && textoCaja != "" && textoCaja.includes("@") && textoCaja.includes(".") && textoCaja.length > 6) {
               var contieneCorreo = false;
-              principal.pacientesel.persona_historia.correo.forEach(function (element) {
+              principal.pacientesel.persona.correo.forEach(function (element) {
                 if (element.correo.trim() == textoCaja.trim()) {
                   contieneCorreo = true;
                 }
@@ -44240,10 +43382,10 @@ __webpack_require__.r(__webpack_exports__);
                 var chipEl = principal.armarChipCorreo(textoCaja.trim());
                 chipSetEl.appendChild(chipEl);
                 chipSet.addChip(chipEl);
-                principal.pacientesel.persona_historia.correo.push({
+                principal.pacientesel.persona.correo.push({
                   id: 0,
                   correo: textoCaja,
-                  persona_id: principal.pacientesel.persona_historia.id
+                  persona_id: principal.pacientesel.persona.id
                 });
               }
 
@@ -44253,7 +43395,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
 
-      principal.pacientesel.persona_historia.correo.forEach(function (element) {
+      principal.pacientesel.persona.correo.forEach(function (element) {
         var chipEl = principal.armarChipCorreo(element.correo.trim());
         chipSetEl.appendChild(chipEl);
         chipSet.addChip(chipEl);
@@ -44293,7 +43435,7 @@ __webpack_require__.r(__webpack_exports__);
           var contieneTelefono = false;
           var posicion = 0;
           var posicionEliminar = 0;
-          principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+          principal.pacientesel.persona.telefono.forEach(function (element) {
             if (element.telefono.trim() == telefonoAEliminar.trim()) {
               contieneTelefono = true;
               posicionEliminar = posicion;
@@ -44303,7 +43445,7 @@ __webpack_require__.r(__webpack_exports__);
           });
 
           if (contieneTelefono) {
-            principal.pacientesel.persona_historia.telefono.splice(posicionEliminar, 1);
+            principal.pacientesel.persona.telefono.splice(posicionEliminar, 1);
           }
         });
       }
@@ -44317,7 +43459,7 @@ __webpack_require__.r(__webpack_exports__);
 
             if (textoCaja != null && textoCaja != "" && (textoCaja.includes("1") || textoCaja.includes("2") || textoCaja.includes("3") || textoCaja.includes("4") || textoCaja.includes("5") || textoCaja.includes("6") || textoCaja.includes("7") || textoCaja.includes("8") || textoCaja.includes("9") || textoCaja.includes("0")) && textoCaja.length >= 9) {
               var contieneTelefono = false;
-              principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+              principal.pacientesel.persona.telefono.forEach(function (element) {
                 if (element.telefono.trim() == textoCaja.trim()) {
                   contieneTelefono = true;
                 }
@@ -44327,10 +43469,10 @@ __webpack_require__.r(__webpack_exports__);
                 var chipEl = principal.armarChipTelefono(textoCaja.trim());
                 chipSetEl.appendChild(chipEl);
                 chipSet.addChip(chipEl);
-                principal.pacientesel.persona_historia.telefono.push({
+                principal.pacientesel.persona.telefono.push({
                   id: 0,
                   telefono: textoCaja,
-                  persona_id: principal.pacientesel.persona_historia.id
+                  persona_id: principal.pacientesel.persona.id
                 });
               }
 
@@ -44340,7 +43482,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
 
-      principal.pacientesel.persona_historia.telefono.forEach(function (element) {
+      principal.pacientesel.persona.telefono.forEach(function (element) {
         var chipEl = principal.armarChipTelefono(element.telefono.trim());
         chipSetEl.appendChild(chipEl);
         chipSet.addChip(chipEl);
@@ -44407,7 +43549,7 @@ __webpack_require__.r(__webpack_exports__);
           _this.ubicaciones.forEach(function (element) {
             if (element.id == selectUbicaciones.value) {
               _this.ubicacionsel = element;
-              _this.pacientesel.persona_historia.ubicacion_nacimiento = element;
+              _this.pacientesel.persona.ubicacion_nacimiento = element;
             }
           });
         });
@@ -44483,7 +43625,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     calculateAge: function calculateAge() {
-      var birthday = this.pacientesel.persona_historia.fecha_nacimiento;
+      var birthday = this.pacientesel.persona.fecha_nacimiento;
       var birthday_date = null;
 
       if (birthday == null) {
@@ -44496,7 +43638,7 @@ __webpack_require__.r(__webpack_exports__);
       var ageDifMs = Date.now() - birthday_date.getTime();
       var ageDate = new Date(ageDifMs);
       var edad = Math.abs(ageDate.getUTCFullYear() - 1970);
-      this.pacientesel.persona_historia.edad = edad;
+      this.pacientesel.persona.edad = edad;
     },
     confirmarNuevoPaciente: function confirmarNuevoPaciente() {
       this.modalGuardar.confGuardar = true;
@@ -44518,28 +43660,54 @@ __webpack_require__.r(__webpack_exports__);
         }];
       }
     },
-    guardarPaciente: function guardarPaciente() {
+    solicitarEliminarPaciente: function solicitarEliminarPaciente() {
+      this.modalValidar.keyModal += 1;
+      this.modalValidar.conf = true;
+      this.modalValidar.keyModal += 1;
+      this.modalValidar.conf = true;
+      this.modalValidar.titulo = "Elimninar Paciente";
+      this.modalValidar.contenido = "Vas a eliminar este paciente ¿Estás seguro?";
+      this.modalValidar.acciones = [{
+        id: 0,
+        nombre: "eliminarPaciente",
+        texto: "Eliminar",
+        valorAccion: this.pacientesel
+      }];
+    },
+    eliminarPaciente: function eliminarPaciente() {
       var _this3 = this;
+
+      var pacientesel = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      fetch('/pacientes/eliminar/' + pacientesel.id).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.eliminado) {
+          _this3.$emit('abrirPacientes', 0);
+        }
+      });
+    },
+    guardarPaciente: function guardarPaciente() {
+      var _this4 = this;
 
       this.modalGuardar.confGuardar = false;
       this.modalGuardar.keyModalGuardar += 1;
 
-      if ((this.pacientesel.persona_historia.dni == null || this.pacientesel.persona_historia.dni == "") && (this.pacientesel.persona_historia.pasaporte == null || this.pacientesel.persona_historia.pasaporte == "") && (this.pacientesel.persona_historia.carne_extra == null || this.pacientesel.persona_historia.carne_extra == "") && (this.pacientesel.persona_historia.ruc == null || this.pacientesel.persona_historia.ruc == "")) {
+      if ((this.pacientesel.persona.dni == null || this.pacientesel.persona.dni == "") && (this.pacientesel.persona.pasaporte == null || this.pacientesel.persona.pasaporte == "") && (this.pacientesel.persona.carne_extra == null || this.pacientesel.persona.carne_extra == "") && (this.pacientesel.persona.ruc == null || this.pacientesel.persona.ruc == "")) {
         this.modalValidar.keyModal += 1;
         this.modalValidar.conf = true;
         this.modalValidar.contenido = "El paciente debe tener al menos un documento.";
         this.modalValidar.acciones = [];
-      } else if (this.pacientesel.persona_historia.telefono.length < 2) {
+      } else if (this.pacientesel.persona.telefono.length < 2) {
         this.modalValidar.keyModal += 1;
         this.modalValidar.conf = true;
         this.modalValidar.contenido = "El paciente debe tener al menos dos teléfonos.";
         this.modalValidar.acciones = [];
-      } else if (this.pacientesel.persona_historia.nombres == null || this.pacientesel.persona_historia.nombres == "" || this.pacientesel.persona_historia.apellido_paterno == null || this.pacientesel.persona_historia.apellido_paterno == "" || this.pacientesel.persona_historia.apellido_materno == null || this.pacientesel.persona_historia.apellido_materno == "") {
+      } else if (this.pacientesel.persona.nombres == null || this.pacientesel.persona.nombres == "" || this.pacientesel.persona.apellido_paterno == null || this.pacientesel.persona.apellido_paterno == "" || this.pacientesel.persona.apellido_materno == null || this.pacientesel.persona.apellido_materno == "") {
         this.modalValidar.keyModal += 1;
         this.modalValidar.conf = true;
         this.modalValidar.contenido = "El paciente debe tener los nombres y apellidos completos.";
         this.modalValidar.acciones = [];
-      } else if (this.pacientesel.persona_historia.fecha_nacimiento == null || this.pacientesel.persona_historia.fecha_nacimiento == "") {
+      } else if (this.pacientesel.persona.fecha_nacimiento == null || this.pacientesel.persona.fecha_nacimiento == "") {
         this.modalValidar.keyModal += 1;
         this.modalValidar.conf = true;
         this.modalValidar.contenido = "El paciente debe tener una fecha de nacimiento.";
@@ -44564,7 +43732,23 @@ __webpack_require__.r(__webpack_exports__);
             console.log(data.id);
 
             if (data.guardado) {
-              _this3.$emit('refrescarPacientes', true);
+              _this4.$emit('refrescarPacientes', true);
+
+              _this4.snackmsj.view = true;
+              _this4.snackmsj.key += 1;
+              _this4.snackmsj.contenido = "Paciente creado";
+              _this4.snackmsj.acciones = [{
+                id: 0,
+                action: "yes",
+                nombre: "OK",
+                nombreAccion: "",
+                valorAccion: 0
+              }];
+            } else {
+              _this4.modalValidar.keyModal += 1;
+              _this4.modalValidar.conf = true;
+              _this4.modalValidar.contenido = data.mensaje;
+              _this4.modalValidar.acciones = [];
             }
           });
         } else {
@@ -44585,7 +43769,23 @@ __webpack_require__.r(__webpack_exports__);
             return response.json();
           }).then(function (data) {
             if (data.guardado) {
-              _this3.$emit('refrescarPacientes', true);
+              _this4.$emit('refrescarPacientes', true);
+
+              _this4.snackmsj.view = true;
+              _this4.snackmsj.key += 1;
+              _this4.snackmsj.contenido = "Paciente actualizado";
+              _this4.snackmsj.acciones = [{
+                id: 0,
+                action: "yes",
+                nombre: "OK",
+                nombreAccion: "",
+                valorAccion: 0
+              }];
+            } else {
+              _this4.modalValidar.keyModal += 1;
+              _this4.modalValidar.conf = true;
+              _this4.modalValidar.contenido = data.mensaje;
+              _this4.modalValidar.acciones = [];
             }
           });
         }
@@ -52793,6 +51993,25 @@ exports.push([module.i, ".mdc-dialog[data-v-5ebcb998],\n.mdc-dialog__scrim[data-
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@-webkit-keyframes mdc-ripple-fg-radius-in-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n}\nto {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n}\n}\n@keyframes mdc-ripple-fg-radius-in-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n}\nto {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n}\n}\n@-webkit-keyframes mdc-ripple-fg-opacity-in-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0;\n}\nto {\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\n}\n@keyframes mdc-ripple-fg-opacity-in-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0;\n}\nto {\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\n}\n@-webkit-keyframes mdc-ripple-fg-opacity-out-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\nto {\n    opacity: 0;\n}\n}\n@keyframes mdc-ripple-fg-opacity-out-data-v-61e51c54 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\nto {\n    opacity: 0;\n}\n}\n.mdc-ripple-surface--test-edge-var-bug[data-v-61e51c54] {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden;\n}\n.mdc-ripple-surface--test-edge-var-bug[data-v-61e51c54]::before {\n  border: var(--mdc-ripple-surface-test-edge-var);\n}\n.mdc-snackbar[data-v-61e51c54] {\n  z-index: 8;\n  margin: 8px;\n  display: none;\n  position: fixed;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  align-items: center;\n  justify-content: center;\n  box-sizing: border-box;\n  pointer-events: none;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  background-color: #333333;\n}\n.mdc-snackbar__label[data-v-61e51c54] {\n  color: rgba(255, 255, 255, 0.87);\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  min-width: 344px;\n}\n@media (max-width: 480px), (max-width: 344px) {\n.mdc-snackbar__surface[data-v-61e51c54] {\n    min-width: 100%;\n}\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  max-width: 672px;\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  border-radius: 4px;\n}\n.mdc-snackbar--opening[data-v-61e51c54],\n.mdc-snackbar--open[data-v-61e51c54],\n.mdc-snackbar--closing[data-v-61e51c54] {\n  display: flex;\n}\n.mdc-snackbar--leading[data-v-61e51c54] {\n  justify-content: flex-start;\n}\n.mdc-snackbar--stacked .mdc-snackbar__surface[data-v-61e51c54] {\n  flex-direction: column;\n  align-items: flex-start;\n}\n.mdc-snackbar--stacked .mdc-snackbar__actions[data-v-61e51c54] {\n  align-self: flex-end;\n  margin-bottom: 8px;\n}\n.mdc-snackbar__surface[data-v-61e51c54] {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  box-sizing: border-box;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n  opacity: 0;\n}\n.mdc-snackbar--open .mdc-snackbar__surface[data-v-61e51c54] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  transition: opacity 150ms 0ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);\n  transition: opacity 150ms 0ms cubic-bezier(0, 0, 0.2, 1), transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);\n  transition: opacity 150ms 0ms cubic-bezier(0, 0, 0.2, 1), transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 150ms 0ms cubic-bezier(0, 0, 0.2, 1);\n  opacity: 1;\n  pointer-events: auto;\n}\n.mdc-snackbar--closing .mdc-snackbar__surface[data-v-61e51c54] {\n  -webkit-transform: scale(1);\n          transform: scale(1);\n  transition: opacity 75ms 0ms cubic-bezier(0.4, 0, 1, 1);\n}\n.mdc-snackbar__label[data-v-61e51c54] {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n  font-weight: 400;\n  letter-spacing: 0.0178571429em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  flex-grow: 1;\n  box-sizing: border-box;\n  margin: 0;\n  padding: 14px 16px;\n}\n.mdc-snackbar__label[data-v-61e51c54]::before {\n  display: inline;\n  content: attr(data-mdc-snackbar-label-text);\n}\n.mdc-snackbar__actions[data-v-61e51c54] {\n  /* @noflip */\n  margin-left: 0;\n  /* @noflip */\n  margin-right: 8px;\n  display: flex;\n  flex-shrink: 0;\n  align-items: center;\n  box-sizing: border-box;\n}\n[dir=rtl] .mdc-snackbar__actions[data-v-61e51c54], .mdc-snackbar__actions[dir=rtl][data-v-61e51c54] {\n  /* @noflip */\n  margin-left: 8px;\n  /* @noflip */\n  margin-right: 0;\n}\n.mdc-snackbar__action[data-v-61e51c54]:not(:disabled) {\n  color: #bb86fc;\n}\n.mdc-snackbar__action[data-v-61e51c54]::before, .mdc-snackbar__action[data-v-61e51c54]::after {\n  background-color: #bb86fc;\n}\n.mdc-snackbar__action[data-v-61e51c54]:hover::before {\n  opacity: 0.08;\n}\n.mdc-snackbar__action[data-v-61e51c54]:not(.mdc-ripple-upgraded):focus::before, .mdc-snackbar__action.mdc-ripple-upgraded--background-focused[data-v-61e51c54]::before {\n  transition-duration: 75ms;\n  opacity: 0.24;\n}\n.mdc-snackbar__action[data-v-61e51c54]:not(.mdc-ripple-upgraded)::after {\n  transition: opacity 150ms linear;\n}\n.mdc-snackbar__action[data-v-61e51c54]:not(.mdc-ripple-upgraded):active::after {\n  transition-duration: 75ms;\n  opacity: 0.32;\n}\n.mdc-snackbar__action.mdc-ripple-upgraded[data-v-61e51c54] {\n  --mdc-ripple-fg-opacity: 0.32;\n}\n.mdc-snackbar__dismiss[data-v-61e51c54] {\n  color: rgba(255, 255, 255, 0.87);\n}\n.mdc-snackbar__dismiss[data-v-61e51c54]::before, .mdc-snackbar__dismiss[data-v-61e51c54]::after {\n  background-color: rgba(255, 255, 255, 0.87);\n}\n.mdc-snackbar__dismiss[data-v-61e51c54]:hover::before {\n  opacity: 0.08;\n}\n.mdc-snackbar__dismiss[data-v-61e51c54]:not(.mdc-ripple-upgraded):focus::before, .mdc-snackbar__dismiss.mdc-ripple-upgraded--background-focused[data-v-61e51c54]::before {\n  transition-duration: 75ms;\n  opacity: 0.24;\n}\n.mdc-snackbar__dismiss[data-v-61e51c54]:not(.mdc-ripple-upgraded)::after {\n  transition: opacity 150ms linear;\n}\n.mdc-snackbar__dismiss[data-v-61e51c54]:not(.mdc-ripple-upgraded):active::after {\n  transition-duration: 75ms;\n  opacity: 0.32;\n}\n.mdc-snackbar__dismiss.mdc-ripple-upgraded[data-v-61e51c54] {\n  --mdc-ripple-fg-opacity: 0.32;\n}\n.mdc-snackbar__dismiss.mdc-snackbar__dismiss[data-v-61e51c54] {\n  width: 36px;\n  height: 36px;\n  padding: 9px;\n  font-size: 18px;\n}\n.mdc-snackbar__dismiss.mdc-snackbar__dismiss svg[data-v-61e51c54],\n.mdc-snackbar__dismiss.mdc-snackbar__dismiss img[data-v-61e51c54] {\n  width: 18px;\n  height: 18px;\n}\n.mdc-snackbar__action + .mdc-snackbar__dismiss[data-v-61e51c54] {\n  /* @noflip */\n  margin-left: 8px;\n  /* @noflip */\n  margin-right: 0;\n}\n[dir=rtl] .mdc-snackbar__action + .mdc-snackbar__dismiss[data-v-61e51c54], .mdc-snackbar__action + .mdc-snackbar__dismiss[dir=rtl][data-v-61e51c54] {\n  /* @noflip */\n  margin-left: 0;\n  /* @noflip */\n  margin-right: 8px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/home/Home.vue?vue&type=style&index=0&id=1f26c2f4&lang=scss&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/home/Home.vue?vue&type=style&index=0&id=1f26c2f4&lang=scss&scoped=true& ***!
@@ -52824,7 +52043,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "[data-v-515aaa96]:root {\n  --mdc-layout-grid-margin-desktop: 24px;\n  --mdc-layout-grid-gutter-desktop: 24px;\n  --mdc-layout-grid-column-width-desktop: 72px;\n  --mdc-layout-grid-margin-tablet: 16px;\n  --mdc-layout-grid-gutter-tablet: 16px;\n  --mdc-layout-grid-column-width-tablet: 72px;\n  --mdc-layout-grid-margin-phone: 16px;\n  --mdc-layout-grid-gutter-phone: 16px;\n  --mdc-layout-grid-column-width-phone: 72px;\n}\n@media (min-width: 840px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 24px;\n    padding: var(--mdc-layout-grid-margin-desktop, 24px);\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 16px;\n    padding: var(--mdc-layout-grid-margin-tablet, 16px);\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 16px;\n    padding: var(--mdc-layout-grid-margin-phone, 16px);\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -12px;\n    margin: calc(var(--mdc-layout-grid-gutter-desktop, 24px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 24px;\n      grid-gap: var(--mdc-layout-grid-gutter-desktop, 24px);\n      grid-template-columns: repeat(12, minmax(0, 1fr));\n}\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -8px;\n    margin: calc(var(--mdc-layout-grid-gutter-tablet, 16px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 16px;\n      grid-gap: var(--mdc-layout-grid-gutter-tablet, 16px);\n      grid-template-columns: repeat(8, minmax(0, 1fr));\n}\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -8px;\n    margin: calc(var(--mdc-layout-grid-gutter-phone, 16px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 16px;\n      grid-gap: var(--mdc-layout-grid-gutter-phone, 16px);\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n}\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(33.3333333333% - 24px);\n    width: calc(33.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n    box-sizing: border-box;\n    margin: 12px;\n    margin: calc(var(--mdc-layout-grid-gutter-desktop, 24px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-desktop[data-v-515aaa96] {\n    width: calc(8.3333333333% - 24px);\n    width: calc(8.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-desktop[data-v-515aaa96] {\n    width: calc(16.6666666667% - 24px);\n    width: calc(16.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(25% - 24px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-desktop[data-v-515aaa96] {\n    width: calc(33.3333333333% - 24px);\n    width: calc(33.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-desktop[data-v-515aaa96] {\n    width: calc(41.6666666667% - 24px);\n    width: calc(41.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 5;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-desktop[data-v-515aaa96] {\n    width: calc(50% - 24px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 6;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-desktop[data-v-515aaa96] {\n    width: calc(58.3333333333% - 24px);\n    width: calc(58.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 7;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-desktop[data-v-515aaa96] {\n    width: calc(66.6666666667% - 24px);\n    width: calc(66.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-desktop[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96] {\n    width: calc(75% - 24px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-desktop[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 9;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-desktop[data-v-515aaa96] {\n    width: calc(83.3333333333% - 24px);\n    width: calc(83.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 10;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-desktop[data-v-515aaa96] {\n    width: calc(91.6666666667% - 24px);\n    width: calc(91.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 11;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-desktop[data-v-515aaa96] {\n    width: calc(100% - 24px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 12;\n}\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-tablet, 16px));\n    box-sizing: border-box;\n    margin: 8px;\n    margin: calc(var(--mdc-layout-grid-gutter-tablet, 16px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-tablet[data-v-515aaa96] {\n    width: calc(12.5% - 16px);\n    width: calc(12.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-tablet[data-v-515aaa96] {\n    width: calc(25% - 16px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-tablet[data-v-515aaa96] {\n    width: calc(37.5% - 16px);\n    width: calc(37.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-tablet[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-tablet[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-tablet[data-v-515aaa96] {\n    width: calc(62.5% - 16px);\n    width: calc(62.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 5;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-tablet[data-v-515aaa96] {\n    width: calc(75% - 16px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 6;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-tablet[data-v-515aaa96] {\n    width: calc(87.5% - 16px);\n    width: calc(87.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 7;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n    box-sizing: border-box;\n    margin: 8px;\n    margin: calc(var(--mdc-layout-grid-gutter-phone, 16px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-phone[data-v-515aaa96] {\n    width: calc(25% - 16px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-phone[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-phone[data-v-515aaa96] {\n    width: calc(75% - 16px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-phone[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-phone[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n}\n.mdc-layout-grid__cell--order-1[data-v-515aaa96] {\n  order: 1;\n}\n.mdc-layout-grid__cell--order-2[data-v-515aaa96] {\n  order: 2;\n}\n.mdc-layout-grid__cell--order-3[data-v-515aaa96] {\n  order: 3;\n}\n.mdc-layout-grid__cell--order-4[data-v-515aaa96] {\n  order: 4;\n}\n.mdc-layout-grid__cell--order-5[data-v-515aaa96] {\n  order: 5;\n}\n.mdc-layout-grid__cell--order-6[data-v-515aaa96] {\n  order: 6;\n}\n.mdc-layout-grid__cell--order-7[data-v-515aaa96] {\n  order: 7;\n}\n.mdc-layout-grid__cell--order-8[data-v-515aaa96] {\n  order: 8;\n}\n.mdc-layout-grid__cell--order-9[data-v-515aaa96] {\n  order: 9;\n}\n.mdc-layout-grid__cell--order-10[data-v-515aaa96] {\n  order: 10;\n}\n.mdc-layout-grid__cell--order-11[data-v-515aaa96] {\n  order: 11;\n}\n.mdc-layout-grid__cell--order-12[data-v-515aaa96] {\n  order: 12;\n}\n.mdc-layout-grid__cell--align-top[data-v-515aaa96] {\n  align-self: flex-start;\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--align-top[data-v-515aaa96] {\n    align-self: start;\n}\n}\n.mdc-layout-grid__cell--align-middle[data-v-515aaa96] {\n  align-self: center;\n}\n.mdc-layout-grid__cell--align-bottom[data-v-515aaa96] {\n  align-self: flex-end;\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--align-bottom[data-v-515aaa96] {\n    align-self: end;\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 1176px;\n    width: calc( var(--mdc-layout-grid-column-width-desktop, 72px) * 12 + var(--mdc-layout-grid-gutter-desktop, 24px) * 11 + var(--mdc-layout-grid-margin-desktop, 24px) * 2 );\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 720px;\n    width: calc( var(--mdc-layout-grid-column-width-tablet, 72px) * 8 + var(--mdc-layout-grid-gutter-tablet, 16px) * 7 + var(--mdc-layout-grid-margin-tablet, 16px) * 2 );\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 368px;\n    width: calc( var(--mdc-layout-grid-column-width-phone, 72px) * 4 + var(--mdc-layout-grid-gutter-phone, 16px) * 3 + var(--mdc-layout-grid-margin-phone, 16px) * 2 );\n}\n}\n.mdc-layout-grid--align-left[data-v-515aaa96] {\n  margin-right: auto;\n  margin-left: 0;\n}\n.mdc-layout-grid--align-right[data-v-515aaa96] {\n  margin-right: 0;\n  margin-left: auto;\n}", ""]);
+exports.push([module.i, "[data-v-515aaa96]:root {\n  --mdc-layout-grid-margin-desktop: 24px;\n  --mdc-layout-grid-gutter-desktop: 24px;\n  --mdc-layout-grid-column-width-desktop: 72px;\n  --mdc-layout-grid-margin-tablet: 16px;\n  --mdc-layout-grid-gutter-tablet: 16px;\n  --mdc-layout-grid-column-width-tablet: 72px;\n  --mdc-layout-grid-margin-phone: 16px;\n  --mdc-layout-grid-gutter-phone: 16px;\n  --mdc-layout-grid-column-width-phone: 72px;\n}\n@media (min-width: 840px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 24px;\n    padding: var(--mdc-layout-grid-margin-desktop, 24px);\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 16px;\n    padding: var(--mdc-layout-grid-margin-tablet, 16px);\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid[data-v-515aaa96] {\n    box-sizing: border-box;\n    margin: 0 auto;\n    padding: 16px;\n    padding: var(--mdc-layout-grid-margin-phone, 16px);\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -12px;\n    margin: calc(var(--mdc-layout-grid-gutter-desktop, 24px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 24px;\n      grid-gap: var(--mdc-layout-grid-gutter-desktop, 24px);\n      grid-template-columns: repeat(12, minmax(0, 1fr));\n}\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -8px;\n    margin: calc(var(--mdc-layout-grid-gutter-tablet, 16px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 16px;\n      grid-gap: var(--mdc-layout-grid-gutter-tablet, 16px);\n      grid-template-columns: repeat(8, minmax(0, 1fr));\n}\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n    display: flex;\n    flex-flow: row wrap;\n    align-items: stretch;\n    margin: -8px;\n    margin: calc(var(--mdc-layout-grid-gutter-phone, 16px) / 2 * -1);\n}\n@supports (display: grid) {\n.mdc-layout-grid__inner[data-v-515aaa96] {\n      display: grid;\n      margin: 0;\n      grid-gap: 16px;\n      grid-gap: var(--mdc-layout-grid-gutter-phone, 16px);\n      grid-template-columns: repeat(4, minmax(0, 1fr));\n}\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(33.3333333333% - 24px);\n    width: calc(33.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n    box-sizing: border-box;\n    margin: 12px;\n    margin: calc(var(--mdc-layout-grid-gutter-desktop, 24px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-desktop[data-v-515aaa96] {\n    width: calc(8.3333333333% - 24px);\n    width: calc(8.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-desktop[data-v-515aaa96] {\n    width: calc(16.6666666667% - 24px);\n    width: calc(16.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(25% - 24px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-desktop[data-v-515aaa96] {\n    width: calc(33.3333333333% - 24px);\n    width: calc(33.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-desktop[data-v-515aaa96] {\n    width: calc(41.6666666667% - 24px);\n    width: calc(41.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 5;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-desktop[data-v-515aaa96] {\n    width: calc(50% - 24px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 6;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-desktop[data-v-515aaa96] {\n    width: calc(58.3333333333% - 24px);\n    width: calc(58.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 7;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-desktop[data-v-515aaa96] {\n    width: calc(66.6666666667% - 24px);\n    width: calc(66.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-desktop[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96] {\n    width: calc(75% - 24px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-desktop[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 9;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-desktop[data-v-515aaa96] {\n    width: calc(83.3333333333% - 24px);\n    width: calc(83.3333333333% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 10;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-desktop[data-v-515aaa96] {\n    width: calc(91.6666666667% - 24px);\n    width: calc(91.6666666667% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 11;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-desktop[data-v-515aaa96] {\n    width: calc(100% - 24px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-desktop, 24px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-desktop[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 12;\n}\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-tablet, 16px));\n    box-sizing: border-box;\n    margin: 8px;\n    margin: calc(var(--mdc-layout-grid-gutter-tablet, 16px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-tablet[data-v-515aaa96] {\n    width: calc(12.5% - 16px);\n    width: calc(12.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-tablet[data-v-515aaa96] {\n    width: calc(25% - 16px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-tablet[data-v-515aaa96] {\n    width: calc(37.5% - 16px);\n    width: calc(37.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-tablet[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-tablet[data-v-515aaa96],\n.panel-desktop[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-tablet[data-v-515aaa96] {\n    width: calc(62.5% - 16px);\n    width: calc(62.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 5;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-tablet[data-v-515aaa96] {\n    width: calc(75% - 16px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 6;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-tablet[data-v-515aaa96] {\n    width: calc(87.5% - 16px);\n    width: calc(87.5% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 7;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-tablet[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-tablet, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-tablet[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 8;\n}\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n    box-sizing: border-box;\n    margin: 8px;\n    margin: calc(var(--mdc-layout-grid-gutter-phone, 16px) / 2);\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell[data-v-515aaa96], .panel-desktop[data-v-515aaa96], .panel-movil[data-v-515aaa96] {\n      margin: 0;\n}\n}\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-phone[data-v-515aaa96] {\n    width: calc(25% - 16px);\n    width: calc(25% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-1[data-v-515aaa96],\n.mdc-layout-grid__cell--span-1-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 1;\n}\n}\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-phone[data-v-515aaa96] {\n    width: calc(50% - 16px);\n    width: calc(50% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-2[data-v-515aaa96],\n.mdc-layout-grid__cell--span-2-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 2;\n}\n}\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-phone[data-v-515aaa96] {\n    width: calc(75% - 16px);\n    width: calc(75% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-3[data-v-515aaa96],\n.mdc-layout-grid__cell--span-3-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 3;\n}\n}\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-phone[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-4[data-v-515aaa96],\n.mdc-layout-grid__cell--span-4-phone[data-v-515aaa96],\n.panel-movil[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-5[data-v-515aaa96],\n.mdc-layout-grid__cell--span-5-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-6[data-v-515aaa96],\n.mdc-layout-grid__cell--span-6-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-7[data-v-515aaa96],\n.mdc-layout-grid__cell--span-7-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-8[data-v-515aaa96],\n.mdc-layout-grid__cell--span-8-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-9[data-v-515aaa96],\n.mdc-layout-grid__cell--span-9-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-10[data-v-515aaa96],\n.mdc-layout-grid__cell--span-10-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-11[data-v-515aaa96],\n.mdc-layout-grid__cell--span-11-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-phone[data-v-515aaa96] {\n    width: calc(100% - 16px);\n    width: calc(100% - var(--mdc-layout-grid-gutter-phone, 16px));\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--span-12[data-v-515aaa96],\n.mdc-layout-grid__cell--span-12-phone[data-v-515aaa96] {\n      width: auto;\n      grid-column-end: span 4;\n}\n}\n}\n.mdc-layout-grid__cell--order-1[data-v-515aaa96] {\n  order: 1;\n}\n.mdc-layout-grid__cell--order-2[data-v-515aaa96] {\n  order: 2;\n}\n.mdc-layout-grid__cell--order-3[data-v-515aaa96] {\n  order: 3;\n}\n.mdc-layout-grid__cell--order-4[data-v-515aaa96] {\n  order: 4;\n}\n.mdc-layout-grid__cell--order-5[data-v-515aaa96] {\n  order: 5;\n}\n.mdc-layout-grid__cell--order-6[data-v-515aaa96] {\n  order: 6;\n}\n.mdc-layout-grid__cell--order-7[data-v-515aaa96] {\n  order: 7;\n}\n.mdc-layout-grid__cell--order-8[data-v-515aaa96] {\n  order: 8;\n}\n.mdc-layout-grid__cell--order-9[data-v-515aaa96] {\n  order: 9;\n}\n.mdc-layout-grid__cell--order-10[data-v-515aaa96] {\n  order: 10;\n}\n.mdc-layout-grid__cell--order-11[data-v-515aaa96] {\n  order: 11;\n}\n.mdc-layout-grid__cell--order-12[data-v-515aaa96] {\n  order: 12;\n}\n.mdc-layout-grid__cell--align-top[data-v-515aaa96] {\n  align-self: flex-start;\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--align-top[data-v-515aaa96] {\n    align-self: start;\n}\n}\n.mdc-layout-grid__cell--align-middle[data-v-515aaa96] {\n  align-self: center;\n}\n.mdc-layout-grid__cell--align-bottom[data-v-515aaa96] {\n  align-self: flex-end;\n}\n@supports (display: grid) {\n.mdc-layout-grid__cell--align-bottom[data-v-515aaa96] {\n    align-self: end;\n}\n}\n@media (min-width: 840px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 1176px;\n    width: calc( var(--mdc-layout-grid-column-width-desktop, 72px) * 12 + var(--mdc-layout-grid-gutter-desktop, 24px) * 11 + var(--mdc-layout-grid-margin-desktop, 24px) * 2 );\n}\n}\n@media (min-width: 480px) and (max-width: 839px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 720px;\n    width: calc( var(--mdc-layout-grid-column-width-tablet, 72px) * 8 + var(--mdc-layout-grid-gutter-tablet, 16px) * 7 + var(--mdc-layout-grid-margin-tablet, 16px) * 2 );\n}\n}\n@media (max-width: 479px) {\n.mdc-layout-grid--fixed-column-width[data-v-515aaa96] {\n    width: 368px;\n    width: calc( var(--mdc-layout-grid-column-width-phone, 72px) * 4 + var(--mdc-layout-grid-gutter-phone, 16px) * 3 + var(--mdc-layout-grid-margin-phone, 16px) * 2 );\n}\n}\n.mdc-layout-grid--align-left[data-v-515aaa96] {\n  margin-right: auto;\n  margin-left: 0;\n}\n.mdc-layout-grid--align-right[data-v-515aaa96] {\n  margin-right: 0;\n  margin-left: auto;\n}\n.mdc-floating-label[data-v-515aaa96] {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 1rem;\n  line-height: 1.75rem;\n  font-weight: 400;\n  letter-spacing: 0.009375em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  position: absolute;\n  /* @noflip */\n  left: 0;\n  /* @noflip */\n  -webkit-transform-origin: left top;\n          transform-origin: left top;\n  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1);\n  /* @alternate */\n  line-height: 1.15rem;\n  text-align: left;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  cursor: text;\n  overflow: hidden;\n  will-change: transform;\n}\n[dir=rtl] .mdc-floating-label[data-v-515aaa96], .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  right: 0;\n  /* @noflip */\n  left: auto;\n  /* @noflip */\n  -webkit-transform-origin: right top;\n          transform-origin: right top;\n  /* @noflip */\n  text-align: right;\n}\n.mdc-floating-label--float-above[data-v-515aaa96] {\n  cursor: auto;\n}\n.mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-50%) scale(0.75);\n          transform: translateY(-50%) scale(0.75);\n}\n.mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-standard-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-standard-data-v-515aaa96 250ms 1;\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-standard-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-50%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-50%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-standard-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-50%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-50%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-50%) scale(0.75);\n}\n}\n.mdc-line-ripple[data-v-515aaa96] {\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 2px;\n  -webkit-transform: scaleX(0);\n          transform: scaleX(0);\n  transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: transform 180ms cubic-bezier(0.4, 0, 0.2, 1), opacity 180ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 0;\n  z-index: 2;\n}\n.mdc-line-ripple--active[data-v-515aaa96] {\n  -webkit-transform: scaleX(1);\n          transform: scaleX(1);\n  opacity: 1;\n}\n.mdc-line-ripple--deactivating[data-v-515aaa96] {\n  opacity: 0;\n}\n.mdc-notched-outline[data-v-515aaa96] {\n  display: flex;\n  position: absolute;\n  right: 0;\n  left: 0;\n  box-sizing: border-box;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  /* @noflip */\n  text-align: left;\n  pointer-events: none;\n}\n[dir=rtl] .mdc-notched-outline[data-v-515aaa96], .mdc-notched-outline[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  text-align: right;\n}\n.mdc-notched-outline__leading[data-v-515aaa96], .mdc-notched-outline__notch[data-v-515aaa96], .mdc-notched-outline__trailing[data-v-515aaa96] {\n  box-sizing: border-box;\n  height: 100%;\n  border-top: 1px solid;\n  border-bottom: 1px solid;\n  pointer-events: none;\n}\n.mdc-notched-outline__leading[data-v-515aaa96] {\n  /* @noflip */\n  border-left: 1px solid;\n  /* @noflip */\n  border-right: none;\n  width: 12px;\n}\n[dir=rtl] .mdc-notched-outline__leading[data-v-515aaa96], .mdc-notched-outline__leading[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-left: none;\n  /* @noflip */\n  border-right: 1px solid;\n}\n.mdc-notched-outline__trailing[data-v-515aaa96] {\n  /* @noflip */\n  border-left: none;\n  /* @noflip */\n  border-right: 1px solid;\n  flex-grow: 1;\n}\n[dir=rtl] .mdc-notched-outline__trailing[data-v-515aaa96], .mdc-notched-outline__trailing[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-left: 1px solid;\n  /* @noflip */\n  border-right: none;\n}\n.mdc-notched-outline__notch[data-v-515aaa96] {\n  flex: 0 0 auto;\n  width: auto;\n  max-width: calc(100% - 12px * 2);\n}\n.mdc-notched-outline .mdc-floating-label[data-v-515aaa96] {\n  display: inline-block;\n  position: relative;\n  top: 17px;\n  bottom: auto;\n  max-width: 100%;\n}\n.mdc-notched-outline .mdc-floating-label--float-above[data-v-515aaa96] {\n  text-overflow: clip;\n}\n.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  max-width: calc(100% / .75);\n}\n.mdc-notched-outline--notched .mdc-notched-outline__notch[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 0;\n  /* @noflip */\n  padding-right: 8px;\n  border-top: none;\n}\n[dir=rtl] .mdc-notched-outline--notched .mdc-notched-outline__notch[data-v-515aaa96], .mdc-notched-outline--notched .mdc-notched-outline__notch[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 8px;\n  /* @noflip */\n  padding-right: 0;\n}\n.mdc-notched-outline--no-label .mdc-notched-outline__notch[data-v-515aaa96] {\n  padding: 0;\n}\n@-webkit-keyframes mdc-ripple-fg-radius-in-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n}\nto {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n}\n}\n@keyframes mdc-ripple-fg-radius-in-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n            animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n            transform: translate(var(--mdc-ripple-fg-translate-start, 0)) scale(1);\n}\nto {\n    -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n            transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n}\n}\n@-webkit-keyframes mdc-ripple-fg-opacity-in-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0;\n}\nto {\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\n}\n@keyframes mdc-ripple-fg-opacity-in-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: 0;\n}\nto {\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\n}\n@-webkit-keyframes mdc-ripple-fg-opacity-out-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\nto {\n    opacity: 0;\n}\n}\n@keyframes mdc-ripple-fg-opacity-out-data-v-515aaa96 {\nfrom {\n    -webkit-animation-timing-function: linear;\n            animation-timing-function: linear;\n    opacity: var(--mdc-ripple-fg-opacity, 0);\n}\nto {\n    opacity: 0;\n}\n}\n.mdc-ripple-surface--test-edge-var-bug[data-v-515aaa96] {\n  --mdc-ripple-surface-test-edge-var: 1px solid #000;\n  visibility: hidden;\n}\n.mdc-ripple-surface--test-edge-var-bug[data-v-515aaa96]::before {\n  border: var(--mdc-ripple-surface-test-edge-var);\n}\n.mdc-text-field-helper-text[data-v-515aaa96] {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 0.75rem;\n  line-height: 1.25rem;\n  font-weight: 400;\n  letter-spacing: 0.0333333333em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  display: block;\n  margin-top: 0;\n  /* @alternate */\n  line-height: normal;\n  margin: 0;\n  transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 0;\n  will-change: opacity;\n}\n.mdc-text-field-helper-text[data-v-515aaa96]::before {\n  display: inline-block;\n  width: 0;\n  height: 16px;\n  content: \"\";\n  vertical-align: 0;\n}\n.mdc-text-field-helper-text--persistent[data-v-515aaa96] {\n  transition: none;\n  opacity: 1;\n  will-change: initial;\n}\n.mdc-text-field--with-leading-icon .mdc-text-field__icon[data-v-515aaa96],\n.mdc-text-field--with-trailing-icon .mdc-text-field__icon[data-v-515aaa96] {\n  position: absolute;\n  bottom: 16px;\n  cursor: pointer;\n}\n.mdc-text-field__icon[data-v-515aaa96]:not([tabindex]),\n.mdc-text-field__icon[tabindex=\"-1\"][data-v-515aaa96] {\n  cursor: default;\n  pointer-events: none;\n}\n.mdc-text-field[data-v-515aaa96] {\n  --mdc-ripple-fg-size: 0;\n  --mdc-ripple-left: 0;\n  --mdc-ripple-top: 0;\n  --mdc-ripple-fg-scale: 1;\n  --mdc-ripple-fg-translate-end: 0;\n  --mdc-ripple-fg-translate-start: 0;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n  will-change: transform, opacity;\n  border-radius: 4px 4px 0 0;\n  display: inline-flex;\n  position: relative;\n  box-sizing: border-box;\n  height: 56px;\n  overflow: hidden;\n  will-change: opacity, transform, color;\n}\n.mdc-text-field[data-v-515aaa96]::before, .mdc-text-field[data-v-515aaa96]::after {\n  position: absolute;\n  border-radius: 50%;\n  opacity: 0;\n  pointer-events: none;\n  content: \"\";\n}\n.mdc-text-field[data-v-515aaa96]::before {\n  transition: opacity 15ms linear, background-color 15ms linear;\n  z-index: 1;\n}\n.mdc-text-field.mdc-ripple-upgraded[data-v-515aaa96]::before {\n  -webkit-transform: scale(var(--mdc-ripple-fg-scale, 1));\n          transform: scale(var(--mdc-ripple-fg-scale, 1));\n}\n.mdc-text-field.mdc-ripple-upgraded[data-v-515aaa96]::after {\n  top: 0;\n  /* @noflip */\n  left: 0;\n  -webkit-transform: scale(0);\n          transform: scale(0);\n  -webkit-transform-origin: center center;\n          transform-origin: center center;\n}\n.mdc-text-field.mdc-ripple-upgraded--unbounded[data-v-515aaa96]::after {\n  top: var(--mdc-ripple-top, 0);\n  /* @noflip */\n  left: var(--mdc-ripple-left, 0);\n}\n.mdc-text-field.mdc-ripple-upgraded--foreground-activation[data-v-515aaa96]::after {\n  -webkit-animation: 225ms mdc-ripple-fg-radius-in-data-v-515aaa96 forwards,75ms mdc-ripple-fg-opacity-in-data-v-515aaa96 forwards;\n          animation: 225ms mdc-ripple-fg-radius-in-data-v-515aaa96 forwards,75ms mdc-ripple-fg-opacity-in-data-v-515aaa96 forwards;\n}\n.mdc-text-field.mdc-ripple-upgraded--foreground-deactivation[data-v-515aaa96]::after {\n  -webkit-animation: 150ms mdc-ripple-fg-opacity-out-data-v-515aaa96;\n          animation: 150ms mdc-ripple-fg-opacity-out-data-v-515aaa96;\n  -webkit-transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n          transform: translate(var(--mdc-ripple-fg-translate-end, 0)) scale(var(--mdc-ripple-fg-scale, 1));\n}\n.mdc-text-field[data-v-515aaa96]::before, .mdc-text-field[data-v-515aaa96]::after {\n  background-color: rgba(0, 0, 0, 0.87);\n}\n.mdc-text-field[data-v-515aaa96]:hover::before {\n  opacity: 0.04;\n}\n.mdc-text-field[data-v-515aaa96]:not(.mdc-ripple-upgraded):focus::before, .mdc-text-field.mdc-ripple-upgraded--background-focused[data-v-515aaa96]::before {\n  transition-duration: 75ms;\n  opacity: 0.12;\n}\n.mdc-text-field[data-v-515aaa96]::before, .mdc-text-field[data-v-515aaa96]::after {\n  top: calc(50% - 100%);\n  /* @noflip */\n  left: calc(50% - 100%);\n  width: 200%;\n  height: 200%;\n}\n.mdc-text-field.mdc-ripple-upgraded[data-v-515aaa96]::after {\n  width: var(--mdc-ripple-fg-size, 100%);\n  height: var(--mdc-ripple-fg-size, 100%);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-webkit-input-placeholder {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]:-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::placeholder {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.87);\n}\n.mdc-text-field .mdc-text-field__input[data-v-515aaa96] {\n  caret-color: #6200ee;\n  /* @alternate */\n  caret-color: var(--mdc-theme-primary, #6200ee);\n}\n.mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input[data-v-515aaa96] {\n  border-bottom-color: rgba(0, 0, 0, 0.42);\n}\n.mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input[data-v-515aaa96]:hover {\n  border-bottom-color: rgba(0, 0, 0, 0.87);\n}\n.mdc-text-field .mdc-line-ripple[data-v-515aaa96] {\n  background-color: #6200ee;\n  /* @alternate */\n  background-color: var(--mdc-theme-primary, #6200ee);\n}\n.mdc-text-field[data-v-515aaa96]:not(.mdc-text-field--disabled):not(.mdc-text-field--textarea) {\n  border-bottom-color: rgba(0, 0, 0, 0.12);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) + .mdc-text-field-helper-text[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.6);\n}\n.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__icon[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.54);\n}\n.mdc-text-field[data-v-515aaa96]:not(.mdc-text-field--disabled) {\n  background-color: whitesmoke;\n}\n.mdc-text-field .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 16px;\n  /* @noflip */\n  right: initial;\n  top: 18px;\n  pointer-events: none;\n}\n[dir=rtl] .mdc-text-field .mdc-floating-label[data-v-515aaa96], .mdc-text-field .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 16px;\n}\n.mdc-text-field--textarea .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 4px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--textarea .mdc-floating-label[data-v-515aaa96], .mdc-text-field--textarea .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 4px;\n}\n.mdc-text-field--outlined .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 4px;\n  /* @noflip */\n  right: initial;\n  top: 17px;\n}\n[dir=rtl] .mdc-text-field--outlined .mdc-floating-label[data-v-515aaa96], .mdc-text-field--outlined .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 4px;\n}\n.mdc-text-field--outlined--with-leading-icon .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 36px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--outlined--with-leading-icon .mdc-floating-label[data-v-515aaa96], .mdc-text-field--outlined--with-leading-icon .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 36px;\n}\n.mdc-text-field--outlined--with-leading-icon .mdc-floating-label--float-above[data-v-515aaa96] {\n  /* @noflip */\n  left: 40px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--outlined--with-leading-icon .mdc-floating-label--float-above[data-v-515aaa96], .mdc-text-field--outlined--with-leading-icon .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 40px;\n}\n.mdc-text-field__input[data-v-515aaa96] {\n  font-family: Roboto, sans-serif;\n  -moz-osx-font-smoothing: grayscale;\n  -webkit-font-smoothing: antialiased;\n  font-size: 1rem;\n  line-height: 1.75rem;\n  font-weight: 400;\n  letter-spacing: 0.009375em;\n  text-decoration: inherit;\n  text-transform: inherit;\n  align-self: flex-end;\n  box-sizing: border-box;\n  width: 100%;\n  height: 100%;\n  padding: 20px 16px 6px;\n  transition: opacity 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  border: none;\n  border-bottom: 1px solid;\n  border-radius: 0;\n  background: none;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n}\n.mdc-text-field__input[data-v-515aaa96]::-webkit-input-placeholder {\n  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 1;\n}\n.mdc-text-field__input[data-v-515aaa96]:-ms-input-placeholder {\n  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 1;\n}\n.mdc-text-field__input[data-v-515aaa96]::-ms-input-placeholder {\n  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 1;\n}\n.mdc-text-field__input[data-v-515aaa96]::placeholder {\n  transition: color 180ms cubic-bezier(0.4, 0, 0.2, 1);\n  opacity: 1;\n}\n.mdc-text-field__input[data-v-515aaa96]:focus {\n  outline: none;\n}\n.mdc-text-field__input[data-v-515aaa96]:invalid {\n  box-shadow: none;\n}\n.mdc-text-field__input[data-v-515aaa96]:-webkit-autofill {\n  z-index: auto !important;\n}\n.mdc-text-field__input:-webkit-autofill + .mdc-floating-label[data-v-515aaa96] {\n  -webkit-transform: translateY(-50%) scale(0.75);\n          transform: translateY(-50%) scale(0.75);\n  cursor: auto;\n}\n.mdc-text-field--outlined[data-v-515aaa96] {\n  border: none;\n  overflow: visible;\n}\n.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.24);\n}\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.87);\n}\n.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #6200ee;\n  /* @alternate */\n  border-color: var(--mdc-theme-primary, #6200ee);\n}\n.mdc-text-field--outlined .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 4px 0 0 4px;\n}\n[dir=rtl] .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96], .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__leading[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 0 4px 4px 0;\n}\n.mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 0 4px 4px 0;\n}\n[dir=rtl] .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96], .mdc-text-field--outlined .mdc-notched-outline .mdc-notched-outline__trailing[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 4px 0 0 4px;\n}\n.mdc-text-field--outlined .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-144%) scale(1);\n          transform: translateY(-144%) scale(1);\n}\n.mdc-text-field--outlined .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.75rem;\n}\n.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-130%) scale(0.75);\n          transform: translateY(-130%) scale(0.75);\n}\n.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 1rem;\n}\n.mdc-text-field--outlined[data-v-515aaa96]::before, .mdc-text-field--outlined[data-v-515aaa96]::after {\n  content: none;\n}\n.mdc-text-field--outlined[data-v-515aaa96]:not(.mdc-text-field--disabled) {\n  background-color: transparent;\n}\n.mdc-text-field--outlined .mdc-text-field__input[data-v-515aaa96] {\n  display: flex;\n  padding: 12px 16px 14px;\n  border: none !important;\n  background-color: transparent;\n  z-index: 1;\n}\n.mdc-text-field--outlined .mdc-text-field__icon[data-v-515aaa96] {\n  z-index: 2;\n}\n.mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-width: 2px;\n}\n.mdc-text-field--outlined.mdc-text-field--disabled[data-v-515aaa96] {\n  background-color: transparent;\n}\n.mdc-text-field--outlined.mdc-text-field--disabled .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--disabled .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--disabled .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.06);\n}\n.mdc-text-field--outlined.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96] {\n  border-bottom: none;\n}\n.mdc-text-field--outlined.mdc-text-field--dense[data-v-515aaa96] {\n  height: 48px;\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-134%) scale(1);\n          transform: translateY(-134%) scale(1);\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.8rem;\n}\n.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-120%) scale(0.8);\n          transform: translateY(-120%) scale(0.8);\n}\n.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 1rem;\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-dense-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-dense-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96] {\n  padding: 12px 12px 7px;\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96] {\n  top: 14px;\n}\n.mdc-text-field--outlined.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96] {\n  top: 12px;\n}\n.mdc-text-field--with-leading-icon .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: 16px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 16px;\n}\n.mdc-text-field--with-leading-icon .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 16px;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-leading-icon .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 16px;\n  /* @noflip */\n  padding-right: 48px;\n}\n.mdc-text-field--with-leading-icon .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 48px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon .mdc-floating-label[data-v-515aaa96], .mdc-text-field--with-leading-icon .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 48px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: 16px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 16px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 16px;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 16px;\n  /* @noflip */\n  padding-right: 48px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-144%) translateX(-32px) scale(1);\n          transform: translateY(-144%) translateX(-32px) scale(1);\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--float-above[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96] {\n  -webkit-transform: translateY(-144%) translateX(32px) scale(1);\n          transform: translateY(-144%) translateX(32px) scale(1);\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.75rem;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-130%) translateX(-32px) scale(0.75);\n          transform: translateY(-130%) translateX(-32px) scale(0.75);\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96],\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96] {\n  -webkit-transform: translateY(-130%) translateX(32px) scale(0.75);\n          transform: translateY(-130%) translateX(32px) scale(0.75);\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 1rem;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-data-v-515aaa96 250ms 1;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label--shake[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined[dir=rtl] .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 36px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 36px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-134%) translateX(-21px) scale(1);\n          transform: translateY(-134%) translateX(-21px) scale(1);\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96] {\n  -webkit-transform: translateY(-134%) translateX(21px) scale(1);\n          transform: translateY(-134%) translateX(21px) scale(1);\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.8rem;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-120%) translateX(-21px) scale(0.8);\n          transform: translateY(-120%) translateX(-21px) scale(0.8);\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96],\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[dir=rtl][data-v-515aaa96] {\n  -webkit-transform: translateY(-120%) translateX(21px) scale(0.8);\n          transform: translateY(-120%) translateX(21px) scale(0.8);\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 1rem;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-data-v-515aaa96 250ms 1;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label--shake[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense[dir=rtl] .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 32px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--outlined.mdc-text-field--dense .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 32px;\n}\n.mdc-text-field--with-trailing-icon .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 12px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-trailing-icon .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: 12px;\n  /* @noflip */\n  right: initial;\n}\n.mdc-text-field--with-trailing-icon .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 12px;\n  /* @noflip */\n  padding-right: 48px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-trailing-icon .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 12px;\n}\n.mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 16px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: 16px;\n  /* @noflip */\n  right: initial;\n}\n.mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 16px;\n  /* @noflip */\n  padding-right: 48px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-trailing-icon.mdc-text-field--outlined .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 16px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: 16px;\n  /* @noflip */\n  right: auto;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: auto;\n  /* @noflip */\n  right: 16px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon ~ .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  right: 12px;\n  /* @noflip */\n  left: auto;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon ~ .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__icon ~ .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  right: auto;\n  /* @noflip */\n  left: 12px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 48px;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 48px;\n  /* @noflip */\n  padding-right: 48px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96],\n.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96] {\n  bottom: 16px;\n  -webkit-transform: scale(0.8);\n          transform: scale(0.8);\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: 12px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 12px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 44px;\n  /* @noflip */\n  padding-right: 12px;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 12px;\n  /* @noflip */\n  padding-right: 44px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96] {\n  /* @noflip */\n  left: 44px;\n  /* @noflip */\n  right: initial;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--dense .mdc-floating-label[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 44px;\n}\n.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: initial;\n  /* @noflip */\n  right: 12px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: 12px;\n  /* @noflip */\n  right: initial;\n}\n.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 12px;\n  /* @noflip */\n  padding-right: 44px;\n}\n[dir=rtl] .mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 44px;\n  /* @noflip */\n  padding-right: 12px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  left: 12px;\n  /* @noflip */\n  right: auto;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  left: auto;\n  /* @noflip */\n  right: 12px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon ~ .mdc-text-field__icon[data-v-515aaa96] {\n  /* @noflip */\n  right: 12px;\n  /* @noflip */\n  left: auto;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon ~ .mdc-text-field__icon[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__icon ~ .mdc-text-field__icon[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  right: auto;\n  /* @noflip */\n  left: 12px;\n}\n.mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 44px;\n  /* @noflip */\n  padding-right: 44px;\n}\n[dir=rtl] .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96], .mdc-text-field--with-leading-icon.mdc-text-field--with-trailing-icon.mdc-text-field--dense .mdc-text-field__input[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  padding-left: 44px;\n  /* @noflip */\n  padding-right: 44px;\n}\n.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-70%) scale(0.8);\n          transform: translateY(-70%) scale(0.8);\n}\n.mdc-text-field--dense .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-dense-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-dense-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--dense .mdc-text-field__input[data-v-515aaa96] {\n  padding: 12px 12px 0;\n}\n.mdc-text-field--dense .mdc-floating-label[data-v-515aaa96] {\n  font-size: 0.813rem;\n}\n.mdc-text-field--dense .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.813rem;\n}\n.mdc-text-field__input:required ~ .mdc-floating-label[data-v-515aaa96]::after,\n.mdc-text-field__input:required ~ .mdc-notched-outline .mdc-floating-label[data-v-515aaa96]::after {\n  margin-left: 1px;\n  content: \"*\";\n}\n.mdc-text-field--textarea[data-v-515aaa96] {\n  display: inline-flex;\n  width: auto;\n  height: auto;\n  transition: none;\n  overflow: visible;\n}\n.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.24);\n}\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.87);\n}\n.mdc-text-field--textarea:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #6200ee;\n  /* @alternate */\n  border-color: var(--mdc-theme-primary, #6200ee);\n}\n.mdc-text-field--textarea .mdc-floating-label--shake[data-v-515aaa96] {\n  -webkit-animation: mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 250ms 1;\n          animation: mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 250ms 1;\n}\n.mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 4px 0 0 4px;\n}\n[dir=rtl] .mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96], .mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__leading[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 0 4px 4px 0;\n}\n.mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 0 4px 4px 0;\n}\n[dir=rtl] .mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96], .mdc-text-field--textarea .mdc-notched-outline .mdc-notched-outline__trailing[dir=rtl][data-v-515aaa96] {\n  /* @noflip */\n  border-radius: 4px 0 0 4px;\n}\n.mdc-text-field--textarea[data-v-515aaa96]::before, .mdc-text-field--textarea[data-v-515aaa96]::after {\n  content: none;\n}\n.mdc-text-field--textarea[data-v-515aaa96]:not(.mdc-text-field--disabled) {\n  background-color: transparent;\n}\n.mdc-text-field--textarea .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-144%) scale(1);\n          transform: translateY(-144%) scale(1);\n}\n.mdc-text-field--textarea .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 0.75rem;\n}\n.mdc-text-field--textarea.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--textarea .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  -webkit-transform: translateY(-130%) scale(0.75);\n          transform: translateY(-130%) scale(0.75);\n}\n.mdc-text-field--textarea.mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96],\n.mdc-text-field--textarea .mdc-notched-outline--upgraded .mdc-floating-label--float-above[data-v-515aaa96] {\n  font-size: 1rem;\n}\n.mdc-text-field--textarea .mdc-text-field__input[data-v-515aaa96] {\n  align-self: auto;\n  box-sizing: border-box;\n  height: auto;\n  margin: 8px 1px 1px 0;\n  padding: 0 16px 16px;\n  border: none;\n}\n.mdc-text-field--textarea .mdc-floating-label[data-v-515aaa96] {\n  top: 17px;\n  bottom: auto;\n  width: auto;\n  pointer-events: none;\n}\n.mdc-text-field--textarea.mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-width: 2px;\n}\n.mdc-text-field--fullwidth[data-v-515aaa96] {\n  width: 100%;\n}\n.mdc-text-field--fullwidth[data-v-515aaa96]:not(.mdc-text-field--textarea) {\n  display: block;\n}\n.mdc-text-field--fullwidth[data-v-515aaa96]:not(.mdc-text-field--textarea)::before, .mdc-text-field--fullwidth[data-v-515aaa96]:not(.mdc-text-field--textarea)::after {\n  content: none;\n}\n.mdc-text-field--fullwidth[data-v-515aaa96]:not(.mdc-text-field--textarea):not(.mdc-text-field--disabled) {\n  background-color: transparent;\n}\n.mdc-text-field--fullwidth:not(.mdc-text-field--textarea) .mdc-text-field__input[data-v-515aaa96] {\n  padding: 0;\n}\n.mdc-text-field--fullwidth.mdc-text-field--textarea .mdc-text-field__input[data-v-515aaa96] {\n  resize: vertical;\n}\n.mdc-text-field--fullwidth.mdc-text-field--invalid[data-v-515aaa96]:not(.mdc-text-field--disabled):not(.mdc-text-field--textarea) {\n  border-bottom-color: #b00020;\n  /* @alternate */\n  border-bottom-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--dense + .mdc-text-field-helper-text[data-v-515aaa96] {\n  margin-bottom: 4px;\n}\n.mdc-text-field + .mdc-text-field-helper-text[data-v-515aaa96] {\n  margin-right: 12px;\n  margin-left: 12px;\n}\n.mdc-text-field--outlined + .mdc-text-field-helper-text[data-v-515aaa96] {\n  margin-right: 16px;\n  margin-left: 16px;\n}\n.mdc-form-field > .mdc-text-field + label[data-v-515aaa96] {\n  align-self: flex-start;\n}\n.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label[data-v-515aaa96] {\n  color: rgba(98, 0, 238, 0.87);\n}\n.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-webkit-input-placeholder {\n  color: rgba(98, 0, 238, 0.87);\n}\n.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]:-ms-input-placeholder {\n  color: rgba(98, 0, 238, 0.87);\n}\n.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-ms-input-placeholder {\n  color: rgba(98, 0, 238, 0.87);\n}\n.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::placeholder {\n  color: rgba(98, 0, 238, 0.87);\n}\n.mdc-text-field--focused .mdc-text-field__input:required ~ .mdc-floating-label[data-v-515aaa96]::after,\n.mdc-text-field--focused .mdc-text-field__input:required ~ .mdc-notched-outline .mdc-floating-label[data-v-515aaa96]::after {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--focused + .mdc-text-field-helper-text[data-v-515aaa96]:not(.mdc-text-field-helper-text--validation-msg) {\n  opacity: 1;\n}\n.mdc-text-field--textarea.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #6200ee;\n  /* @alternate */\n  border-color: var(--mdc-theme-primary, #6200ee);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input[data-v-515aaa96] {\n  border-bottom-color: #b00020;\n  /* @alternate */\n  border-bottom-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mdc-text-field__input[data-v-515aaa96]:hover {\n  border-bottom-color: #b00020;\n  /* @alternate */\n  border-bottom-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-line-ripple[data-v-515aaa96] {\n  background-color: #b00020;\n  /* @alternate */\n  background-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label[data-v-515aaa96] {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-webkit-input-placeholder {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]:-ms-input-placeholder {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::-ms-input-placeholder {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-text-field__input[data-v-515aaa96]::placeholder {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg[data-v-515aaa96] {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid .mdc-text-field__input[data-v-515aaa96] {\n  caret-color: #b00020;\n  /* @alternate */\n  caret-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid.mdc-text-field--with-trailing-icon:not(.mdc-text-field--with-leading-icon):not(.mdc-text-field--disabled) .mdc-text-field__icon[data-v-515aaa96] {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid.mdc-text-field--with-trailing-icon.mdc-text-field--with-leading-icon:not(.mdc-text-field--disabled) .mdc-text-field__icon ~ .mdc-text-field__icon[data-v-515aaa96] {\n  color: #b00020;\n  /* @alternate */\n  color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg[data-v-515aaa96] {\n  opacity: 1;\n}\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--outlined.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: #b00020;\n  /* @alternate */\n  border-color: var(--mdc-theme-error, #b00020);\n}\n.mdc-text-field--disabled[data-v-515aaa96] {\n  background-color: #fafafa;\n  border-bottom: none;\n  pointer-events: none;\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96] {\n  border-bottom-color: rgba(0, 0, 0, 0.06);\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-floating-label[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96]::-webkit-input-placeholder {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96]:-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96]::-ms-input-placeholder {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96]::placeholder {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled + .mdc-text-field-helper-text[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.37);\n}\n.mdc-text-field--disabled .mdc-text-field__icon[data-v-515aaa96] {\n  color: rgba(0, 0, 0, 0.3);\n}\n.mdc-text-field--disabled[data-v-515aaa96]:not(.mdc-text-field--textarea) {\n  border-bottom-color: rgba(0, 0, 0, 0.12);\n}\n.mdc-text-field--disabled .mdc-floating-label[data-v-515aaa96] {\n  cursor: default;\n}\n.mdc-text-field--textarea.mdc-text-field--disabled[data-v-515aaa96] {\n  background-color: transparent;\n  background-color: #f9f9f9;\n}\n.mdc-text-field--textarea.mdc-text-field--disabled .mdc-notched-outline__leading[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--disabled .mdc-notched-outline__notch[data-v-515aaa96],\n.mdc-text-field--textarea.mdc-text-field--disabled .mdc-notched-outline__trailing[data-v-515aaa96] {\n  border-color: rgba(0, 0, 0, 0.06);\n}\n.mdc-text-field--textarea.mdc-text-field--disabled .mdc-text-field__input[data-v-515aaa96] {\n  border-bottom: none;\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(4% - 0%)) translateY(-70%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(-4% - 0%)) translateY(-70%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(4% - 0%)) translateY(-70%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(-4% - 0%)) translateY(-70%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-70%) scale(0.8);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - 0%)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - 0%)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - 0%)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - 0%)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 0%)) translateY(-120%) scale(0.8);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - 21px)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - 21px)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - 21px)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - 21px)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - 21px)) translateY(-120%) scale(0.8);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-rtl-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0)) translateY(-130%) scale(0.75);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - -21px)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - -21px)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-text-field-outlined-leading-icon-dense-rtl-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(4% - -21px)) translateY(-120%) scale(0.8);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(-4% - -21px)) translateY(-120%) scale(0.8);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n            transform: translateX(calc(0 - -21px)) translateY(-120%) scale(0.8);\n}\n}\n@-webkit-keyframes mdc-floating-label-shake-float-above-textarea-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n}\n@keyframes mdc-floating-label-shake-float-above-textarea-data-v-515aaa96 {\n0% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n33% {\n    -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n            animation-timing-function: cubic-bezier(0.5, 0, 0.701732, 0.495819);\n    -webkit-transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(4% - 0%)) translateY(-130%) scale(0.75);\n}\n66% {\n    -webkit-animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n            animation-timing-function: cubic-bezier(0.302435, 0.381352, 0.55, 0.956352);\n    -webkit-transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(-4% - 0%)) translateY(-130%) scale(0.75);\n}\n100% {\n    -webkit-transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n            transform: translateX(calc(0 - 0%)) translateY(-130%) scale(0.75);\n}\n}\n.fade-enter-active[data-v-515aaa96], .fade-leave-active[data-v-515aaa96] {\n  transition: opacity 0.5s;\n}\n.fade-enter[data-v-515aaa96], .fade-leave-to[data-v-515aaa96] {\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -66562,6 +65781,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/home/Home.vue?vue&type=style&index=0&id=1f26c2f4&lang=scss&scoped=true&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/home/Home.vue?vue&type=style&index=0&id=1f26c2f4&lang=scss&scoped=true& ***!
@@ -67981,7 +67230,7 @@ var render = function() {
                     attrs: { type: "button", "data-mdc-dialog-action": "yes" },
                     on: {
                       click: function($event) {
-                        _vm.$emit(accion.nombre, 0)
+                        _vm.$emit(accion.nombre, accion.valorAccion)
                       }
                     }
                   },
@@ -68067,90 +67316,104 @@ var render = function() {
               },
               [
                 _vm.paneltelefono
-                  ? _c("div", { staticClass: "mostrar-movil" }, [
-                      _vm.mostrarPhoneCitas
-                        ? _c(
-                            "div",
-                            { staticClass: "panel-listar-citas" },
-                            [
-                              _c("panel-citas", {
-                                key: _vm.keyLista,
-                                on: {
-                                  abrirCita: _vm.abrirpaneldetallecita,
-                                  abrirPacientes: _vm.abrirPacientes
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.mostrarPhoneDetalleCita
-                        ? _c(
-                            "div",
-                            { staticClass: "panel-detalle-cita" },
-                            [
-                              _c("panel-detalle-cita", {
-                                key: _vm.citaselect.id,
-                                attrs: {
-                                  citasel: _vm.citaselect,
-                                  frommovil: true,
-                                  isnuevacita: _vm.isnuevacita,
-                                  historianuevacita: _vm.historianuevacita
-                                },
-                                on: {
-                                  refrescarCitas: _vm.refrescarCitas,
-                                  abrirPaciente: _vm.abrirPaciente,
-                                  cerrarPanelDetalleMovil:
-                                    _vm.cerrarPanelDetalleMovil
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.mostrarPhonePacientes
-                        ? _c(
-                            "div",
-                            { staticClass: "panel-pacientes" },
-                            [
-                              _c("panel-pacientes", {
-                                key: _vm.keyPanelPacientes,
-                                on: {
-                                  refrescarPacientes: _vm.refrescarPacientes,
-                                  cerrarPanelPacientes:
-                                    _vm.cerrarPanelPacientes,
-                                  abrirPaciente: _vm.abrirPaciente,
-                                  nuevaCita: _vm.nuevaCita
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.mostrarPhoneDetallePaciente
-                        ? _c(
-                            "div",
-                            { staticClass: "panel-detalle-paciente" },
-                            [
-                              _c("panel-detalle-paciente", {
-                                key: _vm.keyDetallePacientes,
-                                attrs: {
-                                  nuevo: _vm.isnuevopaciente,
-                                  frommovil: true,
-                                  pacientesel: _vm.pacienteSelect
-                                },
-                                on: {
-                                  refrescarPacientes: _vm.refrescarPacientes
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        : _vm._e()
-                    ])
+                  ? _c(
+                      "div",
+                      { staticClass: "mostrar-movil" },
+                      [
+                        _vm.mostrarPhoneCitas
+                          ? _c(
+                              "div",
+                              { staticClass: "panel-listar-citas" },
+                              [
+                                _c("panel-citas", {
+                                  key: _vm.keyLista,
+                                  on: {
+                                    abrirCita: _vm.abrirpaneldetallecita,
+                                    abrirPacientes: _vm.abrirPacientes
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "transition",
+                          { attrs: { name: "fade", mode: "in-out" } },
+                          [
+                            _vm.mostrarPhoneDetalleCita
+                              ? _c(
+                                  "div",
+                                  { staticClass: "panel-detalle-cita" },
+                                  [
+                                    _c("panel-detalle-cita", {
+                                      key: _vm.keyDetalleCita,
+                                      attrs: {
+                                        citasel: _vm.citaselect,
+                                        frommovil: true,
+                                        isnuevacita: _vm.isnuevacita,
+                                        historianuevacita: _vm.historianuevacita
+                                      },
+                                      on: {
+                                        refrescarCitas: _vm.refrescarCitas,
+                                        abrirPaciente: _vm.abrirPaciente,
+                                        cerrarPanelDetalleMovil:
+                                          _vm.cerrarPanelDetalleMovil
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.mostrarPhonePacientes
+                          ? _c(
+                              "div",
+                              { staticClass: "panel-pacientes" },
+                              [
+                                _c("panel-pacientes", {
+                                  key: _vm.keyPanelPacientes,
+                                  on: {
+                                    refrescarPacientes: _vm.refrescarPacientes,
+                                    cerrarPanelPacientes:
+                                      _vm.cerrarPanelPacientes,
+                                    abrirPaciente: _vm.abrirPaciente,
+                                    nuevaCita: _vm.nuevaCita
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.mostrarPhoneDetallePaciente
+                          ? _c(
+                              "div",
+                              { staticClass: "panel-detalle-paciente" },
+                              [
+                                _c("panel-detalle-paciente", {
+                                  key: _vm.keyDetallePacientes,
+                                  attrs: {
+                                    nuevo: _vm.isnuevopaciente,
+                                    frommovil: true,
+                                    pacientesel: _vm.pacienteSelect
+                                  },
+                                  on: {
+                                    refrescarPacientes: _vm.refrescarPacientes,
+                                    abrirPacientes: _vm.abrirPacientes,
+                                    cerrarPanelDetalleMovil:
+                                      _vm.cerrarPanelDetalleMovil
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
                   : _vm._e()
               ]
             ),
@@ -68188,7 +67451,7 @@ var render = function() {
                             { staticClass: "panel-detalle-cita" },
                             [
                               _c("panel-detalle-cita", {
-                                key: _vm.citaselect.id,
+                                key: _vm.keyDetalleCita,
                                 attrs: {
                                   citasel: _vm.citaselect,
                                   frommovil: false,
@@ -68218,7 +67481,8 @@ var render = function() {
                                   pacientesel: _vm.pacienteSelect
                                 },
                                 on: {
-                                  refrescarPacientes: _vm.refrescarPacientes
+                                  refrescarPacientes: _vm.refrescarPacientes,
+                                  abrirPacientes: _vm.abrirPacientes
                                 }
                               })
                             ],
@@ -68274,7 +67538,16 @@ var render = function() {
             staticClass: "mdc-top-app-bar__row"
           },
           [
-            _vm._m(0),
+            _c("section", { staticClass: "seccion-inicio" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "mdc-top-app-bar__title",
+                  on: { click: _vm.abrirBuscador }
+                },
+                [_vm._v("Citas")]
+              )
+            ]),
             _vm._v(" "),
             _c(
               "section",
@@ -68373,7 +67646,7 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "mdc-fab boton-accion",
+        staticClass: "mdc-fab mdc-fab--extended boton-accion",
         on: {
           click: function($event) {
             _vm.$emit("abrirPacientes", true)
@@ -68383,21 +67656,14 @@ var render = function() {
       [
         _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
           _vm._v("add")
-        ])
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "mdc-fab__label" }, [_vm._v("Nueva Cita")])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "seccion-inicio" }, [
-      _c("span", { staticClass: "mdc-top-app-bar__title" }, [_vm._v("Citas")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -68466,11 +67732,11 @@ var render = function() {
           _vm._v(
             "\n      " +
               _vm._s(
-                _vm.cita.historia.persona_historia.apellido_paterno +
+                _vm.cita.historia.persona.apellido_paterno +
                   " " +
-                  _vm.cita.historia.persona_historia.apellido_materno +
+                  _vm.cita.historia.persona.apellido_materno +
                   ", " +
-                  _vm.cita.historia.persona_historia.nombres +
+                  _vm.cita.historia.persona.nombres +
                   " "
               ) +
               "\n    "
@@ -68535,1119 +67801,1145 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "panel-movil-contenido" }, [
-    _c("div", { staticClass: "header-movil-contenido" }, [
-      _c("header", { staticClass: "mdc-top-app-bar top-bar-movil" }, [
-        _c("div", { staticClass: "mdc-top-app-bar__row" }, [
-          _c("section", { staticClass: "seccion-inicio" }, [
-            _vm.frommovil
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "material-icons mdc-top-app-bar__action-item",
-                    staticStyle: { margin: "0px", color: "white" },
-                    attrs: { "aria-hidden": "true" },
-                    on: {
-                      click: function($event) {
-                        _vm.$emit("cerrarPanelDetalleMovil", true)
-                      }
-                    }
-                  },
-                  [_vm._v("arrow_back")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.citasel.foto_portada == null
-              ? _c(
-                  "span",
-                  {
-                    staticClass:
-                      "mdc-list-item__graphic material-icons miniatura-null",
-                    attrs: { "aria-hidden": "true" }
-                  },
-                  [_vm._v("account_circle")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.citasel.foto_portada != null
-              ? _c("img", {
-                  staticClass: "barra-avatar",
-                  attrs: {
-                    src: _vm.citasel.foto_portada,
-                    height: "40",
-                    width: "40"
-                  }
-                })
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass: "mdc-top-app-bar__title",
-                staticStyle: { "font-size": "1em" }
-              },
-              [
-                _vm._v(
-                  "\n            " +
-                    _vm._s(
-                      _vm.isnuevacita
-                        ? _vm.historianuevacita.persona_historia
-                            .apellido_paterno +
-                            " " +
-                            _vm.historianuevacita.persona_historia
-                              .apellido_materno +
-                            ", " +
-                            _vm.historianuevacita.persona_historia.nombres +
-                            " "
-                        : _vm.citasel.historia.persona_historia
-                            .apellido_paterno +
-                            " " +
-                            _vm.citasel.historia.persona_historia
-                              .apellido_materno +
-                            ", " +
-                            _vm.citasel.historia.persona_historia.nombres +
-                            " "
-                    ) +
-                    "\n            "
-                ),
-                _c(
-                  "p",
-                  {
-                    staticStyle: {
-                      margin: "0px",
-                      "font-size": "0.7em",
-                      "margin-top": "-13px"
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n              DNI: " +
-                        _vm._s(
-                          _vm.isnuevacita
-                            ? _vm.historianuevacita.persona_historia.dni
-                            : _vm.citasel.historia.persona_historia.dni
-                        ) +
-                        " - Historia: " +
-                        _vm._s(
-                          _vm.isnuevacita
-                            ? "H-" +
-                                String(_vm.historianuevacita.id).padStart(8, 0)
-                            : "H-" +
-                                String(_vm.citasel.historia.id).padStart(8, 0)
-                        ) +
-                        "\n            "
-                    )
-                  ]
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "section",
-            { staticClass: "seccion-fin", attrs: { role: "toolbar" } },
-            [
-              !_vm.isnuevacita
+  return _c(
+    "div",
+    { staticClass: "panel-movil-contenido" },
+    [
+      _c("div", { staticClass: "header-movil-contenido" }, [
+        _c("header", { staticClass: "mdc-top-app-bar top-bar-movil" }, [
+          _c("div", { staticClass: "mdc-top-app-bar__row" }, [
+            _c("section", { staticClass: "seccion-inicio" }, [
+              _vm.frommovil
                 ? _c(
                     "a",
                     {
                       staticClass:
-                        "material-icons mdc-top-app-bar__action-item boton-opciones-detalle-cita",
-                      attrs: {
-                        href: "#",
-                        "aria-label": "Download",
-                        alt: "Download"
+                        "material-icons mdc-top-app-bar__action-item",
+                      staticStyle: { margin: "0px", color: "white" },
+                      attrs: { "aria-hidden": "true" },
+                      on: {
+                        click: function($event) {
+                          _vm.$emit("cerrarPanelDetalleMovil", true)
+                        }
                       }
                     },
-                    [_vm._v("more_vert")]
+                    [_vm._v("arrow_back")]
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "toolbar mdc-menu-surface--anchor",
-                  attrs: { id: "toolbar" }
-                },
-                [
-                  _c(
-                    "div",
+              _vm.citasel.foto_portada == null
+                ? _c(
+                    "span",
                     {
                       staticClass:
-                        "mdc-menu menu-opciones-detalle-cita mdc-menu-surface",
-                      attrs: { tabindex: "-1" }
+                        "mdc-list-item__graphic material-icons miniatura-null",
+                      attrs: { "aria-hidden": "true" }
+                    },
+                    [_vm._v("account_circle")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.citasel.foto_portada != null
+                ? _c("img", {
+                    staticClass: "barra-avatar",
+                    attrs: {
+                      src: _vm.citasel.foto_portada,
+                      height: "40",
+                      width: "40"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "mdc-top-app-bar__title",
+                  staticStyle: { "font-size": "1em" }
+                },
+                [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(
+                        _vm.isnuevacita
+                          ? _vm.historianuevacita.persona.apellido_paterno +
+                              " " +
+                              _vm.historianuevacita.persona.apellido_materno +
+                              ", " +
+                              _vm.historianuevacita.persona.nombres +
+                              " "
+                          : _vm.citasel.historia.persona.apellido_paterno +
+                              " " +
+                              _vm.citasel.historia.persona.apellido_materno +
+                              ", " +
+                              _vm.citasel.historia.persona.nombres +
+                              " "
+                      ) +
+                      "\n            "
+                  ),
+                  _c(
+                    "p",
+                    {
+                      staticStyle: {
+                        margin: "0px",
+                        "font-size": "0.7em",
+                        "margin-top": "-13px"
+                      }
                     },
                     [
-                      _c(
-                        "ul",
-                        {
-                          staticClass: "mdc-list",
-                          attrs: {
-                            role: "menu",
-                            "aria-hidden": "true",
-                            "aria-orientation": "vertical"
-                          }
-                        },
-                        [
-                          _c(
-                            "li",
-                            {
-                              staticClass: "mdc-list-item",
-                              attrs: { role: "menuitem" },
-                              on: {
-                                click: function($event) {
-                                  _vm.$emit(
-                                    "abrirPaciente",
-                                    _vm.isnuevacita
-                                      ? _vm.historianuevacita
-                                      : _vm.citasel.historia
+                      _vm._v(
+                        "\n              DNI: " +
+                          _vm._s(
+                            _vm.isnuevacita
+                              ? _vm.historianuevacita.persona.dni
+                              : _vm.citasel.historia.persona.dni
+                          ) +
+                          " - Historia: " +
+                          _vm._s(
+                            _vm.isnuevacita
+                              ? "H-" +
+                                  String(_vm.historianuevacita.id).padStart(
+                                    8,
+                                    0
                                   )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "span",
-                                { staticClass: "mdc-list-item__text" },
-                                [_vm._v("Datos Paciente")]
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("form", {
-                            staticStyle: { display: "none" },
-                            attrs: {
-                              id: "logout-form",
-                              action: "#",
-                              method: "POST"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(0),
-                          _vm._v(" "),
-                          _c("form", {
-                            staticStyle: { display: "none" },
-                            attrs: {
-                              id: "logout-form",
-                              action: "#",
-                              method: "POST"
-                            }
-                          })
-                        ]
+                              : "H-" +
+                                  String(_vm.citasel.historia.id).padStart(8, 0)
+                          ) +
+                          "\n            "
                       )
                     ]
                   )
                 ]
               )
-            ]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "panel-movil" }, [
-      _c(
-        "div",
-        {
-          staticClass: "panel-detalle-cita",
-          staticStyle: { position: "relative" }
-        },
-        [
-          _c(
-            "h3",
-            {
-              staticStyle: {
-                "margin-left": "25px",
-                "margin-right": "25px",
-                "margin-bottom": "0px"
-              }
-            },
-            [
-              _vm._v(
-                "Datos de la cita  " +
-                  _vm._s(
-                    _vm.isnuevacita
-                      ? "nueva"
-                      : "C-" + String(_vm.citasel.id).padStart(8, 0)
-                  )
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "mdc-layout-grid",
-              staticStyle: { padding: "25px", position: "relative" }
-            },
-            [
-              _c("div", { staticClass: "mdc-layout-grid__inner" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mdc-select sel-medicos select-100 mdc-ripple-surface"
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "enhanced-select" }
-                        }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mdc-select__selected-text" },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(
-                                  _vm.medicosel != null && !_vm.isnuevacita
-                                    ? _vm.medicosel.persona.apellido_paterno +
-                                        " " +
-                                        _vm.medicosel.persona.apellido_materno +
-                                        ", " +
-                                        _vm.medicosel.persona.nombres +
-                                        " "
-                                    : ""
-                                ) +
-                                "\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "mdc-list" },
-                              _vm._l(_vm.medicos, function(medico) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: medico.id,
-                                    class: {
-                                      "mdc-list-item": true,
-                                      "mdc-list-item--selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.medicosel.id == medico.id
-                                    },
-                                    attrs: {
-                                      "aria-selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.medicosel.id == medico.id,
-                                      "data-value": medico.id
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                    " +
-                                        _vm._s(
-                                          medico.persona.apellido_paterno +
-                                            " " +
-                                            medico.persona.apellido_materno +
-                                            ", " +
-                                            medico.persona.nombres +
-                                            " "
-                                        ) +
-                                        "\n                  "
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            key: _vm.medicosel.id,
-                            class: {
-                              "mdc-floating-label": true,
-                              "mdc-floating-label--float-above":
-                                _vm.finalizaCarga
-                            }
-                          },
-                          [_vm._v("Médico")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mdc-line-ripple" })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mdc-select sel-especialidad select-100 mdc-ripple-surface"
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "enhanced-select" }
-                        }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mdc-select__selected-text" },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(
-                                  _vm.especialidadsel != null &&
-                                    !_vm.isnuevacita
-                                    ? _vm.especialidadsel.especialidad.nombre
-                                    : ""
-                                ) +
-                                "\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "mdc-list" },
-                              _vm._l(_vm.especialidades, function(
-                                especialidad
-                              ) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: especialidad.id,
-                                    class: {
-                                      "mdc-list-item": true,
-                                      "mdc-list-item--selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.especialidadsel.id ==
-                                          especialidad.id
-                                    },
-                                    attrs: {
-                                      "aria-selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.especialidadsel.id ==
-                                          especialidad.id,
-                                      "data-value": especialidad.id
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      _vm._s(especialidad.especialidad.nombre)
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            class: {
-                              "mdc-floating-label": true,
-                              "mdc-floating-label--float-above":
-                                _vm.especialidadsel != null
-                            }
-                          },
-                          [_vm._v("Especialidad")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mdc-line-ripple" })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c("div", { staticClass: "text-field-container" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "mdc-text-field text-field mdc-text-field--with-leading-icon mdc-ripple-surface caja-detalle-cita"
-                        },
-                        [
-                          _c(
-                            "i",
-                            {
-                              staticClass: "material-icons mdc-text-field__icon"
-                            },
-                            [_vm._v("event")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.fechasel,
-                                expression: "fechasel"
-                              }
-                            ],
-                            staticClass: "mdc-text-field__input txt_fecha_cita",
-                            attrs: { type: "date", id: "txt_fecha_cita" },
-                            domProps: { value: _vm.fechasel },
-                            on: {
-                              input: [
-                                function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.fechasel = $event.target.value
-                                },
-                                _vm.llamarTurnos
-                              ]
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "mdc-floating-label",
-                              attrs: { for: "txt_fecha_cita" }
-                            },
-                            [_vm._v("Fecha de cita")]
-                          ),
-                          _vm._v(" "),
-                          _c("div", {
-                            staticClass: "mdc-line-ripple",
-                            staticStyle: {
-                              "transform-origin": "99.5px center 0px"
-                            }
-                          })
-                        ]
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mdc-select sel-horario mdc-ripple-surface select-100"
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "enhanced-select" },
-                          domProps: { value: _vm.horariosel }
-                        }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mdc-select__selected-text" },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(
-                                  _vm.horariosel != null
-                                    ? _vm.horariosel.desde +
-                                        " - " +
-                                        _vm.horariosel.hasta
-                                    : ""
-                                ) +
-                                "\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "mdc-list" },
-                              _vm._l(_vm.horarios, function(horario) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: horario.nro_orden,
-                                    class: {
-                                      "mdc-list-item": true,
-                                      "mdc-list-item--selected":
-                                        _vm.citasel.nro_orden ==
-                                          horario.nro_orden &&
-                                        _vm.citasel.fecha_cita ==
-                                          horario.fecha_cita,
-                                      "mdc-list-item--disabled": horario.tomado
-                                    },
-                                    attrs: {
-                                      "aria-selected":
-                                        _vm.horariosel != null
-                                          ? _vm.horariosel.nro_orden ==
-                                            horario.nro_orden
-                                          : false,
-                                      "data-value": horario.nro_orden
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                    " +
-                                        _vm._s(
-                                          horario.desde +
-                                            " - " +
-                                            horario.hasta +
-                                            (_vm.citasel.nro_orden ==
-                                              horario.nro_orden &&
-                                            _vm.citasel.fecha_cita ==
-                                              horario.fecha_cita
-                                              ? " (esta cita)"
-                                              : horario.tomado
-                                              ? " (tomado)"
-                                              : " ")
-                                        ) +
-                                        "\n                  "
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            class: {
-                              "mdc-floating-label": true,
-                              "mdc-floating-label--float-above":
-                                _vm.horariosel != null
-                            }
-                          },
-                          [_vm._v("Horario")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mdc-line-ripple" })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mdc-select sel-motivo select-100 mdc-ripple-surface"
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "enhanced-select" }
-                        }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mdc-select__selected-text" },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(
-                                  _vm.motivosel != null && !_vm.isnuevacita
-                                    ? _vm.motivosel.nombre
-                                    : ""
-                                ) +
-                                "\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "mdc-list" },
-                              _vm._l(_vm.motivos, function(motivo) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: motivo.id,
-                                    class: {
-                                      "mdc-list-item": true,
-                                      "mdc-list-item--selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.motivosel.id == motivo.id
-                                    },
-                                    attrs: {
-                                      "aria-selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.motivosel.id == motivo.id,
-                                      "data-value": motivo.id
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(motivo.nombre))]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            class: {
-                              "mdc-floating-label": true,
-                              "mdc-floating-label--float-above":
-                                _vm.motivosel != null
-                            }
-                          },
-                          [_vm._v("Motivo")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mdc-line-ripple" })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          "mdc-select select-100 mdc-ripple-surface sel-aseguradora"
-                      },
-                      [
-                        _c("input", {
-                          attrs: { type: "hidden", name: "enhanced-select" }
-                        }),
-                        _vm._v(" "),
-                        _c("i", { staticClass: "mdc-select__dropdown-icon" }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "mdc-select__selected-text" },
-                          [
-                            _vm._v(
-                              "\n                " +
-                                _vm._s(
-                                  _vm.aseguradorasel != null && !_vm.isnuevacita
-                                    ? _vm.aseguradorasel.nombre
-                                    : ""
-                                ) +
-                                "\n              "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "mdc-select__menu mdc-menu mdc-menu-surface select-25"
-                          },
-                          [
-                            _c(
-                              "ul",
-                              { staticClass: "mdc-list" },
-                              _vm._l(_vm.aseguradoras, function(aseguradora) {
-                                return _c(
-                                  "li",
-                                  {
-                                    key: aseguradora.id,
-                                    class: {
-                                      "mdc-list-item": true,
-                                      "mdc-list-item--selected": _vm.isnuevacita
-                                        ? false
-                                        : _vm.aseguradorasel.id ==
-                                          aseguradora.id
-                                    },
-                                    attrs: { "data-value": aseguradora.id }
-                                  },
-                                  [_vm._v(_vm._s(aseguradora.nombre))]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            class: {
-                              "mdc-floating-label": true,
-                              "mdc-floating-label--float-above":
-                                _vm.aseguradorasel != null
-                            }
-                          },
-                          [_vm._v("Aseguradora")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mdc-line-ripple" })
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
-                  },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "text-field-row text-field-row-fullwidth"
-                      },
-                      [
-                        _c("div", { staticClass: "text-field-container" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "mdc-text-field text-field mdc-text-field--fullwidth mdc-text-field--textarea"
-                            },
-                            [
-                              _c("textarea", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.notasel,
-                                    expression: "notasel"
-                                  }
-                                ],
-                                staticClass: "mdc-text-field__input",
-                                attrs: {
-                                  id: "text-field-fullwidth-textarea-helper"
-                                },
-                                domProps: { value: _vm.notasel },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.notasel = $event.target.value
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(1)
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "p",
-                            {
-                              staticClass:
-                                "mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg",
-                              attrs: { id: "pw-validation-msg" }
-                            },
-                            [_vm._v("Este espacio es para notas importantes")]
-                          )
-                        ])
-                      ]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
+            ]),
+            _vm._v(" "),
+            _c(
+              "section",
+              { staticClass: "seccion-fin", attrs: { role: "toolbar" } },
+              [
                 !_vm.isnuevacita
                   ? _c(
-                      "div",
+                      "a",
                       {
                         staticClass:
-                          "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                          "material-icons mdc-top-app-bar__action-item boton-opciones-detalle-cita",
+                        attrs: {
+                          href: "#",
+                          "aria-label": "Download",
+                          alt: "Download"
+                        }
                       },
-                      [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "mdc-form-field select-100",
-                            on: { click: _vm.setConfirmado }
-                          },
-                          [
-                            _c("div", { staticClass: "mdc-checkbox" }, [
-                              _c("input", {
-                                staticClass: "mdc-checkbox__native-control",
-                                attrs: { type: "checkbox", id: "checkbox-1" },
-                                domProps: { checked: _vm.confirmado == 1 }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "mdc-checkbox__background" },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass: "mdc-checkbox__checkmark",
-                                      attrs: { viewBox: "0 0 24 24" }
-                                    },
-                                    [
-                                      _c("path", {
-                                        staticClass:
-                                          "mdc-checkbox__checkmark-path",
-                                        attrs: {
-                                          fill: "none",
-                                          d: "M1.73,12.91 8.1,19.28 22.79,4.59"
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", {
-                                    staticClass: "mdc-checkbox__mixedmark"
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: "checkbox-1" } }, [
-                              _vm._v("Confirmado Paciente")
-                            ])
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "mdc-form-field select-100",
-                            on: { click: _vm.setConfirmadoMedico }
-                          },
-                          [
-                            _c("div", { staticClass: "mdc-checkbox" }, [
-                              _c("input", {
-                                staticClass: "mdc-checkbox__native-control",
-                                attrs: { type: "checkbox", id: "checkbox-2" },
-                                domProps: { checked: _vm.confirmadomedico == 1 }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "mdc-checkbox__background" },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass: "mdc-checkbox__checkmark",
-                                      attrs: { viewBox: "0 0 24 24" }
-                                    },
-                                    [
-                                      _c("path", {
-                                        staticClass:
-                                          "mdc-checkbox__checkmark-path",
-                                        attrs: {
-                                          fill: "none",
-                                          d: "M1.73,12.91 8.1,19.28 22.79,4.59"
-                                        }
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", {
-                                    staticClass: "mdc-checkbox__mixedmark"
-                                  })
-                                ]
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("label", { attrs: { for: "checkbox-1" } }, [
-                              _vm._v("Confirmado Médico")
-                            ])
-                          ]
-                        )
-                      ]
+                      [_vm._v("more_vert")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
                 _c(
                   "div",
                   {
-                    staticClass:
-                      "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    staticClass: "toolbar mdc-menu-surface--anchor",
+                    attrs: { id: "toolbar" }
                   },
                   [
-                    _c("h3", { staticClass: "tituloUltimasCitas" }),
-                    _vm._v(" "),
                     _c(
-                      "ul",
-                      { staticClass: "mdc-list mdc-list--two-line " },
-                      _vm._l(_vm.ultimasCitas, function(cita) {
-                        return _c(
-                          "li",
+                      "div",
+                      {
+                        staticClass:
+                          "mdc-menu menu-opciones-detalle-cita mdc-menu-surface",
+                        attrs: { tabindex: "-1" }
+                      },
+                      [
+                        _c(
+                          "ul",
                           {
-                            key: cita.id,
-                            staticClass: "mdc-list-item mdc-list-item__citas",
-                            attrs: { tabindex: "0" }
+                            staticClass: "mdc-list",
+                            attrs: {
+                              role: "menu",
+                              "aria-hidden": "true",
+                              "aria-orientation": "vertical"
+                            }
                           },
                           [
                             _c(
-                              "span",
+                              "li",
                               {
-                                staticClass:
-                                  "mdc-list-item__graphic material-icons miniatura-citas",
-                                attrs: { "aria-hidden": "true" }
+                                staticClass: "mdc-list-item",
+                                attrs: { role: "menuitem" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.$emit(
+                                      "abrirPaciente",
+                                      _vm.isnuevacita
+                                        ? _vm.historianuevacita
+                                        : _vm.citasel.historia
+                                    )
+                                  }
+                                }
                               },
-                              [_vm._v("alarm")]
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "mdc-list-item__text" },
+                                  [_vm._v("Datos Paciente")]
+                                )
+                              ]
                             ),
                             _vm._v(" "),
-                            _c("span", { staticClass: "mdc-list-item__text" }, [
+                            _c("form", {
+                              staticStyle: { display: "none" },
+                              attrs: {
+                                id: "logout-form",
+                                action: "#",
+                                method: "POST"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              {
+                                staticClass: "mdc-list-item",
+                                attrs: { role: "menuitem" },
+                                on: { click: _vm.solicitarEliminarCita }
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  { staticClass: "mdc-list-item__text" },
+                                  [_vm._v("Eliminar Cita")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("form", {
+                              staticStyle: { display: "none" },
+                              attrs: {
+                                id: "logout-form",
+                                action: "#",
+                                method: "POST"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "panel-movil" }, [
+        _c(
+          "div",
+          {
+            staticClass: "panel-detalle-cita",
+            staticStyle: { position: "relative" }
+          },
+          [
+            _c(
+              "h3",
+              {
+                staticStyle: {
+                  "margin-left": "25px",
+                  "margin-right": "25px",
+                  "margin-bottom": "0px"
+                }
+              },
+              [
+                _vm._v(
+                  "Datos de la cita  " +
+                    _vm._s(
+                      _vm.isnuevacita
+                        ? "nueva"
+                        : "C-" + String(_vm.citasel.id).padStart(8, 0)
+                    )
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "mdc-layout-grid",
+                staticStyle: { padding: "25px", position: "relative" }
+              },
+              [
+                _c("div", { staticClass: "mdc-layout-grid__inner" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-select sel-medicos select-100 mdc-ripple-surface"
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "enhanced-select" }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mdc-select__selected-text" },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.medicosel != null && !_vm.isnuevacita
+                                      ? _vm.medicosel.persona.apellido_paterno +
+                                          " " +
+                                          _vm.medicosel.persona
+                                            .apellido_materno +
+                                          ", " +
+                                          _vm.medicosel.persona.nombres +
+                                          " "
+                                      : ""
+                                  ) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { staticClass: "mdc-list" },
+                                _vm._l(_vm.medicos, function(medico) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: medico.id,
+                                      class: {
+                                        "mdc-list-item": true,
+                                        "mdc-list-item--selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.medicosel.id == medico.id
+                                      },
+                                      attrs: {
+                                        "aria-selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.medicosel.id == medico.id,
+                                        "data-value": medico.id
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(
+                                            medico.persona.apellido_paterno +
+                                              " " +
+                                              medico.persona.apellido_materno +
+                                              ", " +
+                                              medico.persona.nombres +
+                                              " "
+                                          ) +
+                                          "\n                  "
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              key: _vm.medicosel.id,
+                              class: {
+                                "mdc-floating-label": true,
+                                "mdc-floating-label--float-above":
+                                  _vm.finalizaCarga
+                              }
+                            },
+                            [_vm._v("Médico")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mdc-line-ripple" })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-select sel-especialidad select-100 mdc-ripple-surface"
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "enhanced-select" }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mdc-select__selected-text" },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.especialidadsel != null &&
+                                      !_vm.isnuevacita
+                                      ? _vm.especialidadsel.especialidad.nombre
+                                      : ""
+                                  ) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { staticClass: "mdc-list" },
+                                _vm._l(_vm.especialidades, function(
+                                  especialidad
+                                ) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: especialidad.id,
+                                      class: {
+                                        "mdc-list-item": true,
+                                        "mdc-list-item--selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.especialidadsel.id ==
+                                            especialidad.id
+                                      },
+                                      attrs: {
+                                        "aria-selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.especialidadsel.id ==
+                                            especialidad.id,
+                                        "data-value": especialidad.id
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(especialidad.especialidad.nombre)
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              class: {
+                                "mdc-floating-label": true,
+                                "mdc-floating-label--float-above":
+                                  _vm.especialidadsel != null
+                              }
+                            },
+                            [_vm._v("Especialidad")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mdc-line-ripple" })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c("div", { staticClass: "text-field-container" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mdc-text-field text-field mdc-text-field--with-leading-icon mdc-ripple-surface caja-detalle-cita"
+                          },
+                          [
+                            _c(
+                              "i",
+                              {
+                                staticClass:
+                                  "material-icons mdc-text-field__icon"
+                              },
+                              [_vm._v("event")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.fechasel,
+                                  expression: "fechasel"
+                                }
+                              ],
+                              staticClass:
+                                "mdc-text-field__input txt_fecha_cita",
+                              attrs: { type: "date", id: "txt_fecha_cita" },
+                              domProps: { value: _vm.fechasel },
+                              on: {
+                                input: [
+                                  function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.fechasel = $event.target.value
+                                  },
+                                  _vm.llamarTurnos
+                                ]
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "mdc-floating-label",
+                                attrs: { for: "txt_fecha_cita" }
+                              },
+                              [_vm._v("Fecha de cita")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", {
+                              staticClass: "mdc-line-ripple",
+                              staticStyle: {
+                                "transform-origin": "99.5px center 0px"
+                              }
+                            })
+                          ]
+                        )
+                      ])
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-select sel-horario mdc-ripple-surface select-100"
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "enhanced-select" },
+                            domProps: { value: _vm.horariosel }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mdc-select__selected-text" },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.horariosel != null
+                                      ? _vm.horariosel.desde +
+                                          " - " +
+                                          _vm.horariosel.hasta
+                                      : ""
+                                  ) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { staticClass: "mdc-list" },
+                                _vm._l(_vm.horarios, function(horario) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: horario.nro_orden,
+                                      class: {
+                                        "mdc-list-item": true,
+                                        "mdc-list-item--selected":
+                                          _vm.citasel.nro_orden ==
+                                            horario.nro_orden &&
+                                          _vm.citasel.fecha_cita ==
+                                            horario.fecha_cita,
+                                        "mdc-list-item--disabled":
+                                          horario.tomado
+                                      },
+                                      attrs: {
+                                        "aria-selected":
+                                          _vm.horariosel != null
+                                            ? _vm.horariosel.nro_orden ==
+                                              horario.nro_orden
+                                            : false,
+                                        "data-value": horario.nro_orden
+                                      }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(
+                                            horario.desde +
+                                              " - " +
+                                              horario.hasta +
+                                              (_vm.citasel.nro_orden ==
+                                                horario.nro_orden &&
+                                              _vm.citasel.fecha_cita ==
+                                                horario.fecha_cita
+                                                ? " (esta cita)"
+                                                : horario.tomado
+                                                ? " (tomado)"
+                                                : " ")
+                                          ) +
+                                          "\n                  "
+                                      )
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              class: {
+                                "mdc-floating-label": true,
+                                "mdc-floating-label--float-above":
+                                  _vm.horariosel != null
+                              }
+                            },
+                            [_vm._v("Horario")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mdc-line-ripple" })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-select sel-motivo select-100 mdc-ripple-surface"
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "enhanced-select" }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mdc-select__selected-text" },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.motivosel != null && !_vm.isnuevacita
+                                      ? _vm.motivosel.nombre
+                                      : ""
+                                  ) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { staticClass: "mdc-list" },
+                                _vm._l(_vm.motivos, function(motivo) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: motivo.id,
+                                      class: {
+                                        "mdc-list-item": true,
+                                        "mdc-list-item--selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.motivosel.id == motivo.id
+                                      },
+                                      attrs: {
+                                        "aria-selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.motivosel.id == motivo.id,
+                                        "data-value": motivo.id
+                                      }
+                                    },
+                                    [_vm._v(_vm._s(motivo.nombre))]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              class: {
+                                "mdc-floating-label": true,
+                                "mdc-floating-label--float-above":
+                                  _vm.motivosel != null
+                              }
+                            },
+                            [_vm._v("Motivo")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mdc-line-ripple" })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-select select-100 mdc-ripple-surface sel-aseguradora"
+                        },
+                        [
+                          _c("input", {
+                            attrs: { type: "hidden", name: "enhanced-select" }
+                          }),
+                          _vm._v(" "),
+                          _c("i", { staticClass: "mdc-select__dropdown-icon" }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "mdc-select__selected-text" },
+                            [
+                              _vm._v(
+                                "\n                " +
+                                  _vm._s(
+                                    _vm.aseguradorasel != null &&
+                                      !_vm.isnuevacita
+                                      ? _vm.aseguradorasel.nombre
+                                      : ""
+                                  ) +
+                                  "\n              "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "mdc-select__menu mdc-menu mdc-menu-surface select-25"
+                            },
+                            [
+                              _c(
+                                "ul",
+                                { staticClass: "mdc-list" },
+                                _vm._l(_vm.aseguradoras, function(aseguradora) {
+                                  return _c(
+                                    "li",
+                                    {
+                                      key: aseguradora.id,
+                                      class: {
+                                        "mdc-list-item": true,
+                                        "mdc-list-item--selected": _vm.isnuevacita
+                                          ? false
+                                          : _vm.aseguradorasel.id ==
+                                            aseguradora.id
+                                      },
+                                      attrs: { "data-value": aseguradora.id }
+                                    },
+                                    [_vm._v(_vm._s(aseguradora.nombre))]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            {
+                              class: {
+                                "mdc-floating-label": true,
+                                "mdc-floating-label--float-above":
+                                  _vm.aseguradorasel != null
+                              }
+                            },
+                            [_vm._v("Aseguradora")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "mdc-line-ripple" })
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-field-row text-field-row-fullwidth"
+                        },
+                        [
+                          _c("div", { staticClass: "text-field-container" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "mdc-text-field text-field mdc-text-field--fullwidth mdc-text-field--textarea"
+                              },
+                              [
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.notasel,
+                                      expression: "notasel"
+                                    }
+                                  ],
+                                  staticClass: "mdc-text-field__input",
+                                  attrs: {
+                                    id: "text-field-fullwidth-textarea-helper"
+                                  },
+                                  domProps: { value: _vm.notasel },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.notasel = $event.target.value
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._m(0)
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg",
+                                attrs: { id: "pw-validation-msg" }
+                              },
+                              [_vm._v("Este espacio es para notas importantes")]
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  !_vm.isnuevacita
+                    ? _c(
+                        "div",
+                        {
+                          staticClass:
+                            "mdc-layout-grid__cell mdc-layout-grid__cell--span-4-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "mdc-form-field select-100",
+                              on: { click: _vm.setConfirmado }
+                            },
+                            [
+                              _c("div", { staticClass: "mdc-checkbox" }, [
+                                _c("input", {
+                                  staticClass: "mdc-checkbox__native-control",
+                                  attrs: { type: "checkbox", id: "checkbox-1" },
+                                  domProps: { checked: _vm.confirmado == 1 }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "mdc-checkbox__background" },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass: "mdc-checkbox__checkmark",
+                                        attrs: { viewBox: "0 0 24 24" }
+                                      },
+                                      [
+                                        _c("path", {
+                                          staticClass:
+                                            "mdc-checkbox__checkmark-path",
+                                          attrs: {
+                                            fill: "none",
+                                            d:
+                                              "M1.73,12.91 8.1,19.28 22.79,4.59"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", {
+                                      staticClass: "mdc-checkbox__mixedmark"
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { attrs: { for: "checkbox-1" } }, [
+                                _vm._v("Confirmado Paciente")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "mdc-form-field select-100",
+                              on: { click: _vm.setConfirmadoMedico }
+                            },
+                            [
+                              _c("div", { staticClass: "mdc-checkbox" }, [
+                                _c("input", {
+                                  staticClass: "mdc-checkbox__native-control",
+                                  attrs: { type: "checkbox", id: "checkbox-2" },
+                                  domProps: {
+                                    checked: _vm.confirmadomedico == 1
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "mdc-checkbox__background" },
+                                  [
+                                    _c(
+                                      "svg",
+                                      {
+                                        staticClass: "mdc-checkbox__checkmark",
+                                        attrs: { viewBox: "0 0 24 24" }
+                                      },
+                                      [
+                                        _c("path", {
+                                          staticClass:
+                                            "mdc-checkbox__checkmark-path",
+                                          attrs: {
+                                            fill: "none",
+                                            d:
+                                              "M1.73,12.91 8.1,19.28 22.79,4.59"
+                                          }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("div", {
+                                      staticClass: "mdc-checkbox__mixedmark"
+                                    })
+                                  ]
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("label", { attrs: { for: "checkbox-1" } }, [
+                                _vm._v("Confirmado Médico")
+                              ])
+                            ]
+                          )
+                        ]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-4-phone"
+                    },
+                    [
+                      _c("h3", { staticClass: "tituloUltimasCitas" }),
+                      _vm._v(" "),
+                      _c(
+                        "ul",
+                        { staticClass: "mdc-list mdc-list--two-line " },
+                        _vm._l(_vm.ultimasCitas, function(cita) {
+                          return _c(
+                            "li",
+                            {
+                              key: cita.id,
+                              staticClass: "mdc-list-item mdc-list-item__citas",
+                              attrs: { tabindex: "0" }
+                            },
+                            [
                               _c(
                                 "span",
-                                { staticClass: "mdc-list-item__primary-text" },
-                                [
-                                  _vm._v(
-                                    _vm._s(
-                                      cita.medico_especialidad.especialidad
-                                        .nombre
-                                    ) +
-                                      " - Dr. " +
-                                      _vm._s(
-                                        cita.medico_especialidad.medico.persona
-                                          .apellido_paterno
-                                      ) +
-                                      " " +
-                                      _vm._s(
-                                        cita.medico_especialidad.medico.persona
-                                          .apellido_materno
-                                      ) +
-                                      ", " +
-                                      _vm._s(
-                                        cita.medico_especialidad.medico.persona
-                                          .nombres
-                                      ) +
-                                      " "
-                                  )
-                                ]
+                                {
+                                  staticClass:
+                                    "mdc-list-item__graphic material-icons miniatura-citas",
+                                  attrs: { "aria-hidden": "true" }
+                                },
+                                [_vm._v("alarm")]
                               ),
                               _vm._v(" "),
                               _c(
                                 "span",
-                                {
-                                  staticClass: "mdc-list-item__secondary-text"
-                                },
+                                { staticClass: "mdc-list-item__text" },
                                 [
-                                  _vm._v(
-                                    _vm._s(cita.fecha_cita) +
-                                      " " +
-                                      _vm._s(cita.turno.desde) +
-                                      " - " +
-                                      _vm._s(cita.turno.hasta)
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "mdc-list-item__primary-text"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(
+                                          cita.medico_especialidad.especialidad
+                                            .nombre
+                                        ) +
+                                          " - Dr. " +
+                                          _vm._s(
+                                            cita.medico_especialidad.medico
+                                              .persona.apellido_paterno
+                                          ) +
+                                          " " +
+                                          _vm._s(
+                                            cita.medico_especialidad.medico
+                                              .persona.apellido_materno
+                                          ) +
+                                          ", " +
+                                          _vm._s(
+                                            cita.medico_especialidad.medico
+                                              .persona.nombres
+                                          ) +
+                                          " "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        "mdc-list-item__secondary-text"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(cita.fecha_cita) +
+                                          " " +
+                                          _vm._s(cita.turno.desde) +
+                                          " - " +
+                                          _vm._s(cita.turno.hasta)
+                                      )
+                                    ]
                                   )
                                 ]
                               )
-                            ])
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  ]
-                )
-              ])
-            ]
-          )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
+                  )
+                ])
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm.modalValidar.conf
+        ? _c("panel-modal", {
+            key: _vm.modalValidar.keyModal,
+            attrs: {
+              titulo: _vm.modalValidar.titulo,
+              contenido: _vm.modalValidar.contenido,
+              acciones: _vm.modalValidar.acciones
+            },
+            on: { eliminarCita: _vm.eliminarCita }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "mdc-fab boton-accion", on: { click: _vm.guardarCita } },
+        [
+          _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
+            _vm._v("save")
+          ])
         ]
       )
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      { staticClass: "mdc-fab boton-accion", on: { click: _vm.guardarCita } },
-      [
-        _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
-          _vm._v("save")
-        ])
-      ]
-    )
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "li",
-      {
-        staticClass: "mdc-list-item",
-        attrs: {
-          role: "menuitem",
-          onclick:
-            "event.preventDefault();\n                      document.getElementById('logout-form').submit();"
-        }
-      },
-      [
-        _c("span", { staticClass: "mdc-list-item__text" }, [
-          _vm._v("Eliminar Cita")
-        ])
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -69755,8 +69047,8 @@ var render = function() {
                       _vm._v(
                         "\n            " +
                           _vm._s(
-                            _vm.pacientesel.persona_historia != null
-                              ? _vm.pacientesel.persona_historia.nombres
+                            _vm.pacientesel.persona != null
+                              ? _vm.pacientesel.persona.nombres
                               : ""
                           ) +
                           "\n            "
@@ -69774,8 +69066,8 @@ var render = function() {
                           _vm._v(
                             "DNI: " +
                               _vm._s(
-                                _vm.pacientesel.persona_historia != null
-                                  ? _vm.pacientesel.persona_historia.dni
+                                _vm.pacientesel.persona != null
+                                  ? _vm.pacientesel.persona.dni
                                   : ""
                               ) +
                               " - Historia: " +
@@ -69818,7 +69110,62 @@ var render = function() {
                       [_vm._v("more_vert")]
                     ),
                     _vm._v(" "),
-                    _vm._m(0)
+                    _c(
+                      "div",
+                      {
+                        staticClass: "toolbar mdc-menu-surface--anchor",
+                        attrs: { id: "toolbar" }
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "mdc-menu menu-opciones-detalle-paciente mdc-menu-surface",
+                            attrs: { tabindex: "-1" }
+                          },
+                          [
+                            _c(
+                              "ul",
+                              {
+                                staticClass: "mdc-list",
+                                attrs: {
+                                  role: "menu",
+                                  "aria-hidden": "true",
+                                  "aria-orientation": "vertical"
+                                }
+                              },
+                              [
+                                _c(
+                                  "li",
+                                  {
+                                    staticClass: "mdc-list-item",
+                                    attrs: { role: "menuitem" },
+                                    on: { click: _vm.solicitarEliminarPaciente }
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      { staticClass: "mdc-list-item__text" },
+                                      [_vm._v("Eliminar Paciente")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("form", {
+                                  staticStyle: { display: "none" },
+                                  attrs: {
+                                    id: "logout-form",
+                                    action: "#",
+                                    method: "POST"
+                                  }
+                                })
+                              ]
+                            )
+                          ]
+                        )
+                      ]
+                    )
                   ]
                 )
               : _vm._e()
@@ -69834,7 +69181,7 @@ var render = function() {
             staticStyle: { position: "relative" }
           },
           [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "div",
@@ -69871,8 +69218,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.pacientesel.persona_historia.dni,
-                                  expression: "pacientesel.persona_historia.dni"
+                                  value: _vm.pacientesel.persona.dni,
+                                  expression: "pacientesel.persona.dni"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_dni",
@@ -69880,16 +69227,14 @@ var render = function() {
                                 type: "text",
                                 id: "text-field-filled-leading"
                               },
-                              domProps: {
-                                value: _vm.pacientesel.persona_historia.dni
-                              },
+                              domProps: { value: _vm.pacientesel.persona.dni },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "dni",
                                     $event.target.value
                                   )
@@ -69945,10 +69290,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value:
-                                    _vm.pacientesel.persona_historia.pasaporte,
-                                  expression:
-                                    "pacientesel.persona_historia.pasaporte"
+                                  value: _vm.pacientesel.persona.pasaporte,
+                                  expression: "pacientesel.persona.pasaporte"
                                 }
                               ],
                               staticClass:
@@ -69958,8 +69301,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia.pasaporte
+                                value: _vm.pacientesel.persona.pasaporte
                               },
                               on: {
                                 input: function($event) {
@@ -69967,7 +69309,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "pasaporte",
                                     $event.target.value
                                   )
@@ -70023,11 +69365,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value:
-                                    _vm.pacientesel.persona_historia
-                                      .carne_extra,
-                                  expression:
-                                    "pacientesel.persona_historia.carne_extra"
+                                  value: _vm.pacientesel.persona.carne_extra,
+                                  expression: "pacientesel.persona.carne_extra"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_carne",
@@ -70036,8 +69375,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia.carne_extra
+                                value: _vm.pacientesel.persona.carne_extra
                               },
                               on: {
                                 input: function($event) {
@@ -70045,7 +69383,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "carne_extra",
                                     $event.target.value
                                   )
@@ -70101,8 +69439,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.pacientesel.persona_historia.ruc,
-                                  expression: "pacientesel.persona_historia.ruc"
+                                  value: _vm.pacientesel.persona.ruc,
+                                  expression: "pacientesel.persona.ruc"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_ruc",
@@ -70110,16 +69448,14 @@ var render = function() {
                                 type: "text",
                                 id: "text-field-filled-leading"
                               },
-                              domProps: {
-                                value: _vm.pacientesel.persona_historia.ruc
-                              },
+                              domProps: { value: _vm.pacientesel.persona.ruc },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "ruc",
                                     $event.target.value
                                   )
@@ -70175,10 +69511,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value:
-                                    _vm.pacientesel.persona_historia.nombres,
-                                  expression:
-                                    "pacientesel.persona_historia.nombres"
+                                  value: _vm.pacientesel.persona.nombres,
+                                  expression: "pacientesel.persona.nombres"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_nombres",
@@ -70187,7 +69521,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value: _vm.pacientesel.persona_historia.nombres
+                                value: _vm.pacientesel.persona.nombres
                               },
                               on: {
                                 input: function($event) {
@@ -70195,7 +69529,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "nombres",
                                     $event.target.value
                                   )
@@ -70252,10 +69586,9 @@ var render = function() {
                                   name: "model",
                                   rawName: "v-model",
                                   value:
-                                    _vm.pacientesel.persona_historia
-                                      .apellido_paterno,
+                                    _vm.pacientesel.persona.apellido_paterno,
                                   expression:
-                                    "pacientesel.persona_historia.apellido_paterno"
+                                    "pacientesel.persona.apellido_paterno"
                                 }
                               ],
                               staticClass:
@@ -70265,9 +69598,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia
-                                    .apellido_paterno
+                                value: _vm.pacientesel.persona.apellido_paterno
                               },
                               on: {
                                 input: function($event) {
@@ -70275,7 +69606,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "apellido_paterno",
                                     $event.target.value
                                   )
@@ -70332,10 +69663,9 @@ var render = function() {
                                   name: "model",
                                   rawName: "v-model",
                                   value:
-                                    _vm.pacientesel.persona_historia
-                                      .apellido_materno,
+                                    _vm.pacientesel.persona.apellido_materno,
                                   expression:
-                                    "pacientesel.persona_historia.apellido_materno"
+                                    "pacientesel.persona.apellido_materno"
                                 }
                               ],
                               staticClass:
@@ -70345,9 +69675,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia
-                                    .apellido_materno
+                                value: _vm.pacientesel.persona.apellido_materno
                               },
                               on: {
                                 input: function($event) {
@@ -70355,7 +69683,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "apellido_materno",
                                     $event.target.value
                                   )
@@ -70399,8 +69727,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.pacientesel.persona_historia.sexo,
-                                expression: "pacientesel.persona_historia.sexo"
+                                value: _vm.pacientesel.persona.sexo,
+                                expression: "pacientesel.persona.sexo"
                               }
                             ],
                             staticClass:
@@ -70412,23 +69740,16 @@ var render = function() {
                               name: "radios"
                             },
                             domProps: {
-                              checked: _vm._q(
-                                _vm.pacientesel.persona_historia.sexo,
-                                "1"
-                              )
+                              checked: _vm._q(_vm.pacientesel.persona.sexo, "1")
                             },
                             on: {
                               change: function($event) {
-                                _vm.$set(
-                                  _vm.pacientesel.persona_historia,
-                                  "sexo",
-                                  "1"
-                                )
+                                _vm.$set(_vm.pacientesel.persona, "sexo", "1")
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm._m(2)
+                          _vm._m(1)
                         ]),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "radio-1" } }, [
@@ -70443,8 +69764,8 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.pacientesel.persona_historia.sexo,
-                                expression: "pacientesel.persona_historia.sexo"
+                                value: _vm.pacientesel.persona.sexo,
+                                expression: "pacientesel.persona.sexo"
                               }
                             ],
                             staticClass:
@@ -70456,23 +69777,16 @@ var render = function() {
                               value: "2"
                             },
                             domProps: {
-                              checked: _vm._q(
-                                _vm.pacientesel.persona_historia.sexo,
-                                "2"
-                              )
+                              checked: _vm._q(_vm.pacientesel.persona.sexo, "2")
                             },
                             on: {
                               change: function($event) {
-                                _vm.$set(
-                                  _vm.pacientesel.persona_historia,
-                                  "sexo",
-                                  "2"
-                                )
+                                _vm.$set(_vm.pacientesel.persona, "sexo", "2")
                               }
                             }
                           }),
                           _vm._v(" "),
-                          _vm._m(3)
+                          _vm._m(2)
                         ]),
                         _vm._v(" "),
                         _c("label", { attrs: { for: "radio-1" } }, [
@@ -70510,10 +69824,9 @@ var render = function() {
                                   name: "model",
                                   rawName: "v-model",
                                   value:
-                                    _vm.pacientesel.persona_historia
-                                      .fecha_nacimiento,
+                                    _vm.pacientesel.persona.fecha_nacimiento,
                                   expression:
-                                    "pacientesel.persona_historia.fecha_nacimiento"
+                                    "pacientesel.persona.fecha_nacimiento"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_fec_nac",
@@ -70522,9 +69835,7 @@ var render = function() {
                                 id: "text-field-filled-leading"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia
-                                    .fecha_nacimiento
+                                value: _vm.pacientesel.persona.fecha_nacimiento
                               },
                               on: {
                                 change: _vm.calculateAge,
@@ -70533,7 +69844,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "fecha_nacimiento",
                                     $event.target.value
                                   )
@@ -70589,9 +69900,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value: _vm.pacientesel.persona_historia.edad,
-                                  expression:
-                                    "pacientesel.persona_historia.edad"
+                                  value: _vm.pacientesel.persona.edad,
+                                  expression: "pacientesel.persona.edad"
                                 }
                               ],
                               staticClass: "mdc-text-field__input txt_edad",
@@ -70600,16 +69910,14 @@ var render = function() {
                                 type: "text",
                                 id: "text-field-filled-leading"
                               },
-                              domProps: {
-                                value: _vm.pacientesel.persona_historia.edad
-                              },
+                              domProps: { value: _vm.pacientesel.persona.edad },
                               on: {
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "edad",
                                     $event.target.value
                                   )
@@ -70746,10 +70054,8 @@ var render = function() {
                                 {
                                   name: "model",
                                   rawName: "v-model",
-                                  value:
-                                    _vm.pacientesel.persona_historia.direccion,
-                                  expression:
-                                    "pacientesel.persona_historia.direccion"
+                                  value: _vm.pacientesel.persona.direccion,
+                                  expression: "pacientesel.persona.direccion"
                                 }
                               ],
                               staticClass: "mdc-text-field__input",
@@ -70758,8 +70064,7 @@ var render = function() {
                                 id: "text-field-filled-leading txt_direccion"
                               },
                               domProps: {
-                                value:
-                                  _vm.pacientesel.persona_historia.direccion
+                                value: _vm.pacientesel.persona.direccion
                               },
                               on: {
                                 input: function($event) {
@@ -70767,7 +70072,7 @@ var render = function() {
                                     return
                                   }
                                   _vm.$set(
-                                    _vm.pacientesel.persona_historia,
+                                    _vm.pacientesel.persona,
                                     "direccion",
                                     $event.target.value
                                   )
@@ -70796,9 +70101,9 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _vm._m(4),
+                  _vm._m(3),
                   _vm._v(" "),
-                  _vm._m(5)
+                  _vm._m(4)
                 ])
               ]
             )
@@ -70826,7 +70131,10 @@ var render = function() {
               contenido: _vm.modalValidar.contenido,
               acciones: _vm.modalValidar.acciones
             },
-            on: { guardarPaciente: _vm.guardarPaciente }
+            on: {
+              guardarPaciente: _vm.guardarPaciente,
+              eliminarPaciente: _vm.eliminarPaciente
+            }
           })
         : _vm._e(),
       _vm._v(" "),
@@ -70841,70 +70149,19 @@ var render = function() {
             _vm._v("save")
           ])
         ]
-      )
+      ),
+      _vm._v(" "),
+      _vm.snackmsj.view
+        ? _c("snack-bar", {
+            key: _vm.snackmsj.key,
+            attrs: { snack: _vm.snackmsj }
+          })
+        : _vm._e()
     ],
     1
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "toolbar mdc-menu-surface--anchor",
-        attrs: { id: "toolbar" }
-      },
-      [
-        _c(
-          "div",
-          {
-            staticClass:
-              "mdc-menu menu-opciones-detalle-paciente mdc-menu-surface",
-            attrs: { tabindex: "-1" }
-          },
-          [
-            _c(
-              "ul",
-              {
-                staticClass: "mdc-list",
-                attrs: {
-                  role: "menu",
-                  "aria-hidden": "true",
-                  "aria-orientation": "vertical"
-                }
-              },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "mdc-list-item",
-                    attrs: {
-                      role: "menuitem",
-                      onclick:
-                        "event.preventDefault();\n                      document.getElementById('logout-form').submit();"
-                    }
-                  },
-                  [
-                    _c("span", { staticClass: "mdc-list-item__text" }, [
-                      _vm._v("Eliminar Paciente")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("form", {
-                  staticStyle: { display: "none" },
-                  attrs: { id: "logout-form", action: "#", method: "POST" }
-                })
-              ]
-            )
-          ]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -71116,9 +70373,14 @@ var render = function() {
                 [_vm._v("arrow_back")]
               ),
               _vm._v(" "),
-              _c("span", { staticClass: "mdc-top-app-bar__title" }, [
-                _vm._v("Pacientes")
-              ])
+              _c(
+                "span",
+                {
+                  staticClass: "mdc-top-app-bar__title",
+                  on: { click: _vm.abrirBuscador }
+                },
+                [_vm._v("Pacientes")]
+              )
             ]),
             _vm._v(" "),
             _c(
@@ -71213,7 +70475,7 @@ var render = function() {
     _c(
       "button",
       {
-        staticClass: "mdc-fab boton-accion",
+        staticClass: "mdc-fab  mdc-fab--extended boton-accion",
         on: {
           click: function($event) {
             _vm.$emit("abrirPaciente", 0)
@@ -71223,6 +70485,10 @@ var render = function() {
       [
         _c("span", { staticClass: "material-icons mdc-fab__icon" }, [
           _vm._v("add")
+        ]),
+        _vm._v(" "),
+        _c("span", { staticClass: "mdc-fab__label" }, [
+          _vm._v("Nuevo Paciente")
         ])
       ]
     )
@@ -71257,7 +70523,7 @@ var render = function() {
       attrs: { tabindex: "0" }
     },
     [
-      _vm.paciente.persona_historia.foto_portada == null
+      _vm.paciente.persona.foto_portada == null
         ? _c(
             "span",
             {
@@ -71274,11 +70540,11 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.paciente.persona_historia.foto_portada != null
+      _vm.paciente.persona.foto_portada != null
         ? _c("img", {
             staticClass: "mdc-list-item__graphic",
             attrs: {
-              src: _vm.paciente.persona_historia.foto_portada.ruta,
+              src: _vm.paciente.persona.foto_portada.ruta,
               height: "40",
               width: "40"
             },
@@ -71304,18 +70570,18 @@ var render = function() {
           _c("span", { staticClass: "mdc-list-item__primary-text" }, [
             _vm._v(
               _vm._s(
-                _vm.paciente.persona_historia.apellido_paterno +
+                _vm.paciente.persona.apellido_paterno +
                   " " +
-                  _vm.paciente.persona_historia.apellido_materno +
+                  _vm.paciente.persona.apellido_materno +
                   ", " +
-                  _vm.paciente.persona_historia.nombres +
+                  _vm.paciente.persona.nombres +
                   " "
               )
             )
           ]),
           _vm._v(" "),
           _c("span", { staticClass: "mdc-list-item__secondary-text" }, [
-            _vm._v(_vm._s(_vm.paciente.persona_historia.dni))
+            _vm._v(_vm._s(_vm.paciente.persona.dni))
           ])
         ]
       ),
@@ -71446,6 +70712,70 @@ var staticRenderFns = [
     ])
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "mdc-snackbar" }, [
+    _c("div", { staticClass: "mdc-snackbar__surface" }, [
+      _c(
+        "div",
+        {
+          staticClass: "mdc-snackbar__label",
+          attrs: { role: "status", "aria-live": "polite" }
+        },
+        [
+          _vm._v(
+            "\n                " + _vm._s(_vm.snack.contenido) + "\n        "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mdc-snackbar__actions" },
+        _vm._l(_vm.snack.acciones, function(accion) {
+          return _c(
+            "button",
+            {
+              key: accion.id,
+              staticClass: "mdc-button mdc-snackbar__action",
+              attrs: {
+                type: "button",
+                "data-mdc-dialog-action": _vm.snack.action
+              },
+              on: {
+                click: function($event) {
+                  _vm.$emit(accion.nombreAccion, accion.valorAccion)
+                }
+              }
+            },
+            [_vm._v("  " + _vm._s(accion.nombre) + " ")]
+          )
+        }),
+        0
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -82900,35 +82230,20 @@ module.exports = function(module) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_textfield_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material/textfield/index */ "./node_modules/@material/textfield/index.js");
-/* harmony import */ var _material_ripple__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @material/ripple */ "./node_modules/@material/ripple/dist/mdc.ripple.js");
-/* harmony import */ var _material_ripple__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_material_ripple__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_menu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material/menu */ "./node_modules/@material/menu/dist/mdc.menu.js");
-/* harmony import */ var _material_menu__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_material_menu__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _material_list__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material/list */ "./node_modules/@material/list/dist/mdc.list.js");
-/* harmony import */ var _material_list__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_material_list__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _material_textfield_helper_text__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material/textfield/helper-text */ "./node_modules/@material/textfield/helper-text/index.js");
-/* harmony import */ var _material_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @material/select */ "./node_modules/@material/select/dist/mdc.select.js");
-/* harmony import */ var _material_select__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_material_select__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _material_form_field__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @material/form-field */ "./node_modules/@material/form-field/dist/mdc.formField.js");
-/* harmony import */ var _material_form_field__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_material_form_field__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _material_radio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @material/radio */ "./node_modules/@material/radio/dist/mdc.radio.js");
-/* harmony import */ var _material_radio__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_material_radio__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _material_chips__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @material/chips */ "./node_modules/@material/chips/dist/mdc.chips.js");
-/* harmony import */ var _material_chips__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_material_chips__WEBPACK_IMPORTED_MODULE_8__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 // require('./bootstrap');
-
-
-
-
-
-
-
-
+ // import {MDCRipple} from "@material/ripple";
+// import {MDCMenu} from "@material/menu"; 
+// import {MDCList} from "@material/list";
+// import {MDCTextFieldHelperText} from "@material/textfield/helper-text";
+// import {MDCSelect} from "@material/select";
+// import {MDCFormField} from "@material/form-field";
+// import {MDCRadio} from "@material/radio";
+// import {MDCChipSet} from "@material/chips";
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //Componentes Generales 
 
@@ -82937,379 +82252,16 @@ Vue.component("drawer-principal", __webpack_require__(/*! ./components/DrawerPri
 
 Vue.component("home", __webpack_require__(/*! ./components/home/Home.vue */ "./resources/js/components/home/Home.vue").default); //Componentes para Citas
 
-Vue.component("citas", __webpack_require__(/*! ./components/citas/Citas.vue */ "./resources/js/components/citas/Citas.vue").default);
+Vue.component("citas", __webpack_require__(/*! ./components/citas/Citas.vue */ "./resources/js/components/citas/Citas.vue").default); //Componentes personales
+
+Vue.component("snackBar", __webpack_require__(/*! ./components/componentes/snackBar.vue */ "./resources/js/components/componentes/snackBar.vue").default);
 var app = new Vue({
   el: "#app"
-}); // require("./materialComponents.js");
-// const select = document.querySelectorAll(".mdc-select");
-// if (select != null) {
-//     select.forEach(element => {
-//         var selector = new MDCSelect(element);
-//         selector.listen("MDCSelect:change", () => {
-//             alert(
-//                 `Selected option at index ${
-//                     selector.selectedIndex
-//                 } with value "${selector.value}"`
-//             );
-//         });
-//     });
-// }
-// const selector =
-//     ".mdc-button, .mdc-icon-button, .mdc-card__primary-action, .mdc-fab";
-// if (selector != null) {
-//     const ripples = [].map.call(document.querySelectorAll(selector), function (
-//         el
-//     ) {
-//         return new MDCRipple(el);
-//     });
-// }
-// const menuselector = document.querySelector(".mdc-menu");
-// console.log(menuselector);
-// if (menuselector != null) {
-//     var menu = new MDCMenu(menuselector);
-//     var appBarMoreItems = document.querySelector(".app-bar-more-items");
-//     if (appBarMoreItems != null) {
-//         appBarMoreItems.addEventListener("click", event => {
-//             menu.open = !menu.open;
-//         });
-//     }
-// }
-// // const menuOpcionesDetalleCita = document.querySelector(
-// //     ".menu-opciones-detalle-cita"
-// // );
-// // if (menuOpcionesDetalleCita != null) {
-// //     const menuOpcionesDetalleCitaMDC = new MDCMenu(menuOpcionesDetalleCita);
-// //     const botonOpcionesDetalleCita = document.querySelector(
-// //         ".boton-opciones-detalle-cita"
-// //     );
-// //     if (botonOpcionesDetalleCita != null) {
-// //         botonOpcionesDetalleCita.addEventListener("click", event => {
-// //             menuOpcionesDetalleCitaMDC.open = !menuOpcionesDetalleCitaMDC.open;
-// //         });
-// //     }
-// // }
-// // document.addEventListener('click', (event) => {
-// //     if (menu.open && event.srcElement == appBarMoreItems[0]) {
-// //         menu.open = false;
-// //     }
-// // });
-// //const textField = new MDCTextField(document.querySelector('mdc-text-field'));
-// const textFields = document.querySelectorAll(".mdc-text-field");
-// textFields.forEach(element => {
-//     new MDCTextField(element);
-// });
-// const helperTexts = document.querySelectorAll(".mdc-text-field-helper-text");
-// helperTexts.forEach(element => {
-//     new MDCTextFieldHelperText(element);
-// });
-// // const buttonRipple = new MDCRipple(document.querySelector('.mdc-button'));
-// // const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action';
-// // const buttonsRipple = document.querySelectorAll(selector);
-// // buttonsRipple.forEach(element => {
-// //     new MDCRipple(element);
-// // });
-// // eventos para /home
-// // const tarjetaCitas = document.querySelectorAll(".tarjeta-citas");
-// // tarjetaCitas.forEach(element => {
-// //     element.addEventListener("click", event => {
-// //         window.open("./citas", "_top");
-// //     });
-// // });
-// // const tarjetaHistorias = document.querySelectorAll(".tarjeta-historias");
-// // tarjetaHistorias.forEach(element => {
-// //     element.addEventListener("click", event => {
-// //         console.log("click en historias");
-// //     });
-// // });
-// //eventos para /citas
-// const panelCitas = document.querySelectorAll(".panel-citas");
-// panelCitas.forEach(element => {
-//     var atrr = element.getAttribute("style");
-//     atrr += "height:" + (window.innerHeight - 112) + "px;";
-//     element.setAttribute("style", atrr);
-// });
-// const panelPacientes = document.querySelectorAll(".panel-pacientes");
-// panelPacientes.forEach(element => {
-//     var atrr = element.getAttribute("style");
-//     atrr += "height:" + (window.innerHeight - 112) + "px;";
-//     element.setAttribute("style", atrr);
-// });
-// const panelDetalleCita = document.querySelectorAll(".panel-detalle-cita");
-// panelDetalleCita.forEach(element => {
-//     var atrr = element.getAttribute("style");
-//     if (atrr == null) {
-//         atrr = "";
-//     }
-//     atrr += "height:" + (window.innerHeight - 112) + "px;";
-//     element.setAttribute("style", atrr);
-// });
-// const panelSeleccionaPaciente = document.querySelectorAll(
-//     ".panel-selecciona-paciente"
-// );
-// panelSeleccionaPaciente.forEach(element => {
-//     var atrr = element.getAttribute("style");
-//     if (atrr == null) {
-//         atrr = "";
-//     }
-//     atrr += "height:" + (window.innerHeight - 56) + "px;";
-//     element.setAttribute("style", atrr);
-// });
-// const panelMaxHeight = document.querySelectorAll(".panel-max-height");
-// panelMaxHeight.forEach(element => {
-//     var atrr = element.getAttribute("style");
-//     if (atrr == null) {
-//         atrr = "";
-//     }
-//     atrr += "height:" + (window.innerHeight - 112) + "px;";
-//     element.setAttribute("style", atrr);
-// });
-// const listSelector = document.querySelector(".mdc-list");
-// if (listSelector != null) {
-//     var list = new MDCList(listSelector);
-//     if (list != null) {
-//         const listItemRipples = list.listElements.map(
-//             listItemEl => new MDCRipple(listItemEl)
-//         );
-//     }
-// }
-// const itemsLista = document.querySelectorAll(".cita-list-item");
-// itemsLista.forEach(element => {
-//     element.addEventListener("mouseover", event => {
-//         var maselementos = element.querySelector(".menu-cita-list");
-//         maselementos.setAttribute("style", "color:gray;cursor:pointer;");
-//     });
-//     element.addEventListener("mouseout", event => {
-//         var maselementos = element.querySelector(".menu-cita-list");
-//         maselementos.setAttribute("style", "");
-//     });
-// });
-// const botonCitas = document.querySelector(".boton-citas");
-// if (botonCitas != null) {
-//     botonCitas.addEventListener("click", event => {
-//         //Oculta Citas
-//         document
-//             .querySelector(".panel-citas-contenido")
-//             .classList.remove("panel-citas-mostrar");
-//         document
-//             .querySelector(".panel-citas-contenido")
-//             .classList.add("panel-citas-ocultar");
-//         document
-//             .querySelector(".boton-citas")
-//             .classList.remove("boton-citas-mostrar");
-//         document
-//             .querySelector(".boton-citas")
-//             .classList.add("boton-citas-ocultar");
-//         document
-//             .querySelector(".header-citas-contenido")
-//             .classList.remove("header-citas-mostrar");
-//         document
-//             .querySelector(".header-citas-contenido")
-//             .classList.add("header-citas-ocultar");
-//         //Muestra Pacientes
-//         document
-//             .querySelector(".panel-pacientes-contenido")
-//             .classList.remove("panel-pacientes-ocultar");
-//         document
-//             .querySelector(".panel-pacientes-contenido")
-//             .classList.add("panel-pacientes-mostrar");
-//         document
-//             .querySelector(".boton-pacientes")
-//             .classList.remove("boton-pacientes-ocultar");
-//         document
-//             .querySelector(".boton-pacientes")
-//             .classList.add("boton-pacientes-mostrar");
-//         document
-//             .querySelector(".header-pacientes-contenido")
-//             .classList.remove("header-pacientes-ocultar");
-//         document
-//             .querySelector(".header-pacientes-contenido")
-//             .classList.remove("top-bar-pacientes-ocultar");
-//         document
-//             .querySelector(".header-pacientes-contenido")
-//             .classList.add("header-pacientes-mostrar");
-//     });
-// }
-// const botonBack = document.querySelector(".top-bar-pacientes-back");
-// if (botonBack != null) {
-//     botonBack.addEventListener("click", event => {
-//         //Oculta Pacientes
-//         document
-//             .querySelector(".panel-pacientes-contenido")
-//             .classList.remove("panel-pacientes-mostrar");
-//         document
-//             .querySelector(".panel-pacientes-contenido")
-//             .classList.add("panel-pacientes-ocultar");
-//         document
-//             .querySelector(".boton-pacientes")
-//             .classList.remove("boton-pacientes-mostrar");
-//         document
-//             .querySelector(".boton-pacientes")
-//             .classList.add("boton-pacientes-ocultar");
-//         document
-//             .querySelector(".header-pacientes-contenido")
-//             .classList.remove("header-pacientes-mostrar");
-//         document
-//             .querySelector(".header-pacientes-contenido")
-//             .classList.add("header-pacientes-ocultar");
-//         //Muestra Citas
-//         document
-//             .querySelector(".panel-citas-contenido")
-//             .classList.remove("panel-citas-ocultar");
-//         document
-//             .querySelector(".panel-citas-contenido")
-//             .classList.add("panel-citas-mostrar");
-//         document
-//             .querySelector(".boton-citas")
-//             .classList.remove("boton-citas-ocultar");
-//         document
-//             .querySelector(".boton-citas")
-//             .classList.add("boton-citas-mostrar");
-//         document
-//             .querySelector(".header-citas-contenido")
-//             .classList.remove("header-citas-ocultar");
-//         document
-//             .querySelector(".header-citas-contenido")
-//             .classList.add("header-citas-mostrar");
-//     });
-// }
-// const botonBuscarHeaderCitas = document.querySelector(".top-bar-citas-search");
-// if (botonBuscarHeaderCitas != null) {
-//     botonBuscarHeaderCitas.addEventListener("click", event => {
-//         var topBarCitas = document.querySelector(".top-bar-citas");
-//         topBarCitas.classList.remove("top-bar-citas-mostrar");
-//         if (!topBarCitas.classList.contains("top-bar-citas-ocultar")) {
-//             topBarCitas.classList.add("top-bar-citas-ocultar");
-//         }
-//         var textBuscarCitas = document.querySelector(".text-buscador-citas");
-//         textBuscarCitas.classList.remove("text-buscador-citas-ocultar");
-//         if (
-//             !textBuscarCitas.classList.contains("text-buscador-citas-mostrar")
-//         ) {
-//             textBuscarCitas.classList.add("text-buscador-citas-mostrar");
-//         }
-//     });
-// }
-// const botonBuscarHeaderPacientes = document.querySelector(
-//     ".top-bar-pacientes-search"
-// );
-// if (botonBuscarHeaderPacientes != null) {
-//     botonBuscarHeaderPacientes.addEventListener("click", event => {
-//         var topBarPacientes = document.querySelector(".top-bar-pacientes");
-//         topBarPacientes.classList.remove("top-bar-pacientes-mostrar");
-//         if (!topBarPacientes.classList.contains("top-bar-pacientes-ocultar")) {
-//             topBarPacientes.classList.add("top-bar-pacientes-ocultar");
-//         }
-//         var textBuscarPacientes = document.querySelector(
-//             ".text-buscador-pacientes"
-//         );
-//         textBuscarPacientes.classList.remove("text-buscador-pacientes-ocultar");
-//         if (
-//             !textBuscarPacientes.classList.contains(
-//                 "text-buscador-pacientes-mostrar"
-//             )
-//         ) {
-//             textBuscarPacientes.classList.add(
-//                 "text-buscador-pacientes-mostrar"
-//             );
-//         }
-//     });
-// }
-// const botonCerrarBuscarCita = document.querySelector(".cerrar-buscar-cita");
-// if (botonCerrarBuscarCita != null) {
-//     botonCerrarBuscarCita.addEventListener("click", event => {
-//         var topBarCitas = document.querySelector(".top-bar-citas");
-//         topBarCitas.classList.remove("top-bar-citas-ocultar");
-//         if (!topBarCitas.classList.contains("top-bar-citas-mostrar")) {
-//             topBarCitas.classList.add("top-bar-citas-mostrar");
-//         }
-//         var textBuscarCitas = document.querySelector(".text-buscador-citas");
-//         textBuscarCitas.classList.remove("text-buscador-citas-mostrar");
-//         if (
-//             !textBuscarCitas.classList.contains("text-buscador-citas-ocultar")
-//         ) {
-//             textBuscarCitas.classList.add("text-buscador-citas-ocultar");
-//         }
-//     });
-// }
-// const botonCerrarBuscarPacientes = document.querySelector(
-//     ".cerrar-buscar-pacientes"
-// );
-// if (botonCerrarBuscarPacientes != null) {
-//     botonCerrarBuscarPacientes.addEventListener("click", event => {
-//         var topBarPacientes = document.querySelector(".top-bar-pacientes");
-//         topBarPacientes.classList.remove("top-bar-pacientes-ocultar");
-//         if (!topBarPacientes.classList.contains("top-bar-pacientes-mostrar")) {
-//             topBarPacientes.classList.add("top-bar-pacientes-mostrar");
-//         }
-//         var textBuscarPacientes = document.querySelector(
-//             ".text-buscador-pacientes"
-//         );
-//         textBuscarPacientes.classList.remove("text-buscador-pacientes-mostrar");
-//         if (
-//             !textBuscarPacientes.classList.contains(
-//                 "text-buscador-pacientes-ocultar"
-//             )
-//         ) {
-//             textBuscarPacientes.classList.add(
-//                 "text-buscador-pacientes-ocultar"
-//             );
-//         }
-//     });
-// }
-// const citaListItem = document.querySelectorAll(".cita-list-item");
-// if (citaListItem != null) {
-//     citaListItem.forEach(element => {
-//         element.addEventListener("click", event => {
-//             var idCitaSelected = element.getAttribute("idcita");
-//             console.log("se ha seleccionado la cita " + idCitaSelected);
-//         });
-//     });
-// }
-// const botonPacientes = document.querySelector(".boton-pacientes");
-// if (botonPacientes != null) {
-//     botonPacientes.addEventListener("click", event => {});
-// }
-// const radios = document.querySelectorAll(".mdc-radio");
-// radios.forEach(element => {
-//     var radio = new MDCRadio(element);
-// });
-// const chipSetEl = document.querySelector(".mdc-chip-set");
-// if (chipSetEl != null) {
-//     var chipSet = new MDCChipSet(chipSetEl);
-// }
-// const inputChip = document.querySelector(".input-chip-set");
-// if (inputChip != null) {
-//     inputChip.addEventListener("keydown", function (event) {
-//         if (event.key === "Enter" || event.keyCode === 13) {
-//             var textoCaja = inputChip.value.trim();
-//             if (
-//                 textoCaja != null &&
-//                 textoCaja != "" &&
-//                 textoCaja.includes("@") &&
-//                 textoCaja.includes(".") &&
-//                 textoCaja.length > 6
-//             ) {
-//                 var chipEl = document.createElement("div");
-//                 chipEl.innerHTML =
-//                     "" +
-//                     '<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">mail</i>' +
-//                     '<div class="mdc-chip__text">' +
-//                     inputChip.value +
-//                     "</div>" +
-//                     '<i class="material-icons mdc-chip__icon mdc-chip__icon--trailing" tabindex="0" role="button">cancel</i>' +
-//                     "";
-//                 chipEl.classList.add("mdc-chip");
-//                 chipSetEl.appendChild(chipEl);
-//                 chipSet.addChip(chipEl);
-//                 inputChip.value = "";
-//             }
-//         }
-//     });
-// }
-// const fabButton = document.querySelector('.mdc-fab');
-// if (fabButton != null) {
-//     const fabRipple = new MDCRipple(fabButton);
-// }
+});
+var textfieldselector = document.querySelectorAll('.mdc-text-field');
+textfieldselector.forEach(function (element) {
+  var cajaTexto = new _material_textfield_index__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](element);
+});
 
 /***/ }),
 
@@ -84335,6 +83287,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PanelSeleccionaPaciente_vue_vue_type_template_id_47b0d4f9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PanelSeleccionaPaciente_vue_vue_type_template_id_47b0d4f9_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/componentes/snackBar.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/componentes/snackBar.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./snackBar.vue?vue&type=template&id=61e51c54&scoped=true& */ "./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true&");
+/* harmony import */ var _snackBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./snackBar.vue?vue&type=script&lang=js& */ "./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& */ "./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _snackBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "61e51c54",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/componentes/snackBar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./snackBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=style&index=0&id=61e51c54&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_style_index_0_id_61e51c54_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./snackBar.vue?vue&type=template&id=61e51c54&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/componentes/snackBar.vue?vue&type=template&id=61e51c54&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_snackBar_vue_vue_type_template_id_61e51c54_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -19,9 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/citas/reporte','CitasController@reporte');
+Route::get('/citas/eliminar/{idCita}','CitasController@eliminar');
 Route::get('/citas/EnviarReporte','CitasController@enviarReporte');
 Route::get('/citas/ultimas/{idHistoria}','CitasController@ultimas');
 Route::resource('/citas','CitasController');
+Route::get('/pacientes/eliminar/{idPaciente}','PacienteController@eliminar');
 Route::resource('/pacientes','PacienteController');
 
 Route::get('/usuario','UsuarioController@getUserData')->name('usuario-data');

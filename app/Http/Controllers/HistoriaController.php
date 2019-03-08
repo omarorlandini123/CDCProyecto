@@ -5,29 +5,16 @@ namespace App\Http\Controllers;
 use App\modelos\Historia;
 use App\modelos\Persona;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HistoriaController extends Controller
 {
     public function listar(Request $request, $cond)
     {
+        
         if (Auth::check()) {
-            $historias = Historia::whereHas('persona_historia', function ($a) use($cond) {
-                if($cond!="_"){
-                $a->where('nombres', 'like', '%' . $cond . '%')
-                    ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
-                    ->orWhere('apellido_materno', 'like', '%' . $cond . '%')
-                    ->orWhere('dni', 'like', '%' . $cond . '%');
-                }
-            })
-                ->with('persona_historia')
-                ->with('persona_historia.ubicacion_nacimiento')
-                ->with('persona_historia.ubicacion_domicilio')
-                ->with('persona_historia.correo')
-                ->with('persona_historia.telefono')
-                ->with('persona_historia.users')
-                ->with('persona_historia.users')
-                ->get();
+            $historias = Historia::listaGeneral($cond);
             return $historias;
         }else{
             return "no-auth";
@@ -41,7 +28,7 @@ class HistoriaController extends Controller
             
             $historia = Historia::where('id',$idHistoria)->first();
             if($historia!=null){
-                $persona = $historia->persona_historia;
+                $persona = $historia->persona;
                 $persona->nombres=$request->input('nombre');
                 $persona->apellido_paterno=$request->input('apellido_paterno');
                 $persona->apellido_materno=$request->input('apellido_materno');
@@ -74,6 +61,16 @@ class HistoriaController extends Controller
             $rpta= new Historia; // variable solo para contestar
             $rpta->guardado=false;
             
+            //buscar si existe otra persona con el DNI
+
+            $personaVal = Persona::where('dni',$request->input('dni').trim())
+            ->orWhere('pasaporte',$request->input('pasaporte').trim())
+            ->orWhere('carne_extra',$request->input('carne').trim())
+            ->orWhere('ruc',$request->input('ruc').trim())->first();
+            if($personaVal!=null){
+                $rpta->mensaje="El dni, pasaporte, carne o ruc ya están registrados con otro paciente: ".$personaVal->nombreCompleto();
+                return $rpta;
+            }
             
             $persona = new Persona;
             $persona->nombres=$request->input('nombre');
@@ -94,6 +91,7 @@ class HistoriaController extends Controller
                 $historia->persona_historia=$persona->id;
                 $historia->usuaro_creacion=Auth::user()->id;
                 $historia->fecha_creacion=Carbon::now()->subHours(5);
+                $historia->eliminado=0;
                 $historia->save();
                 if($historia->id>0){                   
                     $rpta->guardado=true;                  

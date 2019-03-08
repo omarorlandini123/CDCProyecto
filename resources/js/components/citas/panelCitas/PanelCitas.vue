@@ -8,7 +8,7 @@
               class="mdc-list-item__graphic material-icons"
               aria-hidden="true"
             >back_arrow</span> -->
-            <span class="mdc-top-app-bar__title">Citas</span>
+            <span class="mdc-top-app-bar__title" v-on:click="abrirBuscador">Citas</span>
           </section>
           <section class="seccion-fin" role="toolbar">
             <a
@@ -41,8 +41,10 @@
     tabindex="0"></li>
       </ul>
     </div>
-    <button class="mdc-fab boton-accion" v-on:click="$emit('abrirPacientes',true)"> 
+    <button class="mdc-fab mdc-fab--extended boton-accion" v-on:click="$emit('abrirPacientes',true)"> 
+      
       <span class="material-icons mdc-fab__icon">add</span>
+      <span class="mdc-fab__label">Nueva Cita</span>      
     </button>
   </div>
 </template>

@@ -59,6 +59,8 @@ class CitasController extends Controller
 
     public function enviarReporte(){
 
+        
+
         $destinos=DestinoReportes::where('reporte_id',1)->get();
         $dest = array();
         foreach ($destinos as $destino) {
@@ -96,6 +98,7 @@ class CitasController extends Controller
             $cita->medico_especialidad_id=$request->input('medico_especialidad_id');
             $cita->nota_adicional=$request->input('nota_adicional');
             $cita->fecha_cita=$request->input('fecha_cita');
+            $cita->eliminado=0;
             $cita->save();
             
             $rpta= new Cita; 
@@ -152,6 +155,7 @@ class CitasController extends Controller
             $cita->fecha_cita=$request->input('fecha_cita');
             $cita->confirmado=$request->input('confirmado')?1:0;
             $cita->confirmado_medico=$request->input('confirmado_medico')?1:0;
+            $cita->eliminado=0;
             $cita->save();
             
             $rpta= new Cita;
@@ -179,11 +183,29 @@ class CitasController extends Controller
         }        
         
     }
+
+    public function eliminar(Request $request, $idCita){
+        if(Auth::check()){
+            $rpta= new Cita;
+            $citas= Cita::where('id',$idCita)->first();
+            if($citas!=null){
+                $citas->eliminado=1;
+                $citas->save();
+                $rpta->eliminado=true;
+                return $rpta;
+            }
+            $rpta->eliminado=false;
+            return $rpta;
+
+        }else{
+            return 'no-auth';
+        }
+    }
     
     public function listar(Request $request,$cond){
         if(Auth::check()){
             $citas= Cita::whereHas('historia',function($z) use($cond){
-                $z->whereHas('persona_historia', function ($a) use($cond) {
+                $z->whereHas('persona', function ($a) use($cond) {
                     if($cond!="_"){
                     $a->where('nombres', 'like', '%' . $cond . '%')
                         ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
@@ -191,15 +213,16 @@ class CitasController extends Controller
                         ->orWhere('dni', 'like', '%' . $cond . '%');
                     }
                 });
-            })            
+            })      
+            ->where('eliminado',0)      
             ->with('historia')
-            ->with('historia.persona_historia')
-            ->with('historia.persona_historia.ubicacion_nacimiento')
-            ->with('historia.persona_historia.ubicacion_domicilio')
-            ->with('historia.persona_historia.correo')
-            ->with('historia.persona_historia.telefono')
-            ->with('historia.persona_historia.users')
-            ->with('historia.persona_historia.users')
+            ->with('historia.persona')
+            ->with('historia.persona.ubicacion_nacimiento')
+            ->with('historia.persona.ubicacion_domicilio')
+            ->with('historia.persona.correo')
+            ->with('historia.persona.telefono')
+            ->with('historia.persona.users')
+            ->with('historia.persona.users')
             ->with('motivo')
             ->with('aseguradora')
             ->with('medico_especialidad')
@@ -222,8 +245,9 @@ class CitasController extends Controller
     public function ultimas(Request $request, $idHistoria){
         if(Auth::check()){
             $citas= Cita::where('historia_id',$idHistoria)
+            ->where('eliminado',0)
             ->with('historia')
-            ->with('historia.persona_historia')
+            ->with('historia.persona')
             ->with('motivo')
             ->with('aseguradora')
             ->with('medico_especialidad')

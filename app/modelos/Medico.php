@@ -25,9 +25,8 @@ class Medico extends Model
                 $dia=Carbon::parse($horario->dia);
                 $fec = Carbon::parse($fecha);
                 if($dia->day==$fec->day &&
-                $dia->month==$fec->month &&
-                $dia->year==$fec->year 
-                ){
+                    $dia->month==$fec->month &&
+                    $dia->year==$fec->year){
                     return $horario->lista_turnos();
                 }
             }

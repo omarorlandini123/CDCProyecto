@@ -38,5 +38,9 @@ class Persona extends Model
         return $this->hasMany('App\modelos\Correo','persona_id','id');
     }
 
+    public function nombreCompleto(){
+        return $this->apellido_paterno.' '. $this->apellido_materno.', '.$this->nombres;
+    }
+
     
 }
