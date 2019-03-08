@@ -54,12 +54,12 @@ class Historia extends Model
             strcasecmp(
                
                 $arr[$leftIndex]->persona->nombreCompleto(),
-                $pivot->persona->nombreCompleto())>0
+                $pivot->persona->nombreCompleto())<0
             )             
                 $leftIndex++;
                 while(strcasecmp(
                     $arr[$rightIndex]->persona->nombreCompleto(),
-                    $pivot->persona->nombreCompleto())<0)
+                    $pivot->persona->nombreCompleto())>0)
         
                 $rightIndex--;
         if ($leftIndex <= $rightIndex) {  
