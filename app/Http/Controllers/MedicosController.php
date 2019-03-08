@@ -23,20 +23,9 @@ class MedicosController extends Controller
 
     public function listar(Request $request,$cond){
         if(Auth::check()){
-            $medicos = Medico::whereHas('persona',function($a) use ($cond){
-                if($cond!="_"){
-                $a->where('nombres','like','%'.$cond.'%')
-                ->orWhere('apellido_paterno','like','%'.$cond.'%')
-                ->orWhere('apellido_materno','like','%'.$cond.'%');
-                }
-            })
-            ->with('persona')
-            ->with('medico_especialidad')
-            ->with('medico_especialidad.horario')
-            ->with('medico_especialidad.especialidad')
-            ->get();  
+            $medicos = Medico::listarTodos($cond)
             
-
+ 
             return $medicos;
         }else{
             return "no-auth";
