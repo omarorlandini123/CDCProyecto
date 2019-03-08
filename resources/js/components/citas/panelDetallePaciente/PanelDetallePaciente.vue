@@ -24,10 +24,10 @@
               width="40"
             >
             <span v-if="!nuevo" class="mdc-top-app-bar__title" style="font-size: 1em;">
-              {{pacientesel.persona_historia!=null?pacientesel.persona_historia.nombres:''}}
+              {{pacientesel.persona!=null?pacientesel.persona.nombres:''}}
               <p
                 style="margin: 0px;font-size: 0.7em;margin-top: -13px;"
-              >DNI: {{pacientesel.persona_historia!=null?pacientesel.persona_historia.dni:''}} - Historia: {{pacientesel.id}}</p>
+              >DNI: {{pacientesel.persona!=null?pacientesel.persona.dni:''}} - Historia: {{pacientesel.id}}</p>
             </span>
             
             <span v-if="nuevo" class="mdc-top-app-bar__title" style="font-size: 1em;">Nuevo Paciente</span>
@@ -45,8 +45,7 @@
                   <li
                     class="mdc-list-item"
                     role="menuitem"
-                    onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
+                    v-on:click="solicitarEliminarPaciente"
                   >
                     <span class="mdc-list-item__text">Eliminar Paciente</span>
                   </li>
@@ -79,7 +78,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_dni"
-                    v-model="pacientesel.persona_historia.dni"
+                    v-model="pacientesel.persona.dni"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">D.N.I.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -98,7 +97,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_pasaporte"
-                    v-model="pacientesel.persona_historia.pasaporte"
+                    v-model="pacientesel.persona.pasaporte"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Pasaporte</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -117,7 +116,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_carne"
-                    v-model="pacientesel.persona_historia.carne_extra"
+                    v-model="pacientesel.persona.carne_extra"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Carné Ext.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -136,7 +135,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_ruc"
-                    v-model="pacientesel.persona_historia.ruc"
+                    v-model="pacientesel.persona.ruc"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">R.U.C.</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -155,7 +154,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_nombres"
-                    v-model="pacientesel.persona_historia.nombres"
+                    v-model="pacientesel.persona.nombres"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Nombres</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -174,7 +173,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_apellido_paterno"
-                    v-model="pacientesel.persona_historia.apellido_paterno"
+                    v-model="pacientesel.persona.apellido_paterno"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Apellido Paterno</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -193,7 +192,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_apellido_materno"
-                    v-model="pacientesel.persona_historia.apellido_materno"
+                    v-model="pacientesel.persona.apellido_materno"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Apellido Materno</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -212,7 +211,7 @@
                     id="radio-1"
                     value="1"
                     name="radios"
-                    v-model="pacientesel.persona_historia.sexo"
+                    v-model="pacientesel.persona.sexo"
                   >
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
@@ -229,7 +228,7 @@
                     id="radio-1"
                     name="radios"
                     value="2"
-                    v-model="pacientesel.persona_historia.sexo"
+                    v-model="pacientesel.persona.sexo"
                   >
                   <div class="mdc-radio__background">
                     <div class="mdc-radio__outer-circle"></div>
@@ -253,7 +252,7 @@
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_fec_nac"
                     v-on:change="calculateAge"
-                    v-model="pacientesel.persona_historia.fecha_nacimiento"
+                    v-model="pacientesel.persona.fecha_nacimiento"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Fecha Nacimiento</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -273,7 +272,7 @@
                     type="text"
                     id="text-field-filled-leading"
                     class="mdc-text-field__input txt_edad"
-                    v-model="pacientesel.persona_historia.edad"
+                    v-model="pacientesel.persona.edad"
                   >
                   <label
                     class="mdc-floating-label mdc-floating-label--float-above"
@@ -325,7 +324,7 @@
                     type="text"
                     id="text-field-filled-leading txt_direccion"
                     class="mdc-text-field__input"
-                    v-model="pacientesel.persona_historia.direccion"
+                    v-model="pacientesel.persona.direccion"
                   >
                   <label class="mdc-floating-label" for="text-field-filled-leading">Dirección</label>
                   <div class="mdc-line-ripple" style="transform-origin: 99.5px center 0px;"></div>
@@ -395,10 +394,18 @@
     v-bind:contenido="modalGuardar.contenidoguardar" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="modalGuardar.accionesGuardar"  ></panel-modal>
     <panel-modal v-if="modalValidar.conf" titulo="Verificar" 
     :key="modalValidar.keyModal"
-    v-bind:contenido="modalValidar.contenido" v-on:guardarPaciente="guardarPaciente" v-bind:acciones="modalValidar.acciones"  ></panel-modal>
+    v-bind:contenido="modalValidar.contenido" 
+    v-on:guardarPaciente="guardarPaciente" 
+    v-on:eliminarPaciente="eliminarPaciente"
+    v-bind:acciones="modalValidar.acciones"  ></panel-modal>
     <button class="mdc-fab boton-accion" v-on:click="confirmarNuevoPaciente">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>
+    <snack-bar
+      v-if="snackmsj.view"
+      :key="snackmsj.key"
+      v-bind:snack="snackmsj"      
+    ></snack-bar>
   </div>
 </template>
 <script src="./PanelDetallePaciente.js"></script>

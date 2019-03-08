@@ -21,8 +21,8 @@ class Horario extends Model
     public function lista_turnos()
     {
         $cantidad = $this->cantidad_pacientes;
-        $desde = Carbon::parse($this->desde)->subHours(5);
-        $hasta = Carbon::parse($this->hasta)->subHours(5);
+        $desde = Carbon::parse($this->desde);//->subHours(5);
+        $hasta = Carbon::parse($this->hasta);//->subHours(5);
         $diferenciaEnminutos = $hasta->diffInMinutes($desde);
         $horarios=array();
         $formatoHora="H:i";

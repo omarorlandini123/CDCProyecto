@@ -26,18 +26,18 @@
             <span class="mdc-top-app-bar__title" style="font-size: 1em;">
               {{
               isnuevacita?
-              historianuevacita.persona_historia.apellido_paterno + " " +
-              historianuevacita.persona_historia.apellido_materno + ", "+
-              historianuevacita.persona_historia.nombres + " "
+              historianuevacita.persona.apellido_paterno + " " +
+              historianuevacita.persona.apellido_materno + ", "+
+              historianuevacita.persona.nombres + " "
               :
-              citasel.historia.persona_historia.apellido_paterno + " " +
-              citasel.historia.persona_historia.apellido_materno + ", "+
-              citasel.historia.persona_historia.nombres + " "}}
+              citasel.historia.persona.apellido_paterno + " " +
+              citasel.historia.persona.apellido_materno + ", "+
+              citasel.historia.persona.nombres + " "}}
               <p style="margin: 0px;font-size: 0.7em;margin-top: -13px;">
                 DNI: {{
                 isnuevacita?
-                historianuevacita.persona_historia.dni:
-                citasel.historia.persona_historia.dni}} - Historia: {{
+                historianuevacita.persona.dni:
+                citasel.historia.persona.dni}} - Historia: {{
                 isnuevacita?
                 'H-'+String(historianuevacita.id).padStart(8,0) :
                 'H-'+String(citasel.historia.id).padStart(8,0)
@@ -68,8 +68,7 @@
                   <li
                     class="mdc-list-item"
                     role="menuitem"
-                    onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();"
+                    v-on:click="solicitarEliminarCita"
                   >
                     <span class="mdc-list-item__text">Eliminar Cita</span>
                   </li>
@@ -391,6 +390,12 @@
         </div>
       </div>
     </div>
+    <panel-modal v-if="modalValidar.conf" 
+     :key="modalValidar.keyModal"
+      v-bind:titulo="modalValidar.titulo"    
+      v-bind:contenido="modalValidar.contenido" 
+      v-bind:acciones="modalValidar.acciones" v-on:eliminarCita="eliminarCita"  ></panel-modal>
+
     <button class="mdc-fab boton-accion" v-on:click="guardarCita">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>

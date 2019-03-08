@@ -10,7 +10,7 @@
               v-on:click="$emit('cerrarPanelPacientes',true)"
               style="margin:0px;color:white;"
             >arrow_back</a>
-            <span class="mdc-top-app-bar__title">Pacientes</span>
+            <span class="mdc-top-app-bar__title" v-on:click="abrirBuscador">Pacientes</span>
           </section>
           <section class="seccion-fin" role="toolbar">
             <a
@@ -51,8 +51,10 @@
       
     </div>
 
-    <button class="mdc-fab boton-accion" v-on:click="$emit('abrirPaciente',0)">
+    <button class="mdc-fab  mdc-fab--extended boton-accion" v-on:click="$emit('abrirPaciente',0)">
+         
       <span class="material-icons mdc-fab__icon">add</span>
+      <span class="mdc-fab__label">Nuevo Paciente</span>  
     </button>
   </div>
 </template>

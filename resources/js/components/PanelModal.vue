@@ -21,7 +21,7 @@
             type="button"
             class="mdc-button mdc-dialog__button"
             data-mdc-dialog-action="yes"
-            v-on:click="$emit(accion.nombre,0)"
+            v-on:click="$emit(accion.nombre,accion.valorAccion)"
           >
             <span class="mdc-button__label">{{accion.texto}}</span>
           </button>

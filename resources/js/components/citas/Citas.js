@@ -35,6 +35,8 @@ export default {
             historianuevacita: null,
             //Para ListarCitas
             keyLista: 0,
+            //Para Detalle de Citas
+            keyDetalleCita:0,
             //Para Panel Pacientes
             keyPanelPacientes: 0,
             //Para DetallePaciente 
@@ -62,6 +64,7 @@ export default {
             this.mostrarDesktopDetalleCita = false;
             this.mostrarDesktopSeleccionaPaciente = false;
             this.mostrarDesktopDetallePaciente = false;
+            
         },
         abrirpaneldetallecita: function ($event) {
             this.determinarModo();
@@ -70,7 +73,7 @@ export default {
             this.isnuevacita = false;
             this.historianuevacita = null;
             this.showpaneldetallecita();
-
+            this.refrescarDetalleCitas();
         },
         nuevaCita: function (event) {
             this.determinarModo();
@@ -79,7 +82,6 @@ export default {
             this.isnuevacita = true;
             this.historianuevacita = event;
             this.showpaneldetallecita();
-            this.refrescarCitas();
         },
         showpaneldetallecita() {
             if (this.modoMovil) {
@@ -100,6 +102,7 @@ export default {
                 this.mostrarPhonePacientes = true;
                 this.mostrarDesktopSeleccionaPaciente = true;
             }
+            this.refrescarPacientes();
         },
         getFechaHoy(){
             var  fechaHoy=new Date();
@@ -119,7 +122,7 @@ export default {
                 this.isnuevopaciente = true;
                 this.pacienteSelect= ({
                     id:0,
-                    persona_historia:{
+                    persona:{
                         id:0,
                         dni:null,
                         pasaporte:null,
@@ -154,6 +157,9 @@ export default {
         },
         refrescarCitas: function ($event) {
             this.keyLista += 1;
+        },
+        refrescarDetalleCitas:function($event){
+            this.keyDetalleCita += 1;
         },
         refrescarPacientes: function ($event) {
             this.keyPanelPacientes += 1;
