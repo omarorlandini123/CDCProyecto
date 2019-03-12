@@ -23,7 +23,7 @@ class MedicosController extends Controller
 
     public function listar(Request $request,$cond){
         if(Auth::check()){
-            $medicos = Medico::listarTodos($cond)
+            $medicos = Medico::listarTodos($cond);
             
  
             return $medicos;

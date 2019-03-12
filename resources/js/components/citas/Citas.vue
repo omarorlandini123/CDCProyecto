@@ -22,6 +22,7 @@
                   v-on:refrescarCitas="refrescarCitas"
                   v-on:abrirPaciente="abrirPaciente"
                   v-on:cerrarPanelDetalleMovil="cerrarPanelDetalleMovil"
+                  v-on:cerrarPanelDetalleCita="cerrarPanelDetalleCita"
                   v-bind:citasel="citaselect"
                   v-bind:frommovil="true"
                   v-bind:isnuevacita="isnuevacita"
@@ -76,6 +77,7 @@
               <panel-detalle-cita
                 v-on:refrescarCitas="refrescarCitas"
                 v-on:abrirPaciente="abrirPaciente"
+                v-on:cerrarPanelDetalleCita="cerrarPanelDetalleCita"
                 v-bind:citasel="citaselect"
                 v-bind:frommovil="false"
                 v-bind:isnuevacita="isnuevacita"

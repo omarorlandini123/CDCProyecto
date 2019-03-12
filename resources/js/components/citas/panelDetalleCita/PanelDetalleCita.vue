@@ -399,6 +399,11 @@
     <button class="mdc-fab boton-accion" v-on:click="guardarCita">
       <span class="material-icons mdc-fab__icon">save</span>
     </button>
+    <snack-bar
+      v-if="snackmsj.view"
+      :key="snackmsj.key"
+      v-bind:snack="snackmsj"      
+    ></snack-bar>
   </div>
 </template>
 <script src="./PanelDetalleCita.js"></script>
