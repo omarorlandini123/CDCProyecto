@@ -44,7 +44,6 @@ class Medico extends Model
         })
         ->with('persona')
         ->with('medico_especialidad')
-        ->with('medico_especialidad.horario')
         ->with('medico_especialidad.especialidad')
         ->get();  
         if(count($medicos)>0)
