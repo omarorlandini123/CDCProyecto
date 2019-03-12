@@ -1,4 +1,3 @@
-
 import {
     MDCTopAppBar
 } from "@material/top-app-bar/index";
@@ -9,7 +8,7 @@ import {
     MDCRipple
 } from "@material/ripple";
 import {
-    MDCList 
+    MDCList
 } from '@material/list';
 import {
     MDCMenu
@@ -69,10 +68,11 @@ export default {
             notasel: null,
             finalizaCarga: false,
             confirmado: false,
-            confirmadomedico:false,
-            ultimasCitas:null,
-            tituloUltimasCitas:"",
-            modalValidar:null,
+            confirmadomedico: false,
+            ultimasCitas: null,
+            tituloUltimasCitas: "",
+            modalValidar: null,
+            snackmsj: null,
         };
     },
     mounted() {
@@ -103,7 +103,7 @@ export default {
                 this.fechasel = this.citasel.fecha_cita;
                 this.notasel = this.citasel.nota_adicional;
                 this.confirmado = this.citasel.confirmado;
-                this.confirmadomedico=this.citasel.confirmado_medico
+                this.confirmadomedico = this.citasel.confirmado_medico
             } else {
                 this.medicosel = {
                     id: 0
@@ -114,13 +114,19 @@ export default {
                 this.fechasel = null;
                 this.notasel = "";
             }
-            this.modalValidar={
-                conf:false,
-                contenido:"",            
-                acciones:null,
-                keyModal:0,
-                titulo:"",
-            }
+            this.modalValidar = {
+                conf: false,
+                contenido: "",
+                acciones: null,
+                keyModal: 0,
+                titulo: "",
+            };
+            this.snackmsj = {
+                key: 0,
+                view: false,
+                contenido: "",
+                acciones: []
+            };
         },
         iniciarComponentes() {
             //TopBAR
@@ -284,7 +290,7 @@ export default {
         setConfirmado() {
             this.confirmado = document.getElementById('checkbox-1').checked;
         },
-        setConfirmadoMedico(){
+        setConfirmadoMedico() {
             this.confirmadomedico = document.getElementById('checkbox-2').checked;
         },
         llamarTurnos() {
@@ -339,53 +345,61 @@ export default {
                     }
                 });
         },
-        solicitarEliminarCita(){
-            this.modalValidar.keyModal+=1;
-            this.modalValidar.conf=true;
-            this.modalValidar.keyModal+=1;
-                this.modalValidar.conf=true;                
-                this.modalValidar.titulo= "Elimninar Cita";
-                this.modalValidar.contenido= "Vas a eliminar esta cita ¿Estás seguro?";
-                this.modalValidar.acciones=[
-                    {
-                        id:0,
-                        nombre:"eliminarCita",
-                        texto:"eliminar",
-                        valorAccion:this.citasel
-                    }
-                ];
+        solicitarEliminarCita() {
+            this.modalValidar.keyModal += 1;
+            this.modalValidar.conf = true;
+            this.modalValidar.keyModal += 1;
+            this.modalValidar.conf = true;
+            this.modalValidar.titulo = "Elimninar Cita";
+            this.modalValidar.contenido = "Vas a eliminar esta cita ¿Estás seguro?";
+            this.modalValidar.acciones = [{
+                id: 0,
+                nombre: "eliminarCita",
+                texto: "eliminar",
+                valorAccion: this.citasel
+            }];
         },
-        eliminarCita(citasel=0){
+        eliminarCita(citasel = 0) {
             fetch('/citas/eliminar/' + citasel.id)
-            .then(response => response.json())
-            .then(data => {
-                if (data.eliminado) {
-                    this.$emit('cerrarPanelPacientes', true);
-                }
+                .then(response => response.json())
+                .then(data => {
+                    if (data.eliminado) {
+                        this.$emit('cerrarPanelDetalleCita', true);
+                        this.snackmsj.view = true;
+                        this.snackmsj.key += 1;
+                        this.snackmsj.contenido = "Cita eliminada";
+                        this.snackmsj.acciones = [{
+                            id: 0,
+                            action: "yes",
+                            nombre: "OK",
+                            nombreAccion: "",
+                            valorAccion: 0,
+                        }]
+                    }
 
-            });
+                });
 
-            
+
         },
-        llamarUltimasCitas(){
-            var idHistoria=0;
-            if(this.isnuevacita){
+        llamarUltimasCitas() {
+            var idHistoria = 0;
+            if (this.isnuevacita) {
                 idHistoria = this.historianuevacita.id;
-            }else{
+            } else {
                 idHistoria = this.citasel.historia_id;
-            }          
+            }
 
             fetch('/citas/ultimas/' + idHistoria)
                 .then(rpta => rpta.json())
                 .then(rpta => {
-                    this.ultimasCitas=rpta;
-                    var tituloUltimasCitas=document.querySelector('.tituloUltimasCitas');
-                    if(this.ultimasCitas==null || this.ultimasCitas.length==0){
+                    this.ultimasCitas = rpta;
+                    var tituloUltimasCitas = document.querySelector('.tituloUltimasCitas');
+                    if (this.ultimasCitas == null || this.ultimasCitas.length == 0) {
 
-                        tituloUltimasCitas.innerText="El paciente no registra citas";
+                        tituloUltimasCitas.innerText = "El paciente no registra citas";
 
-                    }else{
-                         tituloUltimasCitas.innerText="Últimas Citas Del Paciente";
+                    } else {
+                        tituloUltimasCitas.innerText = "Últimas Citas Del Paciente";
                     }
                 });
 
@@ -434,6 +448,18 @@ export default {
                     .then(data => {
                         if (data.guardado) {
                             this.$emit('refrescarCitas', true);
+                            this.$emit('cerrarPanelDetalleCita', true);
+
+                            this.snackmsj.view = true;
+                            this.snackmsj.key += 1;
+                            this.snackmsj.contenido = "Cita creada";
+                            this.snackmsj.acciones = [{
+                                id: 0,
+                                action: "yes",
+                                nombre: "OK",
+                                nombreAccion: "",
+                                valorAccion: 0,
+                            }]
                         }
 
                     });
@@ -457,13 +483,26 @@ export default {
                             nota_adicional: this.notasel,
                             fecha_cita: this.fechasel,
                             confirmado: this.confirmado,
-                            confirmado_medico:this.confirmadomedico,
+                            confirmado_medico: this.confirmadomedico,
                         })
                     })
                     .then(response => response.json())
                     .then(data => {
                         if (data.guardado) {
                             this.$emit('refrescarCitas', true);
+                            if (this.frommovil) {
+                                this.$emit('cerrarPanelDetalleCita', true);
+                            }
+                            this.snackmsj.view = true;
+                            this.snackmsj.key += 1;
+                            this.snackmsj.contenido = "Cita actualizada";
+                            this.snackmsj.acciones = [{
+                                id: 0,
+                                action: "yes",
+                                nombre: "OK",
+                                nombreAccion: "",
+                                valorAccion: 0,
+                            }]
                         }
 
                     });

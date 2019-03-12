@@ -30,7 +30,6 @@ Route::get('/usuario','UsuarioController@getUserData')->name('usuario-data');
 Route::get('/citaslist/{cond}','CitasController@listar')->name('citas.listar');
 
 Route::get('/medicoslist/{cond}','MedicosController@listar')->name('medicos.listar');
-
 Route::get('/motivoslist','MotivoController@listar')->name('motivos.listar');
 
 Route::get('/aseguradoraslist','AseguradoraController@listar')->name('aseguradoras.listar');

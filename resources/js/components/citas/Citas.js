@@ -174,6 +174,16 @@ export default {
                 this.mostrarPhoneCitas = true;
             }
         },
+        cerrarPanelDetalleCita: function ($event) {
+            this.determinarModo();
+            this.cerrarPaneles();
+            this.mostrarPhoneCitas = true;
+            this.refrescarCitas();
+            
+            if (!this.modoMovil) {
+                this.mostrarDesktopSeleccionaCita=true;
+            }
+        },
         cerrarPanelPacientes: function ($event) {
             this.determinarModo();
             this.cerrarPaneles();
