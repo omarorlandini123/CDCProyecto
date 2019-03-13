@@ -22,12 +22,17 @@ class Historia extends Model
     public static function listaGeneral($cond){
         $historias = Historia::whereHas('persona', function ($a) use($cond) {
             if($cond!="_"){
-                $a->whereRaw("concat(upper(apellido_paterno),' ',upper(apellido_materno),', ',upper(nombres)) like '%".strtoupper($cond)."%'");
-            $a->where('nombres', 'like', '%' . $cond . '%')
-                ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
-                ->orWhere('apellido_materno', 'like', '%' . $cond . '%')
-                ->orWhere('dni', 'like', '%' . $cond . '%')
-                ->orWhere('nro_historia',   $cond );
+                $condiciones = explode(" ",$cond);
+                $condicionesFin=array();
+                foreach ($condiciones as $condicion) {
+                    $condicionesFin[]="'".trim($condicion)."'";
+                }
+                $porcomas = implode(",",$condicionesFin);
+                
+            $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
+                ->orWhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
+                ->orWhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
+                ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
             }
         })
             ->where('eliminado',0)

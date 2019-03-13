@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\modelos\Motivo;
+use App\modelos\Cita;
 
 class MotivoController extends Controller
 {
@@ -13,7 +14,9 @@ class MotivoController extends Controller
             $motivos=Motivo::all();
             return $motivos;
         }else{
-            return "no-auth";
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 }

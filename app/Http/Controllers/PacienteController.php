@@ -6,6 +6,7 @@ use App\modelos\Correo;
 use App\modelos\Historia;
 use App\modelos\Persona;
 use App\modelos\Telefono;
+use App\modelos\Cita;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -135,7 +136,9 @@ class PacienteController extends Controller
             return $rpta;
 
         }else{
-            return 'no-auth';
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use App\modelos\Cita;
 use App\modelos\Aseguradora;
 
 class AseguradoraController extends Controller
@@ -13,7 +14,9 @@ class AseguradoraController extends Controller
             $aseguradoras = Aseguradora::all();
             return $aseguradoras;
         }else{
-            return "no-auth";
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 }

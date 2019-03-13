@@ -20,7 +20,7 @@ class CitasController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -198,19 +198,29 @@ class CitasController extends Controller
             return $rpta;
 
         }else{
-            return 'no-auth';
+            $rpta= new Cita;
+            $rpta->noauth=true;
+            return $rpta;
         }
     }
     
     public function listar(Request $request,$cond){
+        
         if(Auth::check()){
             $citas= Cita::whereHas('historia',function($z) use($cond){
                 $z->whereHas('persona', function ($a) use($cond) {
                     if($cond!="_"){
-                    $a->where('nombres', 'like', '%' . $cond . '%')
-                        ->orWhere('apellido_paterno', 'like', '%' . $cond . '%')
-                        ->orWhere('apellido_materno', 'like', '%' . $cond . '%')
-                        ->orWhere('dni', 'like', '%' . $cond . '%');
+                        $condiciones = explode(" ",$cond);
+                        $condicionesFin=array();
+                        foreach ($condiciones as $condicion) {
+                            $condicionesFin[]="'".trim($condicion)."'";
+                        }
+                        $porcomas = implode(",",$condicionesFin);
+                        
+                    $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
+                        ->orWhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
+                        ->orWhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
+                        ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
                     }
                 });
             })      
@@ -238,7 +248,9 @@ class CitasController extends Controller
             return $citas;
 
         }else{
-            return 'no-auth';
+            $rpta= new Cita;
+            $rpta->noauth=true;
+            return $rpta;;
         }
     }
 
@@ -263,7 +275,9 @@ class CitasController extends Controller
             Cita::setTurnos($citas);
             return $citas;
         }else{
-            return 'no-auth';
+            $rpta= new Cita;
+            $rpta->noauth=true;
+            return $rpta;;
         }
     }
 }

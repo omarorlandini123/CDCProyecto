@@ -426,6 +426,9 @@ export default {
             fetch("/ubicaciones/_")
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.ubicaciones = rpta;
                     if (this.ubicacionsel != null) {
                         this.ubicaciones.forEach(element => {
@@ -498,7 +501,9 @@ export default {
             fetch('/pacientes/eliminar/' + pacientesel.id)
             .then(response => response.json())
             .then(data => {
-               
+                if(data=="no-auth"){
+                    window.location.href = '/login';
+                }
                 if (data.eliminado) {
                     this.$emit('abrirPacientes', 0);
                 }
@@ -584,7 +589,9 @@ export default {
                         })
                         .then(response => response.json())
                         .then(data => {
-                            console.log(data.id);
+                            if(data=="no-auth"){
+                                window.location.href = '/login';
+                            }
                             if (data.guardado) {
                                
                                 this.$emit('refrescarPacientes', true);
@@ -627,6 +634,9 @@ export default {
                         })
                         .then(response => response.json())
                         .then(data => {
+                            if(data=="no-auth"){
+                                window.location.href = '/login';
+                            }
                             if (data.guardado) {
                                 this.$emit('refrescarPacientes', true);
                                 this.snackmsj.view=true;

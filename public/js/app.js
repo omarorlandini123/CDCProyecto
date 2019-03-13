@@ -42087,6 +42087,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch("/usuario").then(function (res) {
         return res.json();
       }).then(function (res) {
+        if (res == "no-auth") {
+          window.location.href = '/login';
+        }
+
         _this.usuario = res;
       });
     }
@@ -42718,9 +42722,17 @@ __webpack_require__.r(__webpack_exports__);
         cond = "_";
       }
 
+      if (cond == null || cond.trim() == "") {
+        cond = "_";
+      }
+
       fetch('/citaslist/' + cond).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this.citas = rpta;
       });
     }
@@ -43040,6 +43052,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/medicoslist/' + cond).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this2.medicos = rpta;
 
         if (_this2.isnuevacita) {
@@ -43074,6 +43090,10 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         return response.json();
       }).then(function (data) {
+        if (data == "no-auth") {
+          window.location.href = '/login';
+        }
+
         _this3.horarios = data;
         _this3.horariosel = null;
 
@@ -43096,6 +43116,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/motivoslist').then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this4.motivos = rpta;
         _this4.motivosel = null;
 
@@ -43133,6 +43157,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/citas/eliminar/' + citasel.id).then(function (response) {
         return response.json();
       }).then(function (data) {
+        if (data == "no-auth") {
+          window.location.href = '/login';
+        }
+
         if (data.eliminado) {
           _this5.$emit('cerrarPanelDetalleCita', true);
 
@@ -43163,6 +43191,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/citas/ultimas/' + idHistoria).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this6.ultimasCitas = rpta;
         var tituloUltimasCitas = document.querySelector('.tituloUltimasCitas');
 
@@ -43179,6 +43211,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/aseguradoraslist').then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this7.aseguradoras = rpta;
         _this7.aseguradorasel = null;
 
@@ -43220,6 +43256,10 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (response) {
           return response.json();
         }).then(function (data) {
+          if (data == "no-auth") {
+            window.location.href = '/login';
+          }
+
           if (data.guardado) {
             _this8.$emit('refrescarCitas', true);
 
@@ -43262,6 +43302,10 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (response) {
           return response.json();
         }).then(function (data) {
+          if (data == "no-auth") {
+            window.location.href = '/login';
+          }
+
           if (data.guardado) {
             _this8.$emit('refrescarCitas', true);
 
@@ -43669,6 +43713,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch("/ubicaciones/_").then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this2.ubicaciones = rpta;
 
         if (_this2.ubicacionsel != null) {
@@ -43737,6 +43785,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/pacientes/eliminar/' + pacientesel.id).then(function (response) {
         return response.json();
       }).then(function (data) {
+        if (data == "no-auth") {
+          window.location.href = '/login';
+        }
+
         if (data.eliminado) {
           _this3.$emit('abrirPacientes', 0);
         }
@@ -43785,7 +43837,9 @@ __webpack_require__.r(__webpack_exports__);
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
-            console.log(data.id);
+            if (data == "no-auth") {
+              window.location.href = '/login';
+            }
 
             if (data.guardado) {
               _this4.$emit('refrescarPacientes', true);
@@ -43824,6 +43878,10 @@ __webpack_require__.r(__webpack_exports__);
           }).then(function (response) {
             return response.json();
           }).then(function (data) {
+            if (data == "no-auth") {
+              window.location.href = '/login';
+            }
+
             if (data.guardado) {
               _this4.$emit('refrescarPacientes', true);
 
@@ -43972,6 +44030,10 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/historias/' + cond).then(function (rpta) {
         return rpta.json();
       }).then(function (rpta) {
+        if (rpta.noauth) {
+          window.location.href = '/login';
+        }
+
         _this.pacientes = rpta;
       });
     }
@@ -82927,7 +82989,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************************************!*\
   !*** ./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.js?vue&type=script&lang=js& ***!
   \*************************************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -82957,14 +83019,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.vue ***!
   \*************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PanelDetallePaciente_vue_vue_type_template_id_bf4bdff6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PanelDetallePaciente.vue?vue&type=template&id=bf4bdff6&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.vue?vue&type=template&id=bf4bdff6&scoped=true&");
 /* harmony import */ var _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PanelDetallePaciente.js?vue&type=script&lang=js& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.js?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _PanelDetallePaciente_scss_vue_type_style_index_0_id_bf4bdff6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _PanelDetallePaciente_scss_vue_type_style_index_0_id_bf4bdff6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 

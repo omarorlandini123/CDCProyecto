@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\modelos\Ubicacion;
+use App\modelos\Cita;
 use Auth;
 use Illuminate\Http\Request;
 class UbicacionesController extends Controller
@@ -13,7 +14,9 @@ class UbicacionesController extends Controller
             ->orderBy('tag')->get();
             return $ubicaciones;
         }else{
-            return "no-auth";
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 }
