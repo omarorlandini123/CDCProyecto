@@ -218,8 +218,8 @@ class CitasController extends Controller
                         $porcomas = implode(",",$condicionesFin);
                         
                     $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
-                        ->orWhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
-                        ->orWhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
+                        ->WhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
+                        ->WhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
                         ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
                     }
                 });
