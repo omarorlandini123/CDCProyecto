@@ -278,6 +278,9 @@ export default {
             fetch('/medicoslist/' + cond)
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.medicos = rpta;
                     if (this.isnuevacita) {
                         if (this.medicos.length > 0) {
@@ -310,6 +313,9 @@ export default {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    if(data=="no-auth"){
+                        window.location.href = '/login';
+                    }
                     this.horarios = data;
                     this.horariosel = null;
                     if (this.isnuevacita) {
@@ -330,6 +336,9 @@ export default {
             fetch('/motivoslist')
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.motivos = rpta;
                     this.motivosel = null;
                     if (this.isnuevacita) {
@@ -363,6 +372,9 @@ export default {
             fetch('/citas/eliminar/' + citasel.id)
                 .then(response => response.json())
                 .then(data => {
+                    if(data=="no-auth"){
+                        window.location.href = '/login';
+                    }
                     if (data.eliminado) {
                         this.$emit('cerrarPanelDetalleCita', true);
                         this.snackmsj.view = true;
@@ -392,6 +404,9 @@ export default {
             fetch('/citas/ultimas/' + idHistoria)
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.ultimasCitas = rpta;
                     var tituloUltimasCitas = document.querySelector('.tituloUltimasCitas');
                     if (this.ultimasCitas == null || this.ultimasCitas.length == 0) {
@@ -408,6 +423,9 @@ export default {
             fetch('/aseguradoraslist')
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.aseguradoras = rpta;
                     this.aseguradorasel = null;
                     if (this.isnuevacita) {
@@ -446,6 +464,9 @@ export default {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        if(data=="no-auth"){
+                            window.location.href = '/login';
+                        }
                         if (data.guardado) {
                             this.$emit('refrescarCitas', true);
                             this.$emit('cerrarPanelDetalleCita', true);
@@ -488,6 +509,9 @@ export default {
                     })
                     .then(response => response.json())
                     .then(data => {
+                        if(data=="no-auth"){
+                            window.location.href = '/login';
+                        }
                         if (data.guardado) {
                             this.$emit('refrescarCitas', true);
                             if (this.frommovil) {

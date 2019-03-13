@@ -105,6 +105,9 @@ export default {
             fetch('/historias/' + cond)
                 .then(rpta => rpta.json())
                 .then(rpta => {
+                    if(rpta.noauth){
+                        window.location.href = '/login';
+                    }
                     this.pacientes = rpta;
                 });
         }

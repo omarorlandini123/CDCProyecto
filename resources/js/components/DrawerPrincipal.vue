@@ -118,6 +118,9 @@ export default {
       fetch("/usuario")
         .then(res => res.json())
         .then(res => {
+          if(res=="no-auth"){
+                    window.location.href = '/login';
+                }
           this.usuario=res;
         });
     }

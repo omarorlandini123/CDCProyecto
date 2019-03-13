@@ -9,7 +9,6 @@ export default {
         'item-cita': ItemCita
     },
     props: {
-
     },
     data() {
         return {
@@ -82,9 +81,17 @@ export default {
         }else{
             cond="_"; 
         }
+            if( cond ==null || cond.trim()=="" ){
+                cond="_";
+            }
             fetch('/citaslist/'+cond)
-            .then(rpta=>rpta.json())
-            .then(rpta=>{
+            .then(rpta=>{               
+                    return rpta.json();                                   
+            })
+            .then(rpta=>{                
+                if(rpta.noauth){
+                    window.location.href = '/login';
+                }
                 this.citas=rpta;
             });
         }

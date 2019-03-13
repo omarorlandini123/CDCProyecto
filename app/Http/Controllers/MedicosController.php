@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\modelos\Medico;
+use App\modelos\Cita;
 use Auth;
 class MedicosController extends Controller
 {
@@ -17,7 +18,9 @@ class MedicosController extends Controller
             }
             return $turnos;
         }else{
-            return "no-auth";
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 
@@ -28,7 +31,9 @@ class MedicosController extends Controller
  
             return $medicos;
         }else{
-            return "no-auth";
+            $rpta= new Cita;
+ $rpta->noauth=true;
+            return $rpta;;
         }
     }
 }
