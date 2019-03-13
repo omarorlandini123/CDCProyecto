@@ -28,11 +28,21 @@ class Historia extends Model
                     $condicionesFin[]="'".trim($condicion)."'";
                 }
                 $porcomas = implode(",",$condicionesFin);
-                
-            $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
-                ->WhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
-                ->WhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
-                ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                $a->whereRaw('
+                upper(concat(trim(apellido_paterno),\' \',trim(apellido_materno),\' \',trim(nombres))) like \'%' . 
+                strtoupper(trim($cond)) . '%\'
+                or dni in (' . strtoupper(trim($porcomas))  . ')
+                '); 
+                // $a->whereRaw('(
+                //     upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')
+                //     or upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')
+                //     or upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')
+                //     ) or dni in (' . strtoupper(trim($porcomas))  . ')
+                //     ');   
+            // $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
+            //     ->WhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
+            //     ->WhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
+            //     ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
             }
         })
             ->where('eliminado',0)
