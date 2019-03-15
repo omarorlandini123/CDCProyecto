@@ -67866,38 +67866,43 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("span", { staticClass: "mdc-list-item__secondary-text" }, [
-          _vm._v(_vm._s(_vm.cita.fecha_cita + " - " + _vm.cita.turno.desde))
+          _vm._v(_vm._s(_vm.cita.fecha_cita + " - "))
         ])
       ]),
       _vm._v(" "),
-      _c("span", { staticClass: "mdc-list-item__meta" }, [
-        _c("span", { staticStyle: {} }),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            class: {
-              "material-icons": true,
-              "confirmado-item": _vm.cita.confirmado == 1
+      _c(
+        "span",
+        {
+          staticClass: "mdc-list-item__meta",
+          staticStyle: { "min-width": "35px", "margin-right": "-10px" }
+        },
+        [
+          _c(
+            "span",
+            {
+              class: {
+                "material-icons": true,
+                "confirmado-item": _vm.cita.confirmado == 1
+              },
+              attrs: { "aria-hidden": "true" }
             },
-            attrs: { "aria-hidden": "true" }
-          },
-          [_vm._v("check")]
-        ),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            class: {
-              "material-icons": true,
-              "confirmado-medico-item": _vm.cita.confirmado_medico == 1
+            [_vm._v("check")]
+          ),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              class: {
+                "material-icons": true,
+                "confirmado-medico-item": _vm.cita.confirmado_medico == 1
+              },
+              staticStyle: { "margin-left": "-18px" },
+              attrs: { "aria-hidden": "true" }
             },
-            staticStyle: { "margin-left": "-18px" },
-            attrs: { "aria-hidden": "true" }
-          },
-          [_vm._v("check")]
-        )
-      ])
+            [_vm._v("check")]
+          )
+        ]
+      )
     ]
   )
 }
@@ -82989,7 +82994,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************************************!*\
   !*** ./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.js?vue&type=script&lang=js& ***!
   \*************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -83019,15 +83024,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*************************************************************************************!*\
   !*** ./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.vue ***!
   \*************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PanelDetallePaciente_vue_vue_type_template_id_bf4bdff6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PanelDetallePaciente.vue?vue&type=template&id=bf4bdff6&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.vue?vue&type=template&id=bf4bdff6&scoped=true&");
 /* harmony import */ var _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PanelDetallePaciente.js?vue&type=script&lang=js& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.js?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _PanelDetallePaciente_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _PanelDetallePaciente_scss_vue_type_style_index_0_id_bf4bdff6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true&");
+/* empty/unused harmony star reexport *//* harmony import */ var _PanelDetallePaciente_scss_vue_type_style_index_0_id_bf4bdff6_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true& */ "./resources/js/components/citas/panelDetallePaciente/PanelDetallePaciente.scss?vue&type=style&index=0&id=bf4bdff6&lang=scss&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 

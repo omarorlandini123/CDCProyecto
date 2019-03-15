@@ -212,22 +212,46 @@ class CitasController extends Controller
                     if($cond!="_"){
                         $condiciones = explode(" ",$cond);
                         $condicionesFin=array();
+                        $condicionesText =array();
                         foreach ($condiciones as $condicion) {
                             $condicionesFin[]="'".trim($condicion)."'";
+                            $condicionesText[]=trim($condicion);
                         }
                         $porcomas = implode(",",$condicionesFin);
-                        $a->whereRaw('
-                upper(concat(trim(apellido_paterno),\' \',trim(apellido_materno),\' \',trim(nombres))) like \'%' . 
-                strtoupper(trim($cond)) . '%\'
-                or dni in (' . strtoupper(trim($porcomas))  . ')
-                '); 
-                    // $a->whereRaw('(
-                    // upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')
-                    // or upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')
-                    // or upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')
-                    // ) or dni in (' . strtoupper(trim($porcomas))  . ')
-                    // ');
+                        if(count($condicionesText)==1){
+                            $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->orWhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                        }elseif(count($condicionesText)==2) {
+                            $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                            ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1]))  . '%\'')
+                            ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');                    
+                           
+                        }
+                        elseif(count($condicionesFin)==3) {
+                            $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                            ->WhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[2]))  . '%\'')
+                            ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1])) . ' '.strtoupper(trim($condicionesText[2]))  . '%\'')
+                            ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                           
+                           
+                        }
+                        elseif(count($condicionesFin)==4) {
+                            $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                            ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                            ->WhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[2]))  .' '. strtoupper(trim($condicionesText[3]))  . '%\'')
+                            ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1])) . ' '.strtoupper(trim($condicionesText[2]))  .' '. strtoupper(trim($condicionesText[3]))  . '%\'')
+                            ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                            
+                           
+                          
+                        }
+                       
                     }
+         
                 });
             })      
             ->where('eliminado',0)      
@@ -249,8 +273,9 @@ class CitasController extends Controller
             ->with('medico_especialidad.medico.medico_especialidad.especialidad') 
             ->orderBy('fecha_cita','desc')
             ->orderBy('nro_orden','desc')
+            ->take(50)
             ->get();
-            Cita::setTurnos($citas);
+            //Cita::setTurnos($citas);
             return $citas;
 
         }else{

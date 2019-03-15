@@ -23,10 +23,10 @@
         cita.historia.persona.apellido_materno + ", "+
         cita.historia.persona.nombres + " "}}
       </span>
-      <span class="mdc-list-item__secondary-text">{{cita.fecha_cita + ' - '+cita.turno.desde}}</span>
+      <span class="mdc-list-item__secondary-text">{{cita.fecha_cita + ' - '}}</span>
     </span>
-    <span class="mdc-list-item__meta">
-      <span style="display:"></span>
+    <span class="mdc-list-item__meta" style="min-width: 35px;margin-right: -10px;">
+      
       <span
         v-bind:class="{
       'material-icons':true,

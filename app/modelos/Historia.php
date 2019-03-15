@@ -20,29 +20,50 @@ class Historia extends Model
     }
 
     public static function listaGeneral($cond){
+        
+
         $historias = Historia::whereHas('persona', function ($a) use($cond) {
             if($cond!="_"){
                 $condiciones = explode(" ",$cond);
                 $condicionesFin=array();
+                $condicionesText =array();
                 foreach ($condiciones as $condicion) {
                     $condicionesFin[]="'".trim($condicion)."'";
+                    $condicionesText[]=trim($condicion);
                 }
                 $porcomas = implode(",",$condicionesFin);
-                $a->whereRaw('
-                upper(concat(trim(apellido_paterno),\' \',trim(apellido_materno),\' \',trim(nombres))) like \'%' . 
-                strtoupper(trim($cond)) . '%\'
-                or dni in (' . strtoupper(trim($porcomas))  . ')
-                '); 
-                // $a->whereRaw('(
-                //     upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')
-                //     or upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')
-                //     or upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')
-                //     ) or dni in (' . strtoupper(trim($porcomas))  . ')
-                //     ');   
-            // $a->whereRaw('upper(trim(nombres)) in (' . strtoupper(trim($porcomas))  . ')')
-            //     ->WhereRaw('upper(trim(apellido_paterno)) in (' . strtoupper(trim($porcomas))  . ')')
-            //     ->WhereRaw('upper(trim(apellido_materno)) in (' . strtoupper(trim($porcomas))  . ')')
-            //     ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                if(count($condicionesText)==1){
+                    $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->orWhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                }elseif(count($condicionesText)==2) {
+                    $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                    ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1]))  . '%\'')
+                    ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');                    
+                   
+                }
+                elseif(count($condicionesFin)==3) {
+                    $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                    ->WhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[2]))  . '%\'')
+                    ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1])) . ' '.strtoupper(trim($condicionesText[2]))  . '%\'')
+                    ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                   
+                   
+                }
+                elseif(count($condicionesFin)==4) {
+                    $a->WhereRaw('apellido_paterno like \'%' . strtoupper(trim($condicionesText[0]))  . '%\'')
+                    ->WhereRaw('apellido_materno like \'%' . strtoupper(trim($condicionesText[1]))  . '%\'')
+                    ->WhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[2]))  .' '. strtoupper(trim($condicionesText[3]))  . '%\'')
+                    ->orWhereRaw('nombres like \'%' . strtoupper(trim($condicionesText[0]))  . ' '.strtoupper(trim($condicionesText[1])) . ' '.strtoupper(trim($condicionesText[2]))  .' '. strtoupper(trim($condicionesText[3]))  . '%\'')
+                    ->orWhereRaw('dni in (' . strtoupper(trim($porcomas))  . ')');
+                    
+                   
+                  
+                }
+               
             }
         })
             ->where('eliminado',0)
@@ -50,12 +71,12 @@ class Historia extends Model
             ->with('persona.ubicacion_nacimiento')
             ->with('persona.ubicacion_domicilio')
             ->with('persona.correo')
-            ->with('persona.telefono')
-            ->with('persona.users')         
-            ->take(100)
+            ->with('persona.telefono')   
+            ->take(20)
             ->get();
+            
             if(count($historias)>0)
-            Historia::quickSort($historias,0,count($historias)-1);
+            //Historia::quickSort($historias,0,count($historias)-1);
         return $historias;
     }
 
